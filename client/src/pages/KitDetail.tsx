@@ -45,6 +45,8 @@ import { AlternativesSection } from "@/components/AlternativesSection";
 import { ShareSection } from "@/components/ShareSection";
 import { getToyAlternatives, alternatives as allAlternatives } from "@/data/alternatives";
 import { trackEvent } from "@/lib/analytics";
+import { useFavorites } from "@/hooks/useFavorites";
+import LikeButton from "@/components/LikeButton";
 
 const REFERRAL_CODE = "REF-6AA44A5A";
 
@@ -430,6 +432,7 @@ export default function KitDetail() {
   const kit = getKitById(params.id || "");
   const { lang, t, convert } = useLanguage();
   const i18n = useI18n();
+  const { isFavorite, toggleFavorite, getLikeCount } = useFavorites();
 
   // Lightbox state
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -616,9 +619,21 @@ export default function KitDetail() {
                 {kitStageLabel} · {kitAgeRange}
               </div>
 
-              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#1a1108] tracking-tight leading-[1.1] mb-6 sm:mb-8">
-                {kit.name}
-              </h1>
+              <div className="flex items-start gap-3 sm:gap-4 mb-6 sm:mb-8">
+                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#1a1108] tracking-tight leading-[1.1]">
+                  {kit.name}
+                </h1>
+                <div className="shrink-0 mt-2 sm:mt-3">
+                  <LikeButton
+                    kitId={kit.id}
+                    isLiked={isFavorite(kit.id)}
+                    likeCount={getLikeCount(kit.id)}
+                    onToggle={toggleFavorite}
+                    variant="full"
+                    color={kit.color}
+                  />
+                </div>
+              </div>
 
               <p className="text-base sm:text-lg md:text-xl text-[#3D3229] leading-relaxed max-w-3xl">
                 {kitDescription}

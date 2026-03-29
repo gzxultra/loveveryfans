@@ -399,7 +399,6 @@ export const kitToyImages: Record<string, Record<string, string>> = {
   "enthusiast": {
     "Sort & Stack Peg Puzzle": "https://images.ctfassets.net/0sea1vycfyqy/7pQYLVYOVRX1KesredJDPk/03c7c0264f9aed3dada1c2ab2726bd2f/Year_2_Playkit_10746_VS_R1_CL_v2.png",
     "Emotion Match Mirror & Card Set": "https://images.ctfassets.net/0sea1vycfyqy/3J1rcTMywufAhdzKNqcZbB/d331c684731b28660972a38a75626da8/2022_08_12_SEL-Emotions_ISO_0147_v3-EN_2e939bf7-2331-4e1e-8222-b67402866a93.webp",
-    "Wooden Tea Set": "https://images.ctfassets.net/0sea1vycfyqy/6NNnY5zCghZSMm8rTplvad/510ee2850ff5fc89bf362e7dd5c1d78c/Year_2_Playkit_10989_VS_R2_CL_web__1__copy.png",
     "Every Which Weigh Scale & Pails": "https://images.ctfassets.net/0sea1vycfyqy/5Zcgy8LaiNTfKroYEBDkZj/c58f1532bf1b03d54fc24f7337419204/k12-1-scale.png",
     "Pinkies Up Picnic Set": "https://images.ctfassets.net/0sea1vycfyqy/3Q2iNNJoXcoCKkaGXLzYOh/b526051ee057af540155e73b48cb9dd5/Year_2_Playkit_11042_VS_R2_CL_Muffins-_2_.png",
     "Squeaky Clean Squeegee Set": "https://images.ctfassets.net/0sea1vycfyqy/3CPZ9DoI1ty9l4n1RYtuo6/b7cd72751ff82141d413e504c24ac406/Year_2_Playkit_10842_VS_R2_CL.png",

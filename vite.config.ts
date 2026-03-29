@@ -66,6 +66,10 @@ export default defineConfig({
           if (id.includes('data/seoData') || id.includes('lib/seoHelpers')) {
             return 'data-seo';
           }
+          // Sentry
+          if (id.includes('@sentry')) {
+            return 'vendor-sentry';
+          }
           // Recharts (unused but imported by UI component)
           if (id.includes('recharts') || id.includes('d3-')) {
             return 'vendor-charts';

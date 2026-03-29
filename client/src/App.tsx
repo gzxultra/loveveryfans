@@ -5,8 +5,9 @@ import { lazy, Suspense, useEffect } from "react";
 import TrafficSourceTracker from "./components/TrafficSourceTracker";
 import { trackEvent } from "./lib/analytics";
 
-// Lazy load easter eggs so they don't affect initial bundle
+// Lazy load easter eggs and utility components so they don't affect initial bundle
 const EasterEggs = lazy(() => import("./components/easter-eggs"));
+const ScrollToTop = lazy(() => import("./components/ScrollToTop"));
 import { useLocation } from "wouter";
 
 // Lazy load route components for code splitting
@@ -121,6 +122,9 @@ function App({ onReady }: { onReady?: () => void }) {
         <AppRouter onReady={onReady} />
         <Suspense fallback={null}>
           <EasterEggs />
+        </Suspense>
+        <Suspense fallback={null}>
+          <ScrollToTop />
         </Suspense>
       </LanguageProvider>
     </ErrorBoundary>

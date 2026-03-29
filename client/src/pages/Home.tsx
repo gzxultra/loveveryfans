@@ -14,6 +14,8 @@ import LanguageToggle from "@/components/LanguageToggle";
 import { ArrowRight, BookOpen, Baby, Sparkles, Menu, X, Search, Music, Droplets, Box, Star } from "lucide-react";
 import { FooterShareMessage } from "@/components/ShareSection";
 import { useState, useMemo, useRef, useEffect, lazy, Suspense } from "react";
+import { useFavorites } from "@/hooks/useFavorites";
+import LikeButton from "@/components/LikeButton";
 import { Link, useLocation } from "wouter";
 
 // Prefetch KitDetail chunk on hover for faster navigation
@@ -76,6 +78,7 @@ export default function Home() {
   const { lang, t } = useLanguage();
   const i18n = useI18n();
   const [, setLocation] = useLocation();
+  const { isFavorite, toggleFavorite, getLikeCount } = useFavorites();
 
   const stageLabel = (id: string) => {
     const key = id as string;
@@ -634,10 +637,19 @@ export default function Home() {
                           </p>
 
                           <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-[#F0EBE3] group-hover:border-[#E8DFD3] transition-colors">
-                            <span className="text-xs text-[#6B5E50] flex items-center gap-1">
-                              <span className="inline-block w-1 h-1 rounded-full" style={{ backgroundColor: kit.color }} />
-                              {kit.toys.length} {i18n.kitCard.toys[lang]}
-                            </span>
+                            <div className="flex items-center gap-2">
+                              <span className="text-xs text-[#6B5E50] flex items-center gap-1">
+                                <span className="inline-block w-1 h-1 rounded-full" style={{ backgroundColor: kit.color }} />
+                                {kit.toys.length} {i18n.kitCard.toys[lang]}
+                              </span>
+                              <LikeButton
+                                kitId={kit.id}
+                                isLiked={isFavorite(kit.id)}
+                                likeCount={getLikeCount(kit.id)}
+                                onToggle={toggleFavorite}
+                                variant="icon"
+                              />
+                            </div>
                             <span
                               className="text-xs sm:text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all min-h-[48px] min-w-[48px] justify-end"
                               style={{ color: getAccessibleTextColor(kit.color) }}

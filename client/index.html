@@ -52,6 +52,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="Lovevery Fans" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -90,7 +92,7 @@
         {"@type": "ListItem", "position": 10, "name": "The Companion Play Kit", "description": "22-24 months Play Kit for social skills and empathy", "url": "https://loveveryfans.com/kit/companion/"},
         {"@type": "ListItem", "position": 11, "name": "The Helper Play Kit", "description": "25-27 months Play Kit for practical life skills", "url": "https://loveveryfans.com/kit/helper/"},
         {"@type": "ListItem", "position": 12, "name": "The Enthusiast Play Kit", "description": "28-30 months Play Kit for creative and energetic play", "url": "https://loveveryfans.com/kit/enthusiast/"},
-        {"@type": "ListItem", "position": 13, "name": "The Investigator Play Kit", "description": "31-33 months Play Kit for STEM exploration", "url": "https://loveveryfans.com/kit/investigator/"},
+        {"@type": "ListItem", "position": 13, "name": "The Researcher Play Kit", "description": "31-33 months Play Kit for STEM exploration", "url": "https://loveveryfans.com/kit/researcher/"},
         {"@type": "ListItem", "position": 14, "name": "The Free Spirit Play Kit", "description": "34-36 months Play Kit for imaginative play", "url": "https://loveveryfans.com/kit/freeSpirit/"},
         {"@type": "ListItem", "position": 15, "name": "The Observer Play Kit", "description": "37-39 months Play Kit for keen observation skills", "url": "https://loveveryfans.com/kit/observer/"},
         {"@type": "ListItem", "position": 16, "name": "The Storyteller Play Kit", "description": "40-42 months Play Kit for language and storytelling", "url": "https://loveveryfans.com/kit/storyteller/"},
@@ -100,6 +102,40 @@
         {"@type": "ListItem", "position": 20, "name": "The Examiner Play Kit", "description": "52-54 months Play Kit for detail-oriented observation", "url": "https://loveveryfans.com/kit/examiner/"},
         {"@type": "ListItem", "position": 21, "name": "The Persister Play Kit", "description": "55-57 months Play Kit for persistence and focus", "url": "https://loveveryfans.com/kit/persister/"},
         {"@type": "ListItem", "position": 22, "name": "The Planner Play Kit", "description": "58-60 months Play Kit for school readiness", "url": "https://loveveryfans.com/kit/planner/"}
+      ]
+    }
+    </script>
+
+    <!-- FAQ Structured Data for rich snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are Lovevery Play Kits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lovevery Play Kits are subscription-based toy boxes designed by child development experts using Montessori principles. Each kit is tailored to a specific age range (0-60 months) and includes developmentally appropriate toys, books, and play guides."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many Lovevery Play Kits are there?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There are 22 Lovevery Play Kits covering ages 0 to 60 months, organized into 4 stages: Baby (0-12 months, 6 kits), Toddler (13-24 months, 4 kits), Big Toddler (25-36 months, 4 kits), and Preschool (37-60 months, 8 kits)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there affordable alternatives to Lovevery toys?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Lovevery Fans provides curated Amazon alternatives for each toy in every Play Kit. These alternatives offer similar developmental benefits at a fraction of the cost, with verified ratings and parent reviews."
+          }
+        }
       ]
     }
     </script>
@@ -120,11 +156,12 @@
     <link rel="preload" as="image" type="image/webp" href="/hero-mobile.webp" media="(max-width: 767px)" />
     <link rel="preload" as="image" type="image/webp" href="/hero.webp" media="(min-width: 768px)" />
 
-    <!-- DNS prefetch for external resources -->
+    <!-- DNS prefetch and preconnect for external resources -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="dns-prefetch" href="https://images.ctfassets.net" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://images.ctfassets.net" crossorigin />
 
     <!-- Google Fonts - non-blocking with font-display:swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -303,7 +340,7 @@
             <article><h3><a href="/kit/companion/">The Companion Play Kit (22-24 months)</a></h3><p>For toddlers developing empathy, cooperative play, and language skills.</p></article>
             <article><h3><a href="/kit/helper/">The Helper Play Kit (25-27 months)</a></h3><p>For toddlers who want to help with everything. Supports practical life skills.</p></article>
             <article><h3><a href="/kit/enthusiast/">The Enthusiast Play Kit (28-30 months)</a></h3><p>For enthusiastic learners at the peak of pretend play and creative expression.</p></article>
-            <article><h3><a href="/kit/investigator/">The Investigator Play Kit (31-33 months)</a></h3><p>For curious investigators always asking "why." Supports scientific thinking.</p></article>
+            <article><h3><a href="/kit/researcher/">The Researcher Play Kit (31-33 months)</a></h3><p>For curious researchers always asking "why." Supports scientific thinking.</p></article>
             <article><h3><a href="/kit/freeSpirit/">The Free Spirit Play Kit (34-36 months)</a></h3><p>For independent children in the "I do it myself!" phase.</p></article>
             <article><h3><a href="/kit/observer/">The Observer Play Kit (37-39 months)</a></h3><p>For sharp-eyed observers noticing every detail.</p></article>
             <article><h3><a href="/kit/storyteller/">The Storyteller Play Kit (40-42 months)</a></h3><p>For children entering "story mode" with narrative skills and imagination.</p></article>

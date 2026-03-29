@@ -21,6 +21,8 @@
  *   switch_language   — user toggles language
  *   scroll_depth      — user scrolls past 25/50/75/90% of a page
  *   user_type_detected — identifies organic user vs bot vs site owner
+ *   like_kit           — user likes/favorites a kit
+ *   unlike_kit         — user unlikes/unfavorites a kit
  */
 
 /** Fire a GA4 custom event */

@@ -21,7 +21,7 @@ const SITE_URL = 'https://loveveryfans.com';
 const KIT_IDS = [
   'looker', 'charmer', 'senser', 'inspector', 'explorer', 'thinker',
   'babbler', 'adventurer', 'realist', 'companion', 'helper', 'enthusiast',
-  'investigator', 'freeSpirit', 'observer', 'storyteller', 'problemSolver',
+  'researcher', 'freeSpirit', 'observer', 'storyteller', 'problemSolver',
   'analyst', 'connector', 'examiner', 'persister', 'planner'
 ];
 
@@ -39,7 +39,7 @@ const kitSeoData = {
   companion: { title: "The Companion Play Kit (22-24 Months) | Lovevery Alternatives & Dupes | Lovevery Fans", desc: "Best Lovevery Companion Play Kit alternatives for 22-24 month old toddlers. Social play toys, building blocks, and more with Amazon prices and reviews.", age: "22-24 months" },
   helper: { title: "The Helper Play Kit (25-27 Months) | Lovevery Alternatives & Dupes | Lovevery Fans", desc: "Find affordable Lovevery Helper Play Kit alternatives for 25-27 month old toddlers. Practical life toys, Montessori tools, and more with real Amazon prices.", age: "25-27 months" },
   enthusiast: { title: "The Enthusiast Play Kit (28-30 Months) | Lovevery Alternatives & Dupes | Lovevery Fans", desc: "Best Lovevery Enthusiast Play Kit alternatives for 28-30 month old toddlers. Creative play toys, art supplies, and more with Amazon prices and parent reviews.", age: "28-30 months" },
-  investigator: { title: "The Investigator Play Kit (31-33 Months) | Lovevery Alternatives & Dupes | Lovevery Fans", desc: "Discover affordable Lovevery Investigator Play Kit alternatives for 31-33 month old toddlers. STEM toys, science kits, and more with real Amazon prices and ratings.", age: "31-33 months" },
+  researcher: { title: "The Researcher Play Kit (31-33 Months) | Lovevery Alternatives & Dupes | Lovevery Fans", desc: "Discover affordable Lovevery Researcher Play Kit alternatives for 31-33 month old toddlers. STEM toys, science kits, and more with real Amazon prices and ratings.", age: "31-33 months" },
   freeSpirit: { title: "The Free Spirit Play Kit (34-36 Months) | Lovevery Alternatives & Dupes | Lovevery Fans", desc: "Best Lovevery Free Spirit Play Kit alternatives for 34-36 month old toddlers. Imaginative play, art tools, and more with Amazon prices and parent reviews.", age: "34-36 months" },
   observer: { title: "The Observer Play Kit (37-39 Months) | Lovevery Alternatives & Dupes | Lovevery Fans", desc: "Find affordable Lovevery Observer Play Kit alternatives for 37-39 month old preschoolers. Observation toys, nature kits, and more with real Amazon prices.", age: "37-39 months" },
   storyteller: { title: "The Storyteller Play Kit (40-42 Months) | Lovevery Alternatives & Dupes | Lovevery Fans", desc: "Best Lovevery Storyteller Play Kit alternatives for 40-42 month old preschoolers. Storytelling toys, language games, and more with Amazon prices and reviews.", age: "40-42 months" },

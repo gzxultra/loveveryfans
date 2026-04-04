@@ -1,19 +1,34 @@
 import { createRoot } from "react-dom/client";
-import * as Sentry from "@sentry/react";
 import App from "./App";
 import "./index.css";
 
-Sentry.init({
-  dsn: import.meta.env.VITE_SENTRY_DSN,
-  environment: import.meta.env.MODE,
-  integrations: [
-    Sentry.browserTracingIntegration(),
-    Sentry.replayIntegration(),
-  ],
-  tracesSampleRate: 1.0,
-  replaysSessionSampleRate: 0.1,
-  replaysOnErrorSampleRate: 1.0,
-});
+// Lazy-load Sentry to avoid blocking initial render (~30KB+ gzipped)
+const initSentry = async () => {
+  try {
+    const Sentry = await import("@sentry/react");
+    Sentry.init({
+      dsn: import.meta.env.VITE_SENTRY_DSN,
+      environment: import.meta.env.MODE,
+      integrations: [
+        Sentry.browserTracingIntegration(),
+        Sentry.replayIntegration(),
+      ],
+      tracesSampleRate: 0.5,
+      replaysSessionSampleRate: 0.05,
+      replaysOnErrorSampleRate: 1.0,
+    });
+  } catch (e) {
+    // Sentry failed to load, continue without it
+    console.warn("Sentry initialization failed:", e);
+  }
+};
+
+// Initialize Sentry after idle or 3s timeout
+if ("requestIdleCallback" in window) {
+  (window as any).requestIdleCallback(() => initSentry(), { timeout: 3000 });
+} else {
+  setTimeout(initSentry, 2000);
+}
 
 // Swap SSR shell with React root when React has fully rendered
 const onReady = () => {
@@ -38,8 +53,4 @@ const onReady = () => {
 };
 
 const root = createRoot(document.getElementById("root")!);
-root.render(
-  <Sentry.ErrorBoundary fallback={<p>An error has occurred</p>}>
-    <App onReady={onReady} />
-  </Sentry.ErrorBoundary>
-);
+root.render(<App onReady={onReady} />);

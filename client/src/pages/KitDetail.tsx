@@ -47,6 +47,10 @@ import { getToyAlternatives, alternatives as allAlternatives } from "@/data/alte
 import { trackEvent } from "@/lib/analytics";
 import { useFavorites } from "@/hooks/useFavorites";
 import LikeButton from "@/components/LikeButton";
+import ReadingProgress from "@/components/ReadingProgress";
+import Breadcrumb from "@/components/Breadcrumb";
+import BackToTop from "@/components/BackToTop";
+import KitComparisonBanner from "@/components/KitComparisonBanner";
 
 const REFERRAL_CODE = "REF-6AA44A5A";
 
@@ -558,6 +562,9 @@ export default function KitDetail() {
   return (
     <>
     <div className="min-h-screen bg-[#FAF7F2]">
+      {/* Reading Progress Bar */}
+      <ReadingProgress color={kit.color} />
+
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-lg border-b border-[#E8DFD3]/70 shadow-sm shadow-[#3D3229]/3">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -579,6 +586,16 @@ export default function KitDetail() {
           </div>
         </div>
       </nav>
+
+      {/* Breadcrumb */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-3">
+        <Breadcrumb
+          items={[
+            { label: kitStageLabel, href: `/#stage-${kit.stage}` },
+            { label: kit.name },
+          ]}
+        />
+      </div>
 
       {/* Kit Header with Hero Image */}
       <section className="relative overflow-hidden">
@@ -892,12 +909,22 @@ export default function KitDetail() {
         </div>
       </section>
 
+      {/* Kit Comparison */}
+      <section className="pb-6 sm:pb-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <KitComparisonBanner currentKitId={kit.id} />
+        </div>
+      </section>
+
       {/* Share — elegant, subtle */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="border-t border-[#E8DFD3]/60">
           <ShareSection />
         </div>
       </div>
+
+      {/* Back to Top */}
+      <BackToTop />
 
       {/* Footer */}
       <footer className="relative bg-[#3D3229] text-white py-8 sm:py-12">

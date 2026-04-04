@@ -326,6 +326,26 @@ export function applyHomePageSeo() {
   // Remove stale zh/en hreflang tags if they exist from SSR
   document.querySelector('link[rel="alternate"][hreflang="zh"]')?.remove();
   document.querySelector('link[rel="alternate"][hreflang="en"]')?.remove();
+
+  // Organization structured data for homepage
+  setJsonLd("home-organization", {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Lovevery Fans",
+    "url": SITE_URL,
+    "description": "Independent bilingual community guide to Lovevery Play Kits with parent reviews and affordable Amazon alternatives.",
+    "sameAs": [],
+  });
+
+  // WebSite structured data with SearchAction for sitelinks search box
+  setJsonLd("home-website", {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Lovevery Fans",
+    "url": SITE_URL,
+    "description": "Complete bilingual guide to all 22 Lovevery Play Kits (0-60 months). Real parent reviews, toy cleaning guides, and curated affordable Amazon alternatives.",
+    "inLanguage": ["en", "zh"],
+  });
 }
 
 /**

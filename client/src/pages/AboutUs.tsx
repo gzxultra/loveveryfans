@@ -25,6 +25,7 @@ import {
 import { useEffect, useState } from "react";
 import { applyAboutPageSeo } from "@/lib/seoHelpers";
 import { stages } from "@/data/kits";
+import BackToTop from "@/components/BackToTop";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 24 },
@@ -378,6 +379,9 @@ export default function AboutUs() {
           </Link>
         </motion.div>
       </section>
+
+      {/* Back to Top */}
+      <BackToTop />
 
       {/* Footer */}
       <footer className="relative bg-[#3D3229] text-white py-8 sm:py-12">

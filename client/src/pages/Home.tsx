@@ -32,6 +32,10 @@ import { applyHomePageSeo } from "@/lib/seoHelpers";
 const FeedbackForm = lazy(() => import("@/components/FeedbackForm"));
 const RewardSection = lazy(() => import("@/components/RewardSectionWrapper"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSectionWrapper"));
+const FAQSection = lazy(() => import("@/components/FAQSectionWrapper"));
+const StatsCounter = lazy(() => import("@/components/StatsCounterWrapper"));
+const AgePickerNav = lazy(() => import("@/components/AgePickerNavWrapper"));
+const BackToTop = lazy(() => import("@/components/BackToTopWrapper"));
 
 const HERO_IMG = `${import.meta.env.BASE_URL}hero.webp`;
 const HERO_IMG_MOBILE = `${import.meta.env.BASE_URL}hero-mobile.webp`;
@@ -550,6 +554,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Stats Counter Section */}
+      <section className="py-8 sm:py-12 bg-[#FAF7F2]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Suspense fallback={<div className="h-32" />}>
+            <StatsCounter />
+          </Suspense>
+        </div>
+      </section>
+
+      {/* Age Picker Navigation */}
+      <section className="py-6 sm:py-8 bg-[#FAF7F2]">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Suspense fallback={<div className="h-24" />}>
+            <AgePickerNav />
+          </Suspense>
+        </div>
+      </section>
+
       {/* Testimonials Section - lazy loaded */}
       <Suspense fallback={<div className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#F5F0EB] via-[#FAF7F2] to-[#F8F3ED]" />}>
         <TestimonialsSection />
@@ -759,9 +781,19 @@ export default function Home() {
         <RewardSection />
       </Suspense>
 
+      {/* FAQ Section - lazy loaded */}
+      <Suspense fallback={<div className="py-12" />}>
+        <FAQSection />
+      </Suspense>
+
       {/* Feedback Form - lazy loaded */}
       <Suspense fallback={<div className="py-12 sm:py-20" />}>
         <FeedbackForm />
+      </Suspense>
+
+      {/* Back to Top button */}
+      <Suspense fallback={null}>
+        <BackToTop />
       </Suspense>
 
       {/* Footer */}

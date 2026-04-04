@@ -20,6 +20,9 @@ import { ShareSection } from "@/components/ShareSection";
 import { getToyImage } from "@/data/toyImages";
 import { getToyReview } from "@/data/toyReviews";
 import { trackEvent } from "@/lib/analytics";
+import ReadingProgress from "@/components/ReadingProgress";
+import Breadcrumb from "@/components/Breadcrumb";
+import BackToTop from "@/components/BackToTop";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
@@ -528,6 +531,9 @@ export default function ProductDetail() {
   return (
     <>
     <div className="min-h-screen bg-[#FAF7F2]">
+      {/* Reading Progress Bar */}
+      <ReadingProgress color={product.color} />
+
       {/* Navigation — identical to KitDetail */}
       <nav className="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-lg border-b border-[#E8DFD3]/70 shadow-sm shadow-[#3D3229]/3">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -549,6 +555,16 @@ export default function ProductDetail() {
           </div>
         </div>
       </nav>
+
+      {/* Breadcrumb */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-3">
+        <Breadcrumb
+          items={[
+            { label: t("独立产品", "Products"), href: "/#standalone-products" },
+            { label: product.name },
+          ]}
+        />
+      </div>
 
       {/* Product Header — same structure as KitDetail kit header */}
       <section className="relative overflow-hidden">
@@ -807,6 +823,9 @@ export default function ProductDetail() {
           <ShareSection />
         </div>
       </div>
+
+      {/* Back to Top */}
+      <BackToTop />
 
       {/* Footer — same as KitDetail */}
       <footer className="relative bg-[#3D3229] text-white py-8 sm:py-12">

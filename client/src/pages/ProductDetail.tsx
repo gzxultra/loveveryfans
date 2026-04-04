@@ -14,7 +14,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useI18n } from "@/hooks/useI18n";
 import LanguageToggle from "@/components/LanguageToggle";
 import { AlternativesSection } from "@/components/AlternativesSection";
-import { RewardBanner } from "@/components/RewardBanner";
 import { RecommendedReading } from "@/components/RecommendedReading";
 import { ShareSection } from "@/components/ShareSection";
 import { getToyImage } from "@/data/toyImages";
@@ -762,11 +761,10 @@ export default function ProductDetail() {
       {/* Recommended Reading — same position as KitDetail (before Referral) */}
       <RecommendedReading kitId={product.id} kitColor={product.color} />
 
-      {/* Referral + Reward — same as KitDetail */}
+      {/* Referral */}
       <section className="pb-10 sm:pb-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 sm:space-y-6">
           <ProductReferralCard product={product} />
-          <RewardBanner />
         </div>
       </section>
 

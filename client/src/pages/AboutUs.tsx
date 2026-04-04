@@ -14,7 +14,6 @@ import {
   Baby,
   Sparkles,
   Code,
-  Coffee,
   ArrowLeft,
   ShieldCheck,
   Globe,

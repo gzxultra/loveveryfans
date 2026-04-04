@@ -1,19 +1,21 @@
 #!/usr/bin/env python3
 """
 Lovevery Play Kit Amazon Alternatives Scraper
+=============================================
 
-This script searches for affordable Amazon alternatives for each toy in the
-Lovevery Play Kit lineup. It uses AI to find product recommendations, then
-scrapes real Amazon data (price, rating, reviews, images) for accuracy.
+Searches for affordable Amazon alternatives for each toy in the Lovevery Play Kit
+lineup. Uses AI to find product recommendations, then scrapes real Amazon data
+(price, rating, reviews, images, availability) for accuracy.
 
 Usage:
-    python3 scrape_alternatives.py [--kit KIT_ID] [--output OUTPUT_FILE]
+    python3 scrape_alternatives.py [options]
 
 Options:
     --kit KIT_ID        Only scrape alternatives for a specific kit (e.g., "looker")
     --output FILE       Output JSON file path (default: lovevery_alternatives.json)
     --update            Update existing data instead of overwriting
     --refresh-prices    Refresh prices/ratings for existing ASINs without AI search
+    --check-availability  Check availability status for all existing alternatives
     --verbose           Print detailed progress information
 
 Requirements:
@@ -21,6 +23,13 @@ Requirements:
 
 Environment:
     OPENAI_API_KEY      Required for AI-powered product search (not for price updates)
+
+Availability Detection:
+    The scraper detects the following product states:
+    - "in_stock"       : Product is available and has a price
+    - "out_of_stock"   : Product page exists but item is unavailable
+    - "discontinued"   : Product page returns 404 or is no longer sold
+    - "unknown"        : Could not determine availability (scraping blocked, etc.)
 """
 
 import argparse
@@ -32,6 +41,7 @@ import re
 from pathlib import Path
 from typing import Optional
 import random
+from datetime import datetime, timezone
 
 try:
     import requests
@@ -59,21 +69,41 @@ DATA_DIR = PROJECT_ROOT / "client" / "src" / "data"
 DEFAULT_OUTPUT = PROJECT_ROOT / "scripts" / "lovevery_alternatives.json"
 
 # Search configuration
-SEARCH_DELAY_MIN = 2.0  # minimum seconds between Amazon requests
-SEARCH_DELAY_MAX = 4.0  # maximum seconds between Amazon requests
+SEARCH_DELAY_MIN = 2.0   # minimum seconds between Amazon requests
+SEARCH_DELAY_MAX = 4.0   # maximum seconds between Amazon requests
 MAX_ALTERNATIVES_PER_TOY = 3
 MIN_RATING = 4.0
 MIN_REVIEWS = 50
 MAX_RETRIES = 3
+REQUEST_TIMEOUT = 15
 
 # Amazon affiliate tag
 AFFILIATE_TAG = "loveveryfans-20"
 
+# Availability status constants
+AVAILABILITY_IN_STOCK = "in_stock"
+AVAILABILITY_OUT_OF_STOCK = "out_of_stock"
+AVAILABILITY_DISCONTINUED = "discontinued"
+AVAILABILITY_UNKNOWN = "unknown"
+
+# Phrases that indicate out-of-stock on Amazon product pages
+OUT_OF_STOCK_PHRASES = [
+    "currently unavailable",
+    "this item is currently unavailable",
+    "out of stock",
+    "not in stock",
+    "temporarily out of stock",
+    "currently not available",
+    "we don't know when or if this item will be back in stock",
+]
+
 # Headers to mimic a real browser and avoid blocking
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                  "AppleWebKit/537.36 (KHTML, like Gecko) "
-                  "Chrome/120.0.0.0 Safari/537.36",
+    "User-Agent": (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/120.0.0.0 Safari/537.36"
+    ),
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
     "Accept-Language": "en-US,en;q=0.9",
     "Accept-Encoding": "gzip, deflate, br",
@@ -88,140 +118,209 @@ HEADERS = {
 
 
 # ============================================================================
+# Availability Detection
+# ============================================================================
+
+def detect_availability(soup: BeautifulSoup, status_code: int) -> str:
+    """
+    Detect product availability from a parsed Amazon product page.
+
+    Returns one of: "in_stock", "out_of_stock", "discontinued", "unknown"
+    """
+    if status_code == 404:
+        return AVAILABILITY_DISCONTINUED
+
+    if status_code != 200:
+        return AVAILABILITY_UNKNOWN
+
+    page_text = soup.get_text(separator=" ").lower()
+
+    # Check for explicit out-of-stock indicators
+    for phrase in OUT_OF_STOCK_PHRASES:
+        if phrase in page_text:
+            return AVAILABILITY_OUT_OF_STOCK
+
+    # Check for "Add to Cart" or "Buy Now" button — strong in-stock signal
+    add_to_cart = soup.find("input", {"id": "add-to-cart-button"})
+    buy_now = soup.find("input", {"id": "buy-now-button"})
+    if add_to_cart or buy_now:
+        return AVAILABILITY_IN_STOCK
+
+    # Check availability message div
+    avail_div = soup.find("div", {"id": "availability"})
+    if avail_div:
+        avail_text = avail_div.get_text(separator=" ").lower().strip()
+        if any(phrase in avail_text for phrase in OUT_OF_STOCK_PHRASES):
+            return AVAILABILITY_OUT_OF_STOCK
+        if "in stock" in avail_text or "ships" in avail_text or "order" in avail_text:
+            return AVAILABILITY_IN_STOCK
+
+    # If we found a price, assume in stock
+    price_elem = soup.find("span", {"class": "a-price-whole"})
+    if price_elem:
+        return AVAILABILITY_IN_STOCK
+
+    return AVAILABILITY_UNKNOWN
+
+
+# ============================================================================
 # Amazon Data Scraping
 # ============================================================================
 
 def scrape_amazon_product(asin: str, verbose: bool = False) -> Optional[dict]:
     """
-    Scrape real product data from Amazon product page.
-    
-    Returns dict with: price, rating, reviewCount, imageUrl, or None if failed.
+    Scrape real product data from an Amazon product page.
+
+    Returns a dict with:
+        price         : str or None  (e.g. "$19.99")
+        rating        : float or None
+        reviewCount   : int or None
+        imageUrl      : str or None
+        availability  : str  (one of AVAILABILITY_* constants)
+        lastChecked   : str  (ISO 8601 UTC timestamp)
+
+    Returns None only on unrecoverable network errors.
     """
     url = f"https://www.amazon.com/dp/{asin}"
-    
+    last_checked = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
     for attempt in range(MAX_RETRIES):
         try:
             if verbose:
-                print(f"      Fetching Amazon page for ASIN {asin} (attempt {attempt + 1}/{MAX_RETRIES})...")
-            
+                print(
+                    f"      Fetching Amazon page for ASIN {asin} "
+                    f"(attempt {attempt + 1}/{MAX_RETRIES})..."
+                )
+
             # Random delay to avoid rate limiting
             time.sleep(random.uniform(SEARCH_DELAY_MIN, SEARCH_DELAY_MAX))
-            
-            response = requests.get(url, headers=HEADERS, timeout=15)
-            
+
+            response = requests.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+
             if response.status_code == 503:
                 if verbose:
-                    print(f"      Amazon returned 503 (rate limited), waiting longer...")
+                    print("      Amazon returned 503 (rate limited), waiting longer...")
                 time.sleep(10)
                 continue
-            
+
+            soup = BeautifulSoup(response.content, "html.parser")
+            availability = detect_availability(soup, response.status_code)
+
+            if response.status_code == 404:
+                if verbose:
+                    print(f"      ASIN {asin} returned 404 — product discontinued")
+                return {
+                    "price": None,
+                    "rating": None,
+                    "reviewCount": None,
+                    "imageUrl": None,
+                    "availability": AVAILABILITY_DISCONTINUED,
+                    "lastChecked": last_checked,
+                }
+
             if response.status_code != 200:
                 if verbose:
                     print(f"      Failed with status code {response.status_code}")
                 continue
-            
-            soup = BeautifulSoup(response.content, 'html.parser')
-            
-            # Extract price
+
+            # ── Extract price ────────────────────────────────────────────────
             price = None
             price_selectors = [
-                ('span', {'class': 'a-price-whole'}),
-                ('span', {'class': 'a-offscreen'}),
-                ('span', {'id': 'priceblock_ourprice'}),
-                ('span', {'id': 'priceblock_dealprice'}),
-                ('span', {'class': 'a-color-price'}),
+                ("span", {"class": "a-price-whole"}),
+                ("span", {"class": "a-offscreen"}),
+                ("span", {"id": "priceblock_ourprice"}),
+                ("span", {"id": "priceblock_dealprice"}),
+                ("span", {"class": "a-color-price"}),
             ]
-            
             for tag, attrs in price_selectors:
                 price_elem = soup.find(tag, attrs)
                 if price_elem:
                     price_text = price_elem.get_text().strip()
-                    # Extract numeric price
-                    price_match = re.search(r'\$?(\d+\.?\d*)', price_text)
+                    price_match = re.search(r"\$?(\d+\.?\d*)", price_text)
                     if price_match:
                         price = f"${price_match.group(1)}"
                         break
-            
-            # Extract rating
+
+            # ── Extract rating ───────────────────────────────────────────────
             rating = None
-            rating_elem = soup.find('span', {'class': 'a-icon-alt'})
+            rating_elem = soup.find("span", {"class": "a-icon-alt"})
             if rating_elem:
                 rating_text = rating_elem.get_text().strip()
-                rating_match = re.search(r'(\d+\.?\d*)\s*out of', rating_text)
+                rating_match = re.search(r"(\d+\.?\d*)\s*out of", rating_text)
                 if rating_match:
                     rating = float(rating_match.group(1))
-            
-            # Extract review count
+
+            # ── Extract review count ─────────────────────────────────────────
             review_count = None
-            # Try multiple methods to find review count
             review_patterns = [
-                (r'([\d,]+)\s*global ratings', soup.find_all('span', class_='a-size-base')),
-                (r'([\d,]+)\s*ratings', soup.find_all('span', id='acrCustomerReviewText')),
-                (r'([\d,]+)\s*ratings', soup.find_all('span')),
+                (r"([\d,]+)\s*global ratings", soup.find_all("span", class_="a-size-base")),
+                (r"([\d,]+)\s*ratings", soup.find_all("span", id="acrCustomerReviewText")),
+                (r"([\d,]+)\s*ratings", soup.find_all("span")),
             ]
-            
             for pattern, elements in review_patterns:
                 for elem in elements:
                     text = elem.get_text().strip()
                     match = re.search(pattern, text)
                     if match:
-                        review_count = int(match.group(1).replace(',', ''))
+                        review_count = int(match.group(1).replace(",", ""))
                         break
                 if review_count:
                     break
-            
-            # Extract main product image
+
+            # ── Extract main product image ───────────────────────────────────
             image_url = None
             image_selectors = [
-                ('img', {'id': 'landingImage'}),
-                ('img', {'class': 'a-dynamic-image'}),
-                ('div', {'id': 'imgTagWrapperId'}),
+                ("img", {"id": "landingImage"}),
+                ("img", {"class": "a-dynamic-image"}),
+                ("div", {"id": "imgTagWrapperId"}),
             ]
-            
             for tag, attrs in image_selectors:
                 img_elem = soup.find(tag, attrs)
                 if img_elem:
-                    if tag == 'img':
-                        # Get src or data-old-hires attribute
-                        image_url = img_elem.get('data-old-hires') or img_elem.get('src')
+                    if tag == "img":
+                        image_url = img_elem.get("data-old-hires") or img_elem.get("src")
                     else:
-                        # Find img inside div
-                        img_tag = img_elem.find('img')
+                        img_tag = img_elem.find("img")
                         if img_tag:
-                            image_url = img_tag.get('data-old-hires') or img_tag.get('src')
-                    
+                            image_url = img_tag.get("data-old-hires") or img_tag.get("src")
                     if image_url:
-                        # Clean up image URL (remove size parameters for higher quality)
-                        image_url = re.sub(r'\._.*?_\.', '.', image_url)
+                        # Remove size parameters for higher quality
+                        image_url = re.sub(r"\._.*?_\.", ".", image_url)
                         break
-            
+
             # Validate we got at least some data
-            if not price and not rating:
+            if not price and not rating and availability == AVAILABILITY_UNKNOWN:
                 if verbose:
-                    print(f"      Could not extract price or rating from page")
+                    print("      Could not extract price or rating from page")
                 continue
-            
+
             result = {
-                'price': price,
-                'rating': rating,
-                'reviewCount': review_count,
-                'imageUrl': image_url,
+                "price": price,
+                "rating": rating,
+                "reviewCount": review_count,
+                "imageUrl": image_url,
+                "availability": availability,
+                "lastChecked": last_checked,
             }
-            
+
             if verbose:
-                print(f"      ✓ Scraped: price={price}, rating={rating}, reviews={review_count}, image={bool(image_url)}")
-            
+                print(
+                    f"      ✓ Scraped: price={price}, rating={rating}, "
+                    f"reviews={review_count}, availability={availability}, "
+                    f"image={bool(image_url)}"
+                )
+
             return result
-            
+
         except requests.exceptions.Timeout:
             if verbose:
-                print(f"      Request timeout, retrying...")
+                print("      Request timeout, retrying...")
             continue
         except Exception as e:
             if verbose:
                 print(f"      Error scraping Amazon: {e}")
             continue
-    
+
     if verbose:
         print(f"      ✗ Failed to scrape after {MAX_RETRIES} attempts")
     return None
@@ -253,11 +352,7 @@ def extract_toy_inventory() -> list[dict]:
 
         if id_match and "kit" not in line.lower():
             if kit_id and toys:
-                all_kits.append({
-                    "kitId": kit_id,
-                    "kitName": kit_name,
-                    "toys": toys,
-                })
+                all_kits.append({"kitId": kit_id, "kitName": kit_name, "toys": toys})
                 toys = []
             kit_id = id_match.group(1)
 
@@ -269,19 +364,17 @@ def extract_toy_inventory() -> list[dict]:
             cn_name = re.search(r'name:\s*"([^"]+)"', line)
             category = re.search(r'category:\s*"([^"]+)"', line)
             cat_en = re.search(r'categoryEn:\s*"([^"]+)"', line)
-            toys.append({
-                "name": cn_name.group(1) if cn_name else "",
-                "englishName": en_name_match.group(1),
-                "category": category.group(1) if category else "",
-                "categoryEn": cat_en.group(1) if cat_en else "",
-            })
+            toys.append(
+                {
+                    "name": cn_name.group(1) if cn_name else "",
+                    "englishName": en_name_match.group(1),
+                    "category": category.group(1) if category else "",
+                    "categoryEn": cat_en.group(1) if cat_en else "",
+                }
+            )
 
     if kit_id and toys:
-        all_kits.append({
-            "kitId": kit_id,
-            "kitName": kit_name,
-            "toys": toys,
-        })
+        all_kits.append({"kitId": kit_id, "kitName": kit_name, "toys": toys})
 
     return all_kits
 
@@ -290,10 +383,12 @@ def extract_toy_inventory() -> list[dict]:
 # AI-Powered Alternative Search
 # ============================================================================
 
-def search_alternatives_with_ai(toy_name: str, toy_category: str, kit_name: str) -> list[dict]:
+def search_alternatives_with_ai(
+    toy_name: str, toy_category: str, kit_name: str
+) -> list[dict]:
     """
     Use OpenAI API to find Amazon alternatives (ASINs only).
-    Real prices/ratings will be scraped separately.
+    Real prices/ratings/availability will be scraped separately.
     """
     if not HAS_OPENAI:
         return []
@@ -328,7 +423,7 @@ Return ONLY a JSON array (no markdown, no explanation):
   }}
 ]
 
-IMPORTANT: Do NOT include price, rating, or reviewCount - we will scrape those separately.
+IMPORTANT: Do NOT include price, rating, reviewCount, or availability — we scrape those separately.
 If you cannot find suitable alternatives, return an empty array: []
 """
 
@@ -338,7 +433,11 @@ If you cannot find suitable alternatives, return an empty array: []
             messages=[
                 {
                     "role": "system",
-                    "content": "You are a helpful assistant that finds Amazon product alternatives for baby/toddler toys. Always return valid JSON arrays only. Do not include prices or ratings.",
+                    "content": (
+                        "You are a helpful assistant that finds Amazon product alternatives "
+                        "for baby/toddler toys. Always return valid JSON arrays only. "
+                        "Do not include prices, ratings, or availability."
+                    ),
                 },
                 {"role": "user", "content": prompt},
             ],
@@ -371,17 +470,14 @@ def scrape_kit_alternatives(
     kit: dict,
     existing_data: Optional[dict] = None,
     refresh_prices: bool = False,
+    check_availability: bool = False,
     verbose: bool = False,
 ) -> dict:
     """Scrape Amazon alternatives for all toys in a kit."""
     kit_id = kit["kitId"]
     kit_name = kit["kitName"]
 
-    result = {
-        "kitId": kit_id,
-        "kitName": kit_name,
-        "toys": [],
-    }
+    result = {"kitId": kit_id, "kitName": kit_name, "toys": []}
 
     for i, toy in enumerate(kit["toys"]):
         toy_name = toy["englishName"]
@@ -401,21 +497,23 @@ def scrape_kit_alternatives(
 
         alternatives = []
 
-        if refresh_prices and existing_toy and existing_toy.get("alternatives"):
-            # Refresh mode: keep existing ASINs, just update prices/ratings
+        if (refresh_prices or check_availability) and existing_toy and existing_toy.get("alternatives"):
+            # Refresh mode: keep existing ASINs, update prices/ratings/availability
+            mode = "availability" if check_availability else "prices"
             if verbose:
-                print(f"    Refreshing prices for {len(existing_toy['alternatives'])} existing alternatives")
-            
+                print(
+                    f"    Refreshing {mode} for "
+                    f"{len(existing_toy['alternatives'])} existing alternatives"
+                )
+
             for alt in existing_toy["alternatives"]:
                 asin = alt.get("asin")
                 if not asin:
                     continue
-                
-                # Scrape real Amazon data
+
                 amazon_data = scrape_amazon_product(asin, verbose=verbose)
-                
+
                 if amazon_data:
-                    # Update with real data
                     updated_alt = {
                         "name": alt.get("name", ""),
                         "asin": asin,
@@ -426,35 +524,45 @@ def scrape_kit_alternatives(
                         "amazonUrl": f"https://www.amazon.com/dp/{asin}?tag={AFFILIATE_TAG}",
                         "reasonEn": alt.get("reasonEn", ""),
                         "reasonCn": alt.get("reasonCn", ""),
+                        "availability": amazon_data.get("availability", AVAILABILITY_UNKNOWN),
+                        "lastChecked": amazon_data.get("lastChecked", ""),
                     }
                     alternatives.append(updated_alt)
+
+                    # Log out-of-stock / discontinued items
+                    avail = amazon_data.get("availability", AVAILABILITY_UNKNOWN)
+                    if avail in (AVAILABILITY_OUT_OF_STOCK, AVAILABILITY_DISCONTINUED):
+                        print(
+                            f"    ⚠️  {avail.upper()}: {alt.get('name', asin)} "
+                            f"(ASIN: {asin})"
+                        )
                 else:
-                    # Keep existing data if scraping failed
+                    # Keep existing data if scraping failed, preserve availability
                     alternatives.append(alt)
-        
+
         elif existing_toy and existing_toy.get("alternatives") and not refresh_prices:
             # Use existing data without refresh
             if verbose:
-                print(f"    Using existing data ({len(existing_toy['alternatives'])} alternatives)")
+                print(
+                    f"    Using existing data ({len(existing_toy['alternatives'])} alternatives)"
+                )
             alternatives = existing_toy["alternatives"]
-        
+
         else:
             # Search for new alternatives with AI
             if verbose:
-                print(f"    Searching for new alternatives...")
-            
+                print("    Searching for new alternatives...")
+
             ai_alternatives = search_alternatives_with_ai(toy_name, category, kit_name)
-            
+
             for alt in ai_alternatives:
                 asin = alt.get("asin")
                 if not asin:
                     continue
-                
-                # Scrape real Amazon data
+
                 amazon_data = scrape_amazon_product(asin, verbose=verbose)
-                
+
                 if amazon_data:
-                    # Combine AI metadata with real scraped data
                     full_alt = {
                         "name": alt.get("name", ""),
                         "asin": asin,
@@ -465,11 +573,13 @@ def scrape_kit_alternatives(
                         "amazonUrl": f"https://www.amazon.com/dp/{asin}?tag={AFFILIATE_TAG}",
                         "reasonEn": alt.get("reasonEn", ""),
                         "reasonCn": alt.get("reasonCn", ""),
+                        "availability": amazon_data.get("availability", AVAILABILITY_UNKNOWN),
+                        "lastChecked": amazon_data.get("lastChecked", ""),
                     }
                     alternatives.append(full_alt)
                 else:
                     if verbose:
-                        print(f"      Skipping {asin} - could not scrape data")
+                        print(f"      Skipping {asin} — could not scrape data")
 
         toy_result = {
             "toyName": toy_name,
@@ -484,15 +594,67 @@ def scrape_kit_alternatives(
     return result
 
 
+# ============================================================================
+# Availability Report
+# ============================================================================
+
+def print_availability_report(results: list[dict]) -> None:
+    """Print a summary of availability issues found."""
+    out_of_stock = []
+    discontinued = []
+
+    for kit in results:
+        for toy in kit["toys"]:
+            for alt in toy.get("alternatives", []):
+                avail = alt.get("availability", AVAILABILITY_UNKNOWN)
+                entry = {
+                    "kit": kit["kitId"],
+                    "toy": toy["toyName"],
+                    "name": alt.get("name", ""),
+                    "asin": alt.get("asin", ""),
+                }
+                if avail == AVAILABILITY_OUT_OF_STOCK:
+                    out_of_stock.append(entry)
+                elif avail == AVAILABILITY_DISCONTINUED:
+                    discontinued.append(entry)
+
+    if discontinued:
+        print(f"\n{'='*50}")
+        print(f"⛔ DISCONTINUED ({len(discontinued)} items):")
+        for item in discontinued:
+            print(f"  [{item['kit']}] {item['toy']} → {item['name']} (ASIN: {item['asin']})")
+
+    if out_of_stock:
+        print(f"\n{'='*50}")
+        print(f"⚠️  OUT OF STOCK ({len(out_of_stock)} items):")
+        for item in out_of_stock:
+            print(f"  [{item['kit']}] {item['toy']} → {item['name']} (ASIN: {item['asin']})")
+
+    if not discontinued and not out_of_stock:
+        print("\n✅ All alternatives appear to be in stock.")
+
+
+# ============================================================================
+# CLI Entry Point
+# ============================================================================
+
 def main():
     parser = argparse.ArgumentParser(
-        description="Scrape Amazon alternatives for Lovevery Play Kit toys"
+        description="Scrape Amazon alternatives for Lovevery Play Kit toys",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Full scrape (AI + Amazon data)
+  python3 scrape_alternatives.py --verbose
+
+  # Refresh prices only for a single kit
+  python3 scrape_alternatives.py --kit looker --refresh-prices --verbose
+
+  # Check availability for all existing alternatives
+  python3 scrape_alternatives.py --check-availability --update --verbose
+""",
     )
-    parser.add_argument(
-        "--kit",
-        type=str,
-        help="Only scrape a specific kit (e.g., 'looker')",
-    )
+    parser.add_argument("--kit", type=str, help="Only scrape a specific kit (e.g., 'looker')")
     parser.add_argument(
         "--output",
         type=str,
@@ -510,16 +672,20 @@ def main():
         help="Refresh prices/ratings for existing ASINs (no AI search needed)",
     )
     parser.add_argument(
-        "--verbose",
+        "--check-availability",
         action="store_true",
-        help="Print detailed progress",
+        help="Check availability status for all existing alternatives",
     )
+    parser.add_argument("--verbose", action="store_true", help="Print detailed progress")
     args = parser.parse_args()
 
     # Extract toy inventory
     print("Extracting toy inventory from kits.ts...")
     inventory = extract_toy_inventory()
-    print(f"Found {len(inventory)} kits with {sum(len(k['toys']) for k in inventory)} toys")
+    print(
+        f"Found {len(inventory)} kits with "
+        f"{sum(len(k['toys']) for k in inventory)} toys"
+    )
 
     # Filter by kit if specified
     if args.kit:
@@ -531,7 +697,8 @@ def main():
 
     # Load existing data if updating
     existing_data = {}
-    if (args.update or args.refresh_prices) and os.path.exists(args.output):
+    should_load_existing = args.update or args.refresh_prices or args.check_availability
+    if should_load_existing and os.path.exists(args.output):
         print(f"Loading existing data from {args.output}...")
         with open(args.output) as f:
             existing = json.load(f)
@@ -544,15 +711,16 @@ def main():
         print(f"\n[{i+1}/{len(inventory)}] Processing {kit['kitName']} ({kit['kitId']})...")
         existing_kit = existing_data.get(kit["kitId"])
         result = scrape_kit_alternatives(
-            kit, 
-            existing_kit, 
+            kit,
+            existing_kit,
             refresh_prices=args.refresh_prices,
-            verbose=args.verbose
+            check_availability=args.check_availability,
+            verbose=args.verbose,
         )
         results.append(result)
 
-    # If updating, merge with existing data
-    if (args.update or args.refresh_prices) and existing_data:
+    # If updating, merge with existing data for kits not processed
+    if should_load_existing and existing_data:
         result_ids = {r["kitId"] for r in results}
         for kit_id, kit_data in existing_data.items():
             if kit_id not in result_ids:
@@ -560,7 +728,9 @@ def main():
 
     # Sort by kit order
     kit_order = [k["kitId"] for k in extract_toy_inventory()]
-    results.sort(key=lambda x: kit_order.index(x["kitId"]) if x["kitId"] in kit_order else 999)
+    results.sort(
+        key=lambda x: kit_order.index(x["kitId"]) if x["kitId"] in kit_order else 999
+    )
 
     # Save results
     output_path = Path(args.output)
@@ -571,32 +741,58 @@ def main():
     # Print summary
     total_toys = sum(len(k["toys"]) for k in results)
     total_alts = sum(
-        len(t.get("alternatives", []))
+        len(t.get("alternatives", [])) for k in results for t in k["toys"]
+    )
+    toys_with_alts = sum(1 for k in results for t in k["toys"] if t.get("alternatives"))
+    alts_with_images = sum(
+        1
         for k in results
         for t in k["toys"]
-    )
-    toys_with_alts = sum(
-        1 for k in results for t in k["toys"] if t.get("alternatives")
-    )
-    
-    # Count how many have images
-    alts_with_images = sum(
-        1 for k in results 
-        for t in k["toys"] 
         for a in t.get("alternatives", [])
         if a.get("imageUrl")
     )
+    alts_in_stock = sum(
+        1
+        for k in results
+        for t in k["toys"]
+        for a in t.get("alternatives", [])
+        if a.get("availability") == AVAILABILITY_IN_STOCK
+    )
+    alts_out_of_stock = sum(
+        1
+        for k in results
+        for t in k["toys"]
+        for a in t.get("alternatives", [])
+        if a.get("availability") == AVAILABILITY_OUT_OF_STOCK
+    )
+    alts_discontinued = sum(
+        1
+        for k in results
+        for t in k["toys"]
+        for a in t.get("alternatives", [])
+        if a.get("availability") == AVAILABILITY_DISCONTINUED
+    )
 
     print(f"\n{'='*50}")
-    print(f"Scraping Complete!")
+    print("Scraping Complete!")
     print(f"{'='*50}")
-    print(f"Kits processed: {len(results)}")
-    print(f"Total toys: {total_toys}")
-    print(f"Total alternatives found: {total_alts}")
-    print(f"Alternatives with images: {alts_with_images}/{total_alts} ({alts_with_images*100//max(total_alts,1)}%)")
-    print(f"Toys with alternatives: {toys_with_alts} ({toys_with_alts*100//max(total_toys,1)}%)")
-    print(f"Output saved to: {output_path}")
+    print(f"Kits processed:              {len(results)}")
+    print(f"Total toys:                  {total_toys}")
+    print(f"Total alternatives found:    {total_alts}")
+    print(f"Alternatives with images:    {alts_with_images}/{total_alts}")
+    print(f"Toys with alternatives:      {toys_with_alts} ({toys_with_alts*100//max(total_toys,1)}%)")
+    if alts_in_stock or alts_out_of_stock or alts_discontinued:
+        print(f"\nAvailability breakdown:")
+        print(f"  ✅ In stock:              {alts_in_stock}")
+        print(f"  ⚠️  Out of stock:          {alts_out_of_stock}")
+        print(f"  ⛔ Discontinued:          {alts_discontinued}")
+        print(f"  ❓ Unknown:               {total_alts - alts_in_stock - alts_out_of_stock - alts_discontinued}")
+    print(f"\nOutput saved to: {output_path}")
     print(f"File size: {output_path.stat().st_size / 1024:.1f} KB")
+
+    # Print availability report if checking
+    if args.check_availability or args.refresh_prices:
+        print_availability_report(results)
 
 
 if __name__ == "__main__":

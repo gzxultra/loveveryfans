@@ -39,7 +39,6 @@ import {
 import { useState, useEffect, useCallback, memo, useMemo } from "react";
 import { Link, useParams } from "wouter";
 import Lightbox from "@/components/Lightbox";
-import { RewardBanner } from "@/components/RewardBanner";
 import { RecommendedReading } from "@/components/RecommendedReading";
 import { AlternativesSection } from "@/components/AlternativesSection";
 import { ShareSection } from "@/components/ShareSection";
@@ -51,6 +50,9 @@ import ReadingProgress from "@/components/ReadingProgress";
 import Breadcrumb from "@/components/Breadcrumb";
 import BackToTop from "@/components/BackToTop";
 import KitComparisonBanner from "@/components/KitComparisonBanner";
+import { AdjacentKitsSection } from "@/components/AdjacentKitsSection";
+import { SavingsCalculator } from "@/components/SavingsCalculator";
+import { useSwipeNavigation } from "@/hooks/useSwipeNavigation";
 
 const REFERRAL_CODE = "REF-6AA44A5A";
 
@@ -522,6 +524,13 @@ export default function KitDetail() {
   const currentIndex = kits.findIndex((k) => k.id === kit.id);
   const prevKit = currentIndex > 0 ? kits[currentIndex - 1] : null;
   const nextKit = currentIndex < kits.length - 1 ? kits[currentIndex + 1] : null;
+
+  // Mobile swipe navigation between kits
+  const { ref: swipeRef } = useSwipeNavigation({
+    onSwipeLeft: nextKit ? () => { window.location.href = `/kit/${nextKit.id}/`; } : undefined,
+    onSwipeRight: prevKit ? () => { window.location.href = `/kit/${prevKit.id}/`; } : undefined,
+    enabled: typeof window !== "undefined" && window.innerWidth < 768,
+  });
   const heroImage = getKitHeroImage(kit.id);
 
   const categories = Array.from(
@@ -561,7 +570,11 @@ export default function KitDetail() {
 
   return (
     <>
-    <div className="min-h-screen bg-[#FAF7F2]">
+    <div
+      className="min-h-screen bg-[#FAF7F2]"
+      ref={swipeRef as React.RefObject<HTMLDivElement>}
+      aria-label={`${kit.name} Play Kit detail. Swipe left or right to navigate between kits.`}
+    >
       {/* Reading Progress Bar */}
       <ReadingProgress color={kit.color} />
 
@@ -856,11 +869,25 @@ export default function KitDetail() {
       {/* Recommended Reading */}
       <RecommendedReading kitId={kit.id} kitColor={kit.color} />
 
+      {/* Savings Calculator */}
+      {kitAlternatives.length > 0 && (() => {
+        const allKitAlts = kitAlternatives.flatMap((ta) => ta.alternatives);
+        return allKitAlts.length > 0 ? (
+          <section className="pb-6 sm:pb-8">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+              <SavingsCalculator
+                alternatives={allKitAlts}
+                kitName={kit.name}
+                kitId={kit.id}
+              />
+            </div>
+          </section>
+        ) : null;
+      })()}
       {/* Referral Module */}
       <section className="pb-10 sm:pb-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 sm:space-y-6">
           <ReferralCard kitId={kit.id} kitColor={kit.color} />
-          <RewardBanner />
         </div>
       </section>
 
@@ -906,6 +933,13 @@ export default function KitDetail() {
               <div className="hidden sm:block" />
             )}
           </div>
+        </div>
+      </section>
+
+      {/* Adjacent Age Groups — Internal Linking Network */}
+      <section className="border-t border-[#E8DFD3]/60 bg-[#FAF7F2]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AdjacentKitsSection currentKitId={kit.id} />
         </div>
       </section>
 

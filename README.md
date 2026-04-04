@@ -212,7 +212,6 @@ Contributions are welcome! Please feel free to:
 ## 💖 Support
 
 If this guide helps you, consider supporting us:
-- ☕ **Ko-fi**: [ko-fi.com/ernie92368](https://ko-fi.com/ernie92368)
 - 🌟 **Star this repo** to help others find it
 
 ---

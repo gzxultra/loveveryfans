@@ -16,6 +16,21 @@ const KitDetail = lazy(() => import("./pages/KitDetail"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const ProductDetail = lazy(() => import("./pages/ProductDetail"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+
+/**
+ * Preload a route chunk by triggering its dynamic import.
+ * Called on hover/focus of navigation links to reduce perceived latency.
+ */
+export function prefetchRoute(route: "home" | "kit" | "blog" | "about") {
+  switch (route) {
+    case "home": import("./pages/Home"); break;
+    case "kit": import("./pages/KitDetail"); break;
+    case "blog": import("./pages/Blog"); break;
+    case "about": import("./pages/AboutUs"); break;
+  }
+}
 
 // Redirect from old hash URLs to clean URLs for backward compatibility
 function HashRedirect() {
@@ -83,6 +98,8 @@ function AppRouter({ onReady }: { onReady?: () => void }) {
         <Route path={"/kit/:id"} component={KitDetail} />
         <Route path={"/product/:id"} component={ProductDetail} />
         <Route path={"/about"} component={AboutUs} />
+        <Route path={"/blog"} component={Blog} />
+        <Route path={"/blog/:slug"} component={BlogPost} />
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />
       </Switch>

@@ -30,7 +30,6 @@ import { applyHomePageSeo } from "@/lib/seoHelpers";
 
 // Lazy load below-the-fold components
 const FeedbackForm = lazy(() => import("@/components/FeedbackForm"));
-const RewardSection = lazy(() => import("@/components/RewardSectionWrapper"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSectionWrapper"));
 const FAQSection = lazy(() => import("@/components/FAQSectionWrapper"));
 const StatsCounter = lazy(() => import("@/components/StatsCounterWrapper"));
@@ -775,11 +774,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Reward Section - lazy loaded */}
-      <Suspense fallback={<div className="py-16" />}>
-        <RewardSection />
-      </Suspense>
 
       {/* FAQ Section - lazy loaded */}
       <Suspense fallback={<div className="py-12" />}>

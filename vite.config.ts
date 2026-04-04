@@ -66,6 +66,10 @@ export default defineConfig({
           if (id.includes('data/seoData') || id.includes('lib/seoHelpers')) {
             return 'data-seo';
           }
+          // Blog data
+          if (id.includes('data/blogPosts') || id.includes('/blog/')) {
+            return 'data-blog';
+          }
           // Sentry
           if (id.includes('@sentry')) {
             return 'vendor-sentry';

@@ -52,5 +52,14 @@ const onReady = () => {
   });
 };
 
+// Register Service Worker for PWA support
+if ("serviceWorker" in navigator && import.meta.env.PROD) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/sw.js", { scope: "/" })
+      .catch((err) => console.warn("[PWA] SW registration failed:", err));
+  });
+}
+
 const root = createRoot(document.getElementById("root")!);
 root.render(<App onReady={onReady} />);

@@ -1,0 +1,66 @@
+{
+  "name": "Lovevery Fans — Play Kit Guide",
+  "short_name": "Lovevery Fans",
+  "description": "Complete bilingual guide to all 22 Lovevery Play Kits with affordable Amazon alternatives",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF7F2",
+  "theme_color": "#3D3229",
+  "orientation": "portrait-primary",
+  "lang": "zh-CN",
+  "categories": ["education", "parenting", "shopping"],
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/brand-icon-opt.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/brand-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/hero-opt.webp",
+      "sizes": "1200x630",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Lovevery Fans Home Page"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Browse Play Kits",
+      "short_name": "Play Kits",
+      "description": "Browse all 22 Lovevery Play Kits",
+      "url": "/#kits",
+      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
+    },
+    {
+      "name": "Read Blog",
+      "short_name": "Blog",
+      "description": "Read our parenting guides and reviews",
+      "url": "/blog/",
+      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
+    }
+  ]
+}

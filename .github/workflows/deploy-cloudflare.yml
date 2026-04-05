@@ -52,12 +52,16 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build static site
-        run: pnpm build:static
+        run: pnpm run build:static
 
       # ── 4. Deploy to Cloudflare Pages ─────────────────────────────
+      # Use wrangler-action@v4 which supports packageManager: pnpm,
+      # avoiding the npm peer-dependency conflict caused by v3's fallback
+      # to `npm i wrangler@3.x` when wrangler is not pre-installed.
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=loveveryfans --commit-dirty=true
+          packageManager: pnpm

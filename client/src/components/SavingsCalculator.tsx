@@ -42,15 +42,31 @@ export function parsePrice(price: string | number | null | undefined): number | 
 
 /**
  * Build an Amazon multi-item cart URL from a list of ASINs.
- * Format: https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=XXX&Quantity.1=1&...
+ *
+ * The /gp/aws/cart/add.html endpoint requires the affiliate tag to be passed
+ * as `AssociateTag` (the Product Advertising API parameter name), NOT as `tag`
+ * (which is only valid for standard product-page links). Using `tag` alone
+ * causes the cart page to fail or ignore the affiliate attribution.
+ *
+ * We include both `AssociateTag` (required by the cart endpoint) and `tag`
+ * (recognised by Amazon's general tracking layer) for maximum compatibility.
+ *
+ * Format:
+ *   https://www.amazon.com/gp/aws/cart/add.html
+ *     ?AssociateTag=XXX&tag=XXX
+ *     &ASIN.1=YYY&Quantity.1=1
+ *     &ASIN.2=ZZZ&Quantity.2=1
+ *     ...
  */
 export function buildAmazonCartUrl(asins: string[]): string {
   if (asins.length === 0) return "";
-  const params = asins
+  const itemParams = asins
     .slice(0, 10) // Amazon cart supports up to 10 items
-    .map((asin, i) => `ASIN.${i + 1}=${asin}&Quantity.${i + 1}=1`)
+    .map((asin, i) => `ASIN.${i + 1}=${encodeURIComponent(asin)}&Quantity.${i + 1}=1`)
     .join("&");
-  return `https://www.amazon.com/gp/aws/cart/add.html?${params}&tag=${AFFILIATE_TAG}`;
+  // AssociateTag is the correct parameter for the cart endpoint;
+  // tag is included as a fallback for Amazon's general affiliate tracking.
+  return `https://www.amazon.com/gp/aws/cart/add.html?AssociateTag=${AFFILIATE_TAG}&tag=${AFFILIATE_TAG}&${itemParams}`;
 }
 
 export function SavingsCalculator({

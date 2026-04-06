@@ -25,3 +25,12 @@ CREATE TABLE IF NOT EXISTS promotions (
 );
 
 CREATE INDEX IF NOT EXISTS idx_promotions_detected ON promotions(detected_at);
+
+-- Page snapshots table (for diff-based promotion detection)
+CREATE TABLE IF NOT EXISTS page_snapshots (
+  url          TEXT NOT NULL UNIQUE,
+  content_hash TEXT NOT NULL,
+  checked_at   TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_page_snapshots_url ON page_snapshots(url);

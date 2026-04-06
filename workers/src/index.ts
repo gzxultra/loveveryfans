@@ -11,6 +11,16 @@
  *   - Set to a comma-separated list of emails (e.g., "a@b.com,c@d.com")
  *   - Set to "*" to send to all active subscribers
  *   - Default: "mygladfinger@gmail.com"
+ *
+ * Promotion detection strategy (v2):
+ *   1. Diff-based: compare current page content hash against the last stored
+ *      hash in D1; skip notification if nothing changed.
+ *   2. Precise regex: only match explicit promotional patterns such as
+ *      "20% off", "$10 off", "sale ends", "limited time offer", "use code XXX".
+ *   3. Targeted extraction: search promo-specific HTML regions (announcement
+ *      bars, banner elements, sale badges) before falling back to full text.
+ *   4. Confidence scoring: accumulate signal weights; only fire when the total
+ *      score meets the PROMO_CONFIDENCE_THRESHOLD.
  */
 
 export interface Env {
@@ -27,6 +37,13 @@ export interface Env {
 
 const REFERRAL_CODE = "REF-6AA44A5A";
 const AMAZON_AFFILIATE_TAG = "loveveryfans-20";
+
+/**
+ * Minimum confidence score required to treat a page as having an active
+ * promotion.  Each matched signal contributes its weight; the threshold
+ * prevents single weak signals (e.g. a generic "offer" word) from firing.
+ */
+export const PROMO_CONFIDENCE_THRESHOLD = 2;
 
 // ---------------------------------------------------------------------------
 // CORS helpers
@@ -172,21 +189,321 @@ async function handleUnsubscribe(request: Request, env: Env): Promise<Response> 
 }
 
 // ---------------------------------------------------------------------------
-// Cron: Promotion detection
+// Promotion detection — v2
 // ---------------------------------------------------------------------------
 
-const PROMO_KEYWORDS = [
-  "sale", "% off", "discount", "promo", "coupon", "deal",
-  "save", "offer", "clearance", "flash", "limited time",
-  "free shipping", "bogo", "buy one get one",
+/**
+ * A single promotion signal with a descriptive label and a confidence weight.
+ * Higher weight = stronger evidence of an active promotion.
+ */
+export interface PromoSignal {
+  /** Human-readable description of the matched pattern, e.g. "20% off". */
+  label: string;
+  /** Confidence contribution of this signal (positive integer). */
+  weight: number;
+}
+
+/**
+ * Result returned by {@link detectPromotions}.
+ */
+export interface PromoDetectionResult {
+  /** All signals that were matched. */
+  signals: PromoSignal[];
+  /** Sum of all signal weights. */
+  score: number;
+  /** True when score >= PROMO_CONFIDENCE_THRESHOLD. */
+  isPromotion: boolean;
+}
+
+// ---------------------------------------------------------------------------
+// Targeted HTML region extraction
+// ---------------------------------------------------------------------------
+
+/**
+ * CSS-like selector patterns that identify promotional UI regions in the raw
+ * HTML source.  We look for common patterns used by Shopify storefronts and
+ * Lovevery's own markup: announcement bars, promo banners, sale badges, and
+ * discount callout blocks.
+ *
+ * Each entry is a regex that matches an opening HTML tag whose attributes
+ * suggest a promotional context.  We then extract the inner text of the
+ * matched element up to a reasonable character limit.
+ */
+const PROMO_ELEMENT_PATTERNS: RegExp[] = [
+  // Announcement / promo bar (common Shopify pattern)
+  /<[^>]+(?:class|id)="[^"]*(?:announcement|promo[-_]?bar|promo[-_]?banner|sale[-_]?bar|discount[-_]?bar|offer[-_]?bar)[^"]*"[^>]*>/gi,
+  // Elements with data attributes signalling promotions
+  /<[^>]+data-(?:promo|promotion|sale|discount|offer|banner)[^>]*>/gi,
+  // Shopify section / block types for promotions
+  /<[^>]+(?:class|id)="[^"]*(?:sale[-_]badge|promo[-_]tag|discount[-_]tag|savings[-_]badge|percent[-_]off)[^"]*"[^>]*>/gi,
+  // Generic "banner" or "callout" containers that often carry sale copy
+  /<[^>]+(?:class|id)="[^"]*(?:site[-_]?banner|top[-_]?bar|header[-_]?banner|callout[-_]?bar)[^"]*"[^>]*>/gi,
 ];
+
+/**
+ * Extract text content from promotional HTML regions.
+ *
+ * For each pattern, we find the opening tag in the raw HTML, then grab up to
+ * 500 characters of following content (enough to capture the inner text of a
+ * banner without parsing the full DOM).  The extracted snippets are stripped
+ * of HTML tags and returned as a single lowercase string.
+ *
+ * This is intentionally lightweight — no DOM parser dependency — and safe for
+ * the Cloudflare Worker runtime.
+ */
+export function extractPromoRegions(html: string): string {
+  const chunks: string[] = [];
+
+  for (const pattern of PROMO_ELEMENT_PATTERNS) {
+    // Reset lastIndex because flags include /g
+    pattern.lastIndex = 0;
+    let match: RegExpExecArray | null;
+    while ((match = pattern.exec(html)) !== null) {
+      const start = match.index;
+      // Grab up to 500 chars after the opening tag
+      const snippet = html.slice(start, start + 500);
+      // Strip tags and collapse whitespace
+      const text = snippet.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      if (text) chunks.push(text);
+    }
+  }
+
+  return chunks.join(" ").toLowerCase();
+}
+
+// ---------------------------------------------------------------------------
+// Precise promotion signal patterns
+// ---------------------------------------------------------------------------
+
+/**
+ * Each entry defines a regex pattern and the confidence weight it contributes.
+ *
+ * Design principles:
+ *  - High-weight (3): patterns that are unambiguous promotions, e.g. "20% off",
+ *    "$10 off", "use code SAVE20".
+ *  - Medium-weight (2): patterns that are very likely promotional but could
+ *    appear in edge cases, e.g. "sale ends", "flash sale", "limited time offer".
+ *  - Low-weight (1): patterns that are suggestive but sometimes appear in
+ *    non-promotional contexts, e.g. "free shipping" (could be permanent policy).
+ *
+ * Patterns are tested against the *targeted promo region text* first, then
+ * against the full stripped page text.  A signal is only counted once per URL
+ * regardless of how many times it matches.
+ */
+export const PROMO_SIGNAL_PATTERNS: Array<{ pattern: RegExp; label: string; weight: number }> = [
+  // ── Percentage discount ──────────────────────────────────────────────────
+  {
+    pattern: /\b\d{1,2}\s*%\s*off\b/i,
+    label: "percentage off (e.g. 20% off)",
+    weight: 3,
+  },
+  // ── Dollar / currency amount off ─────────────────────────────────────────
+  {
+    pattern: /\$\d+(?:\.\d{1,2})?\s*off\b/i,
+    label: "dollar amount off (e.g. $10 off)",
+    weight: 3,
+  },
+  // ── Discount / promo code callout ────────────────────────────────────────
+  {
+    pattern: /\buse\s+code\s+[A-Z0-9]{3,}/i,
+    label: "discount code callout (e.g. use code SAVE20)",
+    weight: 3,
+  },
+  {
+    pattern: /\bpromo\s+code\s*[:\-]?\s*[A-Z0-9]{3,}/i,
+    label: "promo code with value",
+    weight: 3,
+  },
+  {
+    pattern: /\bcoupon\s+code\s*[:\-]?\s*[A-Z0-9]{3,}/i,
+    label: "coupon code with value",
+    weight: 3,
+  },
+  // ── Sale urgency / time-limited ──────────────────────────────────────────
+  {
+    pattern: /\bsale\s+ends\b/i,
+    label: "sale ends (urgency signal)",
+    weight: 2,
+  },
+  {
+    pattern: /\bends?\s+(?:today|tonight|soon|in\s+\d+\s+(?:hour|day))/i,
+    label: "sale ending soon",
+    weight: 2,
+  },
+  {
+    pattern: /\blimited[\s\-]time\s+(?:offer|deal|sale|discount)\b/i,
+    label: "limited time offer/deal/sale",
+    weight: 2,
+  },
+  {
+    pattern: /\bflash\s+sale\b/i,
+    label: "flash sale",
+    weight: 2,
+  },
+  {
+    pattern: /\btoday\s+only\b/i,
+    label: "today only",
+    weight: 2,
+  },
+  // ── Explicit sale / discount language ────────────────────────────────────
+  {
+    pattern: /\bup\s+to\s+\d{1,2}\s*%\s*off\b/i,
+    label: "up to X% off",
+    weight: 3,
+  },
+  {
+    pattern: /\bsite[\s\-]?wide\s+sale\b/i,
+    label: "site-wide sale",
+    weight: 2,
+  },
+  {
+    pattern: /\bextra\s+\d{1,2}\s*%\s*off\b/i,
+    label: "extra X% off",
+    weight: 3,
+  },
+  {
+    pattern: /\bget\s+\$\d+\s+off\b/i,
+    label: "get $X off",
+    weight: 3,
+  },
+  // ── Buy-one-get-one / bundle deals ───────────────────────────────────────
+  {
+    pattern: /\bbogo\b/i,
+    label: "BOGO deal",
+    weight: 2,
+  },
+  {
+    pattern: /\bbuy\s+(?:one|1|two|2|three|3)[,\s]+get\s+(?:one|1|two|2)\s+(?:free|off|\d{1,2}\s*%\s*off)\b/i,
+    label: "buy X get Y free/off",
+    weight: 3,
+  },
+  // ── Free shipping (low weight — may be permanent policy) ─────────────────
+  {
+    pattern: /\bfree\s+(?:standard\s+)?shipping\s+(?:on\s+(?:all|orders?)|today|now|this\s+week)\b/i,
+    label: "free shipping promotion",
+    weight: 1,
+  },
+  // ── Gift with purchase ───────────────────────────────────────────────────
+  {
+    pattern: /\bfree\s+gift\s+with\s+(?:(?:every|each)\s+)?(?:purchase|order)\b/i,
+    label: "free gift with purchase",
+    weight: 2,
+  },
+  // ── Clearance ────────────────────────────────────────────────────────────
+  {
+    pattern: /\bclearance\s+(?:sale|event|items?)\b/i,
+    label: "clearance sale/event",
+    weight: 2,
+  },
+  // ── Holiday / seasonal sale names ────────────────────────────────────────
+  {
+    pattern: /\b(?:black\s+friday|cyber\s+monday|holiday\s+sale|summer\s+sale|spring\s+sale|back[\s\-]to[\s\-]school\s+sale)\b/i,
+    label: "named seasonal sale",
+    weight: 2,
+  },
+];
+
+/**
+ * Analyse page content for genuine promotional signals.
+ *
+ * The function operates in two passes:
+ *  1. Extract text from targeted promo HTML regions (announcement bars, sale
+ *     badges, etc.) and test all signal patterns against that targeted text.
+ *  2. Fall back to the full stripped page text for any signals not yet found.
+ *
+ * Each signal is counted at most once regardless of how many times it appears.
+ * The returned result includes all matched signals, the total confidence score,
+ * and a boolean indicating whether the threshold was met.
+ *
+ * @param html  Raw HTML source of the page (not pre-stripped).
+ * @returns     PromoDetectionResult
+ */
+export function detectPromotions(html: string): PromoDetectionResult {
+  const signals: PromoSignal[] = [];
+  let score = 0;
+
+  // Pass 1: targeted promo regions (higher signal-to-noise)
+  const regionText = extractPromoRegions(html);
+
+  // Pass 2: full page text as fallback
+  const fullText = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").toLowerCase();
+
+  for (const { pattern, label, weight } of PROMO_SIGNAL_PATTERNS) {
+    // Reset stateful regex
+    pattern.lastIndex = 0;
+    const inRegion = regionText.length > 0 && pattern.test(regionText);
+    pattern.lastIndex = 0;
+    const inFull = pattern.test(fullText);
+
+    if (inRegion || inFull) {
+      signals.push({ label, weight });
+      score += weight;
+    }
+  }
+
+  return {
+    signals,
+    score,
+    isPromotion: score >= PROMO_CONFIDENCE_THRESHOLD,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Page hash helpers (for diff-based change detection)
+// ---------------------------------------------------------------------------
+
+/**
+ * Compute a simple 32-bit FNV-1a hash of a string.
+ *
+ * FNV-1a is fast, has good distribution for short strings, and requires no
+ * external dependencies — ideal for the Worker runtime.
+ *
+ * @param text  Input string to hash.
+ * @returns     Hex string representation of the 32-bit hash.
+ */
+export function fnv1a32(text: string): string {
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < text.length; i++) {
+    hash ^= text.charCodeAt(i);
+    // Multiply by FNV prime (32-bit), keeping result within 32 bits
+    hash = (Math.imul(hash, 0x01000193) >>> 0);
+  }
+  return hash.toString(16).padStart(8, "0");
+}
+
+/**
+ * Derive a stable content fingerprint from raw HTML.
+ *
+ * We hash the *normalised* page text rather than the raw HTML to avoid
+ * spurious hash changes caused by dynamic script nonces, cache-busting query
+ * strings, or session tokens embedded in the markup.
+ *
+ * @param html  Raw HTML source.
+ * @returns     8-character hex hash string.
+ */
+export function hashPageContent(html: string): string {
+  // Strip tags, collapse whitespace, lowercase — same normalisation used in
+  // detectPromotions so the hash reflects visible content changes.
+  const normalised = html
+    .replace(/<script[\s\S]*?<\/script>/gi, "")   // remove script blocks
+    .replace(/<style[\s\S]*?<\/style>/gi, "")      // remove style blocks
+    .replace(/<[^>]+>/g, " ")                       // strip remaining tags
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+  return fnv1a32(normalised);
+}
+
+// ---------------------------------------------------------------------------
+// Cron: Promotion detection
+// ---------------------------------------------------------------------------
 
 const CHECK_URLS = [
   "https://lovevery.com",
   "https://lovevery.com/collections/play-kits",
 ];
 
-async function fetchPageText(url: string): Promise<string> {
+async function fetchPageHtml(url: string): Promise<string> {
   try {
     const res = await fetch(url, {
       headers: {
@@ -195,54 +512,104 @@ async function fetchPageText(url: string): Promise<string> {
       },
     });
     if (!res.ok) return "";
-    const html = await res.text();
-    // Strip HTML tags for keyword search
-    return html.replace(/<[^>]+>/g, " ").toLowerCase();
+    return await res.text();
   } catch {
     return "";
   }
 }
 
-function detectPromotions(text: string): string[] {
-  const found: string[] = [];
-  for (const kw of PROMO_KEYWORDS) {
-    if (text.includes(kw.toLowerCase())) {
-      found.push(kw);
-    }
-  }
-  return found;
+/**
+ * Retrieve the stored content hash for a URL from D1.
+ * Returns null if no record exists yet.
+ */
+async function getStoredHash(env: Env, url: string): Promise<string | null> {
+  const row = await env.DB.prepare(
+    `SELECT content_hash FROM page_snapshots WHERE url = ?1`
+  )
+    .bind(url)
+    .first<{ content_hash: string }>();
+  return row?.content_hash ?? null;
+}
+
+/**
+ * Upsert the content hash for a URL in D1.
+ */
+async function upsertStoredHash(env: Env, url: string, hash: string): Promise<void> {
+  await env.DB.prepare(
+    `INSERT INTO page_snapshots (url, content_hash, checked_at)
+     VALUES (?1, ?2, datetime('now'))
+     ON CONFLICT(url) DO UPDATE SET
+       content_hash = ?2,
+       checked_at   = datetime('now')`
+  )
+    .bind(url, hash)
+    .run();
 }
 
 async function handleCron(env: Env): Promise<void> {
-  console.log("[Cron] Starting promotion check...");
+  console.log("[Cron] Starting promotion check (v2)...");
 
-  // Fetch pages
-  const texts = await Promise.all(CHECK_URLS.map(fetchPageText));
-  const combined = texts.join(" ");
+  let combinedHtml = "";
+  let anyChanged = false;
 
-  const keywords = detectPromotions(combined);
-  if (keywords.length === 0) {
-    console.log("[Cron] No promotions detected.");
+  for (const url of CHECK_URLS) {
+    const html = await fetchPageHtml(url);
+    if (!html) {
+      console.warn(`[Cron] Failed to fetch ${url}`);
+      continue;
+    }
+
+    const currentHash = hashPageContent(html);
+    const storedHash = await getStoredHash(env, url);
+
+    if (storedHash === currentHash) {
+      console.log(`[Cron] No change detected for ${url} (hash: ${currentHash})`);
+    } else {
+      console.log(`[Cron] Content changed for ${url}: ${storedHash ?? "new"} → ${currentHash}`);
+      anyChanged = true;
+    }
+
+    // Always update the stored hash so the next run compares against the
+    // latest snapshot, even if we don't send a notification this time.
+    await upsertStoredHash(env, url, currentHash);
+
+    combinedHtml += " " + html;
+  }
+
+  if (!anyChanged) {
+    console.log("[Cron] No page content changes detected. Skipping promotion analysis.");
     return;
   }
 
-  const title = `Lovevery Promotion Detected: ${keywords.slice(0, 3).join(", ")}`;
-  const description = `Keywords found: ${keywords.join(", ")}`;
+  // Run promotion detection on the combined HTML of all changed pages
+  const result = detectPromotions(combinedHtml);
 
-  // Check if we already notified about a similar promotion in the last 24h
+  if (!result.isPromotion) {
+    console.log(
+      `[Cron] No promotions detected (score: ${result.score}/${PROMO_CONFIDENCE_THRESHOLD}).`
+    );
+    return;
+  }
+
+  const signalLabels = result.signals.map((s) => s.label);
+  const title = `Lovevery Promotion Detected (confidence: ${result.score})`;
+  const description = `Signals: ${signalLabels.join("; ")}`;
+
+  console.log(`[Cron] Promotion confirmed — ${description}`);
+
+  // Deduplicate: skip if we already notified about a promotion in the last 24h
   const recent = await env.DB.prepare(
     `SELECT id FROM promotions
-     WHERE title = ?1 AND detected_at > datetime('now', '-24 hours')`
-  )
-    .bind(title)
-    .first();
+     WHERE detected_at > datetime('now', '-24 hours')
+     LIMIT 1`
+  ).first();
 
   if (recent) {
-    console.log("[Cron] Already notified about this promotion recently.");
+    console.log("[Cron] Already notified about a promotion in the last 24 hours. Skipping.");
     return;
   }
 
-  // Insert new promotion
+  // Insert new promotion record
   const insertResult = await env.DB.prepare(
     `INSERT INTO promotions (title, description, url) VALUES (?1, ?2, ?3)`
   )
@@ -567,7 +934,6 @@ export default {
 
 export {
   isEmailWhitelisted,
-  detectPromotions,
   buildEmailHtml,
   EMAIL_RE,
   REFERRAL_CODE,

@@ -43,8 +43,8 @@ import {
 } from "lucide-react";
 import { useState, useEffect, useCallback, memo, useMemo } from "react";
 import { Link, useParams } from "wouter";
-
-const REFERRAL_CODE = "REF-6AA44A5A";
+import KitSubscribePrompt from "@/components/KitSubscribePrompt";
+import { REFERRAL_CODE, appendLoveveryReferral, getProductPurchaseUrl } from "@/lib/referral";
 
 /* ─── ToyCard — matches KitDetail ToyCard exactly ─── */
 const ToyCard = memo(function ToyCard({
@@ -324,7 +324,7 @@ function ProductReferralCard({ product }: { product: ReturnType<typeof getProduc
 
   if (!product) return null;
 
-  const purchaseUrl = `${product.officialUrl}?discount_code=${REFERRAL_CODE}&utm_source=loveveryfans&utm_medium=referral&utm_campaign=product_${product.id}`;
+  const purchaseUrl = getProductPurchaseUrl(product.id, product.officialUrl);
 
   return (
     <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD3] p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
@@ -617,7 +617,7 @@ export default function ProductDetail() {
               {/* View on Lovevery button — same as KitDetail */}
               <div className="mt-5 sm:mt-6">
                 <a
-                  href={`${product.officialUrl}?discount_code=${REFERRAL_CODE}&utm_source=loveveryfans&utm_medium=referral&utm_campaign=product_${product.id}`}
+                  href={getProductPurchaseUrl(product.id, product.officialUrl)}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => {
@@ -701,6 +701,9 @@ export default function ProductDetail() {
                   <p className="text-[10px] sm:text-xs text-[#756A5C] mt-1.5 sm:mt-2">{i18n.kitDetail.devAreas[lang]}</p>
                 </div>
               </div>
+
+              {/* Inline Subscribe Prompt */}
+              <KitSubscribePrompt kitId={product.id} kitColor={product.color} />
             </div>
 
             {/* Desktop hero image */}

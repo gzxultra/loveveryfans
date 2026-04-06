@@ -8,6 +8,7 @@ import { trackEvent } from "./lib/analytics";
 // Lazy load easter eggs and utility components so they don't affect initial bundle
 const EasterEggs = lazy(() => import("./components/easter-eggs"));
 const ScrollToTop = lazy(() => import("./components/ScrollToTop"));
+const FloatingSubscribeBar = lazy(() => import("./components/FloatingSubscribeBar"));
 import { useLocation } from "wouter";
 
 // Lazy load route components for code splitting
@@ -142,6 +143,9 @@ function App({ onReady }: { onReady?: () => void }) {
         </Suspense>
         <Suspense fallback={null}>
           <ScrollToTop />
+        </Suspense>
+        <Suspense fallback={null}>
+          <FloatingSubscribeBar />
         </Suspense>
       </LanguageProvider>
     </ErrorBoundary>

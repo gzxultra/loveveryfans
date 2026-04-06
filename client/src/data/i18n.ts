@@ -180,6 +180,30 @@ export const i18n = {
     invalidEmail: { cn: "请输入有效的邮箱地址", en: "Please enter a valid email address" },
   },
 
+  // Floating Subscribe Bar
+  floatingBar: {
+    text: { cn: "想第一时间知道 Lovevery 打折？", en: "Want to know when Lovevery goes on sale?" },
+    button: { cn: "订阅提醒", en: "Get Notified" },
+    subscribing: { cn: "订阅中...", en: "Subscribing..." },
+    success: { cn: "订阅成功！", en: "Subscribed!" },
+    placeholder: { cn: "输入邮箱", en: "Your email" },
+    close: { cn: "关闭", en: "Close" },
+    invalidEmail: { cn: "请输入有效邮箱", en: "Invalid email" },
+    error: { cn: "订阅失败，请重试", en: "Failed. Please retry." },
+  },
+
+  // Kit Detail Inline Subscribe Prompt
+  kitSubscribePrompt: {
+    hint: { cn: "想知道这个 Kit 什么时候打折？", en: "Want to know when this Kit goes on sale?" },
+    cta: { cn: "订阅提醒", en: "Get Sale Alerts" },
+    placeholder: { cn: "输入你的邮箱", en: "Enter your email" },
+    button: { cn: "订阅", en: "Subscribe" },
+    subscribing: { cn: "订阅中...", en: "Subscribing..." },
+    success: { cn: "已订阅！有折扣时会通知你", en: "Subscribed! We'll notify you of sales" },
+    error: { cn: "订阅失败，请重试", en: "Failed. Please retry." },
+    invalidEmail: { cn: "请输入有效邮箱", en: "Invalid email" },
+  },
+
   // Footer
   footer: {
     devStages: { cn: "发展阶段", en: "Development Stages" },

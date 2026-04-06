@@ -53,16 +53,8 @@ import KitComparisonBanner from "@/components/KitComparisonBanner";
 import { AdjacentKitsSection } from "@/components/AdjacentKitsSection";
 import { SavingsCalculator } from "@/components/SavingsCalculator";
 import { useSwipeNavigation } from "@/hooks/useSwipeNavigation";
-
-const REFERRAL_CODE = "REF-6AA44A5A";
-
-function getKitPurchaseUrl(kitSlug: string) {
-  return `https://lovevery.com/products/the-play-kits-the-${kitSlug}?discount_code=${REFERRAL_CODE}&utm_source=loveveryfans&utm_medium=referral&utm_campaign=kit_${kitSlug}`;
-}
-
-function getReferralUrl() {
-  return `https://lovevery.com/pages/refer-a-friend?discount_code=${REFERRAL_CODE}&utm_source=loveveryfans&utm_medium=referral&utm_campaign=refer_friend`;
-}
+import KitSubscribePrompt from "@/components/KitSubscribePrompt";
+import { REFERRAL_CODE, appendLoveveryReferral, getKitPurchaseUrl, getReferralProgramUrl } from "@/lib/referral";
 
 const ToyCard = memo(function ToyCard({
   toy,
@@ -365,7 +357,7 @@ function ReferralCard({ kitId, kitColor }: { kitId: string; kitColor: string }) 
   const { lang, t } = useLanguage();
   const i18n = useI18n();
   const purchaseUrl = getKitPurchaseUrl(kitId);
-  const referralUrl = getReferralUrl();
+  const referralUrl = getReferralProgramUrl();
 
   return (
     <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD3] p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
@@ -680,12 +672,10 @@ export default function KitDetail() {
               {kit.officialUrl && (
                 <div className="mt-5 sm:mt-6">
                   <a
-                    href={(() => {
-                      const url = kit.officialUrl || "https://lovevery.com/products/the-play-kits";
-                      const separator = url.includes("?") ? "&" : "?";
-                      const kitSlug = kit.id.toLowerCase().replace(/\s+/g, '_');
-                      return `${url}${separator}discount_code=${REFERRAL_CODE}&utm_source=loveveryfans&utm_medium=referral&utm_campaign=kit_${kitSlug}`;
-                    })()}
+                    href={appendLoveveryReferral(
+                      kit.officialUrl || "https://lovevery.com/products/the-play-kits",
+                      `kit_${kit.id.toLowerCase().replace(/\s+/g, '_')}`
+                    )}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => {
@@ -770,6 +760,9 @@ export default function KitDetail() {
                   <p className="text-[10px] sm:text-xs text-[#756A5C] mt-1.5 sm:mt-2">{i18n.kitDetail.devAreas[lang]}</p>
                 </div>
               </div>
+
+              {/* Inline Subscribe Prompt */}
+              <KitSubscribePrompt kitId={kit.id} kitColor={kit.color} />
             </div>
 
             {heroImage && (

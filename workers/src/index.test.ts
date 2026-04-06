@@ -6,10 +6,22 @@
  * - detectPromotions
  * - buildEmailHtml
  * - EMAIL_RE
+ * - REFERRAL_CODE / AMAZON_AFFILIATE_TAG
+ * - getLoveveryReferralUrl / getAmazonAlternativesUrl
  */
 
 import { describe, it, expect } from "vitest";
-import { isEmailWhitelisted, detectPromotions, buildEmailHtml, EMAIL_RE } from "./index";
+import {
+  isEmailWhitelisted,
+  detectPromotions,
+  buildEmailHtml,
+  EMAIL_RE,
+  REFERRAL_CODE,
+  AMAZON_AFFILIATE_TAG,
+  getLoveveryReferralUrl,
+  getAmazonAlternativesUrl,
+} from "./index";
+import type { EmailTemplateParams } from "./index";
 
 // ---------------------------------------------------------------------------
 // EMAIL_RE — email validation regex
@@ -138,19 +150,88 @@ describe("detectPromotions", () => {
 });
 
 // ---------------------------------------------------------------------------
+// Constants
+// ---------------------------------------------------------------------------
+
+describe("Constants", () => {
+  it("has the correct referral code", () => {
+    expect(REFERRAL_CODE).toBe("REF-6AA44A5A");
+  });
+
+  it("has the correct Amazon affiliate tag", () => {
+    expect(AMAZON_AFFILIATE_TAG).toBe("loveveryfans-20");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// getLoveveryReferralUrl
+// ---------------------------------------------------------------------------
+
+describe("getLoveveryReferralUrl", () => {
+  it("returns a URL with the referral code", () => {
+    const url = getLoveveryReferralUrl();
+    expect(url).toContain("discount_code=REF-6AA44A5A");
+  });
+
+  it("includes utm parameters", () => {
+    const url = getLoveveryReferralUrl();
+    expect(url).toContain("utm_source=loveveryfans");
+    expect(url).toContain("utm_medium=referral");
+    expect(url).toContain("utm_campaign=email_promo");
+  });
+
+  it("defaults to play-kits collection", () => {
+    const url = getLoveveryReferralUrl();
+    expect(url).toContain("lovevery.com/collections/play-kits");
+  });
+
+  it("uses custom path when provided", () => {
+    const url = getLoveveryReferralUrl("/products/the-play-kits-the-explorer");
+    expect(url).toContain("lovevery.com/products/the-play-kits-the-explorer");
+    expect(url).toContain("discount_code=REF-6AA44A5A");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// getAmazonAlternativesUrl
+// ---------------------------------------------------------------------------
+
+describe("getAmazonAlternativesUrl", () => {
+  it("returns an Amazon URL with the affiliate tag", () => {
+    const url = getAmazonAlternativesUrl();
+    expect(url).toContain("amazon.com");
+    expect(url).toContain("tag=loveveryfans-20");
+  });
+
+  it("searches for montessori toys", () => {
+    const url = getAmazonAlternativesUrl();
+    expect(url).toContain("k=montessori+toys");
+  });
+});
+
+// ---------------------------------------------------------------------------
 // buildEmailHtml
 // ---------------------------------------------------------------------------
 
 describe("buildEmailHtml", () => {
-  const baseParams = {
+  const baseParams: EmailTemplateParams = {
     subject: "Test Subject",
+    preheader: "Test preheader text",
     title: "Test Title",
+    promoSummary: "Promo summary content",
     body: "<p>Test body content</p>",
-    ctaText: "Click Here",
-    ctaUrl: "https://loveveryfans.com",
+    shopCtaText: "Shop the Sale",
+    shopCtaUrl: "https://lovevery.com/collections/play-kits?discount_code=REF-6AA44A5A",
+    amazonSectionTitle: "Amazon Alternatives",
+    amazonSectionDesc: "Great alternatives at lower prices.",
+    amazonCtaText: "Browse Amazon",
+    amazonCtaUrl: "https://www.amazon.com/s?k=montessori+toys&tag=loveveryfans-20",
+    siteCtaText: "Visit Loveveryfans",
+    siteCtaUrl: "https://loveveryfans.com",
     unsubscribeUrl: "https://loveveryfans.com/unsubscribe?email=test@example.com",
     footerText: "You received this because you subscribed.",
     unsubscribeText: "Unsubscribe",
+    footerTagline: "Loveveryfans — Complete Play Kit & Product Guide",
   };
 
   it("returns a string containing DOCTYPE", () => {
@@ -173,10 +254,34 @@ describe("buildEmailHtml", () => {
     expect(html).toContain("Test body content");
   });
 
-  it("includes the CTA button with correct URL", () => {
+  it("includes the preheader text", () => {
     const html = buildEmailHtml(baseParams);
+    expect(html).toContain("Test preheader text");
+  });
+
+  it("includes the promo summary", () => {
+    const html = buildEmailHtml(baseParams);
+    expect(html).toContain("Promo summary content");
+  });
+
+  it("includes the Shop the Sale CTA with correct URL", () => {
+    const html = buildEmailHtml(baseParams);
+    expect(html).toContain('href="https://lovevery.com/collections/play-kits?discount_code=REF-6AA44A5A"');
+    expect(html).toContain("Shop the Sale");
+  });
+
+  it("includes the Amazon alternatives section", () => {
+    const html = buildEmailHtml(baseParams);
+    expect(html).toContain("Amazon Alternatives");
+    expect(html).toContain("Great alternatives at lower prices.");
+    expect(html).toContain("Browse Amazon");
+    expect(html).toContain("tag=loveveryfans-20");
+  });
+
+  it("includes the site CTA link", () => {
+    const html = buildEmailHtml(baseParams);
+    expect(html).toContain("Visit Loveveryfans");
     expect(html).toContain('href="https://loveveryfans.com"');
-    expect(html).toContain("Click Here");
   });
 
   it("includes the unsubscribe link", () => {
@@ -188,6 +293,11 @@ describe("buildEmailHtml", () => {
   it("includes the footer text", () => {
     const html = buildEmailHtml(baseParams);
     expect(html).toContain("You received this because you subscribed.");
+  });
+
+  it("includes the footer tagline", () => {
+    const html = buildEmailHtml(baseParams);
+    expect(html).toContain("Loveveryfans — Complete Play Kit & Product Guide");
   });
 
   it("uses the Loveveryfans brand color (#5a9e65)", () => {
@@ -205,19 +315,37 @@ describe("buildEmailHtml", () => {
     expect(html).toContain("Loveveryfans");
   });
 
+  it("uses Amazon brand color (#FF9900)", () => {
+    const html = buildEmailHtml(baseParams);
+    expect(html).toContain("#FF9900");
+  });
+
   it("generates valid HTML with Chinese content", () => {
     const html = buildEmailHtml({
       ...baseParams,
       subject: "🎉 Lovevery 促销提醒",
       title: "Lovevery 促销来啦！",
+      promoSummary: "检测到促销活动",
       body: "<p>我们检测到促销活动。</p>",
-      ctaText: "查看指南",
+      shopCtaText: "立即抢购 Shop the Sale",
+      amazonSectionTitle: "高性价比 Amazon 平替推荐",
+      amazonSectionDesc: "不想花全价？这些 Amazon 上的蒙特梭利玩具同样优质。",
+      amazonCtaText: "浏览 Amazon 平替",
+      siteCtaText: "访问 Loveveryfans 完整指南",
       footerText: "你订阅了促销提醒。",
       unsubscribeText: "退订",
+      footerTagline: "Loveveryfans — Play Kit 与产品完整指南",
     });
     expect(html).toContain("Lovevery 促销来啦！");
     expect(html).toContain("我们检测到促销活动。");
-    expect(html).toContain("查看指南");
+    expect(html).toContain("立即抢购 Shop the Sale");
+    expect(html).toContain("高性价比 Amazon 平替推荐");
+    expect(html).toContain("浏览 Amazon 平替");
     expect(html).toContain("退订");
+  });
+
+  it("includes referral code in the shop CTA URL", () => {
+    const html = buildEmailHtml(baseParams);
+    expect(html).toContain("REF-6AA44A5A");
   });
 });

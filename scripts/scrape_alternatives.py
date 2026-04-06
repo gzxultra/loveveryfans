@@ -23,6 +23,8 @@ Requirements:
 
 Environment:
     OPENAI_API_KEY      Required for AI-powered product search (not for price updates)
+                        If absent, AI search is skipped gracefully — the workflow
+                        continues and only existing alternatives are refreshed.
 
 Availability Detection:
     The scraper detects the following product states:
@@ -57,6 +59,17 @@ except ImportError:
     HAS_OPENAI = False
     print("Warning: openai package not installed. AI-powered search disabled.")
     print("Install with: pip3 install openai")
+
+# Check for OPENAI_API_KEY at import time so we can warn early without crashing.
+# The key is only required when actually calling the AI search; price-refresh
+# and availability-check modes work fine without it.
+HAS_OPENAI_KEY = bool(os.environ.get("OPENAI_API_KEY", "").strip())
+if HAS_OPENAI and not HAS_OPENAI_KEY:
+    print(
+        "Warning: OPENAI_API_KEY environment variable is not set. "
+        "AI-powered product search will be skipped. "
+        "Price refresh and availability check modes are unaffected."
+    )
 
 
 # ============================================================================
@@ -135,7 +148,7 @@ def detect_availability(soup: BeautifulSoup, status_code: int) -> str:
 
     page_text = soup.get_text(separator=" ").lower()
 
-    # Check for explicit out-of-stock indicators
+    # Check for explicit out-of-stock indicators first (takes priority over price)
     for phrase in OUT_OF_STOCK_PHRASES:
         if phrase in page_text:
             return AVAILABILITY_OUT_OF_STOCK
@@ -166,6 +179,169 @@ def detect_availability(soup: BeautifulSoup, status_code: int) -> str:
 # ============================================================================
 # Amazon Data Scraping
 # ============================================================================
+
+def _extract_price(soup: BeautifulSoup) -> Optional[str]:
+    """
+    Extract price from an Amazon product page soup.
+
+    Tries multiple selectors in priority order, including the newer
+    corePriceDisplay_desktop_feature_div structure used by Amazon as of 2024.
+    Returns a formatted "$X.XX" string or None.
+    """
+    # Strategy 1: corePriceDisplay (modern Amazon layout, 2024+)
+    core_price_div = soup.find("div", {"id": "corePriceDisplay_desktop_feature_div"})
+    if core_price_div:
+        whole = core_price_div.find("span", {"class": "a-price-whole"})
+        fraction = core_price_div.find("span", {"class": "a-price-fraction"})
+        if whole:
+            whole_text = re.sub(r"[^0-9]", "", whole.get_text())
+            frac_text = re.sub(r"[^0-9]", "", fraction.get_text()) if fraction else "00"
+            if whole_text:
+                return f"${whole_text}.{frac_text[:2].ljust(2, '0')}"
+
+    # Strategy 2: apex_desktop (another modern layout variant)
+    apex_div = soup.find("div", {"id": "apex_desktop"})
+    if apex_div:
+        whole = apex_div.find("span", {"class": "a-price-whole"})
+        fraction = apex_div.find("span", {"class": "a-price-fraction"})
+        if whole:
+            whole_text = re.sub(r"[^0-9]", "", whole.get_text())
+            frac_text = re.sub(r"[^0-9]", "", fraction.get_text()) if fraction else "00"
+            if whole_text:
+                return f"${whole_text}.{frac_text[:2].ljust(2, '0')}"
+
+    # Strategy 3: a-offscreen (screen-reader price, usually "$X.XX" format)
+    offscreen = soup.find("span", {"class": "a-offscreen"})
+    if offscreen:
+        price_text = offscreen.get_text().strip()
+        price_match = re.search(r"\$(\d+\.\d{2})", price_text)
+        if price_match:
+            return f"${price_match.group(1)}"
+
+    # Strategy 4: classic price block IDs (older layout)
+    for elem_id in ("priceblock_ourprice", "priceblock_dealprice", "priceblock_saleprice"):
+        elem = soup.find("span", {"id": elem_id})
+        if elem:
+            price_text = elem.get_text().strip()
+            price_match = re.search(r"\$?(\d+\.?\d*)", price_text)
+            if price_match:
+                val = price_match.group(1)
+                return f"${val}" if "." in val else f"${val}.00"
+
+    # Strategy 5: generic a-price-whole anywhere on page
+    price_elem = soup.find("span", {"class": "a-price-whole"})
+    if price_elem:
+        price_text = price_elem.get_text().strip()
+        price_match = re.search(r"(\d+)", price_text)
+        if price_match:
+            # Try to find adjacent fraction
+            parent = price_elem.parent
+            fraction = parent.find("span", {"class": "a-price-fraction"}) if parent else None
+            frac_text = re.sub(r"[^0-9]", "", fraction.get_text()) if fraction else "00"
+            return f"${price_match.group(1)}.{frac_text[:2].ljust(2, '0')}"
+
+    # Strategy 6: a-color-price (sale/deal prices)
+    color_price = soup.find("span", {"class": "a-color-price"})
+    if color_price:
+        price_text = color_price.get_text().strip()
+        price_match = re.search(r"\$?(\d+\.?\d*)", price_text)
+        if price_match:
+            val = price_match.group(1)
+            return f"${val}" if "." in val else f"${val}.00"
+
+    return None
+
+
+def _extract_rating(soup: BeautifulSoup) -> Optional[float]:
+    """Extract star rating from an Amazon product page soup."""
+    # Strategy 1: a-icon-alt (e.g. "4.5 out of 5 stars")
+    rating_elem = soup.find("span", {"class": "a-icon-alt"})
+    if rating_elem:
+        rating_text = rating_elem.get_text().strip()
+        rating_match = re.search(r"(\d+\.?\d*)\s*out of", rating_text)
+        if rating_match:
+            return float(rating_match.group(1))
+
+    # Strategy 2: acrPopover title attribute
+    acr_popover = soup.find("span", {"id": "acrPopover"})
+    if acr_popover:
+        title = acr_popover.get("title", "")
+        rating_match = re.search(r"(\d+\.?\d*)\s*out of", title)
+        if rating_match:
+            return float(rating_match.group(1))
+
+    # Strategy 3: averageCustomerReviews data attribute
+    avg_reviews = soup.find("div", {"id": "averageCustomerReviews"})
+    if avg_reviews:
+        rating_span = avg_reviews.find("span", {"class": "a-icon-alt"})
+        if rating_span:
+            rating_match = re.search(r"(\d+\.?\d*)\s*out of", rating_span.get_text())
+            if rating_match:
+                return float(rating_match.group(1))
+
+    return None
+
+
+def _extract_review_count(soup: BeautifulSoup) -> Optional[int]:
+    """Extract review count from an Amazon product page soup."""
+    # Strategy 1: acrCustomerReviewText span
+    review_text_elem = soup.find("span", {"id": "acrCustomerReviewText"})
+    if review_text_elem:
+        text = review_text_elem.get_text().strip()
+        match = re.search(r"([\d,]+)\s*(?:global\s+)?ratings?", text)
+        if match:
+            return int(match.group(1).replace(",", ""))
+
+    # Strategy 2: scan a-size-base spans for "X global ratings"
+    for elem in soup.find_all("span", class_="a-size-base"):
+        text = elem.get_text().strip()
+        match = re.search(r"([\d,]+)\s*global\s+ratings?", text)
+        if match:
+            return int(match.group(1).replace(",", ""))
+
+    # Strategy 3: broader scan for any "X ratings" pattern
+    for elem in soup.find_all("span"):
+        text = elem.get_text().strip()
+        match = re.search(r"^([\d,]+)\s+ratings?$", text)
+        if match:
+            return int(match.group(1).replace(",", ""))
+
+    return None
+
+
+def _extract_image_url(soup: BeautifulSoup) -> Optional[str]:
+    """Extract main product image URL from an Amazon product page soup."""
+    image_selectors = [
+        ("img", {"id": "landingImage"}),
+        ("img", {"id": "imgBlkFront"}),
+        ("img", {"class": "a-dynamic-image"}),
+        ("div", {"id": "imgTagWrapperId"}),
+    ]
+    for tag, attrs in image_selectors:
+        img_elem = soup.find(tag, attrs)
+        if img_elem:
+            if tag == "img":
+                image_url = (
+                    img_elem.get("data-old-hires")
+                    or img_elem.get("data-a-hires")
+                    or img_elem.get("src")
+                )
+            else:
+                img_tag = img_elem.find("img")
+                if img_tag:
+                    image_url = (
+                        img_tag.get("data-old-hires")
+                        or img_tag.get("data-a-hires")
+                        or img_tag.get("src")
+                    )
+                else:
+                    image_url = None
+            if image_url:
+                # Remove size parameters for higher quality
+                image_url = re.sub(r"\._.*?_\.", ".", image_url)
+                return image_url
+    return None
+
 
 def scrape_amazon_product(asin: str, verbose: bool = False) -> Optional[dict]:
     """
@@ -223,75 +399,22 @@ def scrape_amazon_product(asin: str, verbose: bool = False) -> Optional[dict]:
                     print(f"      Failed with status code {response.status_code}")
                 continue
 
-            # ── Extract price ────────────────────────────────────────────────
-            price = None
-            price_selectors = [
-                ("span", {"class": "a-price-whole"}),
-                ("span", {"class": "a-offscreen"}),
-                ("span", {"id": "priceblock_ourprice"}),
-                ("span", {"id": "priceblock_dealprice"}),
-                ("span", {"class": "a-color-price"}),
-            ]
-            for tag, attrs in price_selectors:
-                price_elem = soup.find(tag, attrs)
-                if price_elem:
-                    price_text = price_elem.get_text().strip()
-                    price_match = re.search(r"\$?(\d+\.?\d*)", price_text)
-                    if price_match:
-                        price = f"${price_match.group(1)}"
-                        break
+            # ── Extract data using dedicated helpers ─────────────────────────
+            price = _extract_price(soup)
+            rating = _extract_rating(soup)
+            review_count = _extract_review_count(soup)
+            image_url = _extract_image_url(soup)
 
-            # ── Extract rating ───────────────────────────────────────────────
-            rating = None
-            rating_elem = soup.find("span", {"class": "a-icon-alt"})
-            if rating_elem:
-                rating_text = rating_elem.get_text().strip()
-                rating_match = re.search(r"(\d+\.?\d*)\s*out of", rating_text)
-                if rating_match:
-                    rating = float(rating_match.group(1))
-
-            # ── Extract review count ─────────────────────────────────────────
-            review_count = None
-            review_patterns = [
-                (r"([\d,]+)\s*global ratings", soup.find_all("span", class_="a-size-base")),
-                (r"([\d,]+)\s*ratings", soup.find_all("span", id="acrCustomerReviewText")),
-                (r"([\d,]+)\s*ratings", soup.find_all("span")),
-            ]
-            for pattern, elements in review_patterns:
-                for elem in elements:
-                    text = elem.get_text().strip()
-                    match = re.search(pattern, text)
-                    if match:
-                        review_count = int(match.group(1).replace(",", ""))
-                        break
-                if review_count:
-                    break
-
-            # ── Extract main product image ───────────────────────────────────
-            image_url = None
-            image_selectors = [
-                ("img", {"id": "landingImage"}),
-                ("img", {"class": "a-dynamic-image"}),
-                ("div", {"id": "imgTagWrapperId"}),
-            ]
-            for tag, attrs in image_selectors:
-                img_elem = soup.find(tag, attrs)
-                if img_elem:
-                    if tag == "img":
-                        image_url = img_elem.get("data-old-hires") or img_elem.get("src")
-                    else:
-                        img_tag = img_elem.find("img")
-                        if img_tag:
-                            image_url = img_tag.get("data-old-hires") or img_tag.get("src")
-                    if image_url:
-                        # Remove size parameters for higher quality
-                        image_url = re.sub(r"\._.*?_\.", ".", image_url)
-                        break
-
-            # Validate we got at least some data
+            # Validate we got at least some data.
+            # When Amazon blocks the request (returns a CAPTCHA/robot-check page),
+            # we get a 200 but no meaningful data. In that case we keep the
+            # existing data rather than overwriting with None values.
             if not price and not rating and availability == AVAILABILITY_UNKNOWN:
                 if verbose:
-                    print("      Could not extract price or rating from page")
+                    print(
+                        "      Could not extract price or rating from page "
+                        "(possible bot-check page — keeping existing data)"
+                    )
                 continue
 
             result = {
@@ -322,7 +445,7 @@ def scrape_amazon_product(asin: str, verbose: bool = False) -> Optional[dict]:
             continue
 
     if verbose:
-        print(f"      ✗ Failed to scrape after {MAX_RETRIES} attempts")
+        print(f"      ✗ Failed to scrape after {MAX_RETRIES} attempts — keeping existing data")
     return None
 
 
@@ -383,14 +506,32 @@ def extract_toy_inventory() -> list[dict]:
 # AI-Powered Alternative Search
 # ============================================================================
 
+def can_use_ai_search() -> bool:
+    """
+    Return True only when both the openai package is installed AND the API key
+    is present in the environment.  This allows the workflow to run in
+    price-refresh mode without an OPENAI_API_KEY secret configured.
+    """
+    return HAS_OPENAI and HAS_OPENAI_KEY
+
+
 def search_alternatives_with_ai(
     toy_name: str, toy_category: str, kit_name: str
 ) -> list[dict]:
     """
     Use OpenAI API to find Amazon alternatives (ASINs only).
     Real prices/ratings/availability will be scraped separately.
+
+    Returns an empty list (graceful no-op) when:
+    - openai package is not installed, OR
+    - OPENAI_API_KEY environment variable is not set
     """
-    if not HAS_OPENAI:
+    if not can_use_ai_search():
+        if HAS_OPENAI and not HAS_OPENAI_KEY:
+            print(
+                f"  Skipping AI search for '{toy_name}': "
+                "OPENAI_API_KEY not set (set the secret to enable new alternative discovery)"
+            )
         return []
 
     client = OpenAI()
@@ -540,6 +681,16 @@ def scrape_kit_alternatives(
                     # Keep existing data if scraping failed, preserve availability
                     alternatives.append(alt)
 
+        elif (refresh_prices or check_availability) and (not existing_toy or not existing_toy.get("alternatives")):
+            # Refresh/availability mode but no existing data for this toy.
+            # Skip AI search — we only refresh what we already have.
+            if verbose:
+                print(
+                    "    No existing alternatives to refresh — skipping "
+                    "(run without --refresh-prices to discover new alternatives)"
+                )
+            alternatives = []
+
         elif existing_toy and existing_toy.get("alternatives") and not refresh_prices:
             # Use existing data without refresh
             if verbose:
@@ -549,37 +700,45 @@ def scrape_kit_alternatives(
             alternatives = existing_toy["alternatives"]
 
         else:
-            # Search for new alternatives with AI
-            if verbose:
-                print("    Searching for new alternatives...")
+            # Search for new alternatives with AI (only when OPENAI_API_KEY is available)
+            if can_use_ai_search():
+                if verbose:
+                    print("    Searching for new alternatives with AI...")
 
-            ai_alternatives = search_alternatives_with_ai(toy_name, category, kit_name)
+                ai_alternatives = search_alternatives_with_ai(toy_name, category, kit_name)
 
-            for alt in ai_alternatives:
-                asin = alt.get("asin")
-                if not asin:
-                    continue
+                for alt in ai_alternatives:
+                    asin = alt.get("asin")
+                    if not asin:
+                        continue
 
-                amazon_data = scrape_amazon_product(asin, verbose=verbose)
+                    amazon_data = scrape_amazon_product(asin, verbose=verbose)
 
-                if amazon_data:
-                    full_alt = {
-                        "name": alt.get("name", ""),
-                        "asin": asin,
-                        "price": amazon_data.get("price", "N/A"),
-                        "rating": amazon_data.get("rating"),
-                        "reviewCount": amazon_data.get("reviewCount"),
-                        "imageUrl": amazon_data.get("imageUrl"),
-                        "amazonUrl": f"https://www.amazon.com/dp/{asin}?tag={AFFILIATE_TAG}",
-                        "reasonEn": alt.get("reasonEn", ""),
-                        "reasonCn": alt.get("reasonCn", ""),
-                        "availability": amazon_data.get("availability", AVAILABILITY_UNKNOWN),
-                        "lastChecked": amazon_data.get("lastChecked", ""),
-                    }
-                    alternatives.append(full_alt)
-                else:
-                    if verbose:
-                        print(f"      Skipping {asin} — could not scrape data")
+                    if amazon_data:
+                        full_alt = {
+                            "name": alt.get("name", ""),
+                            "asin": asin,
+                            "price": amazon_data.get("price", "N/A"),
+                            "rating": amazon_data.get("rating"),
+                            "reviewCount": amazon_data.get("reviewCount"),
+                            "imageUrl": amazon_data.get("imageUrl"),
+                            "amazonUrl": f"https://www.amazon.com/dp/{asin}?tag={AFFILIATE_TAG}",
+                            "reasonEn": alt.get("reasonEn", ""),
+                            "reasonCn": alt.get("reasonCn", ""),
+                            "availability": amazon_data.get("availability", AVAILABILITY_UNKNOWN),
+                            "lastChecked": amazon_data.get("lastChecked", ""),
+                        }
+                        alternatives.append(full_alt)
+                    else:
+                        if verbose:
+                            print(f"      Skipping {asin} — could not scrape data")
+            else:
+                # No API key — skip gracefully
+                if verbose:
+                    print(
+                        "    Skipping new alternative discovery "
+                        "(OPENAI_API_KEY not set)"
+                    )
 
         toy_result = {
             "toyName": toy_name,
@@ -644,13 +803,13 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Full scrape (AI + Amazon data)
+  # Full scrape (AI + Amazon data) — requires OPENAI_API_KEY
   python3 scrape_alternatives.py --verbose
 
-  # Refresh prices only for a single kit
+  # Refresh prices only for a single kit (no OPENAI_API_KEY needed)
   python3 scrape_alternatives.py --kit looker --refresh-prices --verbose
 
-  # Check availability for all existing alternatives
+  # Check availability for all existing alternatives (no OPENAI_API_KEY needed)
   python3 scrape_alternatives.py --check-availability --update --verbose
 """,
     )

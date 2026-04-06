@@ -35,6 +35,7 @@ const FAQSection = lazy(() => import("@/components/FAQSectionWrapper"));
 const StatsCounter = lazy(() => import("@/components/StatsCounterWrapper"));
 const AgePickerNav = lazy(() => import("@/components/AgePickerNavWrapper"));
 const BackToTop = lazy(() => import("@/components/BackToTopWrapper"));
+const EmailSubscription = lazy(() => import("@/components/EmailSubscription"));
 
 const HERO_IMG = `${import.meta.env.BASE_URL}hero.webp`;
 const HERO_IMG_MOBILE = `${import.meta.env.BASE_URL}hero-mobile.webp`;
@@ -783,6 +784,11 @@ export default function Home() {
       {/* Feedback Form - lazy loaded */}
       <Suspense fallback={<div className="py-12 sm:py-20" />}>
         <FeedbackForm />
+      </Suspense>
+
+      {/* Email Subscription — above footer */}
+      <Suspense fallback={<div className="py-12 sm:py-16" />}>
+        <EmailSubscription />
       </Suspense>
 
       {/* Back to Top button */}

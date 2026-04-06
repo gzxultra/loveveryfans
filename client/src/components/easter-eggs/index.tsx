@@ -12,6 +12,7 @@ import StatisticsEasterEgg from "./StatisticsEasterEgg";
 import ShakeToDiscover from "./ShakeToDiscover";
 import LongPressHero from "./LongPressHero";
 import PinchToReveal from "./PinchToReveal";
+import ParentPraise from "./ParentPraise";
 
 export default function EasterEggs() {
   return (
@@ -26,6 +27,7 @@ export default function EasterEggs() {
       <ShakeToDiscover />
       <LongPressHero />
       <PinchToReveal />
+      <ParentPraise />
     </>
   );
 }

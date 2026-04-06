@@ -164,6 +164,22 @@ export const i18n = {
     products: { cn: "独立产品", en: "Products" },
   },
 
+  // Email Subscription
+  subscribe: {
+    title: { cn: "不错过任何 Lovevery 优惠", en: "Never Miss a Lovevery Deal" },
+    subtitle: {
+      cn: "订阅我们的促销提醒，第一时间获取 Lovevery 折扣信息和平替推荐。",
+      en: "Get notified when Lovevery has a sale, plus curated alternative picks delivered to your inbox.",
+    },
+    placeholder: { cn: "输入你的邮箱", en: "Enter your email" },
+    button: { cn: "订阅提醒", en: "Subscribe" },
+    subscribing: { cn: "订阅中...", en: "Subscribing..." },
+    success: { cn: "订阅成功！我们会在有促销时通知你 🎉", en: "You're in! We'll notify you when there's a sale 🎉" },
+    error: { cn: "订阅失败，请稍后再试", en: "Something went wrong. Please try again." },
+    privacy: { cn: "我们尊重你的隐私，随时可以退订。", en: "We respect your privacy. Unsubscribe anytime." },
+    invalidEmail: { cn: "请输入有效的邮箱地址", en: "Please enter a valid email address" },
+  },
+
   // Footer
   footer: {
     devStages: { cn: "发展阶段", en: "Development Stages" },

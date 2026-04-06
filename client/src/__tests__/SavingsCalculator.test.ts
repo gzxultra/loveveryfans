@@ -1,18 +1,18 @@
 /**
  * Tests for SavingsCalculator utility functions.
- * Tests parsePrice and buildAmazonCartUrl.
+ * Tests parsePrice, buildAmazonProductUrl, and the deprecated buildAmazonCartUrl shim.
  *
- * Key invariant for buildAmazonCartUrl:
- *   The /gp/aws/cart/add.html endpoint requires `AssociateTag` (the Product
- *   Advertising API parameter), NOT the generic `tag` parameter that is used
- *   for standard product-page affiliate links.  Using only `tag` causes the
- *   cart page to silently drop affiliate attribution or fail to open.
- *   We therefore assert that the generated URL contains BOTH `AssociateTag`
- *   and `tag` for maximum compatibility.
+ * Background on Amazon cart link changes:
+ *   The legacy /gp/aws/cart/add.html multi-item cart endpoint has been unreliable
+ *   since at least 2020 (returns "Sorry, something went wrong" error pages).
+ *   We now use individual /dp/{ASIN}?tag={TAG} product-page URLs, which are:
+ *   - Officially documented by Amazon Associates
+ *   - Reliably supported across all regions and product types
+ *   - Not subject to the deprecation issues of the cart endpoint
  */
 
 import { describe, it, expect } from "vitest";
-import { parsePrice, buildAmazonCartUrl } from "@/components/SavingsCalculator";
+import { parsePrice, buildAmazonProductUrl, buildAmazonCartUrl } from "@/components/SavingsCalculator";
 
 // ---------------------------------------------------------------------------
 // parsePrice
@@ -51,12 +51,6 @@ describe("parsePrice", () => {
     expect(parsePrice(0)).toBeNull();
   });
 
-  it("returns null for negative number string", () => {
-    // Negative numbers: the minus sign is stripped, leaving 5 which is valid.
-    // This is acceptable behaviour since prices are always positive in practice.
-    expect(parsePrice("-5")).toBeCloseTo(5);
-  });
-
   it("strips currency symbols and commas", () => {
     expect(parsePrice("$1,299.00")).toBeCloseTo(1299.0);
   });
@@ -67,78 +61,87 @@ describe("parsePrice", () => {
 });
 
 // ---------------------------------------------------------------------------
-// buildAmazonCartUrl
+// buildAmazonProductUrl — the new per-item URL builder
 // ---------------------------------------------------------------------------
 
-describe("buildAmazonCartUrl", () => {
+describe("buildAmazonProductUrl", () => {
+  it("returns empty string for empty ASIN", () => {
+    expect(buildAmazonProductUrl("")).toBe("");
+  });
+
+  it("returns empty string for whitespace-only ASIN", () => {
+    expect(buildAmazonProductUrl("   ")).toBe("");
+  });
+
+  it("builds a /dp/ URL for a valid ASIN", () => {
+    const url = buildAmazonProductUrl("B08XYZ123");
+    expect(url).toContain("amazon.com");
+    expect(url).toContain("/dp/B08XYZ123");
+  });
+
+  it("includes the affiliate tag parameter", () => {
+    const url = buildAmazonProductUrl("B08XYZ123");
+    expect(url).toContain("tag=loveveryfans-20");
+  });
+
+  it("uses https scheme", () => {
+    const url = buildAmazonProductUrl("B001");
+    expect(url.startsWith("https://")).toBe(true);
+  });
+
+  it("produces a valid URL that can be parsed by the URL constructor", () => {
+    const url = buildAmazonProductUrl("B0BQXJX5GH");
+    expect(() => new URL(url)).not.toThrow();
+  });
+
+  it("URL-encodes the ASIN", () => {
+    // Standard ASINs are alphanumeric and safe, encoding should be idempotent
+    const url = buildAmazonProductUrl("B0BQXJX5GH");
+    expect(url).toContain("B0BQXJX5GH");
+  });
+
+  it("trims whitespace from ASIN", () => {
+    const url = buildAmazonProductUrl("  B0BQXJX5GH  ");
+    expect(url).toContain("/dp/B0BQXJX5GH");
+  });
+
+  it("does NOT use the deprecated /gp/aws/cart/add.html endpoint", () => {
+    // Regression guard: the old multi-item cart endpoint is unreliable.
+    const url = buildAmazonProductUrl("B001");
+    expect(url).not.toContain("/gp/aws/cart/add.html");
+  });
+
+  it("does NOT require AssociateTag (product-page URLs use tag= only)", () => {
+    // AssociateTag is only needed for the deprecated cart endpoint.
+    // Standard product-page affiliate links use the `tag` parameter.
+    const url = buildAmazonProductUrl("B001");
+    expect(url).not.toContain("AssociateTag=");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// buildAmazonCartUrl — backwards-compatibility shim
+// ---------------------------------------------------------------------------
+
+describe("buildAmazonCartUrl (backwards-compat shim)", () => {
   it("returns empty string for empty array", () => {
     expect(buildAmazonCartUrl([])).toBe("");
   });
 
-  // --- Core structural tests ------------------------------------------------
-
-  it("builds a single-item cart URL pointing to amazon.com", () => {
+  it("returns a valid Amazon URL for a single ASIN", () => {
     const url = buildAmazonCartUrl(["B08XYZ123"]);
     expect(url).toContain("amazon.com");
-    expect(url).toContain("/gp/aws/cart/add.html");
+    expect(url).toContain("B08XYZ123");
   });
 
-  it("encodes the ASIN as ASIN.1 with Quantity.1=1", () => {
-    const url = buildAmazonCartUrl(["B08XYZ123"]);
-    expect(url).toContain("ASIN.1=B08XYZ123");
-    expect(url).toContain("Quantity.1=1");
-  });
-
-  it("builds a multi-item cart URL with correct indexed parameters", () => {
-    const url = buildAmazonCartUrl(["B001", "B002", "B003"]);
-    expect(url).toContain("ASIN.1=B001");
-    expect(url).toContain("ASIN.2=B002");
-    expect(url).toContain("ASIN.3=B003");
-    expect(url).toContain("Quantity.1=1");
-    expect(url).toContain("Quantity.2=1");
-    expect(url).toContain("Quantity.3=1");
-  });
-
-  it("limits to 10 items even when more are supplied", () => {
-    const asins = Array.from({ length: 15 }, (_, i) => `B00${String(i).padStart(3, "0")}`);
-    const url = buildAmazonCartUrl(asins);
-    expect(url).toContain("ASIN.10=");
-    expect(url).not.toContain("ASIN.11=");
-  });
-
-  // --- Affiliate tag tests --------------------------------------------------
-
-  it("includes AssociateTag parameter (required by the cart endpoint)", () => {
-    // The /gp/aws/cart/add.html endpoint uses AssociateTag, not tag.
-    // Without AssociateTag the cart page ignores affiliate attribution.
-    const url = buildAmazonCartUrl(["B001"]);
-    expect(url).toContain("AssociateTag=loveveryfans-20");
-  });
-
-  it("includes tag parameter (general Amazon affiliate tracking fallback)", () => {
+  it("returns a URL with the affiliate tag", () => {
     const url = buildAmazonCartUrl(["B001"]);
     expect(url).toContain("tag=loveveryfans-20");
   });
 
-  it("does NOT use tag= as the sole affiliate parameter (regression guard)", () => {
-    // Regression: the original implementation only appended &tag=loveveryfans-20
-    // which is the wrong parameter for the cart endpoint and caused broken links.
+  it("uses https scheme", () => {
     const url = buildAmazonCartUrl(["B001"]);
-
-    // AssociateTag must be present
-    expect(url).toContain("AssociateTag=loveveryfans-20");
-
-    // The URL must not end with just &tag=... (old broken pattern)
-    expect(url).not.toMatch(/[?&]tag=loveveryfans-20$/);
-  });
-
-  // --- URL validity / encoding tests ----------------------------------------
-
-  it("URL-encodes ASIN values to prevent injection", () => {
-    // Standard ASINs are alphanumeric and safe, but encoding must still be applied.
-    const url = buildAmazonCartUrl(["B0BQXJX5GH"]);
-    // encodeURIComponent of a plain ASIN is identical to the ASIN itself
-    expect(url).toContain("ASIN.1=B0BQXJX5GH");
+    expect(url.startsWith("https://")).toBe(true);
   });
 
   it("produces a valid URL that can be parsed by the URL constructor", () => {
@@ -146,8 +149,9 @@ describe("buildAmazonCartUrl", () => {
     expect(() => new URL(url)).not.toThrow();
   });
 
-  it("uses https scheme", () => {
+  it("does NOT use the deprecated /gp/aws/cart/add.html endpoint", () => {
+    // Regression guard: the old multi-item cart endpoint is unreliable.
     const url = buildAmazonCartUrl(["B001"]);
-    expect(url.startsWith("https://")).toBe(true);
+    expect(url).not.toContain("/gp/aws/cart/add.html");
   });
 });

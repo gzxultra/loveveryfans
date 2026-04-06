@@ -8,12 +8,20 @@
  * - Checkbox per alternative product
  * - Real-time total calculation
  * - Savings amount and percentage
- * - One-click Amazon Cart links (multi-item cart URL)
+ * - Per-item "Buy on Amazon" links using the /dp/ASIN?tag=... format
  * - Bilingual (CN/EN)
+ *
+ * NOTE on Amazon cart links:
+ *   The legacy /gp/aws/cart/add.html multi-item cart endpoint has been
+ *   unreliable since at least 2020 and frequently returns error pages.
+ *   Amazon's officially supported affiliate link format is:
+ *     https://www.amazon.com/dp/{ASIN}?tag={ASSOCIATE_TAG}
+ *   We therefore render individual "Buy on Amazon" buttons per selected item
+ *   rather than a single multi-item cart URL.
  */
 
 import { useState, useMemo, useCallback } from "react";
-import { ShoppingCart, TrendingDown, DollarSign, Check } from "lucide-react";
+import { ShoppingCart, TrendingDown, DollarSign, Check, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import type { Alternative } from "@/data/alternatives";
 import { trackEvent } from "@/lib/analytics";
@@ -41,32 +49,35 @@ export function parsePrice(price: string | number | null | undefined): number | 
 }
 
 /**
- * Build an Amazon multi-item cart URL from a list of ASINs.
+ * Build an Amazon product page URL for a single ASIN with the affiliate tag.
  *
- * The /gp/aws/cart/add.html endpoint requires the affiliate tag to be passed
- * as `AssociateTag` (the Product Advertising API parameter name), NOT as `tag`
- * (which is only valid for standard product-page links). Using `tag` alone
- * causes the cart page to fail or ignore the affiliate attribution.
- *
- * We include both `AssociateTag` (required by the cart endpoint) and `tag`
- * (recognised by Amazon's general tracking layer) for maximum compatibility.
+ * Uses the /dp/{ASIN}?tag={TAG} format which is:
+ * - Officially documented by Amazon Associates
+ * - Reliably supported across all regions and product types
+ * - Not subject to the deprecation issues affecting /gp/aws/cart/add.html
  *
  * Format:
- *   https://www.amazon.com/gp/aws/cart/add.html
- *     ?AssociateTag=XXX&tag=XXX
- *     &ASIN.1=YYY&Quantity.1=1
- *     &ASIN.2=ZZZ&Quantity.2=1
- *     ...
+ *   https://www.amazon.com/dp/B0XXXXXXXXX?tag=loveveryfans-20
+ */
+export function buildAmazonProductUrl(asin: string): string {
+  if (!asin || !asin.trim()) return "";
+  return `https://www.amazon.com/dp/${encodeURIComponent(asin.trim())}?tag=${AFFILIATE_TAG}`;
+}
+
+/**
+ * Build Amazon product URLs for a list of ASINs.
+ * Returns an array of { asin, url } objects.
+ *
+ * @deprecated Use buildAmazonProductUrl per item instead of a multi-item cart URL.
+ *   The /gp/aws/cart/add.html endpoint is unreliable and frequently returns error pages.
+ *   This function is kept for backwards-compatibility with existing tests that may
+ *   reference it, but new code should call buildAmazonProductUrl directly.
  */
 export function buildAmazonCartUrl(asins: string[]): string {
+  // Return the first item's product URL as the "primary" link.
+  // For multi-item scenarios, the UI renders individual buttons per item.
   if (asins.length === 0) return "";
-  const itemParams = asins
-    .slice(0, 10) // Amazon cart supports up to 10 items
-    .map((asin, i) => `ASIN.${i + 1}=${encodeURIComponent(asin)}&Quantity.${i + 1}=1`)
-    .join("&");
-  // AssociateTag is the correct parameter for the cart endpoint;
-  // tag is included as a fallback for Amazon's general affiliate tracking.
-  return `https://www.amazon.com/gp/aws/cart/add.html?AssociateTag=${AFFILIATE_TAG}&tag=${AFFILIATE_TAG}&${itemParams}`;
+  return buildAmazonProductUrl(asins[0]);
 }
 
 export function SavingsCalculator({
@@ -119,12 +130,16 @@ export function SavingsCalculator({
     return { totalSelected: total, savings: sav, savingsPct: pct };
   }, [selected, pricedAlts, kitPrice]);
 
-  // Build Amazon cart URL for selected items
-  const cartUrl = useMemo(() => {
-    const selectedAsins = pricedAlts
+  // Build per-item Amazon product URLs for selected items
+  const selectedItems = useMemo(() => {
+    return pricedAlts
       .filter((a) => selected.has(a.asin))
-      .map((a) => a.asin);
-    return buildAmazonCartUrl(selectedAsins);
+      .map((a) => ({
+        asin: a.asin,
+        name: a.name,
+        price: parsePrice(a.price),
+        url: buildAmazonProductUrl(a.asin),
+      }));
   }, [selected, pricedAlts]);
 
   if (pricedAlts.length === 0) return null;
@@ -256,31 +271,43 @@ export function SavingsCalculator({
             </div>
           )}
 
-          {/* One-click cart button */}
-          {cartUrl && (
-            <a
-              href={cartUrl}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              onClick={() => {
-                trackEvent("one_click_cart", {
-                  kit_id: kitId,
-                  kit_name: kitName,
-                  item_count: selectedCount,
-                  total_price: totalSelected.toFixed(2),
-                  savings: savings.toFixed(2),
-                });
-              }}
-              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-[#FF9900] hover:bg-[#E88B00] text-white text-sm font-semibold transition-all duration-200 hover:shadow-md hover:shadow-[#FF9900]/20 active:scale-[0.98]"
-              aria-label={`Add ${selectedCount} items to Amazon cart for $${totalSelected.toFixed(2)}`}
-            >
-              <ShoppingCart className="w-4 h-4" aria-hidden="true" />
-              {t(
-                `一键加入购物车 (${selectedCount} 件)`,
-                `Add ${selectedCount} Item${selectedCount > 1 ? "s" : ""} to Cart`
-              )}
-            </a>
-          )}
+          {/* Per-item Amazon buy buttons */}
+          <div className="space-y-2">
+            <p className="text-xs text-[#756A5C] font-medium mb-1.5">
+              {t("在 Amazon 购买选中商品：", "Buy selected items on Amazon:")}
+            </p>
+            {selectedItems.map((item) => (
+              <a
+                key={item.asin}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                onClick={() => {
+                  trackEvent("one_click_cart", {
+                    kit_id: kitId,
+                    kit_name: kitName,
+                    asin: item.asin,
+                    item_name: item.name,
+                    item_price: item.price?.toFixed(2),
+                    total_price: totalSelected.toFixed(2),
+                    savings: savings.toFixed(2),
+                    item_count: selectedCount,
+                  });
+                }}
+                className="flex items-center justify-between gap-2 w-full px-3 py-2 rounded-lg bg-[#FF9900] hover:bg-[#E88B00] text-white text-xs font-semibold transition-all duration-200 hover:shadow-md hover:shadow-[#FF9900]/20 active:scale-[0.98]"
+                aria-label={`Buy ${item.name} on Amazon for $${item.price?.toFixed(2)}`}
+              >
+                <div className="flex items-center gap-1.5 min-w-0">
+                  <ShoppingCart className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                  <span className="truncate">{item.name}</span>
+                </div>
+                <div className="flex items-center gap-1 shrink-0">
+                  <span>${item.price?.toFixed(2)}</span>
+                  <ExternalLink className="w-3 h-3" aria-hidden="true" />
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
       )}
     </div>

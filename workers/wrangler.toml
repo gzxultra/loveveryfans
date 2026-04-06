@@ -1,0 +1,34 @@
+# Loveveryfans Promotion Alert Worker
+# ====================================
+# Handles email subscription, promotion detection, and notification delivery.
+#
+# Required secrets (set via `wrangler secret put`):
+#   RESEND_API_KEY     — API key for Resend email service
+#
+# Required environment variables:
+#   EMAIL_WHITELIST    — Comma-separated list of emails allowed to receive promo
+#                        notifications. Set to "*" to allow all subscribers.
+#                        Default: "mygladfinger@gmail.com"
+#   FROM_EMAIL         — Sender email address (must be verified in Resend)
+
+name = "loveveryfans-alerts"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+
+[triggers]
+# Run promotion check every 6 hours
+crons = ["0 */6 * * *"]
+
+[vars]
+# Only send promo emails to whitelisted addresses initially.
+# Set to "*" to open up to all subscribers.
+EMAIL_WHITELIST = "mygladfinger@gmail.com"
+FROM_EMAIL = "alerts@loveveryfans.com"
+SITE_URL = "https://loveveryfans.com"
+
+# D1 database binding — create with:
+#   wrangler d1 create loveveryfans-alerts-db
+[[d1_databases]]
+binding = "DB"
+database_name = "loveveryfans-alerts-db"
+database_id = "REPLACE_WITH_ACTUAL_DATABASE_ID"

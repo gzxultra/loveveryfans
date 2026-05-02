@@ -8,7 +8,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useI18n } from "@/hooks/useI18n";
 import LanguageToggle from "@/components/LanguageToggle";
 import { Link } from "wouter";
-import { motion } from "framer-motion";
+import { motion, type Easing } from "framer-motion";
 import {
   Heart,
   Baby,
@@ -31,7 +31,7 @@ const fadeInUp = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" },
+    transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" as Easing },
   }),
 };
 
@@ -41,11 +41,11 @@ export default function AboutUs() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const stageLabel = (id: string) => {
-    const key = id as string;
+    const key = id as keyof typeof i18n.stages;
     return i18n.stages[key]?.[lang] ?? id;
   };
   const stageRange = (id: string) => {
-    const key = id as string;
+    const key = id as keyof typeof i18n.stageRanges;
     return i18n.stageRanges[key]?.[lang] ?? "";
   };
 

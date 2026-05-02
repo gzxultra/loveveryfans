@@ -167,6 +167,136 @@ function generateAboutHtml() {
 </html>`;
 }
 
+// Blog post slugs and SEO data
+const BLOG_SLUGS = [
+  'lovevery-worth-it-2026',
+  'baby-milestones-toy-guide',
+  'save-money-lovevery-alternatives',
+];
+
+const blogSeoData = {
+  'lovevery-worth-it-2026': {
+    title: 'Is Lovevery Worth It in 2026? Honest Review | Lovevery Fans',
+    desc: 'An honest, in-depth review of whether Lovevery Play Kits are worth the price in 2026. Compare costs, quality, and discover affordable Amazon alternatives.',
+    date: '2026-01-15',
+  },
+  'baby-milestones-toy-guide': {
+    title: 'Baby Milestones & Toy Guide (0-12 Months) | Lovevery Fans',
+    desc: 'A comprehensive month-by-month guide to baby development milestones from 0-12 months, with recommended toys for each stage.',
+    date: '2026-02-01',
+  },
+  'save-money-lovevery-alternatives': {
+    title: 'How to Save Money with Lovevery Alternatives | Lovevery Fans',
+    desc: 'Discover how to get the Lovevery experience for a fraction of the price. Our complete guide to finding high-quality Amazon alternatives for every Play Kit.',
+    date: '2026-03-01',
+  },
+};
+
+function generateBlogIndexHtml() {
+  const pageUrl = `${SITE_URL}/blog/`;
+  const title = 'Blog | Lovevery Fans';
+  const desc = 'Parenting tips, Lovevery reviews, and toy guides from the Lovevery Fans community. Honest advice from real parents.';
+
+  return `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+    <title>${title}</title>
+    <meta name="description" content="${desc}" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="${pageUrl}" />
+    <link rel="alternate" hreflang="x-default" href="${pageUrl}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="${pageUrl}" />
+    <meta property="og:title" content="${title}" />
+    <meta property="og:description" content="${desc}" />
+    <meta property="og:image" content="https://files.manuscdn.com/user_upload_by_module/session_file/310519663324967219/MNPxTRzCbxWVkhFf.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Lovevery Fans" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${title}" />
+    <meta name="twitter:description" content="${desc}" />
+    <meta name="twitter:image" content="https://files.manuscdn.com/user_upload_by_module/session_file/310519663324967219/MNPxTRzCbxWVkhFf.jpg" />
+    <meta name="theme-color" content="#FAF7F2" />
+    ${assetTags}
+    ${scriptTagsStr}
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <div style="max-width:800px;margin:0 auto;padding:40px 20px;font-family:system-ui,sans-serif;">
+        <h1>Lovevery Fans Blog</h1>
+        <p>${desc}</p>
+        <ul>
+${BLOG_SLUGS.map(slug => `          <li><a href="/blog/${slug}/">${blogSeoData[slug].title}</a></li>`).join('\n')}
+        </ul>
+        <p><a href="/">← Back to Lovevery Fans Homepage</a></p>
+      </div>
+    </noscript>
+  </body>
+</html>`;
+}
+
+function generateBlogPostHtml(slug) {
+  const seo = blogSeoData[slug];
+  const pageUrl = `${SITE_URL}/blog/${slug}/`;
+
+  return `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+    <title>${seo.title}</title>
+    <meta name="description" content="${seo.desc}" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="${pageUrl}" />
+    <link rel="alternate" hreflang="x-default" href="${pageUrl}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="${pageUrl}" />
+    <meta property="og:title" content="${seo.title}" />
+    <meta property="og:description" content="${seo.desc}" />
+    <meta property="og:image" content="https://files.manuscdn.com/user_upload_by_module/session_file/310519663324967219/MNPxTRzCbxWVkhFf.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Lovevery Fans" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:published_time" content="${seo.date}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${seo.title}" />
+    <meta name="twitter:description" content="${seo.desc}" />
+    <meta name="twitter:image" content="https://files.manuscdn.com/user_upload_by_module/session_file/310519663324967219/MNPxTRzCbxWVkhFf.jpg" />
+    <meta name="theme-color" content="#FAF7F2" />
+    ${assetTags}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "${SITE_URL}/"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "${SITE_URL}/blog/"},
+        {"@type": "ListItem", "position": 3, "name": "${seo.title.split(' | ')[0]}", "item": "${pageUrl}"}
+      ]
+    }
+    </script>
+    ${scriptTagsStr}
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <div style="max-width:800px;margin:0 auto;padding:40px 20px;font-family:system-ui,sans-serif;">
+        <h1>${seo.title.split(' | ')[0]}</h1>
+        <p>${seo.desc}</p>
+        <p><a href="/blog/">← Back to Blog</a></p>
+        <p><a href="/">← Back to Lovevery Fans Homepage</a></p>
+      </div>
+    </noscript>
+  </body>
+</html>`;
+}
+
 // Standalone product IDs and SEO data
 const PRODUCT_IDS = ['music-set', 'bath-set', 'block-set', 'play-gym'];
 
@@ -256,6 +386,22 @@ for (const productId of PRODUCT_IDS) {
   fs.writeFileSync(path.join(dir, 'index.html'), generateProductHtml(productId));
   count++;
   console.log(`  ✓ /product/${productId}/index.html`);
+}
+
+// Generate blog index page
+const blogDir = path.join(DIST_DIR, 'blog');
+fs.mkdirSync(blogDir, { recursive: true });
+fs.writeFileSync(path.join(blogDir, 'index.html'), generateBlogIndexHtml());
+count++;
+console.log(`  ✓ /blog/index.html`);
+
+// Generate individual blog post pages
+for (const slug of BLOG_SLUGS) {
+  const dir = path.join(DIST_DIR, 'blog', slug);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, 'index.html'), generateBlogPostHtml(slug));
+  count++;
+  console.log(`  ✓ /blog/${slug}/index.html`);
 }
 
 console.log(`\n✅ Prerendered ${count} pages successfully!`);

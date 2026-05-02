@@ -154,8 +154,6 @@ export const kitImages: Record<string, { heroImage: string; toyImages: string[] 
       "https://images.ctfassets.net/0sea1vycfyqy/3J1rcTMywufAhdzKNqcZbB/d331c684731b28660972a38a75626da8/2022_08_12_SEL-Emotions_ISO_0147_v3-EN_2e939bf7-2331-4e1e-8222-b67402866a93.webp",
       "https://images.ctfassets.net/0sea1vycfyqy/6NNnY5zCghZSMm8rTplvad/510ee2850ff5fc89bf362e7dd5c1d78c/Year_2_Playkit_10989_VS_R2_CL_web__1__copy.png",
       "https://images.ctfassets.net/0sea1vycfyqy/5Zcgy8LaiNTfKroYEBDkZj/c58f1532bf1b03d54fc24f7337419204/k12-1-scale.png",
-      "https://images.ctfassets.net/0sea1vycfyqy/3Q2iNNJoXcoCKkaGXLzYOh/b526051ee057af540155e73b48cb9dd5/Year_2_Playkit_11042_VS_R2_CL_Muffins-_2_.png",
-      "https://images.ctfassets.net/0sea1vycfyqy/3CPZ9DoI1ty9l4n1RYtuo6/b7cd72751ff82141d413e504c24ac406/Year_2_Playkit_10842_VS_R2_CL.png",
       "https://images.ctfassets.net/0sea1vycfyqy/WSM9bM0CIabsI9uqMclyB/d00a60ba283b998656026952780daf6a/Year_2_Playkit_11042_VS_R2_CL_NatureBuddy-_1_.png",
     ],
   },
@@ -263,7 +261,7 @@ export const kitImages: Record<string, { heroImage: string; toyImages: string[] 
       "https://images.ctfassets.net/0sea1vycfyqy/rcWZ4XD8t2RNM4zY4eqlr/09119d3521ff5f4aa5c6b44256aedecc/2023_04_13_4YO_Group_ISO_11310_v2.png",
       "https://images.ctfassets.net/0sea1vycfyqy/1ivHSdcIm5bXlXLrOGMfx2/97ba9f55bc3400ffcaddf083b204ca65/2022_08_15_4-yr-old_ISO_S_0298_v4.png",
       "https://images.ctfassets.net/0sea1vycfyqy/skBDUuQVwXikfokJSmYWv/c575dcc25031969fecfacf92ec7d5d8f/2023_04_13_4YO_Group_ISO_11275_v3_web.webp",
-      "https://images.ctfassets.net/0sea1vycfyqy/6fsyjmmMmluG2mO9bmYn57/4f5f3d96b5e2ad5cbab0e5534cb23013/Oct2022_4YO_Savys-Scavenger-Hunt_Book-ISO.20240711170211643.png"
+      "https://images.ctfassets.net/0sea1vycfyqy/6fsyjmmMmluG2mO9bmYn57/4f5f3d96b5e2ad5cbab0e5534cb23013/Oct2022_4YO_Savys-Scavenger-Hunt_Book-ISO.20240711170211643.png",
     ],
   },
 
@@ -275,7 +273,7 @@ export const kitImages: Record<string, { heroImage: string; toyImages: string[] 
       "https://images.ctfassets.net/0sea1vycfyqy/PKkIr6ci5KVI7hW7vbJ2Z/0f9e35635812299162de2fe12b1ad95d/Lovevery-VisionkitStudio-ISOs-Puppets-NoArms-158-Oct2020-1.20230607202349727.png",
       "https://images.ctfassets.net/0sea1vycfyqy/443O8EpR0nbhQZT7nHeidn/45fcf5c1bf9b78ca7208af0c6e58d549/Lovevery-Visionkit-ISOs-SprayMop-087-Oct2020-1.20230607221225201.png",
       "https://images.ctfassets.net/0sea1vycfyqy/5tcqqgXk3qjkHTDzdfHehO/4f023b2b54eccff9cc41d847cbd455fc/2022_05_25_Studio_ECO_5019.png",
-      "https://images.ctfassets.net/0sea1vycfyqy/4VLyjhxEHnOwNKDicCsAtN/4eec32ad6b056b58a0033b036f0b9076/Out-the-Door-Book-ISO.20250131155744519.png"
+      "https://images.ctfassets.net/0sea1vycfyqy/4VLyjhxEHnOwNKDicCsAtN/4eec32ad6b056b58a0033b036f0b9076/Out-the-Door-Book-ISO.20250131155744519.png",
     ],
   }
 };

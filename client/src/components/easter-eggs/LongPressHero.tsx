@@ -36,8 +36,8 @@ export default function LongPressHero() {
   const [pressProgress, setPressProgress] = useState(0);
   const [pressPosition, setPressPosition] = useState({ x: 0, y: 0 });
   const [fadeOut, setFadeOut] = useState(false);
-  const pressTimerRef = useRef<ReturnType<typeof setTimeout>>();
-  const progressIntervalRef = useRef<ReturnType<typeof setInterval>>();
+  const pressTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const progressIntervalRef = useRef<ReturnType<typeof setInterval>>(undefined);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>(0);
   const particlesRef = useRef<Particle[]>([]);

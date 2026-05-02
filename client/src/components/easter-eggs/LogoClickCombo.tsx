@@ -34,7 +34,7 @@ export default function LogoClickCombo() {
   const { lang } = useLanguage();
   
   const clickCountRef = useRef(0);
-  const clickTimerRef = useRef<ReturnType<typeof setTimeout>>();
+  const clickTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const handleLogoClick = useCallback(() => {
     clickCountRef.current++;

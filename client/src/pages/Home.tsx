@@ -85,11 +85,11 @@ export default function Home() {
   const { isFavorite, toggleFavorite, getLikeCount } = useFavorites();
 
   const stageLabel = (id: string) => {
-    const key = id as string;
+    const key = id as keyof typeof i18n.stages;
     return i18n.stages[key]?.[lang] ?? id;
   };
   const stageRange = (id: string) => {
-    const key = id as string;
+    const key = id as keyof typeof i18n.stageRanges;
     return i18n.stageRanges[key]?.[lang] ?? "";
   };
 

@@ -21,6 +21,10 @@ export default defineConfig({
     cssCodeSplit: true,
     target: 'es2020',
     minify: 'esbuild',
+    esbuild: {
+      drop: ['debugger'],
+      pure: ['console.log', 'console.debug'],
+    },
     rollupOptions: {
       output: {
         manualChunks(id) {

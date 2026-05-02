@@ -132,9 +132,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     if (converterRef.current || converterLoadingRef.current) return;
 
     converterLoadingRef.current = true;
-    import("opencc-js")
+    import("opencc-js/cn2t")
       .then((opencc) => {
         // s2twp: Simplified Chinese → Traditional Chinese (Taiwan standard + phrases)
+        // Note: opencc-js/cn2t is ~1MB but only loaded on-demand for zh-TW/zh-HK users.
+        // It is NOT included in the initial bundle (verified: dynamic import creates a separate chunk).
         converterRef.current = opencc.Converter({ from: "cn", to: "twp" });
       })
       .catch((err) => {

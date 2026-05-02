@@ -19,6 +19,38 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://loveveryfans.com/about/"/>
   </url>
 
+  <!-- Blog Index -->
+  <url>
+    <loc>https://loveveryfans.com/blog/</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loveveryfans.com/blog/"/>
+  </url>
+
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://loveveryfans.com/blog/lovevery-worth-it-2026/</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loveveryfans.com/blog/lovevery-worth-it-2026/"/>
+  </url>
+  <url>
+    <loc>https://loveveryfans.com/blog/baby-milestones-toy-guide/</loc>
+    <lastmod>2026-02-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loveveryfans.com/blog/baby-milestones-toy-guide/"/>
+  </url>
+  <url>
+    <loc>https://loveveryfans.com/blog/save-money-lovevery-alternatives/</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://loveveryfans.com/blog/save-money-lovevery-alternatives/"/>
+  </url>
+
   <!-- Baby Stage Kits -->
   <url>
     <loc>https://loveveryfans.com/kit/looker/</loc>

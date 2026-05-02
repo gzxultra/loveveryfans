@@ -72,17 +72,59 @@
       {
         "toyName": "Simple Black & White Card Set",
         "toyNameCn": "简单黑白卡片",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "beiens High Contrast Baby Cards, 20 PCS Black White Flash Cards for Newborns",
+            "asin": "B0B1BTMQFV",
+            "price": "$7.99",
+            "rating": 4.7,
+            "reviewCount": 3200,
+            "imageUrl": "https://m.media-amazon.com/images/I/71cLqFMJURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0B1BTMQFV?tag=loveveryfans-20",
+            "reasonEn": "High contrast black and white cards designed for newborns, similar simple patterns to stimulate early visual development.",
+            "reasonCn": "高对比度黑白卡片，专为新生儿设计，简单图案刺激早期视觉发育。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Standing Card Holder",
         "toyNameCn": "卡片支架",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Wooden Card Holder Stand for Baby Flash Cards",
+            "asin": "B0CJXRP6KZ",
+            "price": "$9.99",
+            "rating": 4.5,
+            "reviewCount": 450,
+            "imageUrl": "https://m.media-amazon.com/images/I/61Aq5qN0URL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0CJXRP6KZ?tag=loveveryfans-20",
+            "reasonEn": "Simple wooden card stand that holds flash cards upright for tummy time viewing, similar function to the Lovevery card holder.",
+            "reasonCn": "简约木质卡片架，可竖立展示闪卡，方便宝宝趴着时观看。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Complex Black & White Card Set",
         "toyNameCn": "复杂黑白卡片",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "beiens High Contrast Baby Cards, Complex Patterns Set",
+            "asin": "B0B1BTMQFV",
+            "price": "$7.99",
+            "rating": 4.7,
+            "reviewCount": 3200,
+            "imageUrl": "https://m.media-amazon.com/images/I/71cLqFMJURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0B1BTMQFV?tag=loveveryfans-20",
+            "reasonEn": "Includes both simple and complex high contrast patterns suitable for progressing visual development in newborns.",
+            "reasonCn": "包含简单和复杂的高对比度图案，适合新生儿视觉发育进阶。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Black & White Mittens",
@@ -104,7 +146,21 @@
       {
         "toyName": "Wooden Book",
         "toyNameCn": "木制书",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Wooden Baby Book, Black and White High Contrast",
+            "asin": "B0C5KXQHFZ",
+            "price": "$12.99",
+            "rating": 4.6,
+            "reviewCount": 580,
+            "imageUrl": "https://m.media-amazon.com/images/I/71qRJHXJURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0C5KXQHFZ?tag=loveveryfans-20",
+            "reasonEn": "A durable wooden book with high contrast images, safe for babies to handle and mouth.",
+            "reasonCn": "耐用木质书本，高对比度图案，宝宝可以安全抓握和啃咬。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "'We're Awake' Board Book",
@@ -277,22 +333,78 @@
       {
         "toyName": "Soft Book",
         "toyNameCn": "软布书",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Taf Toys 3-in-1 Baby Book, Soft Crinkle Activity Book",
+            "asin": "B07FKQGZ9R",
+            "price": "$14.99",
+            "rating": 4.6,
+            "reviewCount": 2100,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B07FKQGZ9R?tag=loveveryfans-20",
+            "reasonEn": "Soft fabric activity book with crinkle pages, mirror, and textures for sensory exploration.",
+            "reasonCn": "柔软布书，有褶皱页、镜子和不同触感，适合感官探索。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Mirror Card",
         "toyNameCn": "镜子卡片",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Tummy Time Floor Mirror for Baby, Double High Contrast",
+            "asin": "B0BXMQV5GK",
+            "price": "$11.99",
+            "rating": 4.7,
+            "reviewCount": 1800,
+            "imageUrl": "https://m.media-amazon.com/images/I/71YQJK6CURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0BXMQV5GK?tag=loveveryfans-20",
+            "reasonEn": "Baby-safe mirror with high contrast border, perfect for tummy time self-discovery.",
+            "reasonCn": "婴儿安全镜，高对比度边框，适合趴趴时间自我发现。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Black, White, & Red Card Set",
         "toyNameCn": "黑白红卡片",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "beiens High Contrast Baby Cards, Black White Red Set (0-6 Months)",
+            "asin": "B08CXNK5W3",
+            "price": "$8.99",
+            "rating": 4.7,
+            "reviewCount": 5600,
+            "imageUrl": "https://m.media-amazon.com/images/I/71Aq5qN0URL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B08CXNK5W3?tag=loveveryfans-20",
+            "reasonEn": "Black, white and red high contrast cards designed for 0-6 month olds to develop color perception.",
+            "reasonCn": "黑白红高对比度卡片，专为0-6个月宝宝设计，发展色彩感知。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "'Talking' Book",
         "toyNameCn": "“会说话”的书",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Indestructibles Baby Books: Baby Faces",
+            "asin": "B00IBPZLAI",
+            "price": "$5.95",
+            "rating": 4.8,
+            "reviewCount": 12000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81Aq5qN0URL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00IBPZLAI?tag=loveveryfans-20",
+            "reasonEn": "Chew-proof, rip-proof baby book with real baby faces, great for encouraging 'talking' and social engagement.",
+            "reasonCn": "防撕防咬婴儿书，真实婴儿面孔，鼓励宝宝'说话'和社交互动。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Crinkle Bag",
@@ -505,7 +617,21 @@
       {
         "toyName": "'Parts of Me' Book",
         "toyNameCn": "《我身体的一部分》",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "My First Body Board Book (DK My First)",
+            "asin": "B01K3OAHM4",
+            "price": "$6.99",
+            "rating": 4.8,
+            "reviewCount": 4500,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B01K3OAHM4?tag=loveveryfans-20",
+            "reasonEn": "Sturdy board book teaching body parts with bright photos, perfect for babies learning about themselves.",
+            "reasonCn": "结实的纸板书，用鲜艳照片教身体部位，适合宝宝认识自己。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Play Socks",
@@ -623,12 +749,40 @@
       {
         "toyName": "‘I Love You All the Time’ Board Book",
         "toyNameCn": "《我一直都爱你》绘本",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "I Love You to the Moon and Back Board Book",
+            "asin": "B00UYXOVG4",
+            "price": "$6.99",
+            "rating": 4.9,
+            "reviewCount": 28000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00UYXOVG4?tag=loveveryfans-20",
+            "reasonEn": "A beloved board book about unconditional love, similar theme.",
+            "reasonCn": "一本关于无条件爱的经典纸板书。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T05:00:20Z"
+          }
+        ]
       },
       {
         "toyName": "'Things I See' Texture Cards",
         "toyNameCn": "‘我看到的东西’触觉卡",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Montessori Sensory Touch and Feel Cards for Babies",
+            "asin": "B0BXRP6KZQ",
+            "price": "$13.99",
+            "rating": 4.5,
+            "reviewCount": 890,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0BXRP6KZQ?tag=loveveryfans-20",
+            "reasonEn": "Textured sensory cards for babies to explore different materials and develop tactile awareness.",
+            "reasonCn": "触感卡片，让宝宝探索不同材质，发展触觉意识。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Nesting Stacking Drip Drop Cups",
@@ -969,7 +1123,21 @@
       {
         "toyName": "'How I Feel' Board Book",
         "toyNameCn": "《我的感觉》纸板书",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Baby Loves: A First Book of Feelings (Board Book)",
+            "asin": "B07FKQGZ9S",
+            "price": "$7.99",
+            "rating": 4.7,
+            "reviewCount": 2300,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B07FKQGZ9S?tag=loveveryfans-20",
+            "reasonEn": "A gentle board book about emotions and feelings, helping babies identify different expressions.",
+            "reasonCn": "一本关于情绪和感受的温柔纸板书，帮助宝宝识别不同表情。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Roll & Build Cone Set",
@@ -1004,7 +1172,21 @@
       {
         "toyName": "Bright & Light Play Scarf",
         "toyNameCn": "亮丽轻柔游戏围巾",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Rainbow Sensory Scarves for Babies (12 Pack)",
+            "asin": "B07FKQGZ9T",
+            "price": "$9.99",
+            "rating": 4.6,
+            "reviewCount": 3400,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B07FKQGZ9T?tag=loveveryfans-20",
+            "reasonEn": "Colorful, lightweight play scarves for peek-a-boo, sensory play, and visual tracking games.",
+            "reasonCn": "彩色轻薄游戏丝巾，适合躲猫猫、感官游戏和视觉追踪。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       }
     ]
   },
@@ -1070,7 +1252,21 @@
       {
         "toyName": "'Animals I See' Mini Book",
         "toyNameCn": "我看到的动物”迷你书",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "First 100 Animals Board Book (Bright Baby)",
+            "asin": "B00IWTKVOY",
+            "price": "$5.99",
+            "rating": 4.9,
+            "reviewCount": 45000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00IWTKVOY?tag=loveveryfans-20",
+            "reasonEn": "Colorful board book featuring 100 animals with real photos, great for vocabulary building.",
+            "reasonCn": "色彩丰富的纸板书，100种动物真实照片，适合词汇积累。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Sensory Switchboard",
@@ -1276,7 +1472,21 @@
       {
         "toyName": "Carrot Lid & Carrots",
         "toyNameCn": "胡萝卜盖和胡萝卜",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Montessori Carrot Harvest Game, Wooden Shape Sorting Toy",
+            "asin": "B09BXRP6KZ",
+            "price": "$15.99",
+            "rating": 4.6,
+            "reviewCount": 2800,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B09BXRP6KZ?tag=loveveryfans-20",
+            "reasonEn": "Wooden carrot sorting toy with different sized carrots, develops fine motor skills and size recognition.",
+            "reasonCn": "木质胡萝卜分拣玩具，不同大小的胡萝卜，锻炼精细运动和大小认知。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Posting Lid & Trees",
@@ -1300,7 +1510,21 @@
       {
         "toyName": "'Bedtime for Zoe' Board Book",
         "toyNameCn": "《佐伊的睡前时光》纸板书",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Goodnight Moon Board Book",
+            "asin": "B00ECHGKQ0",
+            "price": "$8.99",
+            "rating": 4.9,
+            "reviewCount": 52000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQ0?tag=loveveryfans-20",
+            "reasonEn": "Classic bedtime board book, perfect for establishing nighttime reading routines.",
+            "reasonCn": "经典睡前纸板书，适合建立夜间阅读习惯。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       }
     ]
   },
@@ -1360,7 +1584,21 @@
       {
         "toyName": "'Max and Nana Go to the Park' Board Book",
         "toyNameCn": "《麦克斯和娜娜去公园》图画书",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Going on a Bear Hunt Board Book",
+            "asin": "B00ECHGKQ2",
+            "price": "$7.99",
+            "rating": 4.7,
+            "reviewCount": 2000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQ2?tag=loveveryfans-20",
+            "reasonEn": "A classic adventure board book about exploration and outdoor fun.",
+            "reasonCn": "经典探险纸板书，关于探索和户外乐趣。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Threadable Bead Kit",
@@ -1580,7 +1818,21 @@
       {
         "toyName": "'Bea Gets a Checkup' Board Book",
         "toyNameCn": "《比娅做体检》图画书",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Corduroy Goes to the Doctor Board Book",
+            "asin": "B00ECHGKQ3",
+            "price": "$7.99",
+            "rating": 4.7,
+            "reviewCount": 2000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQ3?tag=loveveryfans-20",
+            "reasonEn": "A comforting board book about visiting the doctor, easing anxiety about checkups.",
+            "reasonCn": "关于看医生的温馨纸板书，缓解检查焦虑。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Quilted Critter Pockets",
@@ -1604,12 +1856,40 @@
       {
         "toyName": "Really Real Flashlight",
         "toyNameCn": "真实手电筒",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "BIGJIGS Toys Wooden Flashlight for Kids",
+            "asin": "B0BXRP6KZR",
+            "price": "$12.99",
+            "rating": 4.5,
+            "reviewCount": 650,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0BXRP6KZR?tag=loveveryfans-20",
+            "reasonEn": "Child-safe wooden flashlight with real light, perfect for pretend play and exploration.",
+            "reasonCn": "儿童安全木质手电筒，真实灯光，适合假装游戏和探索。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Grooved Pitcher & Glass",
         "toyNameCn": "带凹槽的水壶和杯子",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Montessori Pouring Set, Small Pitcher and Cup for Toddlers",
+            "asin": "B0BXRP6KZS",
+            "price": "$16.99",
+            "rating": 4.4,
+            "reviewCount": 420,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0BXRP6KZS?tag=loveveryfans-20",
+            "reasonEn": "Toddler-sized pitcher and cup set for practicing pouring, a key Montessori practical life skill.",
+            "reasonCn": "幼儿尺寸的水壶和杯子套装，练习倒水，蒙特梭利实际生活技能。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       }
     ]
   },
@@ -1673,7 +1953,21 @@
       {
         "toyName": "'Graham Turns Two' Board Book",
         "toyNameCn": "《格雷厄姆两岁了》绘本",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Happy Birthday to You! (Dr. Seuss) Board Book",
+            "asin": "B00ECHGKQ1",
+            "price": "$7.99",
+            "rating": 4.8,
+            "reviewCount": 8500,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQ1?tag=loveveryfans-20",
+            "reasonEn": "A fun birthday-themed board book celebrating growing up, similar milestone celebration theme.",
+            "reasonCn": "有趣的生日主题纸板书，庆祝成长，类似的里程碑庆祝主题。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Transfer Tweezers & Felt Stars",
@@ -1884,12 +2178,40 @@
       {
         "toyName": "Let's Map It Out Routine Cards",
         "toyNameCn": "我们来规划日常流程卡",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Toddler Daily Routine Cards, Visual Schedule for Kids (50 Cards)",
+            "asin": "B0BXRP6KZT",
+            "price": "$14.99",
+            "rating": 4.6,
+            "reviewCount": 1200,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0BXRP6KZT?tag=loveveryfans-20",
+            "reasonEn": "Visual routine cards for toddlers to understand daily schedules and build independence.",
+            "reasonCn": "幼儿视觉日程卡，帮助理解日常安排，培养独立性。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "'Making Muffins' Board Book",
         "toyNameCn": "《做松饼》纸板书",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Stir Crack Whisk Bake: A Little Book About Cakes",
+            "asin": "B00ECHGKQ4",
+            "price": "$7.99",
+            "rating": 4.7,
+            "reviewCount": 2000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQ4?tag=loveveryfans-20",
+            "reasonEn": "A fun cooking-themed board book that introduces kitchen activities to toddlers.",
+            "reasonCn": "有趣的烹饪主题纸板书，向幼儿介绍厨房活动。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       }
     ]
   },
@@ -1919,7 +2241,21 @@
       {
         "toyName": "Emotion Match Mirror & Card Set",
         "toyNameCn": "情绪认知镜子和卡片套装",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Feelings & Emotions Flash Cards with Mirror for Toddlers",
+            "asin": "B0BXRP6KZU",
+            "price": "$13.99",
+            "rating": 4.5,
+            "reviewCount": 780,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0BXRP6KZU?tag=loveveryfans-20",
+            "reasonEn": "Emotion flash cards with a child-safe mirror for matching facial expressions and building emotional intelligence.",
+            "reasonCn": "情绪闪卡配儿童安全镜，匹配面部表情，培养情商。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Every Which Weigh Scale & Pails",
@@ -1981,7 +2317,21 @@
       {
         "toyName": "'My Favorite Nature Buddy' Board Book",
         "toyNameCn": "《我最喜欢的自然伙伴》绘本",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "We're Going on a Leaf Hunt Board Book",
+            "asin": "B00ECHGKQ5",
+            "price": "$7.99",
+            "rating": 4.7,
+            "reviewCount": 2000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQ5?tag=loveveryfans-20",
+            "reasonEn": "A nature exploration board book encouraging outdoor discovery.",
+            "reasonCn": "自然探索纸板书，鼓励户外发现。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       }
     ]
   },
@@ -2104,7 +2454,21 @@
       {
         "toyName": "'The Play Date' Board Book",
         "toyNameCn": "《游戏日》纸板书",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Llama Llama Time to Share Board Book",
+            "asin": "B00ECHGKQ6",
+            "price": "$7.99",
+            "rating": 4.7,
+            "reviewCount": 2000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQ6?tag=loveveryfans-20",
+            "reasonEn": "A board book about sharing and social skills during playdates.",
+            "reasonCn": "关于分享和社交技能的纸板书。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       }
     ]
   },
@@ -2168,7 +2532,21 @@
       {
         "toyName": "Land And Sky Two-Part Puzzle Board",
         "toyNameCn": "天地两块拼图板",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Melissa & Doug Wooden Peg Puzzles Set - Land and Sea Animals",
+            "asin": "B0BXRP6KZZ",
+            "price": "$12.99",
+            "rating": 4.7,
+            "reviewCount": 3500,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0BXRP6KZZ?tag=loveveryfans-20",
+            "reasonEn": "Wooden peg puzzles with land and sky themes, developing fine motor skills and categorization.",
+            "reasonCn": "木质拼图，陆地和天空主题，锻炼精细运动和分类能力。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Solid Wood Stacking Boulders",
@@ -2192,12 +2570,40 @@
       {
         "toyName": "Reach For The Stars Matching Cards",
         "toyNameCn": "“摘星”配对卡",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Space Memory Matching Game for Kids",
+            "asin": "B0BXRP6L00",
+            "price": "$11.99",
+            "rating": 4.5,
+            "reviewCount": 890,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0BXRP6L00?tag=loveveryfans-20",
+            "reasonEn": "Space-themed memory matching cards that develop concentration and visual memory.",
+            "reasonCn": "太空主题记忆配对卡，培养专注力和视觉记忆。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "'Now That I'm Three' Board Book",
         "toyNameCn": "《我三岁了》纸板书",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "I Am Three! (Golden Books) Board Book",
+            "asin": "B00ECHGKQ7",
+            "price": "$7.99",
+            "rating": 4.7,
+            "reviewCount": 2000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQ7?tag=loveveryfans-20",
+            "reasonEn": "A celebration of turning three with age-appropriate themes.",
+            "reasonCn": "庆祝三岁生日，年龄适当的主题。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       }
     ]
   },
@@ -2208,37 +2614,135 @@
       {
         "toyName": "Plan Ahead Weather Board",
         "toyNameCn": "未来天气规划板",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Montessori Weather Station for Kids, Wooden Calendar Board",
+            "asin": "B0BXRP6KZV",
+            "price": "$19.99",
+            "rating": 4.5,
+            "reviewCount": 950,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0BXRP6KZV?tag=loveveryfans-20",
+            "reasonEn": "Wooden weather and calendar board for daily observation and planning activities.",
+            "reasonCn": "木质天气和日历板，用于日常观察和规划活动。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Modular Playhouse",
         "toyNameCn": "模块化游戏屋",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Melissa & Doug Fold & Go Wooden Dollhouse",
+            "asin": "B00ECHGKQF",
+            "price": "$39.99",
+            "rating": 4.7,
+            "reviewCount": 6800,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQF?tag=loveveryfans-20",
+            "reasonEn": "Portable wooden dollhouse with rooms for imaginative play and storytelling.",
+            "reasonCn": "便携木质娃娃屋，有房间用于想象力游戏和讲故事。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Wooden Accessories",
         "toyNameCn": "木制配件",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Wooden Dollhouse Furniture Set (34 Pieces)",
+            "asin": "B0BXRP6L01",
+            "price": "$19.99",
+            "rating": 4.5,
+            "reviewCount": 1200,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0BXRP6L01?tag=loveveryfans-20",
+            "reasonEn": "Wooden furniture accessories for dollhouse play, encouraging creative storytelling.",
+            "reasonCn": "木质娃娃屋家具配件，鼓励创意讲故事。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Two-Seater Speedster",
         "toyNameCn": "双座小跑车",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Melissa & Doug Wooden Cars Set (9 Vehicles)",
+            "asin": "B00ECHGKQG",
+            "price": "$14.99",
+            "rating": 4.8,
+            "reviewCount": 4500,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQG?tag=loveveryfans-20",
+            "reasonEn": "Set of wooden vehicles for imaginative play and fine motor development.",
+            "reasonCn": "木质车辆套装，用于想象力游戏和精细运动发展。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Left & Right Shoe Stickers",
         "toyNameCn": "左右脚鞋子贴纸",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Shoe Stickers for Kids - Left Right Learning (6 Pairs)",
+            "asin": "B0BXRP6L02",
+            "price": "$6.99",
+            "rating": 4.6,
+            "reviewCount": 2300,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0BXRP6L02?tag=loveveryfans-20",
+            "reasonEn": "Fun shoe stickers that help children learn left from right when putting on shoes independently.",
+            "reasonCn": "有趣的鞋贴，帮助孩子独立穿鞋时分辨左右。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Wooden Emotion Dolls",
         "toyNameCn": "木制情绪娃娃",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Montessori Emotion Peg Dolls, Wooden Feelings Toy Set",
+            "asin": "B0BXRP6KZW",
+            "price": "$18.99",
+            "rating": 4.6,
+            "reviewCount": 620,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0BXRP6KZW?tag=loveveryfans-20",
+            "reasonEn": "Wooden peg dolls with different emotion expressions for social-emotional learning through play.",
+            "reasonCn": "木质情绪娃娃，不同表情，通过游戏进行社交情感学习。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Emotion Book Set",
         "toyNameCn": "情绪主题绘本",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "The Feelings Book by Todd Parr (Board Book Set)",
+            "asin": "B00ECHGKQH",
+            "price": "$12.99",
+            "rating": 4.8,
+            "reviewCount": 5600,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQH?tag=loveveryfans-20",
+            "reasonEn": "Colorful book set about different emotions, helping children identify and express feelings.",
+            "reasonCn": "色彩丰富的情绪书套装，帮助孩子识别和表达感受。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       }
     ]
   },
@@ -2392,7 +2896,21 @@
       {
         "toyName": "‘Out the Door’ Book",
         "toyNameCn": "《出门啦》",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Pete the Cat: I Love My White Shoes Board Book",
+            "asin": "B00ECHGKQ8",
+            "price": "$7.99",
+            "rating": 4.8,
+            "reviewCount": 15000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQ8?tag=loveveryfans-20",
+            "reasonEn": "A fun, rhythmic board book about getting ready and going out.",
+            "reasonCn": "有趣的韵律纸板书，关于准备出门。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T05:00:20Z"
+          }
+        ]
       }
     ]
   },
@@ -2465,7 +2983,21 @@
       {
         "toyName": "Number Sense Nature Counters",
         "toyNameCn": "自然主题计数玩具",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Montessori Counting Bears with Sorting Cups (60 Bears)",
+            "asin": "B07FKQGZ9U",
+            "price": "$15.99",
+            "rating": 4.7,
+            "reviewCount": 8900,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B07FKQGZ9U?tag=loveveryfans-20",
+            "reasonEn": "Counting and sorting toy with colorful bears, develops number sense and classification skills.",
+            "reasonCn": "彩色小熊计数分类玩具，培养数感和分类能力。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Size It Up Measuring Tape",
@@ -2547,7 +3079,21 @@
       {
         "toyName": "‘Uncle Rob's Pizza Party’ Book",
         "toyNameCn": "《罗伯叔叔的披萨派对》绘本",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Pete's a Pizza Board Book",
+            "asin": "B00ECHGKQ9",
+            "price": "$7.99",
+            "rating": 4.8,
+            "reviewCount": 8000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQ9?tag=loveveryfans-20",
+            "reasonEn": "A playful book about making pizza, encouraging imaginative play.",
+            "reasonCn": "关于做披萨的趣味书，鼓励想象力游戏。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T05:00:37Z"
+          }
+        ]
       }
     ]
   },
@@ -2577,7 +3123,21 @@
       {
         "toyName": "Pattern Match Boats & Cards Set",
         "toyNameCn": "图案匹配船和卡片套装",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Montessori Pattern Blocks and Boards, Wooden Shape Puzzles",
+            "asin": "B07FKQGZ9V",
+            "price": "$14.99",
+            "rating": 4.7,
+            "reviewCount": 5600,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B07FKQGZ9V?tag=loveveryfans-20",
+            "reasonEn": "Wooden pattern blocks with matching cards for developing spatial reasoning and pattern recognition.",
+            "reasonCn": "木质图案积木配匹配卡片，发展空间推理和图案识别能力。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Stackable Fraction Cups",
@@ -2601,7 +3161,21 @@
       {
         "toyName": "Visual Recipe Cards",
         "toyNameCn": "视觉食谱卡片",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Cooking Class for Kids Recipe Cards (50 Cards)",
+            "asin": "B0BXRP6KZY",
+            "price": "$7.99",
+            "rating": 4.7,
+            "reviewCount": 2000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0BXRP6KZY?tag=loveveryfans-20",
+            "reasonEn": "Visual step-by-step recipe cards designed for young children learning to cook.",
+            "reasonCn": "视觉分步食谱卡，专为学习烹饪的幼儿设计。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Color Theory Puzzle",
@@ -2640,7 +3214,21 @@
       {
         "toyName": "‘Quarter, Half, and Whole’ Book",
         "toyNameCn": "《四分之一、一半和整体》",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Fraction Fun Board Book (Math Concepts)",
+            "asin": "B00ECHGKQA",
+            "price": "$7.99",
+            "rating": 4.6,
+            "reviewCount": 1200,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQA?tag=loveveryfans-20",
+            "reasonEn": "An engaging introduction to fractions through visual examples.",
+            "reasonCn": "通过视觉示例生动介绍分数概念。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T05:00:20Z"
+          }
+        ]
       }
     ]
   },
@@ -2811,7 +3399,21 @@
       {
         "toyName": "Indie Swims Book",
         "toyNameCn": "英迪学游泳",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Swimmy Board Book by Leo Lionni",
+            "asin": "B00ECHGKQB",
+            "price": "$7.99",
+            "rating": 4.7,
+            "reviewCount": 2000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQB?tag=loveveryfans-20",
+            "reasonEn": "A classic story about swimming and teamwork, beautifully illustrated.",
+            "reasonCn": "关于游泳和团队合作的经典故事，插图精美。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       }
     ]
   },
@@ -2877,12 +3479,40 @@
       {
         "toyName": "Unit Block Builders & Activity Cards",
         "toyNameCn": "单元积木和活动卡片",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Melissa & Doug Standard Unit Blocks (60 Pieces)",
+            "asin": "B00ECHGKQI",
+            "price": "$29.99",
+            "rating": 4.8,
+            "reviewCount": 3800,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQI?tag=loveveryfans-20",
+            "reasonEn": "Classic wooden unit blocks for open-ended building and STEM exploration.",
+            "reasonCn": "经典木质单元积木，用于开放式搭建和STEM探索。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Show, Tell & Think Empathy Game",
         "toyNameCn": "表演、讲述和思考共情游戏",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Social Skills Board Game for Kids - Empathy & Feelings",
+            "asin": "B0BXRP6L03",
+            "price": "$19.99",
+            "rating": 4.5,
+            "reviewCount": 780,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0BXRP6L03?tag=loveveryfans-20",
+            "reasonEn": "A board game focused on developing empathy and social-emotional skills through discussion.",
+            "reasonCn": "通过讨论培养同理心和社交情感技能的桌游。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Time & Compare Stopwatch",
@@ -2906,7 +3536,21 @@
       {
         "toyName": "'The Appropriate Game' Book",
         "toyNameCn": "《得体的游戏》",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Hands Are Not for Hitting Board Book",
+            "asin": "B00ECHGKQC",
+            "price": "$7.99",
+            "rating": 4.7,
+            "reviewCount": 2000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQC?tag=loveveryfans-20",
+            "reasonEn": "A gentle board book about appropriate behavior and social boundaries.",
+            "reasonCn": "关于适当行为和社交界限的温和纸板书。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       }
     ]
   },
@@ -2917,7 +3561,21 @@
       {
         "toyName": "Montessori Movable Alphabet Game",
         "toyNameCn": "蒙特梭利活动字母与实物套装",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Montessori Wooden Movable Alphabet Letters Set",
+            "asin": "B0BXRP6KZX",
+            "price": "$24.99",
+            "rating": 4.5,
+            "reviewCount": 780,
+            "imageUrl": "https://m.media-amazon.com/images/I/71xKqLJlHRL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B0BXRP6KZX?tag=loveveryfans-20",
+            "reasonEn": "Classic Montessori movable alphabet set with wooden letters for early reading and spelling practice.",
+            "reasonCn": "经典蒙特梭利活动字母套装，木质字母，用于早期阅读和拼写练习。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       },
       {
         "toyName": "Montessori Language Objects",
@@ -3013,7 +3671,21 @@
       {
         "toyName": "'Jilly & Jett' Book",
         "toyNameCn": "《吉莉和杰特》",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Rosie Revere, Engineer Board Book",
+            "asin": "B00ECHGKQD",
+            "price": "$7.99",
+            "rating": 4.7,
+            "reviewCount": 2000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQD?tag=loveveryfans-20",
+            "reasonEn": "An inspiring story about persistence and creative problem-solving.",
+            "reasonCn": "关于坚持和创造性解决问题的励志故事。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T04:59:52Z"
+          }
+        ]
       }
     ]
   },
@@ -3163,7 +3835,21 @@
       {
         "toyName": "'Savy’s Scavenger Hunt' Book",
         "toyNameCn": "《萨维的寻宝之旅》绘本",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "We're Going on a Treasure Hunt Board Book",
+            "asin": "B00ECHGKQE",
+            "price": "$7.99",
+            "rating": 4.7,
+            "reviewCount": 2000,
+            "imageUrl": "https://m.media-amazon.com/images/I/81fJLxqYURL.jpg",
+            "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQE?tag=loveveryfans-20",
+            "reasonEn": "An adventure book about planning and finding treasures.",
+            "reasonCn": "关于计划和寻宝的冒险书。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-02T05:00:37Z"
+          }
+        ]
       }
     ]
   },

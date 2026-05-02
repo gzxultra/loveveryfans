@@ -32,7 +32,7 @@ async function subscribeEmail(email: string, language: string): Promise<void> {
     }
   } else {
     await new Promise((resolve) => setTimeout(resolve, 600));
-    console.log(`[Mock] FloatingBar subscribed: ${email} (lang: ${language})`);
+    // TODO: integrate real email subscription API;
   }
 }
 

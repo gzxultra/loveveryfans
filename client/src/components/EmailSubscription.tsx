@@ -46,7 +46,7 @@ async function subscribeEmail(email: string, language: string): Promise<void> {
     // Mock API — simulate network delay
     await new Promise((resolve) => setTimeout(resolve, 800));
     // Simulate success (in dev mode)
-    console.log(`[Mock] Subscribed: ${email} (lang: ${language})`);
+    // TODO: integrate real email subscription API;
   }
 }
 

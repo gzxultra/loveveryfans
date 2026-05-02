@@ -11,6 +11,11 @@
 #
 # The Cloudflare Pages project name is "loveveryfans".
 # If you use a different name, update the `projectName` field below.
+#
+# NOTE: We deliberately avoid cloudflare/wrangler-action@v3 because it
+# internally runs `npm install wrangler` which causes ERESOLVE conflicts
+# with the project's pnpm + vite@7 dependency tree. Instead we install
+# wrangler manually via pnpm and call it directly.
 name: Deploy to Cloudflare Pages
 on:
   push:
@@ -46,15 +51,12 @@ jobs:
       - name: Build static site
         run: pnpm run build:static
       # ── 4. Deploy to Cloudflare Pages ─────────────────────────────
-      # wrangler-action@v3 internally runs `npm i wrangler` which can
-      # conflict with pnpm workspaces.  Pre-installing wrangler via pnpm
-      # and setting wranglerVersion to the installed version avoids this.
+      # Install wrangler as a standalone global tool via pnpm to avoid
+      # any dependency tree conflicts with the project.
       - name: Install wrangler
         run: pnpm add -g wrangler@latest
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=loveveryfans --commit-dirty=true
-          wranglerVersion: ""
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: wrangler pages deploy dist --project-name=loveveryfans --commit-dirty=true

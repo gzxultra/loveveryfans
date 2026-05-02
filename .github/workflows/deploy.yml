@@ -22,18 +22,22 @@ concurrency:
 permissions:
   contents: write
 
+# Ensure all JavaScript-based actions run on Node.js 24
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "22"
           cache: "pnpm"
@@ -47,6 +51,8 @@ jobs:
       # peaceiris/actions-gh-pages handles:
       #   - force-pushing the built output to the gh-pages branch
       #   - writing a CNAME file so the custom domain is preserved
+      # NOTE: v4 still uses Node 20; FORCE_JAVASCRIPT_ACTIONS_TO_NODE24
+      # env var above ensures it runs on Node 24 until a v5 is released.
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:

@@ -31,6 +31,10 @@ concurrency:
 permissions:
   contents: write
 
+# Ensure all JavaScript-based actions run on Node.js 24
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   scrape-build-deploy:
     runs-on: ubuntu-latest
@@ -41,11 +45,11 @@ jobs:
     steps:
       # ── 1. Checkout ───────────────────────────────────────────────
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # ── 2. Python + scraper ───────────────────────────────────────
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -76,10 +80,10 @@ jobs:
 
       # ── 4. Node.js + build ────────────────────────────────────────
       - name: Set up pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "22"
           cache: "pnpm"
@@ -91,6 +95,8 @@ jobs:
         run: pnpm build:static
 
       # ── 5. Deploy ─────────────────────────────────────────────────
+      # NOTE: peaceiris/actions-gh-pages@v4 still uses Node 20 internally;
+      # FORCE_JAVASCRIPT_ACTIONS_TO_NODE24 env var ensures it runs on Node 24.
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:

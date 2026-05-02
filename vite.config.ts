@@ -38,14 +38,6 @@ export default defineConfig({
           if (id.includes('node_modules/react-dom') || id.includes('node_modules/react/') || id.includes('node_modules/scheduler')) {
             return 'vendor-react';
           }
-          // Radix UI components
-          if (id.includes('@radix-ui')) {
-            return 'vendor-radix';
-          }
-          // Sonner + next-themes
-          if (id.includes('sonner') || id.includes('next-themes')) {
-            return 'vendor-sonner';
-          }
           // Wouter router
           if (id.includes('wouter')) {
             return 'vendor-router';
@@ -77,10 +69,6 @@ export default defineConfig({
           // Sentry
           if (id.includes('@sentry')) {
             return 'vendor-sentry';
-          }
-          // Recharts (unused but imported by UI component)
-          if (id.includes('recharts') || id.includes('d3-')) {
-            return 'vendor-charts';
           }
         },
       },

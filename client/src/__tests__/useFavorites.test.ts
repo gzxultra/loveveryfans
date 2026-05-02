@@ -5,6 +5,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useFavorites } from "@/hooks/useFavorites";
+import { getKitLikePreset } from "@/data/kitLikePresets";
 
 describe("useFavorites", () => {
   beforeEach(() => {
@@ -17,10 +18,10 @@ describe("useFavorites", () => {
     expect(result.current.favoritesCount).toBe(0);
   });
 
-  it("starts with zero like counts (no fake seed data)", () => {
+  it("starts with preset like counts (community seed data)", () => {
     const { result } = renderHook(() => useFavorites());
-    expect(result.current.getLikeCount("looker")).toBe(0);
-    expect(result.current.getLikeCount("charmer")).toBe(0);
+    expect(result.current.getLikeCount("looker")).toBe(getKitLikePreset("looker"));
+    expect(result.current.getLikeCount("charmer")).toBe(getKitLikePreset("charmer"));
     expect(result.current.getLikeCount("nonexistent")).toBe(0);
   });
 
@@ -58,16 +59,18 @@ describe("useFavorites", () => {
 
   it("like count increments when toggling on", () => {
     const { result } = renderHook(() => useFavorites());
+    const preset = getKitLikePreset("looker");
 
     act(() => {
       result.current.toggleFavorite("looker");
     });
 
-    expect(result.current.getLikeCount("looker")).toBe(1);
+    expect(result.current.getLikeCount("looker")).toBe(preset + 1);
   });
 
   it("like count decrements when toggling off", () => {
     const { result } = renderHook(() => useFavorites());
+    const preset = getKitLikePreset("looker");
 
     act(() => {
       result.current.toggleFavorite("looker");
@@ -76,22 +79,22 @@ describe("useFavorites", () => {
       result.current.toggleFavorite("looker");
     });
 
-    expect(result.current.getLikeCount("looker")).toBe(0);
+    expect(result.current.getLikeCount("looker")).toBe(preset);
   });
 
-  it("like count never goes below 0", () => {
+  it("like count user delta never goes below 0", () => {
     const { result } = renderHook(() => useFavorites());
+    const preset = getKitLikePreset("looker");
 
-    // Toggle off without ever toggling on (edge case)
+    // Toggle on then off
     act(() => {
       result.current.toggleFavorite("looker");
     });
     act(() => {
       result.current.toggleFavorite("looker");
     });
-    // Count is 0 now; toggling off again should not go negative
-    // (would require manually setting state, so just verify it's 0)
-    expect(result.current.getLikeCount("looker")).toBe(0);
+    // Count returns to preset (user delta = 0)
+    expect(result.current.getLikeCount("looker")).toBe(preset);
   });
 
   it("persists favorites to localStorage", () => {
@@ -165,8 +168,9 @@ describe("useFavorites", () => {
 
     const { result } = renderHook(() => useFavorites());
 
-    // Should not pick up old data
+    // Should not pick up old data as favorites
     expect(result.current.isFavorite("looker")).toBe(false);
-    expect(result.current.getLikeCount("looker")).toBe(0);
+    // Like count should only be the preset (not 999 from old key)
+    expect(result.current.getLikeCount("looker")).toBe(getKitLikePreset("looker"));
   });
 });

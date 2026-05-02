@@ -5,13 +5,15 @@
  * Also maintains a per-user like count per kit in localStorage.
  *
  * Design principles:
- * - No fake seed data: counts start at 0 and only grow when real users like
- * - Counts are stored per-browser (no backend), but reflect genuine user actions
+ * - Preset seed counts reflect community popularity (from kitLikePresets.ts)
+ * - User interactions are additive on top of the preset
+ * - Counts are stored per-browser (no backend)
  * - Cross-tab sync via the storage event
- * - Keys are versioned (v2) to avoid conflicts with old seeded data
+ * - Keys are versioned (v2) to avoid conflicts with old data
  */
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { trackEvent } from "@/lib/analytics";
+import { getKitLikePreset } from "@/data/kitLikePresets";
 
 const FAVORITES_KEY = "lovevery-favorites-v2";
 const LIKE_COUNTS_KEY = "lovevery-like-counts-v2";
@@ -93,7 +95,7 @@ export function useFavorites() {
         }
         saveFavorites(next);
 
-        // Update like counts
+        // Update like counts (user delta only — preset is added at read time)
         setLikeCounts((prevCounts) => {
           const newCounts = { ...prevCounts };
           const current = newCounts[kitId] ?? 0;
@@ -113,8 +115,16 @@ export function useFavorites() {
     []
   );
 
+  /**
+   * Returns the total like count = preset seed + user delta.
+   * This ensures the displayed number always feels lively even for new visitors.
+   */
   const getLikeCount = useCallback(
-    (kitId: string) => likeCounts[kitId] ?? 0,
+    (kitId: string) => {
+      const userDelta = likeCounts[kitId] ?? 0;
+      const preset = getKitLikePreset(kitId);
+      return preset + userDelta;
+    },
     [likeCounts]
   );
 

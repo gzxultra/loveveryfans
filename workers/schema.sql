@@ -34,3 +34,19 @@ CREATE TABLE IF NOT EXISTS page_snapshots (
 );
 
 CREATE INDEX IF NOT EXISTS idx_page_snapshots_url ON page_snapshots(url);
+
+-- Submissions table (user article submissions)
+CREATE TABLE IF NOT EXISTS submissions (
+  id            INTEGER PRIMARY KEY AUTOINCREMENT,
+  kit_id        TEXT    NOT NULL,
+  url           TEXT    NOT NULL,
+  title         TEXT    DEFAULT NULL,
+  description   TEXT    DEFAULT NULL,
+  author_name   TEXT    DEFAULT NULL,
+  status        TEXT    NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
+  submitted_at  TEXT    NOT NULL DEFAULT (datetime('now')),
+  reviewed_at   TEXT    DEFAULT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_submissions_kit_id ON submissions(kit_id);
+CREATE INDEX IF NOT EXISTS idx_submissions_status ON submissions(status);
+CREATE INDEX IF NOT EXISTS idx_submissions_kit_status ON submissions(kit_id, status);

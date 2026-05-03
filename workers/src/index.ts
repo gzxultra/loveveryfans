@@ -52,7 +52,7 @@ export const PROMO_CONFIDENCE_THRESHOLD = 2;
 
 const CORS_HEADERS: Record<string, string> = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
@@ -123,6 +123,20 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
 
   if (url.pathname === "/admin/subscribers/count" && request.method === "GET") {
     return handleAdminSubscribersCount(request, env);
+  }
+
+  // Submission endpoints
+  if (url.pathname === "/api/submissions" && request.method === "POST") {
+    return handleCreateSubmission(request, env);
+  }
+  if (url.pathname === "/api/submissions" && request.method === "GET") {
+    return handleGetApprovedSubmissions(request, env);
+  }
+  if (url.pathname === "/admin/submissions" && request.method === "GET") {
+    return handleAdminGetSubmissions(request, env);
+  }
+  if (url.pathname.startsWith("/admin/submissions/") && request.method === "PUT") {
+    return handleAdminUpdateSubmission(request, env);
   }
 
   return corsResponse(JSON.stringify({ error: "Not found" }), 404);
@@ -1174,6 +1188,152 @@ function buildEmailHtml(params: EmailTemplateParams): string {
 }
 
 // ---------------------------------------------------------------------------
+// POST /api/submissions — Create a new article submission (public)
+// ---------------------------------------------------------------------------
+async function handleCreateSubmission(request: Request, env: Env): Promise<Response> {
+  let body: { kit_id?: string; url?: string; title?: string; description?: string; author_name?: string };
+  try {
+    body = await request.json();
+  } catch {
+    return corsResponse(JSON.stringify({ error: "Invalid JSON body" }), 400);
+  }
+
+  const kit_id = (body.kit_id || "").trim();
+  const url = (body.url || "").trim();
+  const title = (body.title || "").trim() || null;
+  const description = (body.description || "").trim() || null;
+  const author_name = (body.author_name || "").trim() || null;
+
+  if (!kit_id) {
+    return corsResponse(JSON.stringify({ error: "kit_id is required" }), 400);
+  }
+  if (!url) {
+    return corsResponse(JSON.stringify({ error: "url is required" }), 400);
+  }
+  // Basic URL validation
+  try {
+    new URL(url);
+  } catch {
+    return corsResponse(JSON.stringify({ error: "Invalid URL format" }), 400);
+  }
+
+  try {
+    const result = await env.DB.prepare(
+      "INSERT INTO submissions (kit_id, url, title, description, author_name) VALUES (?, ?, ?, ?, ?)"
+    ).bind(kit_id, url, title, description, author_name).run();
+
+    return corsResponse(JSON.stringify({ success: true, id: result.meta.last_row_id }), 201);
+  } catch (err: any) {
+    return corsResponse(JSON.stringify({ error: "Database error", detail: err.message }), 500);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// GET /api/submissions?kit_id=xxx&status=approved — Get approved submissions (public)
+// ---------------------------------------------------------------------------
+async function handleGetApprovedSubmissions(request: Request, env: Env): Promise<Response> {
+  const url = new URL(request.url);
+  const kit_id = url.searchParams.get("kit_id");
+  const status = url.searchParams.get("status") || "approved";
+
+  if (!kit_id) {
+    return corsResponse(JSON.stringify({ error: "kit_id query parameter is required" }), 400);
+  }
+
+  try {
+    const { results } = await env.DB.prepare(
+      "SELECT id, kit_id, url, title, description, author_name, submitted_at FROM submissions WHERE kit_id = ? AND status = ? ORDER BY submitted_at DESC"
+    ).bind(kit_id, status).all();
+
+    return corsResponse(JSON.stringify({ submissions: results }), 200);
+  } catch (err: any) {
+    return corsResponse(JSON.stringify({ error: "Database error", detail: err.message }), 500);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// GET /admin/submissions — Get all submissions (admin, requires auth)
+// ---------------------------------------------------------------------------
+async function handleAdminGetSubmissions(request: Request, env: Env): Promise<Response> {
+  if (!authenticateAdmin(request, env)) {
+    return corsResponse(JSON.stringify({ error: "Unauthorized" }), 401);
+  }
+
+  const url = new URL(request.url);
+  const status = url.searchParams.get("status");
+  const kit_id = url.searchParams.get("kit_id");
+
+  let query = "SELECT * FROM submissions";
+  const conditions: string[] = [];
+  const bindings: string[] = [];
+
+  if (status) {
+    conditions.push("status = ?");
+    bindings.push(status);
+  }
+  if (kit_id) {
+    conditions.push("kit_id = ?");
+    bindings.push(kit_id);
+  }
+
+  if (conditions.length > 0) {
+    query += " WHERE " + conditions.join(" AND ");
+  }
+  query += " ORDER BY submitted_at DESC";
+
+  try {
+    const stmt = env.DB.prepare(query);
+    const { results } = bindings.length > 0 ? await stmt.bind(...bindings).all() : await stmt.all();
+    return corsResponse(JSON.stringify({ submissions: results }), 200);
+  } catch (err: any) {
+    return corsResponse(JSON.stringify({ error: "Database error", detail: err.message }), 500);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// PUT /admin/submissions/:id — Update submission status (admin, requires auth)
+// ---------------------------------------------------------------------------
+async function handleAdminUpdateSubmission(request: Request, env: Env): Promise<Response> {
+  if (!authenticateAdmin(request, env)) {
+    return corsResponse(JSON.stringify({ error: "Unauthorized" }), 401);
+  }
+
+  const reqUrl = new URL(request.url);
+  const pathParts = reqUrl.pathname.split("/");
+  const id = pathParts[pathParts.length - 1];
+
+  if (!id || isNaN(Number(id))) {
+    return corsResponse(JSON.stringify({ error: "Invalid submission ID" }), 400);
+  }
+
+  let body: { status?: string };
+  try {
+    body = await request.json();
+  } catch {
+    return corsResponse(JSON.stringify({ error: "Invalid JSON body" }), 400);
+  }
+
+  const status = (body.status || "").trim();
+  if (!["approved", "rejected", "pending"].includes(status)) {
+    return corsResponse(JSON.stringify({ error: "Invalid status. Must be: approved, rejected, or pending" }), 400);
+  }
+
+  try {
+    const result = await env.DB.prepare(
+      "UPDATE submissions SET status = ?, reviewed_at = datetime('now') WHERE id = ?"
+    ).bind(status, Number(id)).run();
+
+    if (result.meta.changes === 0) {
+      return corsResponse(JSON.stringify({ error: "Submission not found" }), 404);
+    }
+
+    return corsResponse(JSON.stringify({ success: true, id: Number(id), status }), 200);
+  } catch (err: any) {
+    return corsResponse(JSON.stringify({ error: "Database error", detail: err.message }), 500);
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Worker entry point
 // ---------------------------------------------------------------------------
 
@@ -1201,5 +1361,9 @@ export {
   AMAZON_AFFILIATE_TAG,
   getLoveveryReferralUrl,
   getAmazonAlternativesUrl,
+  handleCreateSubmission,
+  handleGetApprovedSubmissions,
+  handleAdminGetSubmissions,
+  handleAdminUpdateSubmission,
 };
 export type { EmailTemplateParams, WelcomeEmailParams };

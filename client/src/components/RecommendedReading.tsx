@@ -4,6 +4,8 @@
  * Matches the Montessori Naturalism / Scandinavian Minimalism design language.
  */
 
+import { ArticleSubmissionForm } from "@/components/ArticleSubmissionForm";
+import { CommunitySubmissions } from "@/components/CommunitySubmissions";
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -312,6 +314,10 @@ export function RecommendedReading({
             </AnimatePresence>
           </>
         )}
+        {/* User article submission form */}
+        {/* Community approved submissions */}
+        <CommunitySubmissions kitId={kitId} kitColor={kitColor} />
+        <ArticleSubmissionForm kitId={kitId} kitColor={kitColor} />
       </div>
     </section>
   );

@@ -20,6 +20,8 @@ import {
   fnv1a32,
   hashPageContent,
   buildEmailHtml,
+  buildWelcomeEmailHtml,
+  authenticateAdmin,
   EMAIL_RE,
   REFERRAL_CODE,
   AMAZON_AFFILIATE_TAG,
@@ -28,7 +30,7 @@ import {
   getLoveveryReferralUrl,
   getAmazonAlternativesUrl,
 } from "./index";
-import type { EmailTemplateParams } from "./index";
+import type { EmailTemplateParams, WelcomeEmailParams } from "./index";
 
 // ---------------------------------------------------------------------------
 // EMAIL_RE — email validation regex
@@ -666,6 +668,144 @@ describe("getAmazonAlternativesUrl", () => {
   it("searches for montessori toys", () => {
     const url = getAmazonAlternativesUrl();
     expect(url).toContain("k=montessori+toys");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// buildEmailHtml
+// ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// buildWelcomeEmailHtml
+// ---------------------------------------------------------------------------
+
+describe("buildWelcomeEmailHtml", () => {
+  const baseParams: WelcomeEmailParams = {
+    siteUrl: "https://loveveryfans.com",
+    unsubscribeUrl: "https://loveveryfans.com/unsubscribe?email=test@example.com",
+  };
+
+  it("returns a string containing DOCTYPE", () => {
+    const html = buildWelcomeEmailHtml(baseParams);
+    expect(html).toContain("<!DOCTYPE html>");
+  });
+
+  it("includes Welcome title in both English and Chinese", () => {
+    const html = buildWelcomeEmailHtml(baseParams);
+    expect(html).toContain("Welcome!");
+    expect(html).toContain("欢迎加入");
+  });
+
+  it("includes English subscription confirmation text", () => {
+    const html = buildWelcomeEmailHtml(baseParams);
+    expect(html).toContain("successfully subscribed to Loveveryfans promotion alerts");
+  });
+
+  it("includes Chinese subscription confirmation text", () => {
+    const html = buildWelcomeEmailHtml(baseParams);
+    expect(html).toContain("你已成功订阅 Loveveryfans 促销通知");
+  });
+
+  it("mentions notifying about sales/discounts in English", () => {
+    const html = buildWelcomeEmailHtml(baseParams);
+    expect(html).toContain("notify you as soon as Lovevery has any sales");
+  });
+
+  it("mentions notifying about sales/discounts in Chinese", () => {
+    const html = buildWelcomeEmailHtml(baseParams);
+    expect(html).toContain("第一时间通知你");
+  });
+
+  it("uses the Loveveryfans brand color (#5a9e65)", () => {
+    const html = buildWelcomeEmailHtml(baseParams);
+    expect(html).toContain("#5a9e65");
+  });
+
+  it("uses the site background color (#FAF7F2)", () => {
+    const html = buildWelcomeEmailHtml(baseParams);
+    expect(html).toContain("#FAF7F2");
+  });
+
+  it("uses the dark brown color (#3D3229)", () => {
+    const html = buildWelcomeEmailHtml(baseParams);
+    expect(html).toContain("#3D3229");
+  });
+
+  it("includes the site URL in CTA link", () => {
+    const html = buildWelcomeEmailHtml(baseParams);
+    expect(html).toContain('href="https://loveveryfans.com"');
+  });
+
+  it("includes the unsubscribe link", () => {
+    const html = buildWelcomeEmailHtml(baseParams);
+    expect(html).toContain("unsubscribe?email=test@example.com");
+  });
+
+  it("includes Loveveryfans branding in header", () => {
+    const html = buildWelcomeEmailHtml(baseParams);
+    expect(html).toContain("Loveveryfans");
+  });
+
+  it("includes bilingual unsubscribe text", () => {
+    const html = buildWelcomeEmailHtml(baseParams);
+    expect(html).toContain("Unsubscribe");
+    expect(html).toContain("退订");
+  });
+
+  it("includes what-to-expect section with bilingual content", () => {
+    const html = buildWelcomeEmailHtml(baseParams);
+    expect(html).toContain("What to expect");
+    expect(html).toContain("你会收到什么");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// authenticateAdmin
+// ---------------------------------------------------------------------------
+
+describe("authenticateAdmin", () => {
+  const mockEnv = {
+    ADMIN_API_KEY: "test-secret-key-123",
+  } as any;
+
+  it("returns true when query parameter key matches", () => {
+    const request = new Request("https://example.com/admin/subscribers?key=test-secret-key-123");
+    expect(authenticateAdmin(request, mockEnv)).toBe(true);
+  });
+
+  it("returns true when Authorization Bearer header matches", () => {
+    const request = new Request("https://example.com/admin/subscribers", {
+      headers: { Authorization: "Bearer test-secret-key-123" },
+    });
+    expect(authenticateAdmin(request, mockEnv)).toBe(true);
+  });
+
+  it("returns false when query parameter key does not match", () => {
+    const request = new Request("https://example.com/admin/subscribers?key=wrong-key");
+    expect(authenticateAdmin(request, mockEnv)).toBe(false);
+  });
+
+  it("returns false when Authorization header has wrong token", () => {
+    const request = new Request("https://example.com/admin/subscribers", {
+      headers: { Authorization: "Bearer wrong-key" },
+    });
+    expect(authenticateAdmin(request, mockEnv)).toBe(false);
+  });
+
+  it("returns false when no auth is provided", () => {
+    const request = new Request("https://example.com/admin/subscribers");
+    expect(authenticateAdmin(request, mockEnv)).toBe(false);
+  });
+
+  it("returns false when ADMIN_API_KEY is empty", () => {
+    const request = new Request("https://example.com/admin/subscribers?key=");
+    const envNoKey = { ADMIN_API_KEY: "" } as any;
+    expect(authenticateAdmin(request, envNoKey)).toBe(false);
+  });
+
+  it("is case-sensitive for the key comparison", () => {
+    const request = new Request("https://example.com/admin/subscribers?key=Test-Secret-Key-123");
+    expect(authenticateAdmin(request, mockEnv)).toBe(false);
   });
 });
 

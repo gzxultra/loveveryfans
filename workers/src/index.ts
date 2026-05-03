@@ -29,6 +29,7 @@ export interface Env {
   EMAIL_WHITELIST: string;
   FROM_EMAIL: string;
   SITE_URL: string;
+  ADMIN_API_KEY: string;
 }
 
 // ---------------------------------------------------------------------------
@@ -51,8 +52,8 @@ export const PROMO_CONFIDENCE_THRESHOLD = 2;
 
 const CORS_HEADERS: Record<string, string> = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
 function corsResponse(body: string | null, status: number, extra?: Record<string, string>): Response {
@@ -115,6 +116,15 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     return handleUnsubscribe(request, env);
   }
 
+  // Admin endpoints
+  if (url.pathname === "/admin/subscribers" && request.method === "GET") {
+    return handleAdminSubscribers(request, env);
+  }
+
+  if (url.pathname === "/admin/subscribers/count" && request.method === "GET") {
+    return handleAdminSubscribersCount(request, env);
+  }
+
   return corsResponse(JSON.stringify({ error: "Not found" }), 404);
 }
 
@@ -150,6 +160,13 @@ async function handleSubscribe(request: Request, env: Env): Promise<Response> {
       .bind(email, language)
       .run();
 
+    // Send welcome/confirmation email (fire-and-forget, don't block response)
+    try {
+      await sendWelcomeEmail(env, email, language);
+    } catch (err) {
+      console.error("Welcome email error:", err);
+    }
+
     return corsResponse(JSON.stringify({ ok: true, email }), 200);
   } catch (err) {
     console.error("Subscribe error:", err);
@@ -184,6 +201,248 @@ async function handleUnsubscribe(request: Request, env: Env): Promise<Response> 
     return corsResponse(JSON.stringify({ ok: true }), 200);
   } catch (err) {
     console.error("Unsubscribe error:", err);
+    return corsResponse(JSON.stringify({ error: "Internal server error" }), 500);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Welcome/Confirmation email
+// ---------------------------------------------------------------------------
+
+async function sendWelcomeEmail(env: Env, to: string, language: string): Promise<void> {
+  const siteUrl = env.SITE_URL || "https://loveveryfans.com";
+  const unsubscribeUrl = `${siteUrl}/unsubscribe?email=${encodeURIComponent(to)}`;
+
+  const subject = "Welcome to Loveveryfans! 🎉 欢迎订阅 Loveveryfans 促销通知";
+
+  const html = buildWelcomeEmailHtml({ siteUrl, unsubscribeUrl });
+
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: env.FROM_EMAIL || "Loveveryfans <onboarding@resend.dev>",
+      to: [to],
+      subject,
+      html,
+    }),
+  });
+
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`Resend API error ${res.status}: ${errText}`);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Welcome email HTML template
+// ---------------------------------------------------------------------------
+
+interface WelcomeEmailParams {
+  siteUrl: string;
+  unsubscribeUrl: string;
+}
+
+function buildWelcomeEmailHtml(params: WelcomeEmailParams): string {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Welcome to Loveveryfans</title>
+  <style>
+    body { margin: 0; padding: 0; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    img { border: 0; line-height: 100%; outline: none; text-decoration: none; }
+    table { border-collapse: collapse !important; }
+    .preheader { display: none !important; visibility: hidden; mso-hide: all; font-size: 1px; line-height: 1px; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; }
+  </style>
+</head>
+<body style="margin:0;padding:0;background-color:#FAF7F2;font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+  <div class="preheader">You're subscribed to Loveveryfans sale alerts! 你已成功订阅促销通知！</div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#FAF7F2;">
+    <tr>
+      <td align="center" style="padding:32px 16px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background-color:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(61,50,41,0.08);">
+
+          <!-- HEADER -->
+          <tr>
+            <td style="background:linear-gradient(135deg,#5a9e65 0%,#7FB685 50%,#5a9e65 100%);padding:28px 40px;text-align:center;">
+              <h1 style="margin:0;color:#ffffff;font-size:26px;font-weight:800;letter-spacing:-0.5px;font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+                Loveveryfans
+              </h1>
+              <p style="margin:6px 0 0;color:rgba(255,255,255,0.85);font-size:13px;font-weight:500;letter-spacing:0.3px;">
+                Play Kit & Product Guide
+              </p>
+            </td>
+          </tr>
+
+          <!-- WELCOME CONTENT -->
+          <tr>
+            <td style="padding:32px 40px 0;">
+              <h2 style="margin:0 0 16px;color:#3D3229;font-size:24px;font-weight:800;letter-spacing:-0.3px;font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+                Welcome! 欢迎加入！
+              </h2>
+              <div style="background-color:#F0F9F2;border-left:4px solid #5a9e65;border-radius:0 12px 12px 0;padding:16px 20px;margin-bottom:20px;">
+                <p style="margin:0;color:#3D3229;font-size:15px;line-height:1.7;">
+                  <strong>English:</strong> You've successfully subscribed to Loveveryfans promotion alerts! We'll notify you as soon as Lovevery has any sales, discounts, or special offers so you never miss a deal.
+                </p>
+              </div>
+              <div style="background-color:#F0F9F2;border-left:4px solid #5a9e65;border-radius:0 12px 12px 0;padding:16px 20px;margin-bottom:20px;">
+                <p style="margin:0;color:#3D3229;font-size:15px;line-height:1.7;">
+                  <strong>中文：</strong>你已成功订阅 Loveveryfans 促销通知！当 Lovevery 有任何打折、优惠或特别活动时，我们会第一时间通知你，让你不错过任何省钱机会。
+                </p>
+              </div>
+            </td>
+          </tr>
+
+          <!-- WHAT TO EXPECT -->
+          <tr>
+            <td style="padding:0 40px 24px;">
+              <h3 style="margin:0 0 12px;color:#3D3229;font-size:18px;font-weight:700;font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+                What to expect / 你会收到什么
+              </h3>
+              <ul style="margin:0;padding:0 0 0 20px;color:#6B5E50;font-size:15px;line-height:2;">
+                <li>Sale alerts when Lovevery runs promotions / Lovevery 促销时的即时通知</li>
+                <li>Exclusive discount codes we find / 我们发现的独家优惠码</li>
+                <li>No spam — only real deals / 绝不发垃圾邮件，只发真实优惠</li>
+              </ul>
+            </td>
+          </tr>
+
+          <!-- CTA -->
+          <tr>
+            <td style="padding:0 40px 28px;" align="center">
+              <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto;">
+                <tr>
+                  <td style="background:linear-gradient(135deg,#5a9e65 0%,#4a8e55 100%);border-radius:12px;box-shadow:0 4px 12px rgba(90,158,101,0.3);">
+                    <a href="${params.siteUrl}" target="_blank" style="display:inline-block;padding:16px 40px;color:#ffffff;font-size:16px;font-weight:700;text-decoration:none;letter-spacing:0.3px;font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+                      Visit Loveveryfans / 访问网站
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td style="padding:24px 40px;background-color:#F5F0EB;border-top:1px solid #E8DFD3;">
+              <p style="margin:0 0 4px;color:#3D3229;font-size:13px;font-weight:700;font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+                Loveveryfans
+              </p>
+              <p style="margin:0 0 12px;color:#9B8E7E;font-size:12px;line-height:1.6;">
+                You received this email because you subscribed to Loveveryfans promotion alerts.<br/>
+                你收到这封邮件是因为你订阅了 Loveveryfans 促销通知。
+              </p>
+              <a href="${params.unsubscribeUrl}" style="color:#9B8E7E;font-size:12px;text-decoration:underline;">
+                Unsubscribe / 退订
+              </a>
+            </td>
+          </tr>
+
+        </table>
+
+        <p style="margin:20px 0 0;color:#B0A89E;font-size:11px;text-align:center;">
+          Loveveryfans — Complete Play Kit & Product Guide
+        </p>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+}
+
+// ---------------------------------------------------------------------------
+// Admin authentication helper
+// ---------------------------------------------------------------------------
+
+function authenticateAdmin(request: Request, env: Env): boolean {
+  const url = new URL(request.url);
+
+  // Check query parameter ?key=xxx
+  const queryKey = url.searchParams.get("key");
+  if (queryKey && queryKey === env.ADMIN_API_KEY) {
+    return true;
+  }
+
+  // Check Authorization header: Bearer <key>
+  const authHeader = request.headers.get("Authorization");
+  if (authHeader) {
+    const token = authHeader.replace(/^Bearer\s+/i, "").trim();
+    if (token === env.ADMIN_API_KEY) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+// ---------------------------------------------------------------------------
+// GET /admin/subscribers
+// ---------------------------------------------------------------------------
+
+async function handleAdminSubscribers(request: Request, env: Env): Promise<Response> {
+  if (!authenticateAdmin(request, env)) {
+    return corsResponse(JSON.stringify({ error: "Unauthorized" }), 401);
+  }
+
+  try {
+    const { results } = await env.DB.prepare(
+      `SELECT email, language, subscribed_at, unsubscribed_at,
+              CASE WHEN unsubscribed_at IS NULL THEN 'active' ELSE 'unsubscribed' END AS status
+       FROM subscribers
+       ORDER BY subscribed_at DESC`
+    ).all<{
+      email: string;
+      language: string;
+      subscribed_at: string;
+      unsubscribed_at: string | null;
+      status: string;
+    }>();
+
+    return corsResponse(
+      JSON.stringify({ ok: true, count: results?.length ?? 0, subscribers: results ?? [] }),
+      200
+    );
+  } catch (err) {
+    console.error("Admin subscribers error:", err);
+    return corsResponse(JSON.stringify({ error: "Internal server error" }), 500);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// GET /admin/subscribers/count
+// ---------------------------------------------------------------------------
+
+async function handleAdminSubscribersCount(request: Request, env: Env): Promise<Response> {
+  if (!authenticateAdmin(request, env)) {
+    return corsResponse(JSON.stringify({ error: "Unauthorized" }), 401);
+  }
+
+  try {
+    const total = await env.DB.prepare(
+      `SELECT COUNT(*) as total FROM subscribers`
+    ).first<{ total: number }>();
+
+    const active = await env.DB.prepare(
+      `SELECT COUNT(*) as active FROM subscribers WHERE unsubscribed_at IS NULL`
+    ).first<{ active: number }>();
+
+    return corsResponse(
+      JSON.stringify({
+        ok: true,
+        total: total?.total ?? 0,
+        active: active?.active ?? 0,
+      }),
+      200
+    );
+  } catch (err) {
+    console.error("Admin subscribers count error:", err);
     return corsResponse(JSON.stringify({ error: "Internal server error" }), 500);
   }
 }
@@ -935,10 +1194,12 @@ export default {
 export {
   isEmailWhitelisted,
   buildEmailHtml,
+  buildWelcomeEmailHtml,
+  authenticateAdmin,
   EMAIL_RE,
   REFERRAL_CODE,
   AMAZON_AFFILIATE_TAG,
   getLoveveryReferralUrl,
   getAmazonAlternativesUrl,
 };
-export type { EmailTemplateParams };
+export type { EmailTemplateParams, WelcomeEmailParams };

@@ -4,6 +4,7 @@
 #
 # Required secrets (set via `wrangler secret put`):
 #   RESEND_API_KEY     — API key for Resend email service
+#   ADMIN_API_KEY      — Secret key for admin API endpoints (/admin/*)
 #
 # Required environment variables:
 #   EMAIL_WHITELIST    — Comma-separated list of emails allowed to receive promo

@@ -102,8 +102,8 @@
             "amazonUrl": "https://www.amazon.com/dp/B0CJXRP6KZ?tag=loveveryfans-20",
             "reasonEn": "Simple wooden card stand that holds flash cards upright for tummy time viewing, similar function to the Lovevery card holder.",
             "reasonCn": "简约木质卡片架，可竖立展示闪卡，方便宝宝趴着时观看。",
-            "availability": "in_stock",
-            "lastChecked": "2026-05-02T04:59:52Z"
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T05:40:09Z"
           }
         ]
       },
@@ -134,12 +134,14 @@
             "name": "Newborn Baby No Scratch Mittens, Adjustable Infant...",
             "asin": "B0DMP55LLW",
             "price": "$5.99",
-            "rating": 4.4,
+            "rating": 4.5,
             "reviewCount": 5112,
-            "imageUrl": "https://m.media-amazon.com/images/I/910Jp1q3lnL.jpg",
+            "imageUrl": "https://m.media-amazon.com/images/I/51ifa-EUcWL.jpg",
             "amazonUrl": "https://www.amazon.com/dp/B0DMP55LLW?tag=loveveryfans-20",
             "reasonEn": "A practical and affordable alternative from a trusted brand. The pack includes black and white mittens, which are great for a newborn's visual development.",
-            "reasonCn": "来自值得信赖的品牌的实用且实惠的替代品。该包装包括黑白手套，非常适合新生儿的视觉发育。"
+            "reasonCn": "来自值得信赖的品牌的实用且实惠的替代品。该包装包括黑白手套，非常适合新生儿的视觉发育。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-04T05:40:27Z"
           }
         ]
       },
@@ -157,8 +159,8 @@
             "amazonUrl": "https://www.amazon.com/dp/B0C5KXQHFZ?tag=loveveryfans-20",
             "reasonEn": "A durable wooden book with high contrast images, safe for babies to handle and mouth.",
             "reasonCn": "耐用木质书本，高对比度图案，宝宝可以安全抓握和啃咬。",
-            "availability": "in_stock",
-            "lastChecked": "2026-05-02T04:59:52Z"
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T05:40:37Z"
           }
         ]
       },
@@ -249,7 +251,7 @@
             "reasonEn": "This is a good alternative because it is a handmade, organic, and Montessori-inspired toy. It has a high rating and a good number of reviews. The crochet bunny adds a soft element to the wooden rattle.",
             "reasonCn": "这是一个很好的替代品，因为它是手工制作的、有机的、蒙特梭利风格的玩具。它的评分很高，评论也很多。钩针兔子为木制摇铃增添了柔软的元素。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-13T05:20:06Z"
+            "lastChecked": "2026-05-04T05:41:27Z"
           },
           {
             "name": "6 Pieces Toy Set- Wooden Baby Toys for Babies 0-6 Months",
@@ -363,8 +365,8 @@
             "amazonUrl": "https://www.amazon.com/dp/B0BXMQV5GK?tag=loveveryfans-20",
             "reasonEn": "Baby-safe mirror with high contrast border, perfect for tummy time self-discovery.",
             "reasonCn": "婴儿安全镜，高对比度边框，适合趴趴时间自我发现。",
-            "availability": "in_stock",
-            "lastChecked": "2026-05-02T04:59:52Z"
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T05:42:35Z"
           }
         ]
       },
@@ -440,7 +442,7 @@
             "reasonEn": "This is a good alternative because it is made from 100% natural rubber and is a safe, plant-based option. It has a high rating and a large number of reviews.",
             "reasonCn": "这是一个很好的替代品，因为它是由100%天然橡胶制成，是一种安全的、植物性的选择。它的评分很高，评论数量也很多。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-27T05:31:18Z"
+            "lastChecked": "2026-05-04T05:43:09Z"
           },
           {
             "name": "Taggies Teething Toys Baby Rattle Portable Triangle",
@@ -572,7 +574,7 @@
             "reasonEn": "A well-reviewed sensory tissue box that provides a similar play experience to the Lovevery version.",
             "reasonCn": "一款评价很高的感官纸巾盒，提供与Lovevery版本类似的玩耍体验。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-20T05:20:50Z"
+            "lastChecked": "2026-05-04T05:44:26Z"
           }
         ]
       },
@@ -628,8 +630,8 @@
             "amazonUrl": "https://www.amazon.com/dp/B01K3OAHM4?tag=loveveryfans-20",
             "reasonEn": "Sturdy board book teaching body parts with bright photos, perfect for babies learning about themselves.",
             "reasonCn": "结实的纸板书，用鲜艳照片教身体部位，适合宝宝认识自己。",
-            "availability": "in_stock",
-            "lastChecked": "2026-05-02T04:59:52Z"
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T05:44:52Z"
           }
         ]
       },
@@ -646,7 +648,9 @@
             "imageUrl": "https://m.media-amazon.com/images/I/81nFPPgDVwL._SL1500_.jpg",
             "amazonUrl": "https://www.amazon.com/dp/B08RYGF6YK?tag=loveveryfans-20",
             "reasonEn": "Affordable and well-reviewed foot rattles that encourage reaching and grabbing.",
-            "reasonCn": "价格实惠、评价很高的脚摇铃，鼓励宝宝伸手抓握。"
+            "reasonCn": "价格实惠、评价很高的脚摇铃，鼓励宝宝伸手抓握。",
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T05:45:01Z"
           }
         ]
       },
@@ -723,13 +727,15 @@
           {
             "name": "Busy edition Montessori Toys for Babies 6-12 Months Object Permanence Box Wooden Ball Drop Toy",
             "asin": "B0BNH8STQ3",
-            "price": "$23.99",
+            "price": "$14.99",
             "rating": 4.7,
             "reviewCount": 1468,
-            "imageUrl": "https://m.media-amazon.com/images/I/71f7-3X2COL._AC_SL1500_.jpg",
+            "imageUrl": "https://m.media-amazon.com/images/I/61X-CJlPiML.jpg",
             "amazonUrl": "https://www.amazon.com/dp/B0BNH8STQ3?tag=loveveryfans-20",
             "reasonEn": "This Montessori ball drop toy is perfect for 9-10 month olds to learn about object permanence and practice hand-eye coordination.",
-            "reasonCn": "这款蒙特梭利落球玩具非常适合 9-10 个月大的宝宝，可以帮助他们了解物体恒存性，同时锻炼手眼协调能力。"
+            "reasonCn": "这款蒙特梭利落球玩具非常适合 9-10 个月大的宝宝，可以帮助他们了解物体恒存性，同时锻炼手眼协调能力。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-04T05:45:47Z"
           },
           {
             "name": "Twefex Montessori Ball Tracker",
@@ -849,15 +855,15 @@
           {
             "name": "First Jumbo Knob Wooden Shape Puzzle for Toddlers 1-3",
             "asin": "B0BCFSRQK9",
-            "price": "$8.49",
-            "rating": 4.6,
+            "price": "$9.99",
+            "rating": 4.7,
             "reviewCount": 720,
             "imageUrl": "https://m.media-amazon.com/images/I/6108VWbZTGL.jpg",
             "amazonUrl": "https://www.amazon.com/dp/B0BCFSRQK9?tag=loveveryfans-20",
             "reasonEn": "Made of 100% natural wood and non-toxic water-based paint, this puzzle is thick and durable with smooth edges.",
             "reasonCn": "这款拼图由100%天然木材和无毒水性漆制成，厚实耐用，边缘光滑。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-20T05:22:39Z"
+            "lastChecked": "2026-05-04T05:47:03Z"
           }
         ]
       },
@@ -910,12 +916,14 @@
             "name": "Rainbow Large Felt Balls | Montessori Wool Pom Poms for Baby",
             "asin": "B09VCBX2QN",
             "price": "$18.95",
-            "rating": 4.7,
+            "rating": 4.8,
             "reviewCount": 245,
-            "imageUrl": "https://m.media-amazon.com/images/I/81uL+5bS2+L._AC_SL1500_.jpg",
+            "imageUrl": "https://m.media-amazon.com/images/I/818hJgg3q+L.jpg",
             "amazonUrl": "https://www.amazon.com/dp/B09VCBX2QN?tag=loveveryfans-20",
             "reasonEn": "This set of 4cm felt balls is large enough to be safe for a 9-10 month old, preventing any choking hazard. They are colorful and made of wool, which is great for sensory play.",
-            "reasonCn": "这套4厘米的毛毡球尺寸够大，对9-10个月的宝宝来说是安全的，可以避免窒息风险。它们色彩鲜艳，由羊毛制成，非常适合感官游戏。"
+            "reasonCn": "这套4厘米的毛毡球尺寸够大，对9-10个月的宝宝来说是安全的，可以避免窒息风险。它们色彩鲜艳，由羊毛制成，非常适合感官游戏。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-04T05:47:38Z"
           },
           {
             "name": "Glaciart One Felt Wool Balls (50 Pieces) 3 Centimeters",
@@ -1007,7 +1015,7 @@
             "reasonEn": "This spinning wheel suctions to a high chair tray or other flat surface, providing a spinning and sensory experience for the baby. The colorful beads and textures engage the baby's senses and encourage reaching and batting, similar to the tip and turn motion.",
             "reasonCn": "这款旋转轮可以吸在餐椅托盘或其他平面上，为宝宝提供旋转和感官体验。彩色的珠子和纹理能吸引宝宝的感官，鼓励他们伸手拍打，类似于翻转和转动的动作。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-20T05:24:04Z"
+            "lastChecked": "2026-05-04T05:48:32Z"
           },
           {
             "name": "Playskool Explore ‘N Grow Busy Gears",
@@ -1020,7 +1028,7 @@
             "reasonEn": "This toy has 11 interchangeable gears that spin, with lights and music. It provides a similar cause-and-effect learning experience to the Tip & Turn, where the baby's actions cause the toy to move and make sounds.",
             "reasonCn": "这款玩具有11个可互换的齿轮，可以旋转并伴有灯光和音乐。它提供了与“翻转和转动”类似的因果学习体验，宝宝的动作会使玩具移动和发出声音。",
             "availability": "out_of_stock",
-            "lastChecked": "2026-04-13T05:25:57Z"
+            "lastChecked": "2026-05-04T05:48:42Z"
           }
         ]
       },
@@ -1048,26 +1056,30 @@
         "toyNameCn": "蒙氏鸡蛋杯",
         "alternatives": [
           {
-            "asin": "B08GJFV9MP",
             "name": "Adena Montessori Egg and Cup Set",
+            "asin": "B08GJFV9MP",
             "price": "$15.99",
             "rating": 4.6,
             "reviewCount": 800,
             "imageUrl": "https://m.media-amazon.com/images/I/51HlaRD8bNL.jpg",
             "amazonUrl": "https://www.amazon.com/dp/B08GJFV9MP?tag=loveveryfans-20",
             "reasonEn": "A Montessori egg and cup set that helps babies practice hand-eye coordination and understand object permanence. Widely recommended as a direct Lovevery Egg Cup alternative.",
-            "reasonCn": "蒙氏蛋杯套装，帮助宝宝练习手眼协调和理解物体恒存。被广泛推荐为Lovevery蛋杯的直接平替。"
+            "reasonCn": "蒙氏蛋杯套装，帮助宝宝练习手眼协调和理解物体恒存。被广泛推荐为Lovevery蛋杯的直接平替。",
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T05:49:01Z"
           },
           {
-            "asin": "B0BWMQWTBS",
             "name": "Montessori Wooden Egg Cup Toy for Babies",
-            "price": "$12.99",
-            "rating": 4.5,
+            "asin": "B0BWMQWTBS",
+            "price": "$36.95",
+            "rating": 4.6,
             "reviewCount": 500,
-            "imageUrl": "https://m.media-amazon.com/images/I/71tSNqm68vL.jpg",
+            "imageUrl": "https://m.media-amazon.com/images/I/61u7fKZTMpL.jpg",
             "amazonUrl": "https://www.amazon.com/dp/B0BWMQWTBS?tag=loveveryfans-20",
             "reasonEn": "A wooden Montessori egg and cup set perfect for 9-10 month olds. Helps develop concentration, coordination, and the understanding that objects fit into specific spaces.",
-            "reasonCn": "木制蒙氏蛋杯套装，非常适合9-10个月宝宝。帮助发展专注力、协调性和理解物体适配特定空间的概念。"
+            "reasonCn": "木制蒙氏蛋杯套装，非常适合9-10个月宝宝。帮助发展专注力、协调性和理解物体适配特定空间的概念。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-04T05:49:08Z"
           }
         ]
       },
@@ -1144,20 +1156,22 @@
         "toyNameCn": "滚动和构建锥体套装",
         "alternatives": [
           {
-            "asin": "B07BFMF3PL",
             "name": "Fat Brain Toys Tobbles Neo - Stacking Toy",
+            "asin": "B07BFMF3PL",
             "price": "$24.95",
             "rating": 4.8,
             "reviewCount": 5000,
             "imageUrl": "https://m.media-amazon.com/images/I/71YZJ4YPWFL._AC_SL1500_.jpg",
             "amazonUrl": "https://www.amazon.com/dp/B07BFMF3PL?tag=loveveryfans-20",
             "reasonEn": "Weighted, tilting stacking pieces that nest and stack in various configurations. A top-rated Lovevery alternative recommended by multiple parenting blogs for developing fine motor skills.",
-            "reasonCn": "加重倾斜堆叠件，可以嵌套和多种方式堆叠。多个育儿博客推荐的Lovevery平替，锻炼精细运动技能。"
+            "reasonCn": "加重倾斜堆叠件，可以嵌套和多种方式堆叠。多个育儿博客推荐的Lovevery平替，锻炼精细运动技能。",
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T05:49:50Z"
           },
           {
             "name": "Hape Pound & Tap Bench with Slide Out Xylophone",
             "asin": "B00712O2D6",
-            "price": "$26.96",
+            "price": "$23.49",
             "rating": 4.8,
             "reviewCount": 4500,
             "imageUrl": "https://m.media-amazon.com/images/I/51t02jFtN-L.jpg",
@@ -1165,7 +1179,7 @@
             "reasonEn": "A safe, eco-friendly stacking toy made from recycled materials. The ring-stacking design helps develop hand-eye coordination and size discrimination skills.",
             "reasonCn": "安全环保的堆叠玩具，由回收材料制成。环形堆叠设计帮助发展手眼协调和大小辨别能力。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-13T05:27:05Z"
+            "lastChecked": "2026-05-04T05:50:00Z"
           }
         ]
       },
@@ -1283,7 +1297,7 @@
             "reasonEn": "This is a good alternative because it is a highly-rated busy board with multiple switches and LED lights, which helps with sensory development and fine motor skills.",
             "reasonCn": "这是一个很好的替代品，因为它是一款评价很高的忙碌板，带有多个开关和LED灯，有助于感官发育和精细运动技能。",
             "availability": "out_of_stock",
-            "lastChecked": "2026-04-27T05:37:52Z"
+            "lastChecked": "2026-05-04T05:50:55Z"
           }
         ]
       },
@@ -1521,8 +1535,8 @@
             "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQ0?tag=loveveryfans-20",
             "reasonEn": "Classic bedtime board book, perfect for establishing nighttime reading routines.",
             "reasonCn": "经典睡前纸板书，适合建立夜间阅读习惯。",
-            "availability": "in_stock",
-            "lastChecked": "2026-05-02T04:59:52Z"
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T05:53:04Z"
           }
         ]
       }
@@ -1595,8 +1609,8 @@
             "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQ2?tag=loveveryfans-20",
             "reasonEn": "A classic adventure board book about exploration and outdoor fun.",
             "reasonCn": "经典探险纸板书，关于探索和户外乐趣。",
-            "availability": "in_stock",
-            "lastChecked": "2026-05-02T04:59:52Z"
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T05:53:42Z"
           }
         ]
       },
@@ -1701,7 +1715,7 @@
             "reasonEn": "An affordable and well-reviewed pegboard set that includes cords for lacing.",
             "reasonCn": "一套价格实惠且评价很高的钉板套装，包括用于穿线的绳子。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-27T05:40:52Z"
+            "lastChecked": "2026-05-04T05:54:39Z"
           }
         ]
       },
@@ -1811,7 +1825,7 @@
             "reasonEn": "A classic wooden shapes peg puzzle with easy-grasp pegs and colorful geometric shapes. Perfect for developing shape recognition and fine motor skills in toddlers.",
             "reasonCn": "经典木制几何形状拼图，带易抓握的把手和彩色几何形状。非常适合幼儿发展形状识别和精细运动技能。",
             "availability": "discontinued",
-            "lastChecked": "2026-04-20T05:29:14Z"
+            "lastChecked": "2026-05-04T05:55:35Z"
           }
         ]
       },
@@ -1904,13 +1918,15 @@
           {
             "name": "Geekper 68PCS Button Art Toys for Toddlers",
             "asin": "B0757FGRHR",
-            "price": "$18.99",
-            "rating": 4.8,
+            "price": "$13.93",
+            "rating": 4.6,
             "reviewCount": 5000,
             "imageUrl": "https://m.media-amazon.com/images/I/71u2uLMdaiL.jpg",
             "amazonUrl": "https://www.amazon.com/dp/B0757FGRHR?tag=loveveryfans-20",
             "reasonEn": "A great alternative with more pictures for color matching.",
-            "reasonCn": "一个很好的替代品，有更多的图片可以进行颜色匹配。"
+            "reasonCn": "一个很好的替代品，有更多的图片可以进行颜色匹配。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-04T05:56:20Z"
           }
         ]
       },
@@ -2007,12 +2023,14 @@
             "name": "Small Montessori Animal Figures with Flash Cards",
             "asin": "B09Y3QZ47Y",
             "price": "$12.99",
-            "rating": 4.5,
+            "rating": 4.6,
             "reviewCount": 1000,
             "imageUrl": "https://m.media-amazon.com/images/I/71H-jbGQxJL.jpg",
             "amazonUrl": "https://www.amazon.com/dp/B09Y3QZ47Y?tag=loveveryfans-20",
             "reasonEn": "A good alternative with realistic animal figures and matching cards, similar to the Lovevery toy.",
-            "reasonCn": "一个很好的替代品，有逼真的动物模型和配套卡片，与Lovevery的玩具类似。"
+            "reasonCn": "一个很好的替代品，有逼真的动物模型和配套卡片，与Lovevery的玩具类似。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-04T05:57:19Z"
           }
         ]
       },
@@ -2031,7 +2049,7 @@
             "reasonEn": "A Montessori-style mystery bag with a drawstring, perfect for sensory activities and storing small toys.",
             "reasonCn": "一款蒙特梭利风格的神秘抽绳袋，非常适合感官活动和存放小玩具。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-13T05:32:36Z"
+            "lastChecked": "2026-05-04T05:57:23Z"
           }
         ]
       },
@@ -2084,7 +2102,7 @@
           {
             "name": "Melissa & Doug Catch & Count Wooden Fishing Game",
             "asin": "B07QVMVKKC",
-            "price": "$21.55",
+            "price": "$20.87",
             "rating": 4.6,
             "reviewCount": 5000,
             "imageUrl": "https://m.media-amazon.com/images/I/71Rm4erDS5L.jpg",
@@ -2092,7 +2110,7 @@
             "reasonEn": "Stacking and sorting cups with numbers and shapes that develop color matching and fine motor skills. A great alternative for the drop-and-match concept.",
             "reasonCn": "带数字和形状的堆叠排序杯，锻炼颜色匹配和精细运动技能。投放匹配概念的好替代品。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-13T05:33:00Z"
+            "lastChecked": "2026-05-04T05:57:50Z"
           }
         ]
       },
@@ -2114,13 +2132,15 @@
           {
             "name": "Fisher-Price Wood Montessori Toy Rockin' Balance Board",
             "asin": "B0DLH9923F",
-            "price": "$34.99",
-            "rating": 4.5,
+            "price": "$36.93",
+            "rating": 4.7,
             "reviewCount": 100,
-            "imageUrl": "https://m.media-amazon.com/images/I/81j-J3J-63L._AC_SL1500_.jpg",
+            "imageUrl": "https://m.media-amazon.com/images/I/81qGZnOYEnL.jpg",
             "amazonUrl": "https://www.amazon.com/dp/B0DLH9923F?tag=loveveryfans-20",
             "reasonEn": "This non-woven flower lacing toy is very suitable for babies around 2 years old. It can help babies practice threading movements and exercise hand-eye coordination and concentration. At the same time, the shape of the flower can also attract the baby's interest.",
-            "reasonCn": "这款无纺布花朵穿线玩具非常适合2岁左右的宝宝。它可以帮助宝宝练习穿线动作，锻炼手眼协调能力和专注力。同时，花朵的造型也能吸引宝宝的兴趣。"
+            "reasonCn": "这款无纺布花朵穿线玩具非常适合2岁左右的宝宝。它可以帮助宝宝练习穿线动作，锻炼手眼协调能力和专注力。同时，花朵的造型也能吸引宝宝的兴趣。",
+            "availability": "in_stock",
+            "lastChecked": "2026-05-04T05:58:04Z"
           },
           {
             "name": "Mentari Toys - Garden Threading Beads",
@@ -2163,7 +2183,7 @@
           {
             "name": "Crayola Create 'N Carry Travel Art Set for Kids (75pcs), 2-in-1 Lap Desk & Carrying Case, Essential Easter Basket Stuffers, Art Supplies Kit, Spring Crafting, Gift for Kids",
             "asin": "B01CIMC95Q",
-            "price": "$23.31",
+            "price": "$22.55",
             "rating": 4.7,
             "reviewCount": 9646,
             "imageUrl": "https://m.media-amazon.com/images/I/91HmwHxrY8L.jpg",
@@ -2171,7 +2191,7 @@
             "reasonEn": "This is a comprehensive and highly-rated art kit that includes a variety of art supplies and a carrying case. While it doesn't include tempera paint sticks, it provides a similar all-in-one art experience for toddlers and is an \"Amazon's Choice\" product.",
             "reasonCn": "这是一个全面且评价很高的艺术套装，包括各种艺术用品和一个手提箱。虽然它不包括蛋彩画棒，但它为幼儿提供了类似的一体式艺术体验，是“亚马逊之选”产品。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-20T05:31:36Z"
+            "lastChecked": "2026-05-04T05:58:29Z"
           }
         ]
       },
@@ -2234,7 +2254,7 @@
             "reasonEn": "This is a versatile 4-in-1 toy that includes sorting, stacking, and lacing, which is a great value. It is made of wood and has a high rating.",
             "reasonCn": "这是一个多功能的4合1玩具，包括分类、堆叠和穿线，非常划算。它是木制的，评分很高。",
             "availability": "discontinued",
-            "lastChecked": "2026-04-27T05:43:55Z"
+            "lastChecked": "2026-05-04T05:59:00Z"
           }
         ]
       },
@@ -2252,8 +2272,8 @@
             "amazonUrl": "https://www.amazon.com/dp/B0BXRP6KZU?tag=loveveryfans-20",
             "reasonEn": "Emotion flash cards with a child-safe mirror for matching facial expressions and building emotional intelligence.",
             "reasonCn": "情绪闪卡配儿童安全镜，匹配面部表情，培养情商。",
-            "availability": "in_stock",
-            "lastChecked": "2026-05-02T04:59:52Z"
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T05:59:03Z"
           }
         ]
       },
@@ -2291,7 +2311,7 @@
             "reasonEn": "This plush picnic set is a safe and sensory-rich alternative for younger toddlers. It includes various textures and sounds, promoting early development.",
             "reasonCn": "这款毛绒野餐套装是年幼幼儿的安全感官丰富的替代品。它包括各种纹理和声音，促进早期发育。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-27T05:44:11Z"
+            "lastChecked": "2026-05-04T05:59:18Z"
           }
         ]
       },
@@ -2310,7 +2330,7 @@
             "reasonEn": "This is a comprehensive and highly-rated cleaning set from a trusted brand. It includes a squeegee and other cleaning tools for realistic pretend play.",
             "reasonCn": "这是一个来自值得信赖的品牌的全面且评价很高的清洁套装。它包括一个刮水器和其他清洁工具，用于逼真的假装游戏。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-13T05:34:24Z"
+            "lastChecked": "2026-05-04T05:59:22Z"
           }
         ]
       },
@@ -2491,7 +2511,7 @@
             "reasonEn": "It’s mostly wooden, something that was very hard to find, and it should spark the same creativity that the Lovevery camper does. It includes plastic action figures instead of wooden peg dolls, but it does include a tent and several extra pieces to help your toddler create a scene.",
             "reasonCn": "它主要是木制的，这是很难找到的，它应该能像Lovevery露营车一样激发同样的创造力。它包括塑料人偶而不是木制钉娃娃，但它确实包括一个帐篷和几个额外的部分来帮助你的孩子创造一个场景。",
             "availability": "discontinued",
-            "lastChecked": "2026-04-27T05:45:23Z"
+            "lastChecked": "2026-05-04T06:00:45Z"
           }
         ]
       },
@@ -2600,8 +2620,8 @@
             "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQ7?tag=loveveryfans-20",
             "reasonEn": "A celebration of turning three with age-appropriate themes.",
             "reasonCn": "庆祝三岁生日，年龄适当的主题。",
-            "availability": "in_stock",
-            "lastChecked": "2026-05-02T04:59:52Z"
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T06:01:36Z"
           }
         ]
       }
@@ -2644,8 +2664,8 @@
             "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQF?tag=loveveryfans-20",
             "reasonEn": "Portable wooden dollhouse with rooms for imaginative play and storytelling.",
             "reasonCn": "便携木质娃娃屋，有房间用于想象力游戏和讲故事。",
-            "availability": "in_stock",
-            "lastChecked": "2026-05-02T04:59:52Z"
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T06:01:53Z"
           }
         ]
       },
@@ -2701,8 +2721,8 @@
             "amazonUrl": "https://www.amazon.com/dp/B0BXRP6L02?tag=loveveryfans-20",
             "reasonEn": "Fun shoe stickers that help children learn left from right when putting on shoes independently.",
             "reasonCn": "有趣的鞋贴，帮助孩子独立穿鞋时分辨左右。",
-            "availability": "in_stock",
-            "lastChecked": "2026-05-02T04:59:52Z"
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T06:02:14Z"
           }
         ]
       },
@@ -2784,7 +2804,7 @@
             "reasonEn": "A very popular and highly-rated wooden puppet theater from a reputable brand. It's a sturdy and well-made alternative.",
             "reasonCn": "来自知名品牌的非常受欢迎且评价很高的木制木偶剧院。这是一个坚固且制作精良的替代品。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-27T05:45:59Z"
+            "lastChecked": "2026-05-04T06:02:49Z"
           }
         ]
       },
@@ -2820,7 +2840,7 @@
             "reasonEn": "This toy mop actually sprays water, making it a very similar and engaging alternative to the Lovevery Squeeze & Spray Mop. It's kid-sized and encourages pretend play and responsibility.",
             "reasonCn": "这款玩具拖把可以真正喷水，非常类似于Lovevery的挤压喷水拖把。它尺寸适合儿童，鼓励角色扮演游戏，培养责任感。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-27T05:46:18Z"
+            "lastChecked": "2026-05-04T06:03:04Z"
           },
           {
             "name": "Melissa & Doug Let's Play House! Dust, Sweep & Mop",
@@ -2868,7 +2888,7 @@
           {
             "name": "Galt Toys, Giant Floor Puzzle - Alphabet Animals",
             "asin": "B08SW3VNSX",
-            "price": "$36.92",
+            "price": "$40.19",
             "rating": 4.7,
             "reviewCount": 1234,
             "imageUrl": "https://m.media-amazon.com/images/I/81BTUervy7L.jpg",
@@ -2876,7 +2896,7 @@
             "reasonEn": "This giant floor puzzle is another fun alternative. It teaches the alphabet in a playful way with adorable animal illustrations.",
             "reasonCn": "这款巨大的地板拼图是另一种有趣的选择。它以有趣的方式教字母表，并配有可爱的动物插图。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-20T05:34:47Z"
+            "lastChecked": "2026-05-04T06:03:37Z"
           },
           {
             "name": "GRINNNIE Wooden Peg Puzzle for Toddlers, 6 Pack",
@@ -2907,8 +2927,8 @@
             "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQ8?tag=loveveryfans-20",
             "reasonEn": "A fun, rhythmic board book about getting ready and going out.",
             "reasonCn": "有趣的韵律纸板书，关于准备出门。",
-            "availability": "in_stock",
-            "lastChecked": "2026-05-02T05:00:20Z"
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T06:03:58Z"
           }
         ]
       }
@@ -3007,12 +3027,14 @@
             "name": "Learning Resources Simple Tape Measure",
             "asin": "B00004WK2A",
             "price": "$13.99",
-            "rating": 4.7,
+            "rating": 5.0,
             "reviewCount": 1500,
+            "imageUrl": "https://m.media-amazon.com/images/I/01RmK+J4pJL.gif",
             "amazonUrl": "https://www.amazon.com/dp/B00004WK2A?tag=loveveryfans-20",
             "reasonEn": "A simple and durable measuring tape designed for kids, perfect for little hands.",
             "reasonCn": "一款专为儿童设计的简单耐用的卷尺，非常适合小手使用。",
-            "imageUrl": "https://m.media-amazon.com/images/I/61rKHlqhDxL.jpg"
+            "availability": "out_of_stock",
+            "lastChecked": "2026-05-04T06:04:50Z"
           }
         ]
       },
@@ -3059,7 +3081,7 @@
             "reasonEn": "Jumbo droppers that are easy for little hands to use, great for transferring liquids in color mixing activities.",
             "reasonCn": "适合小手使用的巨型滴管，非常适合在颜色混合活动中转移液体。",
             "availability": "discontinued",
-            "lastChecked": "2026-04-13T05:38:15Z"
+            "lastChecked": "2026-05-04T06:05:15Z"
           },
           {
             "name": "Mr. Bubble Fizzy Color Tablets",
@@ -3090,8 +3112,8 @@
             "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQ9?tag=loveveryfans-20",
             "reasonEn": "A playful book about making pizza, encouraging imaginative play.",
             "reasonCn": "关于做披萨的趣味书，鼓励想象力游戏。",
-            "availability": "in_stock",
-            "lastChecked": "2026-05-02T05:00:37Z"
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T06:05:33Z"
           }
         ]
       }
@@ -3297,14 +3319,14 @@
             "name": "Tender Leaf Toys - Doll Family - Cute Wooden Flexible Doll Family for Kid's Dollhouse, Four Pcs of Multicultural Mom, Dad, Boy and Girl - Age 3+",
             "asin": "B07HS3Q1BG",
             "price": "$31.99",
-            "rating": 4.7,
+            "rating": 4.6,
             "reviewCount": 1053,
             "imageUrl": "https://m.media-amazon.com/images/I/61VpeI-V8cL.jpg",
             "amazonUrl": "https://www.amazon.com/dp/B07HS3Q1BG?tag=loveveryfans-20",
             "reasonEn": "This wooden doll family is perfect for role-playing and helps develop a child's imagination and social-emotional skills. The dolls are made of solid wood with flexible limbs to make any poses.",
             "reasonCn": "这套木制娃娃家庭套装非常适合角色扮演，有助于培养孩子的想象力和社交情感技能。娃娃由实木制成，四肢灵活，可以摆出各种姿势。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-27T05:49:23Z"
+            "lastChecked": "2026-05-04T06:07:14Z"
           },
           {
             "name": "Tender Leaf Toys - Bear Tales - Wooden Dollhouse Add-on Dolls Playset, Figures of 3 Pcs Bear Family for Children - Inspires Endless Imaginative Play - Age 3+",
@@ -3362,7 +3384,7 @@
             "reasonEn": "With 27 pieces, this extensive kit offers a wide range of tools for outdoor exploration and bug catching, promoting curiosity and scientific inquiry in young children. It's a more comprehensive alternative that encourages imaginative play and adventure.",
             "reasonCn": "这款包含 27 件的丰富套装为户外探索和昆虫捕捉提供了广泛的工具，可激发幼儿的好奇心和科学探究精神。它是一个更全面的替代品，鼓励富有想象力的游戏和冒险。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-20T05:37:46Z"
+            "lastChecked": "2026-05-04T06:07:46Z"
           },
           {
             "name": "NATIONAL GEOGRAPHIC Bug Catcher Kit for Kids",
@@ -3572,8 +3594,8 @@
             "amazonUrl": "https://www.amazon.com/dp/B0BXRP6KZX?tag=loveveryfans-20",
             "reasonEn": "Classic Montessori movable alphabet set with wooden letters for early reading and spelling practice.",
             "reasonCn": "经典蒙特梭利活动字母套装，木质字母，用于早期阅读和拼写练习。",
-            "availability": "in_stock",
-            "lastChecked": "2026-05-02T04:59:52Z"
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T06:09:33Z"
           }
         ]
       },
@@ -3623,10 +3645,12 @@
             "price": "$22.99",
             "rating": 4.7,
             "reviewCount": 12000,
+            "imageUrl": "https://m.media-amazon.com/images/I/71jQUtk-tvL.jpg",
             "amazonUrl": "https://www.amazon.com/dp/B07F13J28C?tag=loveveryfans-20",
             "reasonEn": "A popular and highly-rated light pad for tracing and drawing.",
             "reasonCn": "一款广受欢迎且评价很高的用于描摹和绘画的灯箱。",
-            "imageUrl": "https://m.media-amazon.com/images/I/71jQUtk-tvL.jpg"
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T06:09:55Z"
           }
         ]
       },
@@ -3645,7 +3669,7 @@
             "reasonEn": "A set of textured sensory discs that can be used for calming activities.",
             "reasonCn": "一套有纹理的感官盘，可用于镇静活动。",
             "availability": "in_stock",
-            "lastChecked": "2026-04-27T05:51:21Z"
+            "lastChecked": "2026-05-04T06:10:01Z"
           }
         ]
       },
@@ -3682,8 +3706,8 @@
             "amazonUrl": "https://www.amazon.com/dp/B00ECHGKQD?tag=loveveryfans-20",
             "reasonEn": "An inspiring story about persistence and creative problem-solving.",
             "reasonCn": "关于坚持和创造性解决问题的励志故事。",
-            "availability": "in_stock",
-            "lastChecked": "2026-05-02T04:59:52Z"
+            "availability": "discontinued",
+            "lastChecked": "2026-05-04T06:10:17Z"
           }
         ]
       }

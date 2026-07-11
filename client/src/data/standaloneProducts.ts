@@ -1,6 +1,5 @@
 /**
- * Standalone Products data for non-kit Lovevery products:
- * Music Set, Bath Set, Block Set, Play Gym
+ * Standalone Products data for non-kit Lovevery products.
  *
  * Uses the same Toy interface from kits.ts for consistency.
  */
@@ -429,7 +428,7 @@ export const standaloneProducts: StandaloneProduct[] = [
     lightColor: "#F5EBDD",
     rating: 4.8,
     reviewCount: 892,
-    imageUrl: "https://images.ctfassets.net/0sea1vycfyqy/montessori-playshelf/placeholder/playshelf.png",
+    imageUrl: "https://images.ctfassets.net/0sea1vycfyqy/3ukI9BgtjEb7UqGDc422Z0/7f5a7505843005e8ee6abbe1d14bd930/Shelf_1080x1080.png",
     toys: [
       {
         name: "蒙氏教具架",
@@ -460,7 +459,7 @@ export const standaloneProducts: StandaloneProduct[] = [
     lightColor: "#E5F0E3",
     rating: 4.9,
     reviewCount: 1456,
-    imageUrl: "https://images.ctfassets.net/0sea1vycfyqy/buddy-stroller/placeholder/buddy-stroller.png",
+    imageUrl: "https://images.ctfassets.net/0sea1vycfyqy/beYFxjo8P75OVmDynMNPG/2d29d49869db63d92b4a05161592ce22/Stroller_0239_VS_R2.png",
     toys: [
       {
         name: "木制学步推车",
@@ -491,7 +490,7 @@ export const standaloneProducts: StandaloneProduct[] = [
     lightColor: "#E5F0E3",
     rating: 4.8,
     reviewCount: 634,
-    imageUrl: "https://images.ctfassets.net/0sea1vycfyqy/pull-pup/placeholder/pull-pup.png",
+    imageUrl: "https://images.ctfassets.net/0sea1vycfyqy/4btRN1KhEvPDYNVqp79pfL/09b03bb8f54e94638eb1b475fbcfb42c/slideshow-pup_0011_pup-product_ef90cb07-8a03-4879-b398-997078a0ab63.png",
     toys: [
       {
         name: "木制拖拉小狗",
@@ -522,7 +521,7 @@ export const standaloneProducts: StandaloneProduct[] = [
     lightColor: "#E5F0E3",
     rating: 4.7,
     reviewCount: 823,
-    imageUrl: "https://images.ctfassets.net/0sea1vycfyqy/play-tunnel/placeholder/play-tunnel.png",
+    imageUrl: "https://images.ctfassets.net/0sea1vycfyqy/4WifU9xi0B82Gzjst5yR9m/702c661f019d4117bd476eb79bb13fd6/slideshow-tunnel_0013_standalone_a75bb9b4-2c9e-4410-b012-0835ea762606.jpg",
     toys: [
       {
         name: "有机棉游戏隧道",
@@ -553,7 +552,7 @@ export const standaloneProducts: StandaloneProduct[] = [
     lightColor: "#EDE5F5",
     rating: 4.8,
     reviewCount: 567,
-    imageUrl: "https://images.ctfassets.net/0sea1vycfyqy/sensory-strands/placeholder/sensory-strands.png",
+    imageUrl: "https://images.ctfassets.net/0sea1vycfyqy/4k1i7KIgEoyzfRlgKN3ctY/bb22d235f47ab924ebcb09e990809b9c/Sensory_Strands.png",
     toys: [
       {
         name: "有机棉感官挂绳",
@@ -584,7 +583,7 @@ export const standaloneProducts: StandaloneProduct[] = [
     lightColor: "#FDEEE3",
     rating: 4.9,
     reviewCount: 2145,
-    imageUrl: "https://images.ctfassets.net/0sea1vycfyqy/newborn-gift-set/placeholder/newborn-gift-set.png",
+    imageUrl: "https://cdn.shopify.com/s/files/1/2386/2119/files/Carousel_Image_1.png?v=1768574031",
     toys: [
       {
         name: "游戏垫",
@@ -639,7 +638,7 @@ export const standaloneProducts: StandaloneProduct[] = [
     lightColor: "#FDEEE3",
     rating: 4.7,
     reviewCount: 423,
-    imageUrl: "https://images.ctfassets.net/0sea1vycfyqy/montessori-placemat/placeholder/placemat.png",
+    imageUrl: "https://cdn.shopify.com/s/files/1/2386/2119/products/0081_Lovevery-VKS-PlaceMat-BlueAndYellow-FullSet-NapkinCenter-0284-June2020_d5ced3ad-501f-41b7-809d-63a4c28259f4.png?v=1654117623",
     toys: [
       {
         name: "蒙氏餐垫",

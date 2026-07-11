@@ -23,7 +23,7 @@ export const i18n = {
       en: "A warm community guide built by parents who love Lovevery. Discover real reviews, cleaning tips, and high-quality Amazon alternatives to help your little one thrive.",
     },
     cta: { cn: "开始探索", en: "Start Exploring" },
-    kitCount: { cn: "22 个 Play Kit + 4 款独立产品", en: "22 Play Kits + 4 Products" },
+    kitCount: { cn: "22 个 Play Kit + 11 款独立产品", en: "22 Play Kits + 11 Products" },
     coverRange: { cn: "覆盖 0-60 个月", en: "Covering 0-60 months" },
   },
 
@@ -209,8 +209,8 @@ export const i18n = {
     devStages: { cn: "发展阶段", en: "Development Stages" },
     aboutGuide: { cn: "关于本指南", en: "About This Guide" },
     aboutDesc: {
-      cn: "本指南整理了 Lovevery 全部 22 个 Play Kit 和 4 款独立产品的详细信息，包括每个玩具的使用方法、发展目标和家长真实评价，帮助您更好地使用这些精心设计的教育玩具。",
-      en: "This guide covers all 22 Lovevery Play Kits and 4 standalone products in detail, including how to use each toy, developmental goals, and real parent reviews, helping you get the most out of these expertly designed educational toys.",
+      cn: "本指南整理了 Lovevery 全部 22 个 Play Kit 和 11 款独立产品的详细信息，包括每个玩具的使用方法、发展目标和家长真实评价，帮助您更好地使用这些精心设计的教育玩具。",
+      en: "This guide covers all 22 Lovevery Play Kits and 11 standalone products in detail, including how to use each toy, developmental goals, and real parent reviews, helping you get the most out of these expertly designed educational toys.",
     },
     brandDesc: {
       cn: "基于蒙特梭利教育理念的订阅制玩具品牌，按月龄段提供经过儿童发展专家设计的玩具套装。",

@@ -6,6 +6,7 @@
 
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useI18n } from "@/hooks/useI18n";
+import { standaloneProducts } from "@/data/standaloneProducts";
 import LanguageToggle from "@/components/LanguageToggle";
 import { Link } from "wouter";
 import { motion, type Easing } from "framer-motion";
@@ -202,7 +203,7 @@ export default function AboutUs() {
                   className="block w-full text-left px-3 py-3 rounded-xl text-sm font-medium text-[#6B5E50] hover:text-[#3D3229] hover:bg-[#E8DFD3]/40 transition-colors min-h-[48px] flex items-center justify-between"
                 >
                   {i18n.nav.products[lang]}
-                  <span className="text-xs text-[#756A5C]">{t("4 款产品", "4 Products")}</span>
+                  <span className="text-xs text-[#756A5C]">{t(`${standaloneProducts.length} 款产品`, `${standaloneProducts.length} Products`)}</span>
                 </span>
               </Link>
               <span className="block px-3 py-3 rounded-xl text-sm font-medium text-[#3D3229] bg-[#E8DFD3]/40 min-h-[48px] flex items-center">

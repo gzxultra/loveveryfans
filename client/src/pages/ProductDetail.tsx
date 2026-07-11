@@ -1,5 +1,7 @@
 /*
- * ProductDetail page for standalone Lovevery products (Music Set, Bath Set, Block Set, Play Gym)
+ * ProductDetail page for standalone Lovevery products
+ * (Music Set, Bath Set, Block Set, Play Gym, Montessori Playshelf, Buddy Stroller,
+ *  Pull Pup, Play Tunnel, Sensory Strands, Newborn Gift Set, Placemat & Utensils)
  * Design: EXACTLY matches KitDetail's Montessori Naturalism / Scandinavian Minimalism style
  * - Same ToyCard layout with image, hover expand, How-to-Use always visible
  * - Same AlternativesSection integration with Amazon affiliate links

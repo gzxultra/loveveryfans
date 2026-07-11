@@ -392,7 +392,7 @@ export default function Home() {
               >
                 <span className="flex items-center justify-between">
                   {i18n.nav.products[lang]}
-                  <span className="text-xs text-[#756A5C]">{t("4 款产品", "4 Products")}</span>
+                  <span className="text-xs text-[#756A5C]">{t(`${standaloneProducts.length} 款产品`, `${standaloneProducts.length} Products`)}</span>
                 </span>
               </button>
               <Link href="/about/">
@@ -467,7 +467,7 @@ export default function Home() {
               <div className="shrink-0">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4 border bg-[#7FB685]/10 text-[#4a8a54] border-[#7FB685]/25">
                   <Sparkles className="w-3.5 h-3.5" />
-                  {t("4 款独立产品", "4 Standalone Products")}
+                  {t(`${standaloneProducts.length} 款独立产品`, `${standaloneProducts.length} Standalone Products`)}
                 </div>
                 <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-[#1a1108] tracking-tight">
                   {i18n.products.sectionTitle[lang]}

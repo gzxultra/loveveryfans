@@ -298,13 +298,24 @@ function generateBlogPostHtml(slug) {
 }
 
 // Standalone product IDs and SEO data
-const PRODUCT_IDS = ['music-set', 'bath-set', 'block-set', 'play-gym'];
+const PRODUCT_IDS = [
+  'music-set', 'bath-set', 'block-set', 'play-gym',
+  'montessori-playshelf', 'buddy-stroller', 'pull-pup',
+  'play-tunnel', 'sensory-strands', 'newborn-gift-set', 'montessori-placemat',
+];
 
 const productSeoData = {
   'music-set': { title: 'The Music Set | Lovevery Alternatives & Dupes | Lovevery Fans', desc: 'Discover the best affordable alternatives to the Lovevery Music Set. Compare real Amazon prices, ratings, and find musical toy dupes for your baby.', subtitle: 'Music Set' },
   'bath-set': { title: 'The Bath Set | Lovevery Alternatives & Dupes | Lovevery Fans', desc: 'Find the best Lovevery Bath Set alternatives. Compare Amazon dupes with real prices, ratings, and parent reviews for bath time learning toys.', subtitle: 'Bath Set' },
   'block-set': { title: 'The Block Set | Lovevery Alternatives & Dupes | Lovevery Fans', desc: 'Explore affordable alternatives to the Lovevery Block Set. Solid wood blocks with real Amazon prices, ratings, and parent reviews.', subtitle: 'Block Set' },
   'play-gym': { title: 'The Play Gym | Lovevery Alternatives & Dupes | Lovevery Fans', desc: 'Best Lovevery Play Gym alternatives. Compare activity gym dupes with real Amazon prices, ratings, and parent reviews for newborn development.', subtitle: 'Play Gym' },
+  'montessori-playshelf': { title: 'The Montessori Playshelf | Toy Storage & Organization | Lovevery Fans', desc: 'Explore the Lovevery Montessori Playshelf — a 2-in-1 Baltic birch storage shelf for easy toy rotation. Community tips, play ideas, and honest parent reviews.', subtitle: 'Montessori Playshelf' },
+  'buddy-stroller': { title: 'The Buddy Stroller | Walk & Push Toy | Lovevery Fans', desc: 'Discover the Lovevery Buddy Stroller — a Montessori-inspired push toy for early walkers. Community play tips, activity ideas, and honest parent reviews.', subtitle: 'Buddy Stroller' },
+  'pull-pup': { title: 'The Pull Pup | Pull-Along Walking Toy | Lovevery Fans', desc: 'Explore the Lovevery Pull Pup — a wooden pull-along dog with flip-up ears and tail. Community play tips, walking games, and honest parent reviews.', subtitle: 'Pull Pup' },
+  'play-tunnel': { title: 'The Play Tunnel | Crawl & Explore | Lovevery Fans', desc: 'Discover the Lovevery Play Tunnel — an indoor/outdoor crawl tunnel for active toddlers. Community play tips, creative games, and honest parent reviews.', subtitle: 'Play Tunnel' },
+  'sensory-strands': { title: 'Sensory Strands | Baby Teething & Exploration | Lovevery Fans', desc: 'Explore Lovevery Sensory Strands — a multi-textured teething and grasping toy for babies. Community tips, sensory play ideas, and honest parent reviews.', subtitle: 'Sensory Strands' },
+  'newborn-gift-set': { title: 'The Newborn Gift Set | Play Gym + Looker Kit Bundle | Lovevery Fans', desc: 'Discover the Lovevery Newborn Gift Set — bundling the Play Gym, Looker Kit, and Sensory Strands. Community tips, development activities, and parent reviews.', subtitle: 'Newborn Gift Set' },
+  'montessori-placemat': { title: 'Montessori Placemat & Utensils | Mealtime Independence | Lovevery Fans', desc: 'Explore the Lovevery Montessori Placemat & Utensils — helping toddlers learn independent table setting. Community tips, mealtime ideas, and parent reviews.', subtitle: 'Montessori Placemat & Utensils' },
 };
 
 function generateProductHtml(productId) {

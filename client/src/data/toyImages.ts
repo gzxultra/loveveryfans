@@ -536,6 +536,59 @@ export const kitToyImages: Record<string, Record<string, string>> = {
     "'Savy’s Scavenger Hunt' Book": "https://images.ctfassets.net/0sea1vycfyqy/6fsyjmmMmluG2mO9bmYn57/4f5f3d96b5e2ad5cbab0e5534cb23013/Oct2022_4YO_Savys-Scavenger-Hunt_Book-ISO.20240711170211643.png",
   },
 
+  // ─── Standalone Products ───
+  "montessoriPlayshelf": {
+    "Toy Rotation Display": "https://images.ctfassets.net/0sea1vycfyqy/3ukI9BgtjEb7UqGDc422Z0/7f5a7505843005e8ee6abbe1d14bd930/Shelf_1080x1080.png",
+    "Themed Shelf Curation": "https://images.ctfassets.net/0sea1vycfyqy/3ukI9BgtjEb7UqGDc422Z0/7f5a7505843005e8ee6abbe1d14bd930/Shelf_1080x1080.png",
+    "Independent Cleanup Practice": "https://images.ctfassets.net/0sea1vycfyqy/3ukI9BgtjEb7UqGDc422Z0/7f5a7505843005e8ee6abbe1d14bd930/Shelf_1080x1080.png",
+    "Storage Bin Activities": "https://images.ctfassets.net/0sea1vycfyqy/3ukI9BgtjEb7UqGDc422Z0/7f5a7505843005e8ee6abbe1d14bd930/Shelf_1080x1080.png",
+    "The Montessori Playshelf": "https://images.ctfassets.net/0sea1vycfyqy/3ukI9BgtjEb7UqGDc422Z0/7f5a7505843005e8ee6abbe1d14bd930/Shelf_1080x1080.png",
+  },
+  "buddyStroller": {
+    "Supported Walking Practice": "https://images.ctfassets.net/0sea1vycfyqy/beYFxjo8P75OVmDynMNPG/2d29d49869db63d92b4a05161592ce22/Stroller_0239_VS_R2.png",
+    "Caregiver Pretend Play": "https://images.ctfassets.net/0sea1vycfyqy/beYFxjo8P75OVmDynMNPG/2d29d49869db63d92b4a05161592ce22/Stroller_0239_VS_R2.png",
+    "Obstacle Course Challenge": "https://images.ctfassets.net/0sea1vycfyqy/beYFxjo8P75OVmDynMNPG/2d29d49869db63d92b4a05161592ce22/Stroller_0239_VS_R2.png",
+    "Loading & Delivery Play": "https://images.ctfassets.net/0sea1vycfyqy/beYFxjo8P75OVmDynMNPG/2d29d49869db63d92b4a05161592ce22/Stroller_0239_VS_R2.png",
+    "The Buddy Stroller": "https://images.ctfassets.net/0sea1vycfyqy/beYFxjo8P75OVmDynMNPG/2d29d49869db63d92b4a05161592ce22/Stroller_0239_VS_R2.png",
+  },
+  "pullPup": {
+    "Pull-Along Walking Exploration": "https://images.ctfassets.net/0sea1vycfyqy/4btRN1KhEvPDYNVqp79pfL/09b03bb8f54e94638eb1b475fbcfb42c/slideshow-pup_0011_pup-product_ef90cb07-8a03-4879-b398-997078a0ab63.png",
+    "Ears & Tail Flip-Up Play": "https://images.ctfassets.net/0sea1vycfyqy/4btRN1KhEvPDYNVqp79pfL/09b03bb8f54e94638eb1b475fbcfb42c/slideshow-pup_0011_pup-product_ef90cb07-8a03-4879-b398-997078a0ab63.png",
+    "Dog Walking Route Challenge": "https://images.ctfassets.net/0sea1vycfyqy/4btRN1KhEvPDYNVqp79pfL/09b03bb8f54e94638eb1b475fbcfb42c/slideshow-pup_0011_pup-product_ef90cb07-8a03-4879-b398-997078a0ab63.png",
+    "Outdoor Nature Adventure": "https://images.ctfassets.net/0sea1vycfyqy/4btRN1KhEvPDYNVqp79pfL/09b03bb8f54e94638eb1b475fbcfb42c/slideshow-pup_0011_pup-product_ef90cb07-8a03-4879-b398-997078a0ab63.png",
+    "The Pull Pup": "https://images.ctfassets.net/0sea1vycfyqy/4btRN1KhEvPDYNVqp79pfL/09b03bb8f54e94638eb1b475fbcfb42c/slideshow-pup_0011_pup-product_ef90cb07-8a03-4879-b398-997078a0ab63.png",
+  },
+  "playTunnel": {
+    "Crawl-Through Training": "https://images.ctfassets.net/0sea1vycfyqy/4WifU9xi0B82Gzjst5yR9m/702c661f019d4117bd476eb79bb13fd6/slideshow-tunnel_0013_standalone_a75bb9b4-2c9e-4410-b012-0835ea762606.jpg",
+    "Puzzle Piece Relay": "https://images.ctfassets.net/0sea1vycfyqy/4WifU9xi0B82Gzjst5yR9m/702c661f019d4117bd476eb79bb13fd6/slideshow-tunnel_0013_standalone_a75bb9b4-2c9e-4410-b012-0835ea762606.jpg",
+    "Secret Reading Cave": "https://images.ctfassets.net/0sea1vycfyqy/4WifU9xi0B82Gzjst5yR9m/702c661f019d4117bd476eb79bb13fd6/slideshow-tunnel_0013_standalone_a75bb9b4-2c9e-4410-b012-0835ea762606.jpg",
+    "Outdoor Water Tunnel": "https://images.ctfassets.net/0sea1vycfyqy/4WifU9xi0B82Gzjst5yR9m/702c661f019d4117bd476eb79bb13fd6/slideshow-tunnel_0013_standalone_a75bb9b4-2c9e-4410-b012-0835ea762606.jpg",
+    "The Play Tunnel": "https://images.ctfassets.net/0sea1vycfyqy/4WifU9xi0B82Gzjst5yR9m/702c661f019d4117bd476eb79bb13fd6/slideshow-tunnel_0013_standalone_a75bb9b4-2c9e-4410-b012-0835ea762606.jpg",
+  },
+  "sensoryStrands": {
+    "Tactile Exploration & Grasping": "https://images.ctfassets.net/0sea1vycfyqy/4k1i7KIgEoyzfRlgKN3ctY/bb22d235f47ab924ebcb09e990809b9c/Sensory_Strands.png",
+    "Sound Discovery & Discrimination": "https://images.ctfassets.net/0sea1vycfyqy/4k1i7KIgEoyzfRlgKN3ctY/bb22d235f47ab924ebcb09e990809b9c/Sensory_Strands.png",
+    "Tummy Time Booster": "https://images.ctfassets.net/0sea1vycfyqy/4k1i7KIgEoyzfRlgKN3ctY/bb22d235f47ab924ebcb09e990809b9c/Sensory_Strands.png",
+    "On-the-Go Sensory Companion": "https://images.ctfassets.net/0sea1vycfyqy/4k1i7KIgEoyzfRlgKN3ctY/bb22d235f47ab924ebcb09e990809b9c/Sensory_Strands.png",
+    "Sensory Strands": "https://images.ctfassets.net/0sea1vycfyqy/4k1i7KIgEoyzfRlgKN3ctY/bb22d235f47ab924ebcb09e990809b9c/Sensory_Strands.png",
+  },
+  "newbornGiftSet": {
+    "Play Gym: Multi-Zone Development Base": "https://images.ctfassets.net/0sea1vycfyqy/71rvhDAPU1nlwIWcExgCLZ/10447ca8d7a002949303b70101cd9e91/Play-Gym_MASTER_VS_R4rev2_1.gif",
+    "Looker Kit: Baby's First Toy Set": "https://images.ctfassets.net/0sea1vycfyqy/2Eqfc2kd6LH83SQiitGn2p/6e597b994ec9bf15103ca166db3b228a/Looker_Image_1_Neutral_BG.png",
+    "Sensory Strands: Play Gym's Best Companion": "https://images.ctfassets.net/0sea1vycfyqy/4k1i7KIgEoyzfRlgKN3ctY/bb22d235f47ab924ebcb09e990809b9c/Sensory_Strands.png",
+    "Age-by-Age Development Guide": "https://cdn.shopify.com/s/files/1/2386/2119/files/Carousel_Image_1.png?v=1768574031",
+    "The Play Gym": "https://images.ctfassets.net/0sea1vycfyqy/71rvhDAPU1nlwIWcExgCLZ/10447ca8d7a002949303b70101cd9e91/Play-Gym_MASTER_VS_R4rev2_1.gif",
+    "The Looker Play Kit": "https://images.ctfassets.net/0sea1vycfyqy/2Eqfc2kd6LH83SQiitGn2p/6e597b994ec9bf15103ca166db3b228a/Looker_Image_1_Neutral_BG.png",
+    "Sensory Strands": "https://images.ctfassets.net/0sea1vycfyqy/4k1i7KIgEoyzfRlgKN3ctY/bb22d235f47ab924ebcb09e990809b9c/Sensory_Strands.png",
+  },
+  "montessoriPlacemat": {
+    "Independent Table Setting": "https://cdn.shopify.com/s/files/1/2386/2119/products/0081_Lovevery-VKS-PlaceMat-BlueAndYellow-FullSet-NapkinCenter-0284-June2020_d5ced3ad-501f-41b7-809d-63a4c28259f4.png?v=1654117623",
+    "Stainless Steel Utensil Practice": "https://cdn.shopify.com/s/files/1/2386/2119/products/0081_Lovevery-VKS-PlaceMat-BlueAndYellow-FullSet-NapkinCenter-0284-June2020_d5ced3ad-501f-41b7-809d-63a4c28259f4.png?v=1654117623",
+    "Shape-Matching Table Game": "https://cdn.shopify.com/s/files/1/2386/2119/products/0081_Lovevery-VKS-PlaceMat-BlueAndYellow-FullSet-NapkinCenter-0284-June2020_d5ced3ad-501f-41b7-809d-63a4c28259f4.png?v=1654117623",
+    "Post-Meal Cleanup Participation": "https://cdn.shopify.com/s/files/1/2386/2119/products/0081_Lovevery-VKS-PlaceMat-BlueAndYellow-FullSet-NapkinCenter-0284-June2020_d5ced3ad-501f-41b7-809d-63a4c28259f4.png?v=1654117623",
+    "Montessori Placemat": "https://cdn.shopify.com/s/files/1/2386/2119/products/0081_Lovevery-VKS-PlaceMat-BlueAndYellow-FullSet-NapkinCenter-0284-June2020_d5ced3ad-501f-41b7-809d-63a4c28259f4.png?v=1654117623",
+  },
+
 };
 
 export const getToyImage = (kitId: string, toyName: string): string | null => {

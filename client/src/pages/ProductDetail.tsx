@@ -10,6 +10,7 @@
  * Supports CN/EN language toggle and Traditional Chinese auto-detection
  */
 import { getProductById, standaloneProducts, getProductSlug } from "@/data/standaloneProducts";
+import { getPlayTipsByProductId } from "@/data/communityPlayTips";
 import type { Toy } from "@/data/kits";
 import { getToyAlternatives } from "@/data/alternatives";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -42,6 +43,7 @@ import {
   ThumbsUp,
   ThumbsDown,
   MessageSquare,
+  Users,
 } from "lucide-react";
 import { useState, useEffect, useCallback, memo, useMemo } from "react";
 import { Link, useParams } from "wouter";
@@ -762,6 +764,66 @@ export default function ProductDetail() {
           </div>
         </div>
       </section>
+
+      {/* Community Play Tips */}
+      {(() => {
+        const tips = product ? getPlayTipsByProductId(product.id) : [];
+        if (tips.length === 0) return null;
+        return (
+          <section className="pb-6 sm:pb-10">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="mb-6 sm:mb-10">
+                <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+                  <div
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center"
+                    style={{ backgroundColor: product.color + "15" }}
+                  >
+                    <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" style={{ color: product.color }} />
+                  </div>
+                  <h2 className="font-['Manrope'] text-xl sm:text-2xl md:text-3xl text-[#3D3229]">
+                    {i18n.communityTips.title[lang]}
+                  </h2>
+                </div>
+                <p className="text-xs sm:text-sm text-[#756A5C] ml-9 sm:ml-11">
+                  {i18n.communityTips.subtitle[lang]}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                {tips.map((tip) => (
+                  <motion.div
+                    key={tip.id}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.35 }}
+                    className="bg-white rounded-xl sm:rounded-2xl border border-[#E8DFD3] p-4 sm:p-5 hover:shadow-lg hover:shadow-[#3D3229]/5 hover:border-[#D0C8BC] transition-all duration-300"
+                  >
+                    <p className="text-sm sm:text-[15px] text-[#3D3229] leading-relaxed mb-3 sm:mb-4">
+                      {lang === "en" ? tip.tipEn : convert(tip.tip)}
+                    </p>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span
+                        className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium"
+                        style={{ backgroundColor: product.color + "12", color: product.color }}
+                      >
+                        <MessageSquare className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                        {tip.source}
+                      </span>
+                      {(lang === "en" ? tip.ageRangeEn : tip.ageRange) && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium bg-[#F0F7F1] text-[#5A8F63]">
+                          <BookOpen className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                          {lang === "en" ? tip.ageRangeEn : convert(tip.ageRange || "")}
+                        </span>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* Recommended Reading — same position as KitDetail (before Referral) */}
       <RecommendedReading kitId={product.id} kitColor={product.color} />

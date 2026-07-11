@@ -204,6 +204,17 @@ export const i18n = {
     invalidEmail: { cn: "请输入有效邮箱", en: "Invalid email" },
   },
 
+  // Community Play Tips
+  communityTips: {
+    title: { cn: "社区玩法", en: "Community Play Tips" },
+    subtitle: {
+      cn: "来自家长社区的创意玩法，帮你解锁更多灵感",
+      en: "Creative play ideas shared by real parents in the community",
+    },
+    source: { cn: "来源", en: "Source" },
+    ageRange: { cn: "适用月龄", en: "Age" },
+  },
+
   // Footer
   footer: {
     devStages: { cn: "发展阶段", en: "Development Stages" },

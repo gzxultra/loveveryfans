@@ -19,6 +19,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const ProductDetail = lazy(() => import("./pages/ProductDetail"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
+const KitComparison = lazy(() => import("./pages/KitComparison"));
 
 /**
  * Preload a route chunk by triggering its dynamic import.
@@ -98,6 +99,7 @@ function AppRouter({ onReady }: { onReady?: () => void }) {
         <Route path={"/"} component={Home} />
         <Route path={"/kit/:id"} component={KitDetail} />
         <Route path={"/product/:id"} component={ProductDetail} />
+        <Route path={"/compare"} component={KitComparison} />
         <Route path={"/about"} component={AboutUs} />
         <Route path={"/blog"} component={Blog} />
         <Route path={"/blog/:slug"} component={BlogPost} />

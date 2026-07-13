@@ -124,7 +124,7 @@ export default function ShakeToDiscover() {
 
           {randomToy.imageUrl && (
             <div className="aspect-square w-48 mx-auto mb-6 rounded-3xl overflow-hidden bg-[#FAF7F2] border border-[#F0EBE3] p-4 shadow-inner">
-              <img src={randomToy.imageUrl} alt={randomToy.name} className="w-full h-full object-contain" />
+              <img src={randomToy.imageUrl} alt={randomToy.name} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
             </div>
           )}
 

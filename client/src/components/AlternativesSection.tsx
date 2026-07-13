@@ -132,6 +132,7 @@ export function AlternativesSection({
                     width={80}
                     height={80}
                     onError={() => handleImageError(idx)}
+                    referrerPolicy="no-referrer"
                     itemProp="image"
                   />
                 </div>

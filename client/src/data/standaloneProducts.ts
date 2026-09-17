@@ -991,6 +991,38 @@ export const standaloneProducts: StandaloneProduct[] = [
       },
     ],
   },
+  {
+    id: "emotionBookSet",
+    name: "The Emotion Book Set",
+    category: "books",
+    price: "$59.00",
+    ageRange: "24 个月以上",
+    ageRangeEn: "Months 24+",
+    description: "12 册精装情绪主题绘本，全部采用真实照片与真实生活场景——冰淇淋店关门时的失望、气球飞走的难过。先讲开心、难过、生气、害怕 4 种基本情绪，再深入害羞、嫉妒、紧张等复杂感受，帮孩子识别、命名和调节情绪。",
+    descriptionEn: "12 casebound books on emotions with real photos and relatable situations — disappointment when the ice cream shop is closed, sadness when a balloon floats away. Starts with the 4 primary emotions (happy, sad, mad, scared), then builds to complex feelings like shyness, jealousy, and nervousness, helping children identify, name, and regulate emotions.",
+    officialUrl: "https://lovevery.com/products/emotion-book-set",
+    color: "#7D8CA3",
+    bgColor: "#F4F6F8",
+    lightColor: "#E7EBF0",
+    rating: 0,
+    reviewCount: 0,
+    imageUrl: "https://images.ctfassets.net/0sea1vycfyqy/2R3QsyLzaxfiVY7kr7nu7Q/54b0830477ae9a4f88b3d42d28fd323a/SEL_ISO_I_Feel_Excited.png",
+    addedAt: "2026-09-17",
+    toys: [
+      {
+        name: "情绪绘本（12 册）",
+        englishName: "The Emotion Book Set (12 Books)",
+        category: "语言/社交情感",
+        categoryEn: "Language/Social-Emotional",
+        howToUse: "每天读一本，跟着书中真实孩子的故事聊情绪：这本书里的小朋友为什么难过？你有过这种感觉吗？书后可延伸出“情绪急救”小练习，把调节策略用到日常里。",
+        howToUseEn: "Read one book a day and talk through the real children's emotion stories: why is the child in this book sad? Have you ever felt that way? Extend into little regulation exercises to reuse the strategies in daily life.",
+        developmentGoal: "识别、命名和调节情绪；从 4 种基本情绪进阶到害羞、嫉妒、失望等复杂感受，建立同理心与情绪韧性。",
+        developmentGoalEn: "Identify, name, and regulate emotions — from the 4 primary emotions to complex feelings like shyness, jealousy, and disappointment — building empathy and emotional resilience.",
+        parentReview: "官方 PDP 实锤在售（$59.00，2 岁+）。12 本全部真实照片出镜，场景都是孩子日常会遇到的事；从基本情绪讲到复杂情绪，跨度够用到小学低年级。",
+        parentReviewEn: "Verified in stock on the official PDP ($59.00, ages 2+). All 12 books use real photos of everyday situations kids actually encounter; spans primary through complex emotions, useful into early elementary.",
+      },
+    ],
+  },
 ];
 
 // Slug mapping: kebab-case URL slug → camelCase product ID
@@ -1007,6 +1039,7 @@ const slugToId: Record<string, string> = {
   "newborn-gift-set": "newbornGiftSet",
   "montessori-placemat": "montessoriPlacemat",
   "friendship-book-set": "friendshipBookSet",
+  "emotion-book-set": "emotionBookSet",
 };
 
 // Reverse mapping: camelCase product ID → kebab-case URL slug
@@ -1023,6 +1056,7 @@ export const idToSlug: Record<string, string> = {
   "newbornGiftSet": "newborn-gift-set",
   "montessoriPlacemat": "montessori-placemat",
   "friendshipBookSet": "friendship-book-set",
+  "emotionBookSet": "emotion-book-set",
 };
 
 export function getProductById(id: string): StandaloneProduct | undefined {

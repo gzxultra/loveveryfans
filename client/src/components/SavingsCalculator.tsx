@@ -35,6 +35,8 @@ interface SavingsCalculatorProps {
   kitName: string;
   kitId: string;
   kitPrice?: number;
+  /** "subscription-only" kits have no single-box price on lovevery.com — label the price honestly. */
+  kitPurchaseType?: "single" | "subscription-only";
 }
 
 /**
@@ -85,8 +87,13 @@ export function SavingsCalculator({
   kitName,
   kitId,
   kitPrice = LOVEVERY_KIT_PRICE_USD,
+  kitPurchaseType = "single",
 }: SavingsCalculatorProps) {
   const { lang, t } = useLanguage();
+  const priceQualifier =
+    kitPurchaseType === "subscription-only"
+      ? t("订阅价", "subscription price")
+      : t("单盒", "single kit");
 
   // Track which alternatives are selected (by ASIN)
   const [selected, setSelected] = useState<Set<string>>(new Set());
@@ -159,8 +166,8 @@ export function SavingsCalculator({
         </div>
         <p className="text-xs text-primary mt-0.5">
           {t(
-            `勾选你想买的平替，看看能省多少钱（对比 Lovevery ${kitName} $${kitPrice}）`,
-            `Check the alternatives you want to buy and see how much you save vs. Lovevery ${kitName} ($${kitPrice})`
+            `勾选你想买的平替，看看能省多少钱（对比 Lovevery ${kitName} ${priceQualifier} $${kitPrice}）`,
+            `Check the alternatives you want to buy and see how much you save vs. Lovevery ${kitName} (${priceQualifier} $${kitPrice})`
           )}
         </p>
       </div>

@@ -285,7 +285,7 @@ export const kitToyImages: Record<string, Record<string, string>> = {
     "Sensory Links": "https://images.ctfassets.net/0sea1vycfyqy/5O7INa0JlqbbRbof4pX6Df/251b7bda8a174bb73b0c8da1b3b9ec3c/Lovevery-VKS-Studio-StrollerToy-364-Sep2020_WEB_616e4d0b-1dbd-445d-895a-a1b0cc13e2e6.png",
     "Simple Black & White Card Set": "https://images.ctfassets.net/0sea1vycfyqy/5q5OUzlztmBjjmBOiyjqsK/0d057fdf3872b66bd2478f0a057fee21/K1.Simple.BW.Card.Set.png",
     "Standing Card Holder": "https://images.ctfassets.net/0sea1vycfyqy/31Ucd4iWHQYxGCQLMd7rHg/f86ded3f089521cde7c10cff12b4f96e/SubscriptionBox1_Animation_14411_folded_towel_VS_R1_CLIENTWHITE.png",
-    "Complex Black & White Card Set": "https://images.ctfassets.net/0sea1vycfyqy/76DmYmjEUjpy4OpeLhXkDo/2fda48e93df4d07e36fafb7a2aa8cfb1/K1.Complex.BW.Card.Set.png",
+    "Complex Black, White & Red Card Set": "https://images.ctfassets.net/0sea1vycfyqy/76DmYmjEUjpy4OpeLhXkDo/2fda48e93df4d07e36fafb7a2aa8cfb1/K1.Complex.BW.Card.Set.png",
     "Black & White Mittens": "https://images.ctfassets.net/0sea1vycfyqy/7e4qbnmHweXohOogxPAlbP/77ef6d76784f860e333a8e52f7ad38d2/Lovevery-VKS-Mittens-ISO-139-July2020.png",
     "Wooden Book": "https://images.ctfassets.net/0sea1vycfyqy/681RySrxtBmSyc1ofR2AjC/172eff0cca15c11daa48e1ffa6b1f21d/K1.Wooden.Book.png",
     "'We're Awake' Board Book": "https://images.ctfassets.net/0sea1vycfyqy/6ScvDh3V62JxEXMIBFIKNb/df42c300e2a90cb2213bf62504f1f2a2/We-re-Awake-Book-Flat-Lay-2.png",
@@ -304,7 +304,7 @@ export const kitToyImages: Record<string, Record<string, string>> = {
     "Rubber Triangle Teether": "https://images.ctfassets.net/0sea1vycfyqy/2Xm4ZQfYCbgNLpOxkYMOdX/ca88ca64ed65761074652b58194f722e/teether.png",
     "Hand-to-Hand Discs": "https://images.ctfassets.net/0sea1vycfyqy/6tyn0sOb5wEcwCDzN3ZoLw/5054cb8ca1174d3958d8489664ebfb84/2022_11_22_ISO_S_3850_BH_V1_web.png",
     "'Is My Baby Feeling Sleepy?' Board Book": "https://images.ctfassets.net/0sea1vycfyqy/2H0CfTkhd1i7VJNXXd5wqB/0ce9d0f79341ff6086e566031471a257/output-onlinepngtools__1_.png",
-    "Framed Mirror": "https://images.ctfassets.net/0sea1vycfyqy/1fUr5n3hgpDcYCm03q9d3s/fb1e6554e93783fb319346fd5aa960b4/SubscriptionBox2_Animation_14494_large_mirror_VS_R2_PU_R1_transWHITE_BH_V4.webp",
+    "Double-sided Framed Mirror": "https://images.ctfassets.net/0sea1vycfyqy/1fUr5n3hgpDcYCm03q9d3s/fb1e6554e93783fb319346fd5aa960b4/SubscriptionBox2_Animation_14494_large_mirror_VS_R2_PU_R1_transWHITE_BH_V4.webp",
     "Wearable Rattles": "https://images.ctfassets.net/0sea1vycfyqy/1Oy8pa7M2lfkx64BxXMVHk/4c91b91b514eeb96e054590d090512b8/Lovevery_Playkit_The_Charmer_Wrap_Rattles_0098_v3.png",
     "First Colors Cards": "https://images.ctfassets.net/0sea1vycfyqy/3suK9EQcNucqJofDPjPwZW/2159630545c9ef45fd280208e5db30a1/Lovevery_The_Charmer_ISO_Black_And_White_Cards_Overhead_0779_v2__1_.png",
   },
@@ -393,7 +393,7 @@ export const kitToyImages: Record<string, Record<string, string>> = {
     "Drop & Match Dot Catcher": "https://images.ctfassets.net/0sea1vycfyqy/5wSYuHwtrFP1CUgeEpjJYe/8f1d00cba00ec0e670e7e5d7280db1a8/k11-2-dot-catcher.png",
     "Felt Flowers in a Row": "https://images.ctfassets.net/0sea1vycfyqy/5dvijPmMcgCFbvNgl17X1K/03f62e47da15efcbe7c5ca6d87d3a3bf/k11-3-felt-flowers.png",
     "Double-Sided Sunny Day Puzzle": "https://images.ctfassets.net/0sea1vycfyqy/3M7wpevITzoVJtwRPNsfsD/6cb0d92984fc854a72bef721a3bfe8fe/Year_2_Playkit_10766_VS_R1_CL.png",
-    "Anywhere Art Kit With Washable Tempera Paintsticks": "https://images.ctfassets.net/0sea1vycfyqy/3CPZ9DoI1ty9l4n1RYtuo6/b7cd72751ff82141d413e504c24ac406/Year_2_Playkit_10842_VS_R2_CL.png",
+    "Anywhere Art Kit With Tempera Paintsticks": "https://images.ctfassets.net/0sea1vycfyqy/3CPZ9DoI1ty9l4n1RYtuo6/b7cd72751ff82141d413e504c24ac406/Year_2_Playkit_10842_VS_R2_CL.png",
     "Let's Map It Out Routine Cards": "https://images.ctfassets.net/0sea1vycfyqy/20BvrDKfiMOjdSm7hoyiYi/1636f575bbf4e621ae782dbd294926e2/Year_2_Routine_Cards.png",
     "'Making Muffins' Board Book": "https://images.ctfassets.net/0sea1vycfyqy/3Q2iNNJoXcoCKkaGXLzYOh/b526051ee057af540155e73b48cb9dd5/Year_2_Playkit_11042_VS_R2_CL_Muffins-_2_.png",
   },
@@ -429,7 +429,7 @@ export const kitToyImages: Record<string, Record<string, string>> = {
       "Storytelling Puppet Set With Changing Emotion Eyes": "https://images.ctfassets.net/0sea1vycfyqy/PKkIr6ci5KVI7hW7vbJ2Z/0f9e35635812299162de2fe12b1ad95d/Lovevery-VisionkitStudio-ISOs-Puppets-NoArms-158-Oct2020-1.20230607202349727.png",
       "Squeeze & Spray Mop": "https://images.ctfassets.net/0sea1vycfyqy/443O8EpR0nbhQZT7nHeidn/45fcf5c1bf9b78ca7208af0c6e58d549/Lovevery-Visionkit-ISOs-SprayMop-087-Oct2020-1.20230607221225201.png",
       "Letter Sounds Animal Puzzle": "https://images.ctfassets.net/0sea1vycfyqy/5tcqqgXk3qjkHTDzdfHehO/4f023b2b54eccff9cc41d847cbd455fc/2022_05_25_Studio_ECO_5019.png",
-      "'Adela Comes Home'": "https://images.ctfassets.net/0sea1vycfyqy/4VLyjhxEHnOwNKDicCsAtN/4eec32ad6b056b58a0033b036f0b9076/Out-the-Door-Book-ISO.20250131155744519.png",
+      "'Out the Door' Book": "https://images.ctfassets.net/0sea1vycfyqy/4VLyjhxEHnOwNKDicCsAtN/4eec32ad6b056b58a0033b036f0b9076/Out-the-Door-Book-ISO.20250131155744519.png",
       "Get Started Guide": "https://images.ctfassets.net/0sea1vycfyqy/2ZgvWsLcZVatY72ZmXi0ms/81ccadceb849f73eb8bc9160ca93381b/Kit16_GettingStarted-ISO.png",
   },
   "problemSolver": {
@@ -596,6 +596,9 @@ export const kitToyImages: Record<string, Record<string, string>> = {
   },
   "friendshipBookSet": {
     "The Friendship Book Set (10 Books)": "https://images.ctfassets.net/0sea1vycfyqy/5ZDLJkyjKCaxf7bs9fw4Fl/75a9e5e31e99a87ceb011a13aa96644f/My_Story_Your_Story_Cover_ISO_1.png",
+  },
+  "emotionBookSet": {
+    "The Emotion Book Set (12 Books)": "https://images.ctfassets.net/0sea1vycfyqy/2R3QsyLzaxfiVY7kr7nu7Q/54b0830477ae9a4f88b3d42d28fd323a/SEL_ISO_I_Feel_Excited.png",
   },
 
 };

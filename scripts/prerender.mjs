@@ -302,7 +302,7 @@ const PRODUCT_IDS = [
   'music-set', 'bath-set', 'block-set', 'play-gym',
   'montessori-playshelf', 'buddy-stroller', 'pull-pup',
   'play-tunnel', 'sensory-strands', 'newborn-gift-set', 'montessori-placemat',
-  'friendship-book-set',
+  'friendship-book-set', 'emotion-book-set',
 ];
 
 const productSeoData = {
@@ -318,6 +318,7 @@ const productSeoData = {
   'newborn-gift-set': { title: 'Newborn Gift Set | Play Gym + Looker Kit Bundle | Lovevery Fans', desc: 'Discover the Lovevery Newborn Gift Set — bundling the Play Gym, Looker Kit, and Sensory Strands. Community tips, development activities, and parent reviews.', subtitle: 'Newborn Gift Set' },
   'montessori-placemat': { title: 'Kid\'s Montessori Placemat & Utensils | Mealtime Independence | Lovevery Fans', desc: 'Explore the Lovevery Montessori Placemat & Utensils — helping toddlers learn independent table setting. Community tips, mealtime ideas, and parent reviews.', subtitle: 'Montessori Placemat & Utensils' },
   'friendship-book-set': { title: 'The Friendship Book Set | Social-Emotional Books | Lovevery Fans', desc: 'Explore the Lovevery Friendship Book Set — 10 board books with real children building social-emotional skills: empathy, turn-taking, apologizing, and boundaries. Ages 36+ months.', subtitle: 'Friendship Book Set' },
+  'emotion-book-set': { title: 'The Emotion Book Set | SEL Emotion Books | Lovevery Fans', desc: 'Explore the Lovevery Emotion Book Set — 12 casebound books with real photos teaching children to identify, name, and regulate emotions, from primary feelings to complex ones. Ages 24+ months.', subtitle: 'Emotion Book Set' },
 };
 
 function generateProductHtml(productId) {

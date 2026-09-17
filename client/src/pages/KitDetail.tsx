@@ -680,6 +680,29 @@ export default function KitDetail() {
                 </p>
               )}
 
+              {/* Official price line — honest purchase-type labeling (verified 2026-09-16) */}
+              <p className="text-sm sm:text-base text-muted-foreground mt-4 sm:mt-5">
+                {kit.purchaseType === "subscription-only" ? (
+                  <>
+                    <span className="font-semibold text-foreground">${kit.price}</span>
+                    {t(" 订阅价", " subscription price")}
+                    <span className="text-xs opacity-80">
+                      {t("（官网仅提供订阅购买）", " (subscription only on lovevery.com)")}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="font-semibold text-foreground">${kit.price}</span>
+                    {t(" 单盒", " single kit")}
+                    {kit.subscriptionPrice && (
+                      <span className="text-xs opacity-80">
+                        {t(` · 订阅 $${kit.subscriptionPrice}/盒`, ` · subscribe $${kit.subscriptionPrice}/kit`)}
+                      </span>
+                    )}
+                  </>
+                )}
+              </p>
+
               {/* View on Lovevery Official Site Button */}
               {kit.officialUrl && (
                 <div className="mt-5 sm:mt-6">
@@ -891,6 +914,7 @@ export default function KitDetail() {
                 kitName={kit.name}
                 kitId={kit.id}
                 kitPrice={kit.price ?? 80}
+                kitPurchaseType={kit.purchaseType ?? "single"}
               />
             </div>
           </section>

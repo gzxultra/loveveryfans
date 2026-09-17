@@ -13,6 +13,16 @@
         } catch (e) {}
       })();
     </script>
+    <script>
+      // Pre-paint dark-mode class to avoid light flash on reload (mirrors ThemeContext).
+      (function() {
+        try {
+          if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
 
     <!-- Primary SEO Meta Tags -->
     <title>Lovevery Fans — Complete Play Kit Guide & Affordable Alternatives</title>
@@ -244,13 +254,13 @@
       #root{position:absolute;top:0;left:0;width:100%;opacity:0;pointer-events:none;z-index:-1;transition:opacity 0.3s ease}
       #root.ready{position:static;opacity:1;pointer-events:auto;z-index:auto}
     </style>
-    <script type="module" crossorigin src="/assets/index-BHdaV-KH.js"></script>
+    <script type="module" crossorigin src="/assets/index-Dnba7BKD.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/vendor-react-Bf6hcZV-.js">
     <link rel="modulepreload" crossorigin href="/assets/vendor-router-CHKYp_0Y.js">
     <link rel="modulepreload" crossorigin href="/assets/vendor-icons-CsaWvzt5.js">
-    <link rel="stylesheet" href="/assets/index-i_Xf3wfE.css" media="print" onload="this.media='all'" crossorigin>
-    <noscript><link rel="stylesheet" href="/assets/index-i_Xf3wfE.css" crossorigin></noscript>
-      <link rel="preload" as="style" href="/assets/index-i_Xf3wfE.css" crossorigin>
+    <link rel="stylesheet" href="/assets/index-CBweXRGt.css" media="print" onload="this.media='all'" crossorigin>
+    <noscript><link rel="stylesheet" href="/assets/index-CBweXRGt.css" crossorigin></noscript>
+      <link rel="preload" as="style" href="/assets/index-CBweXRGt.css" crossorigin>
   </head>
   <body>
     <!-- SSR Shell: Immediate visible content for LCP before React hydrates -->

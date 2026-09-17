@@ -136,7 +136,7 @@ export default function KitComparison() {
                   }
                 }}
                 defaultValue=""
-                className="rounded-xl border border-border bg-white px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 min-h-[44px]"
+                className="rounded-xl border border-border bg-card px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 min-h-[44px]"
               >
                 <option value="" disabled>
                   {txt.selectKit[lang]}

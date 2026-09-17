@@ -85,7 +85,7 @@ function ArticleCard({
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
-      className="group block rounded-xl border border-border bg-white hover:border-border hover:shadow-md hover:shadow-foreground/5 transition-all duration-300 overflow-hidden"
+      className="group block rounded-xl border border-border bg-card hover:border-border hover:shadow-md hover:shadow-foreground/5 transition-all duration-300 overflow-hidden"
     >
       {/* Editor pick ribbon */}
       {isEditorPick && (

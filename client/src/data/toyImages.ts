@@ -350,7 +350,7 @@ export const kitToyImages: Record<string, Record<string, string>> = {
   "babbler": {
     "Slide & Seek Ball Run": "https://images.ctfassets.net/0sea1vycfyqy/5YVJ4CAsQH0rJQrR4iDYtN/7d6915fbd36a91e0d1fb8462080f23b5/Products_Overhead_23089_v4_Hero_VS_R3_CL_Refresh_BH_EDIT.png",
     "Bunnies in a Felt Burrow": "https://images.ctfassets.net/0sea1vycfyqy/01GGQ17CrCspt6NaqJXWzy/ab958359f3543f29b3eafc2ee0b3e1f9/Lovevery-BunniesFeltHouse-Green-ISO-1832-May_18_22_1.webp",
-    "Wooden Stack & Slot": "https://images.ctfassets.net/0sea1vycfyqy/2B95EtdAvbtAjPCl7hRWGu/c025bff9d653957e5f40e99f9cbdc0e5/WoodenStack_Slot_067_v2.png",
+    "Flexible Wooden Stacker": "https://images.ctfassets.net/0sea1vycfyqy/2B95EtdAvbtAjPCl7hRWGu/c025bff9d653957e5f40e99f9cbdc0e5/WoodenStack_Slot_067_v2.png",
     "Circle of Friends Puzzle": "https://images.ctfassets.net/0sea1vycfyqy/1xaJcMNkLWy1qSUZwjG4CK/078955c846f290e73ef87b3800774268/2022_11_22_ISO_S_3852_BH_V2_1.png",
     "Wooden Coin Bank Set": "https://images.ctfassets.net/0sea1vycfyqy/7cpxZr8fErIBHgTVOGz0Tz/97dfc11bc618dc12cdd60d1f34a188fb/Products_Overhead_23191_Soft-Light_VS_R2_VK-UpdatedAug2020.png",
     "Coin Lid & Coins": "https://images.ctfassets.net/0sea1vycfyqy/7801hDogUd9reHro2vpugv/698e23251822a02572d6e6b2fab3103b/Lovevery-CoinBoxAndTops-Lid-ISO-UpdatedAug2020-1887-Feb2020-Edit.png",

@@ -30,21 +30,7 @@
       {
         "toyName": "Sensory Links",
         "toyNameCn": "感官连接环",
-        "alternatives": [
-          {
-            "name": "Yeetec 6 Pack 24 Links Wacky Tracks Snap and Click Fidget Toys",
-            "asin": "B07PS6JW56",
-            "price": "$4.99",
-            "rating": 4.7,
-            "reviewCount": 9178,
-            "imageUrl": "https://m.media-amazon.com/images/I/71kQCT5TwLL.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B07PS6JW56?tag=loveveryfans-20",
-            "reasonEn": "These sensory links are a great alternative for developing fine motor skills and providing sensory stimulation. They are colorful, durable, and can be configured in many different ways.",
-            "reasonCn": "这些感官连接环是发展精细运动技能和提供感官刺激的绝佳替代品。它们色彩鲜艳，耐用，并且可以以多种不同的方式进行配置。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          }
-        ]
+        "alternatives": []
       },
       {
         "toyName": "Simple Black & White Card Set",
@@ -57,8 +43,8 @@
         "alternatives": []
       },
       {
-        "toyName": "Complex Black, White & Red Card Set",
-        "toyNameCn": "复杂黑白红卡片",
+        "toyName": "Black, White, & Red Card Set",
+        "toyNameCn": "黑白红卡片",
         "alternatives": []
       },
       {
@@ -874,7 +860,7 @@
         ]
       },
       {
-        "toyName": "Opposite Balls",
+        "toyName": "Opposites Balls",
         "toyNameCn": "相反球",
         "alternatives": []
       }
@@ -909,8 +895,8 @@
         "alternatives": []
       },
       {
-        "toyName": "Wooden Stack & Slot",
-        "toyNameCn": "木质套圈插槽",
+        "toyName": "Flexible Wooden Stacker",
+        "toyNameCn": "弹性木质套圈",
         "alternatives": [
           {
             "name": "Adena Montessori Wooden 6 Rings on Peg Stacking and Sorting Ring",
@@ -1490,7 +1476,7 @@
         ]
       },
       {
-        "toyName": "Anywhere Art Kit With Tempera Paintsticks",
+        "toyName": "Anywhere Art Kit With Washable Tempera Paintsticks",
         "toyNameCn": "随心艺术套装（含蛋彩画棒）",
         "alternatives": [
           {
@@ -1655,7 +1641,7 @@
         "toyNameCn": "交通工具记忆翻翻乐",
         "alternatives": [
           {
-            "name": "Skillmatics Memory Match Game - Animal Planet",
+            "name": "Skillmatics Memory Match Game - Where Things Belong",
             "asin": "B0B293XSCD",
             "price": "$30.25",
             "rating": 4.4,
@@ -1976,11 +1962,6 @@
             "lastChecked": "2026-09-17T04:27:56Z"
           }
         ]
-      },
-      {
-        "toyName": "‘Out the Door’ Book",
-        "toyNameCn": "《出门啦》",
-        "alternatives": []
       },
       {
         "toyName": "Get Started Guide",

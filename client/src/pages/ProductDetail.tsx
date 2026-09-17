@@ -255,10 +255,10 @@ const ToyCard = memo(function ToyCard({
                           {lang === "en" && review.prosEn ? review.prosEn : convert(review.pros)}
                         </p>
                       </div>
-                      <div className="bg-[#FFF5F5] rounded-lg sm:rounded-xl p-3 sm:p-4 border border-[#FEE2E2]">
+                      <div className="bg-[#FFF5F5] dark:bg-[#2A1E1E] rounded-lg sm:rounded-xl p-3 sm:p-4 border border-[#FEE2E2] dark:border-[#4A2E2E]">
                         <div className="flex items-center gap-2 mb-2">
                           <ThumbsDown className="w-4 h-4 text-[#E57373]" />
-                          <h4 className="font-bold text-[#8C4A4A] text-[10px] sm:text-xs uppercase tracking-wider">
+                          <h4 className="font-bold text-[#8C4A4A] dark:text-[#E8A0A0] text-[10px] sm:text-xs uppercase tracking-wider">
                             {lang === "cn" ? "缺点" : "Cons"}
                           </h4>
                         </div>

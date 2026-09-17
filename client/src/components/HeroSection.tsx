@@ -49,7 +49,7 @@ export default function HeroSection({ onExplore }: HeroSectionProps) {
             <div className="flex flex-wrap items-center gap-3 sm:gap-4">
               <button
                 onClick={onExplore}
-                className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-7 sm:py-3.5 bg-foreground text-white rounded-full text-sm sm:text-base font-medium hover:bg-foreground hover:shadow-lg hover:shadow-foreground/20 transition-all duration-300 active:scale-95 min-h-[48px]"
+                className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-7 sm:py-3.5 bg-foreground text-white dark:text-background rounded-full text-sm sm:text-base font-medium hover:bg-foreground hover:shadow-lg hover:shadow-foreground/20 transition-all duration-300 active:scale-95 min-h-[48px]"
               >
                 {i18n.hero.cta[lang]}
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
@@ -78,7 +78,7 @@ export default function HeroSection({ onExplore }: HeroSectionProps) {
               </picture>
             </div>
             {/* Floating stat card */}
-            <div className="absolute -bottom-3 -left-2 sm:-bottom-4 sm:-left-4 bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-lg shadow-foreground/10 ring-1 ring-black/5 animate-[fadeInUp_0.6s_ease-out_0.5s_both]">
+            <div className="absolute -bottom-3 -left-2 sm:-bottom-4 sm:-left-4 bg-card/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-lg shadow-foreground/10 ring-1 ring-black/5 animate-[fadeInUp_0.6s_ease-out_0.5s_both]">
               <div className="flex items-center gap-2 sm:gap-3">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-primary/25 to-primary/10 flex items-center justify-center">
                   <Baby className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />

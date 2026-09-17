@@ -147,7 +147,7 @@ const ToyCard = memo(function ToyCard({
 
   return (
     <div
-      className={`bg-white rounded-xl sm:rounded-2xl border overflow-hidden hover:shadow-xl hover:shadow-foreground/8 transition-all duration-300 ${
+      className={`bg-card rounded-xl sm:rounded-2xl border overflow-hidden hover:shadow-xl hover:shadow-foreground/8 transition-all duration-300 ${
         isDiscontinued ? "border-border opacity-70" : "border-border hover:border-border"
       } hover-expand-card`}
       onMouseEnter={handleMouseEnter}
@@ -283,7 +283,7 @@ const ToyCard = memo(function ToyCard({
                       {/* Pros & Cons Grid */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border">
                         {/* Pros */}
-                        <div className="p-3 sm:p-4 bg-[#F6FBF6]">
+                        <div className="p-3 sm:p-4 bg-[#F6FBF6] dark:bg-[#1B2520]">
                           <div className="flex items-center gap-2 mb-2 sm:mb-2.5">
                             <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-secondary flex items-center justify-center">
                               <ThumbsUp className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#4CAF50]" />
@@ -330,14 +330,14 @@ const ToyCard = memo(function ToyCard({
 
                   {/* Cleaning Guide */}
                   {cleaningInfo && (
-                    <div className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-[#F0F4F8]">
+                    <div className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-[#F0F4F8] dark:bg-[#1C2530]">
                       <Droplets className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 mt-0.5 text-[#5B9BD5]" />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap mb-1.5 sm:mb-2">
                           <p className="text-[10px] sm:text-xs font-semibold text-[#5B9BD5] uppercase tracking-wider">
                             {i18n.kitDetail.cleaningTitle[lang]}
                           </p>
-                          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-medium bg-[#E3EDF7] text-[#3D6B99] border border-[#C5D9ED]">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-medium bg-[#E3EDF7] text-[#3D6B99] border border-[#C5D9ED] dark:bg-[#2A3A4D] dark:text-[#A8C8E8] dark:border-[#3A4A5C]">
                             {lang === "cn" ? convert(cleaningInfo.materialCn) : cleaningInfo.materialEn}
                           </span>
                         </div>
@@ -365,7 +365,7 @@ function ReferralCard({ kitId, kitColor }: { kitId: string; kitColor: string }) 
   const referralUrl = getReferralProgramUrl();
 
   return (
-    <div className="bg-white rounded-2xl sm:rounded-3xl border border-border p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
+    <div className="bg-card rounded-2xl sm:rounded-3xl border border-border p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
       <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
         <div
           className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0"
@@ -897,7 +897,7 @@ export default function KitDetail() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {prevKit ? (
               <Link href={`/kit/${prevKit.id}/`}>
-                <div className="group p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-border hover:border-border bg-white hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300 cursor-pointer active:scale-[0.98] min-h-[44px]">
+                <div className="group p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-border hover:border-border bg-card hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300 cursor-pointer active:scale-[0.98] min-h-[44px]">
                   <p className="text-[10px] sm:text-xs text-muted-foreground mb-1.5 sm:mb-2 flex items-center gap-1">
                     <ArrowLeft className="w-3 h-3 group-hover:-translate-x-0.5 transition-transform" />
                     {i18n.kitDetail.prevKit[lang]}
@@ -915,7 +915,7 @@ export default function KitDetail() {
             )}
             {nextKit ? (
               <Link href={`/kit/${nextKit.id}/`}>
-                <div className="group p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-border hover:border-border bg-white hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300 text-right cursor-pointer active:scale-[0.98] min-h-[44px]">
+                <div className="group p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-border hover:border-border bg-card hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300 text-right cursor-pointer active:scale-[0.98] min-h-[44px]">
                   <p className="text-[10px] sm:text-xs text-muted-foreground mb-1.5 sm:mb-2 flex items-center justify-end gap-1">
                     {i18n.kitDetail.nextKit[lang]}
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />

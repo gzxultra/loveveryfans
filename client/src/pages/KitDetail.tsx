@@ -49,6 +49,7 @@ import { useFavorites } from "@/hooks/useFavorites";
 import LikeButton from "@/components/LikeButton";
 import ReadingProgress from "@/components/ReadingProgress";
 import Breadcrumb from "@/components/Breadcrumb";
+import ProductBadge from "@/components/ProductBadge";
 import BackToTop from "@/components/BackToTop";
 import KitComparisonBanner from "@/components/KitComparisonBanner";
 import { AdjacentKitsSection } from "@/components/AdjacentKitsSection";
@@ -622,7 +623,13 @@ export default function KitDetail() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 relative z-10">
           {heroImage && (
             <div className="md:hidden mb-6 flex justify-center">
-              <div className="w-48 sm:w-56 aspect-square rounded-2xl overflow-hidden bg-background border border-border shadow-lg shadow-foreground/5 p-3">
+              <div className="relative w-48 sm:w-56 aspect-square rounded-2xl overflow-hidden bg-background border border-border shadow-lg shadow-foreground/5 p-3">
+                <ProductBadge
+                  addedAt={kit.addedAt}
+                  priceDropFrom={kit.priceDropFrom}
+                  price={kit.price}
+                  className="absolute top-2 left-2 z-10"
+                />
                 <img
                   src={getKitHeroOptimizedUrl(heroImage)}
                   alt={`${kit.name} Play Kit - Lovevery alternatives and affordable dupes for ${kit.ageRangeEn || kit.ageRange}`}
@@ -772,7 +779,13 @@ export default function KitDetail() {
 
             {heroImage && (
               <div className="hidden md:block w-56 lg:w-72 shrink-0">
-                <div className="aspect-square rounded-2xl overflow-hidden bg-background border border-border shadow-xl shadow-foreground/8 ring-1 ring-black/5 p-4 hover:shadow-2xl transition-shadow duration-500">
+                <div className="relative aspect-square rounded-2xl overflow-hidden bg-background border border-border shadow-xl shadow-foreground/8 ring-1 ring-black/5 p-4 hover:shadow-2xl transition-shadow duration-500">
+                  <ProductBadge
+                    addedAt={kit.addedAt}
+                    priceDropFrom={kit.priceDropFrom}
+                    price={kit.price}
+                    className="absolute top-2 left-2 z-10"
+                  />
                   <img
                     src={getKitHeroOptimizedUrl(heroImage)}
                     alt={`${kit.name} Play Kit overview - toys and Amazon alternatives for ${kit.ageRangeEn || kit.ageRange}`}

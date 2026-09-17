@@ -25,6 +25,7 @@ import { trackEvent } from "@/lib/analytics";
 import ReadingProgress from "@/components/ReadingProgress";
 import Breadcrumb from "@/components/Breadcrumb";
 import BackToTop from "@/components/BackToTop";
+import ProductBadge from "@/components/ProductBadge";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -447,29 +448,33 @@ export default function ProductDetail() {
       "description": product.descriptionEn || product.description,
       "image": product.imageUrl,
       "brand": { "@type": "Brand", "name": "Lovevery" },
-      // aggregateRating — required by Google Product snippets
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": product.rating.toString(),
-        "bestRating": "5",
-        "worstRating": "1",
-        "reviewCount": product.reviewCount.toString(),
-      },
-      // review — required by Google Product snippets
-      "review": {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": product.rating.toString(),
-          "bestRating": "5",
-          "worstRating": "1",
-        },
-        "author": {
-          "@type": "Organization",
-          "name": "Lovevery Customers",
-        },
-        "reviewBody": `Rated ${product.rating} out of 5 based on ${product.reviewCount} Lovevery customer reviews.`,
-      },
+      // aggregateRating — only when we have real review data (never fabricate)
+      ...(product.reviewCount > 0
+        ? {
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": product.rating.toString(),
+              "bestRating": "5",
+              "worstRating": "1",
+              "reviewCount": product.reviewCount.toString(),
+            },
+            // review — required by Google Product snippets
+            "review": {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": product.rating.toString(),
+                "bestRating": "5",
+                "worstRating": "1",
+              },
+              "author": {
+                "@type": "Organization",
+                "name": "Lovevery Customers",
+              },
+              "reviewBody": `Rated ${product.rating} out of 5 based on ${product.reviewCount} Lovevery customer reviews.`,
+            },
+          }
+        : {}),
       "offers": {
         "@type": "Offer",
         "url": product.officialUrl,
@@ -591,7 +596,13 @@ export default function ProductDetail() {
           {/* Mobile hero image */}
           {product.imageUrl && (
             <div className="md:hidden mb-6 flex justify-center">
-              <div className="w-48 sm:w-56 aspect-square rounded-2xl overflow-hidden bg-background border border-border shadow-lg shadow-foreground/5 p-3">
+              <div className="relative w-48 sm:w-56 aspect-square rounded-2xl overflow-hidden bg-background border border-border shadow-lg shadow-foreground/5 p-3">
+                <ProductBadge
+                  addedAt={product.addedAt}
+                  priceDropFrom={product.priceDropFrom}
+                  price={product.price}
+                  className="absolute top-2 left-2 z-10"
+                />
                 <img
                   src={product.imageUrl}
                   alt={`${product.name} - Lovevery ${productAgeRange}`}
@@ -719,7 +730,13 @@ export default function ProductDetail() {
             {/* Desktop hero image */}
             {product.imageUrl && (
               <div className="hidden md:block w-56 lg:w-72 shrink-0">
-                <div className="aspect-square rounded-2xl overflow-hidden bg-background border border-border shadow-xl shadow-foreground/8 ring-1 ring-black/5 p-4 hover:shadow-2xl transition-shadow duration-500">
+                <div className="relative aspect-square rounded-2xl overflow-hidden bg-background border border-border shadow-xl shadow-foreground/8 ring-1 ring-black/5 p-4 hover:shadow-2xl transition-shadow duration-500">
+                  <ProductBadge
+                    addedAt={product.addedAt}
+                    priceDropFrom={product.priceDropFrom}
+                    price={product.price}
+                    className="absolute top-2 left-2 z-10"
+                  />
                   <img
                     src={product.imageUrl}
                     alt={`${product.name} - Lovevery ${productAgeRange}`}

@@ -8,7 +8,7 @@ import type { Toy } from "./kits";
 export interface StandaloneProduct {
   id: string;
   name: string;
-  category: "music" | "bath" | "blockSet" | "playGym" | "furniture" | "outdoor" | "sensory" | "giftSet" | "mealtime";
+  category: "music" | "bath" | "blockSet" | "playGym" | "furniture" | "outdoor" | "sensory" | "giftSet" | "mealtime" | "books";
   price: string;
   ageRange: string;
   ageRangeEn?: string;
@@ -21,6 +21,10 @@ export interface StandaloneProduct {
   rating: number;
   reviewCount: number;
   imageUrl: string;
+  /** ISO date (e.g. "2026-09-17") when this product launched; badge auto-expires after 90 days. */
+  addedAt?: string;
+  /** Original price before a price drop; badge shows only if higher than `price`. */
+  priceDropFrom?: number;
   toys: Toy[];
 }
 
@@ -34,6 +38,7 @@ export const productCategories = [
   { id: "sensory", label: "感官", labelEn: "Sensory", color: "#9B7ED8", icon: "sensory" },
   { id: "giftSet", label: "礼盒套装", labelEn: "Gift Set", color: "#E8A87C", icon: "gift" },
   { id: "mealtime", label: "餐具", labelEn: "Mealtime", color: "#D4A574", icon: "mealtime" },
+  { id: "books", label: "图书", labelEn: "Books", color: "#B08968", icon: "books" },
 ] as const;
 
 export const standaloneProducts: StandaloneProduct[] = [
@@ -135,8 +140,8 @@ export const standaloneProducts: StandaloneProduct[] = [
     price: "$60.00",
     ageRange: "9 个月以上",
     ageRangeEn: "9+ months",
-    description: "把洗澡时间变成科学探索时间！7 件浴室玩具让宝宝在水中探索沉浮、旋转、容纳等物理概念，每一件都经过安全认证，防霉设计让家长更放心。",
-    descriptionEn: "Turn bath time into science exploration! 7 bath toys let your child explore physics concepts like sinking, floating, spinning, and containment in water. Each piece is safety certified with anti-mold design for parents' peace of mind.",
+    description: "把洗澡时间变成科学探索时间！9 件浴室玩具让宝宝在水中探索沉浮、旋转、容纳等物理概念，每一件都经过安全认证，防霉设计让家长更放心。",
+    descriptionEn: "Turn bath time into science exploration! 9 bath toys let your child explore physics concepts like sinking, floating, spinning, and containment in water. Each piece is safety certified with anti-mold design for parents' peace of mind.",
     officialUrl: "https://lovevery.com/products/the-bath-set",
     color: "#6CB4D9",
     bgColor: "#F0F7FB",
@@ -229,6 +234,30 @@ export const standaloneProducts: StandaloneProduct[] = [
         parentReview: "设计很有趣，宝宝会反复装水和倒水。隐藏的小惊喜让宝宝很兴奋。排水设计好，不容易积水发霉。",
         parentReviewEn: "Fun design that babies repeatedly fill and empty. The hidden surprise excites babies. Good drainage design prevents water accumulation and mold.",
       },
+      {
+        name: "防水对话浴室书",
+        englishName: "Talk & Play Bath Book",
+        category: "语言/认知",
+        categoryEn: "Language/Cognitive",
+        howToUse: "在洗澡时和宝宝一起翻阅这本防水浴室书，指着图画用简单的词语描述，鼓励宝宝发声回应。书页防水防霉，可以直接在水中翻看。",
+        howToUseEn: "Flip through this waterproof bath book with your child during bath time. Point at the pictures and describe them with simple words, encouraging your child to babble back. The waterproof, mold-resistant pages can be read right in the water.",
+        developmentGoal: "在轻松的洗澡氛围中积累词汇，锻炼早期语言表达和亲子对话轮替。",
+        developmentGoalEn: "Builds vocabulary in the relaxed setting of bath time, practicing early language expression and conversational turn-taking.",
+        parentReview: "把阅读带进了浴室，宝宝边玩水边听故事。防水书页擦干很快，不用担心发霉。",
+        parentReviewEn: "Brings reading into the bathtub — babies listen to stories while playing in water. The waterproof pages dry quickly, no mold worries.",
+      },
+      {
+        name: "玩乐指南",
+        englishName: "Play Guide",
+        category: "语言/家长指南",
+        categoryEn: "Language/Parent Guide",
+        howToUse: "按照指南中的语言里程碑建议，在洗澡时用提示的对话方式和宝宝互动，把日常洗澡变成语言启蒙时间。",
+        howToUseEn: "Follow the guide's language-milestone tips to interact with your child during bath time using the prompted conversation starters, turning routine baths into language-learning moments.",
+        developmentGoal: "帮助家长把握语言发展里程碑，用科学的方法在日常互动中促进宝宝的语言能力。",
+        developmentGoalEn: "Helps parents track language milestones and use research-backed ways to boost language skills during everyday interactions.",
+        parentReview: "指南里的对话提示很实用，之前没想到洗澡时还能这样陪宝宝学词汇。",
+        parentReviewEn: "The conversation prompts in the guide are practical — I never realized bath time could build vocabulary this way.",
+      },
     ],
   },
   {
@@ -319,6 +348,54 @@ export const standaloneProducts: StandaloneProduct[] = [
         developmentGoalEn: "Learn shape sorting and matching, explore physics concepts of gravity and inclined planes.",
         parentReview: "一物多用的设计非常聪明——既是收纳盒又是玩具。形状分类的盖子很受欢迎。",
         parentReviewEn: "Multi-purpose design is very clever — both a storage box and a toy. The shape-sorting lid is very popular.",
+      },
+      {
+        name: "半圆柱积木",
+        englishName: "Half Cylinders",
+        category: "认知/精细运动",
+        categoryEn: "Cognitive/Fine Motor",
+        howToUse: "用半圆柱积木搭建拱门、隧道和圆顶，和其他积木组合创造更复杂的建筑结构。",
+        howToUseEn: "Build arches, tunnels, and domes with the half-cylinder blocks, combining them with other blocks for more complex structures.",
+        developmentGoal: "认识新的几何形状，发展空间想象力和创造性搭建能力。",
+        developmentGoalEn: "Introduces new geometric shapes, developing spatial reasoning and creative building skills.",
+        parentReview: "半圆柱让搭建的玩法一下子丰富了很多，宝宝最喜欢搭隧道让小车穿过去。",
+        parentReviewEn: "The half cylinders add so much variety to building — our child loves making tunnels for cars to drive through.",
+      },
+      {
+        name: "车轮木棍拼装件",
+        englishName: "Wheels and Dowels with a Toggle String",
+        category: "认知/大运动",
+        categoryEn: "Cognitive/Gross Motor",
+        howToUse: "把车轮和木棍组装起来，装到收纳盒上，把它变成一辆可以拉着走的小车。",
+        howToUseEn: "Assemble the wheels and dowels onto the storage box to turn it into a pull-along wagon.",
+        developmentGoal: "练习组装和拆卸，理解轮子与运动的关系，拉着小车走锻炼大运动能力。",
+        developmentGoalEn: "Practices assembly and disassembly, understanding how wheels create motion; pulling the wagon builds gross motor skills.",
+        parentReview: "收纳盒变小车的设计太巧妙了，宝宝拉着满屋子走，收拾玩具也变得积极了。",
+        parentReviewEn: "Turning the storage box into a wagon is brilliant — our toddler pulls it all around the house and even enjoys tidying up now.",
+      },
+      {
+        name: "棉布收纳袋",
+        englishName: "Cotton Drawstring Bag",
+        category: "收纳/认知",
+        categoryEn: "Storage/Cognitive",
+        howToUse: "用棉布束口袋收纳小块积木和配件，出门时也可以随身携带几块积木。",
+        howToUseEn: "Store small blocks and accessories in the cotton drawstring bag; take a few blocks along when heading out.",
+        developmentGoal: "培养收纳习惯和物品分类意识，方便携带让游戏延续到户外。",
+        developmentGoalEn: "Builds tidying habits and sorting awareness; portable play extends fun beyond the home.",
+        parentReview: "袋子质量很好，收纳小零件很方便。宝宝现在玩完会主动把积木装进袋子。",
+        parentReviewEn: "Great quality bag, handy for small pieces. Our child now puts blocks into the bag on their own after playing.",
+      },
+      {
+        name: "活动指南",
+        englishName: "Activity Guide",
+        category: "家长指南",
+        categoryEn: "Parent Guide",
+        howToUse: "参考指南中按年龄分阶的搭建灵感和游戏建议，陪宝宝从简单堆叠进阶到复杂建筑。",
+        howToUseEn: "Follow the guide's age-staged building ideas and play suggestions, progressing from simple stacking to complex structures with your child.",
+        developmentGoal: "帮助家长了解积木游戏的发展价值，用恰当的引导激发宝宝的创造力。",
+        developmentGoalEn: "Helps parents understand the developmental value of block play and spark creativity with the right guidance.",
+        parentReview: "指南里的分阶玩法给了很多灵感，不然很多积木组合我们自己想不到。",
+        parentReviewEn: "The staged play ideas in the guide sparked lots of inspiration — combinations we wouldn't have thought of ourselves.",
       },
     ],
   },
@@ -750,7 +827,7 @@ export const standaloneProducts: StandaloneProduct[] = [
   },
   {
     id: "newbornGiftSet",
-    name: "The Newborn Gift Set",
+    name: "Newborn Gift Set",
     category: "giftSet",
     price: "$250.00",
     ageRange: "0 个月以上",
@@ -882,6 +959,38 @@ export const standaloneProducts: StandaloneProduct[] = [
       },
     ],
   },
+  {
+    id: "friendshipBookSet",
+    name: "The Friendship Book Set",
+    category: "books",
+    price: "$49.00",
+    ageRange: "36 个月以上",
+    ageRangeEn: "Months 36+",
+    description: "10 本真实儿童出镜的友谊主题绘本，每本围绕一个社交情感主题展开——被冷落、轮流分享、道歉与原谅、设立边界。官方博客：帮助孩子建立处理人际关系、成为好朋友所需的社交情感技能。",
+    descriptionEn: "10 board books featuring real children, each exploring a social-emotional friendship theme — feeling left out, taking turns, apologizing and forgiving, setting boundaries. From the official blog: help your child build the social emotional skills they need to navigate relationships and be a great friend.",
+    officialUrl: "https://lovevery.com/products/friendship-book-set",
+    color: "#B08968",
+    bgColor: "#FAF6F0",
+    lightColor: "#F1E9DD",
+    rating: 0,
+    reviewCount: 0,
+    imageUrl: "https://images.ctfassets.net/0sea1vycfyqy/5ZDLJkyjKCaxf7bs9fw4Fl/75a9e5e31e99a87ceb011a13aa96644f/My_Story_Your_Story_Cover_ISO_1.png",
+    addedAt: "2026-09-17",
+    toys: [
+      {
+        name: "友谊主题绘本（10 册）",
+        englishName: "The Friendship Book Set (10 Books)",
+        category: "语言/社交情感",
+        categoryEn: "Language/Social-Emotional",
+        howToUse: "每天和孩子共读一本，跟着书中真实小朋友的故事聊聊友谊：被冷落时怎么办、怎样轮流和道歉。每本书的口头禅可以在日常冲突时拿出来用。",
+        howToUseEn: "Read one book together each day and talk through the real children's friendship stories: what to do when feeling left out, how to take turns and apologize. Each book's mantra can be reused when real-life conflicts come up.",
+        developmentGoal: "建立同理心、轮流、道歉、设立边界等社交情感技能，帮孩子处理同伴关系，做一个好朋友。",
+        developmentGoalEn: "Builds social-emotional skills — empathy, turn-taking, apologizing, boundary-setting — helping children navigate peer relationships and be a great friend.",
+        parentReview: "2026 年 3 月官方新品。故事取材真实儿童，孩子很有代入感；每本的口头禅在实际冲突时真的派得上用场。",
+        parentReviewEn: "New from Lovevery in March 2026. Stories feature real children, which makes them relatable; each book's mantra genuinely helps during real conflicts.",
+      },
+    ],
+  },
 ];
 
 // Slug mapping: kebab-case URL slug → camelCase product ID
@@ -897,6 +1006,7 @@ const slugToId: Record<string, string> = {
   "sensory-strands": "sensoryStrands",
   "newborn-gift-set": "newbornGiftSet",
   "montessori-placemat": "montessoriPlacemat",
+  "friendship-book-set": "friendshipBookSet",
 };
 
 // Reverse mapping: camelCase product ID → kebab-case URL slug
@@ -912,6 +1022,7 @@ export const idToSlug: Record<string, string> = {
   "sensoryStrands": "sensory-strands",
   "newbornGiftSet": "newborn-gift-set",
   "montessoriPlacemat": "montessori-placemat",
+  "friendshipBookSet": "friendship-book-set",
 };
 
 export function getProductById(id: string): StandaloneProduct | undefined {

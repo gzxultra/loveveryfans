@@ -12,6 +12,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useI18n } from "@/hooks/useI18n";
 import { useFavorites } from "@/hooks/useFavorites";
 import LikeButton from "@/components/LikeButton";
+import ProductBadge from "@/components/ProductBadge";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { Link } from "wouter";
 
@@ -47,6 +48,12 @@ const KitCard = memo(function KitCard({ kit, onPrefetch }: KitCardProps) {
               <p className="text-xs sm:text-sm text-muted-foreground">
                 {lang === "cn" ? t(kit.ageRange, kit.ageRangeEn || kit.ageRange) : (kit.ageRangeEn || kit.ageRange)}
               </p>
+              <ProductBadge
+                addedAt={kit.addedAt}
+                priceDropFrom={kit.priceDropFrom}
+                price={kit.price}
+                className="mt-1.5"
+              />
             </div>
             {kitHero ? (
               <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden shrink-0 bg-background border border-accent p-1 group-hover:border-border group-hover:shadow-sm transition-all">

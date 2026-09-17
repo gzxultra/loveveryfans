@@ -40,6 +40,12 @@ export const i18n = {
     viewDetails: { cn: "查看详情", en: "View Details" },
   },
 
+  // Product badges (new / price drop) — quiet-luxury capsule labels
+  productBadge: {
+    new: { cn: "新品", en: "New" },
+    priceDrop: { cn: "降价", en: "Price drop" },
+  },
+
   // Kit detail page
   kitDetail: {
     backToAll: { cn: "返回全部 Kit", en: "Back to All Kits" },

@@ -594,6 +594,9 @@ export const kitToyImages: Record<string, Record<string, string>> = {
     "Post-Meal Cleanup Participation": "https://images.ctfassets.net/0sea1vycfyqy/7cwWosxpq1HRIm726rncx/d0d3ea77f2f42186b7d118a8643362e3/stadnalone_0092_2020.08.05_Routine_Cards6648-Edit_fd38f69e-f2bb-43cf-bcce-1f8fad93eff0.jpg",
     "Montessori Placemat": "https://images.ctfassets.net/0sea1vycfyqy/6TCXRXrBl1MAZk2gXPDWue/cd8a41fc959474296ae1e436478bfd40/stadnalone_0093_2020.5.19-Blog-day18097-1-PlacematComposite_5b630876-3f00-4df8-938f-245dc34c4677.jpg",
   },
+  "friendshipBookSet": {
+    "The Friendship Book Set (10 Books)": "https://images.ctfassets.net/0sea1vycfyqy/5ZDLJkyjKCaxf7bs9fw4Fl/75a9e5e31e99a87ceb011a13aa96644f/My_Story_Your_Story_Cover_ISO_1.png",
+  },
 
 };
 

@@ -15,6 +15,7 @@ import { ArrowRight, BookOpen, Baby, Sparkles, Menu, X, Search, Music, Droplets,
 import { useState, useRef, useEffect, lazy, Suspense } from "react";
 import { useFuzzySearch } from "@/hooks/useFuzzySearch";
 import HighlightedText from "@/components/HighlightedText";
+import ProductBadge from "@/components/ProductBadge";
 import HeroSection from "@/components/HeroSection";
 import StageSection from "@/components/StageSection";
 import { Link, useLocation } from "wouter";
@@ -506,6 +507,12 @@ export default function Home() {
                           <p className="text-xs sm:text-sm text-muted-foreground">
                             {lang === "cn" ? t(product.ageRange, product.ageRangeEn || product.ageRange) : (product.ageRangeEn || product.ageRange)}
                           </p>
+                          <ProductBadge
+                            addedAt={product.addedAt}
+                            priceDropFrom={product.priceDropFrom}
+                            price={product.price}
+                            className="mt-1.5"
+                          />
                         </div>
                         <div
                           className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
@@ -521,10 +528,12 @@ export default function Home() {
 
                       <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-accent group-hover:border-border transition-colors">
                         <div className="flex items-center gap-2">
+                          {product.rating > 0 && (
                           <span className="flex items-center gap-0.5 text-xs text-amber-600">
                             <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
                             {product.rating}
                           </span>
+                          )}
                         </div>
                         <span
                           className="text-xs sm:text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all min-h-[48px] min-w-[48px] justify-end"

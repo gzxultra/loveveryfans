@@ -115,7 +115,7 @@ export function AlternativesSection({
   };
 
   return (
-    <div className="rounded-lg sm:rounded-xl border border-[#D0E4F0] overflow-hidden">
+    <div className="rounded-xl sm:rounded-2xl border border-[#D0E4F0] overflow-hidden">
       {/* Section Header */}
       <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-[#E8F4F8] to-[#F0E8F8] border-b border-[#D0E4F0]">
         <p className="text-[10px] sm:text-xs font-semibold text-[#5B7B99] uppercase tracking-wider flex items-center gap-1.5">

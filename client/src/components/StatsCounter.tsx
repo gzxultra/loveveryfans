@@ -107,7 +107,7 @@ function StatCard({
 
   return (
     <div
-      className="text-center p-4 sm:p-5 rounded-xl bg-white/60 border border-border/50 transition-all duration-500"
+      className="text-center p-4 sm:p-5 rounded-xl bg-card/60 border border-border/50 transition-all duration-500"
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",

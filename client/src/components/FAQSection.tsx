@@ -103,7 +103,7 @@ export default function FAQSection() {
             return (
               <div
                 key={idx}
-                className="bg-white rounded-xl border border-border overflow-hidden transition-shadow hover:shadow-sm"
+                className="bg-card rounded-xl border border-border overflow-hidden transition-shadow hover:shadow-sm"
               >
                 <button
                   onClick={() => toggle(idx)}

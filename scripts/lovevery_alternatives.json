@@ -43,7 +43,7 @@
         "alternatives": []
       },
       {
-        "toyName": "Black, White, & Red Card Set",
+        "toyName": "Complex Black & White Card Set",
         "toyNameCn": "黑白红卡片",
         "alternatives": []
       },
@@ -860,7 +860,7 @@
         ]
       },
       {
-        "toyName": "Opposites Balls",
+        "toyName": "Opposite Balls",
         "toyNameCn": "相反球",
         "alternatives": []
       }
@@ -895,7 +895,7 @@
         "alternatives": []
       },
       {
-        "toyName": "Flexible Wooden Stacker",
+        "toyName": "Wooden Stack & Slot",
         "toyNameCn": "弹性木质套圈",
         "alternatives": [
           {
@@ -1416,21 +1416,7 @@
       {
         "toyName": "Super Sustainable Sink With Cups & Plates",
         "toyNameCn": "可持续水槽带杯盘套装",
-        "alternatives": [
-          {
-            "name": "CUTE STONE Pretend Play Kitchen Sink Toys with Play Cooking Stove, Pot and Pan with Spray Realistic Light and Sound, Dish Rack & Play Cutting Food, Utensils Tableware Accessories for Kids Toddlers",
-            "asin": "B085CBKMX8",
-            "price": "$33.99",
-            "rating": 4.0,
-            "reviewCount": 17740,
-            "imageUrl": "https://m.media-amazon.com/images/I/7117iBxSJmL.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B085CBKMX8?tag=loveveryfans-20",
-            "reasonEn": "This is a highly-rated and popular alternative with many accessories. It features a working faucet and is a \"Best Seller\" in its category. It also has some sustainability features.",
-            "reasonCn": "这是一款高分、畅销的替代品，附带许多配件。它有一个可以出水的水龙头，并且是同类产品中的“畅销书”。它还具有一些可持续性特征。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          }
-        ]
+        "alternatives": []
       },
       {
         "toyName": "Drop & Match Dot Catcher",
@@ -2544,19 +2530,6 @@
         "toyNameCn": "动态能量木制球坡道",
         "alternatives": [
           {
-            "name": "Hape Castle Escape - Quadrilla Wooden Marble Run Blocks - STEM Learning, Building & Development Construction Toy - Counting, Color & Problem Solving for Ages 4+, 101Piece, Multi",
-            "asin": "B079NY3KXQ",
-            "price": "$89.99",
-            "rating": 4.6,
-            "reviewCount": 629,
-            "imageUrl": "https://m.media-amazon.com/images/I/71w9xksIMyL.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B079NY3KXQ?tag=loveveryfans-20",
-            "reasonEn": "A high-quality wooden marble run that encourages 3-dimensional thinking and STEM skills. It's a great alternative for building and creating complex marble runs.",
-            "reasonCn": "一款高品质的木制弹珠轨道，鼓励三维思维和STEM技能。这是搭建复杂弹珠轨道的绝佳替代品。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          },
-          {
             "name": "Marble Genius Marble Run Super Set",
             "asin": "B01BEPHH4Q",
             "price": "$54.99",
@@ -2593,21 +2566,7 @@
       {
         "toyName": "Flex-Four Pattern Match",
         "toyNameCn": "灵活四格图案配对",
-        "alternatives": [
-          {
-            "name": "Learning Resources STEM Explorers Brainometry",
-            "asin": "B097F49QYH",
-            "price": "$14.99",
-            "rating": 4.7,
-            "reviewCount": 3069,
-            "imageUrl": "https://m.media-amazon.com/images/I/81hRMmSaHSL.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B097F49QYH?tag=loveveryfans-20",
-            "reasonEn": "A 3D puzzle game that challenges kids to recreate patterns from the activity cards. It helps develop spatial reasoning and critical thinking skills.",
-            "reasonCn": "一款3D益智游戏，挑战孩子们根据活动卡片重现图案。它有助于培养空间推理和批判性思维能力。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          }
-        ]
+        "alternatives": []
       },
       {
         "toyName": "Subitizing Dominoes",

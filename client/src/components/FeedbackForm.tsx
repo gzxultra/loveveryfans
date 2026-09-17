@@ -142,10 +142,10 @@ export default function FeedbackForm() {
             {/* Section header */}
             <div className="text-center mb-8">
               <div className="flex items-center justify-center gap-2 mb-4">
-                <div className="w-10 h-10 rounded-full bg-[#FFE4EC] flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-[#FFE4EC] dark:bg-[#2A1E1E] flex items-center justify-center">
                   <Heart className="w-5 h-5 text-[#FF6B8A] fill-[#FF6B8A]" />
                 </div>
-                <div className="w-12 h-12 rounded-full bg-[#E8F4FF] flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-[#E8F4FF] dark:bg-[#1C2530] flex items-center justify-center">
                   <MessageCircle className="w-6 h-6 text-[#5B9BD5]" />
                 </div>
               </div>

@@ -29,7 +29,7 @@ const KitCard = memo(function KitCard({ kit, onPrefetch }: KitCardProps) {
   return (
     <Link href={`/kit/${kit.id}/`}>
       <div
-        className="group relative rounded-xl sm:rounded-2xl overflow-hidden bg-white border border-border hover:border-border hover:shadow-2xl hover:shadow-foreground/12 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer h-full active:scale-[0.98] card-glow"
+        className="group relative rounded-xl sm:rounded-2xl overflow-hidden bg-card border border-border hover:border-border hover:shadow-2xl hover:shadow-foreground/12 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer h-full active:scale-[0.98] card-glow"
         onMouseEnter={onPrefetch}
         onTouchStart={onPrefetch}
       >

@@ -183,7 +183,7 @@ export function ArticleSubmissionForm({ kitId, kitColor }: Props) {
             transition={{ duration: 0.35, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="rounded-2xl border border-border bg-white shadow-sm overflow-hidden">
+            <div className="rounded-2xl border border-border bg-card shadow-sm overflow-hidden">
               {/* Header */}
               <div
                 className="px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between"

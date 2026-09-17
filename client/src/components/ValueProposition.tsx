@@ -50,7 +50,7 @@ export default function ValueProposition() {
             return (
               <div
                 key={i}
-                className="group relative rounded-xl sm:rounded-2xl bg-white border border-border p-5 sm:p-6 hover:border-border hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300"
+                className="group relative rounded-xl sm:rounded-2xl bg-card border border-border p-5 sm:p-6 hover:border-border hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300"
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"

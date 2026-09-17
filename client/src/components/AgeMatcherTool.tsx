@@ -140,7 +140,7 @@ export default function AgeMatcherTool() {
   return (
     <section className="py-8 sm:py-12 bg-gradient-to-br from-secondary via-background to-background">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-2xl sm:rounded-3xl border border-border shadow-lg shadow-foreground/5 overflow-hidden">
+        <div className="bg-card rounded-2xl sm:rounded-3xl border border-border shadow-lg shadow-foreground/5 overflow-hidden">
           {/* Header */}
           <div className="px-5 pt-6 pb-4 sm:px-8 sm:pt-8 sm:pb-5 text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-3 border border-primary/20">

@@ -63,7 +63,7 @@ export default function Blog() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {blogPosts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}/`}>
-              <article className="group bg-white rounded-2xl border border-border hover:border-border hover:shadow-xl hover:shadow-foreground/10 transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden h-full flex flex-col">
+              <article className="group bg-card rounded-2xl border border-border hover:border-border hover:shadow-xl hover:shadow-foreground/10 transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden h-full flex flex-col">
                 {/* Color accent */}
                 <div className="h-1.5 w-full bg-gradient-to-r from-primary to-primary/40" />
 

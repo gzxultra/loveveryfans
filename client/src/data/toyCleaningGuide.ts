@@ -98,7 +98,7 @@ const cleaningData: Record<string, CleaningInfo> = {
     cleaningCn: "手洗后晾干，避免大量水浸泡以防变形",
     cleaningEn: "Hand wash and air dry. Avoid soaking in large amounts of water to prevent deformation.",
   },
-  "babbler::弹性木质套圈": {
+  "babbler::木质堆叠插槽": {
     material: "木质/Wood",
     materialCn: "木质",
     materialEn: "Wood",

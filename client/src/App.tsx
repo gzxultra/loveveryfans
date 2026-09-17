@@ -67,7 +67,7 @@ function PageLoadingSkeleton() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="space-y-4">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="animate-pulse bg-white rounded-xl border border-border p-6">
+            <div key={i} className="animate-pulse bg-card rounded-xl border border-border p-6">
               <div className="flex gap-4">
                 <div className="w-20 h-20 bg-border/60 rounded-xl shrink-0" />
                 <div className="flex-1 space-y-3">

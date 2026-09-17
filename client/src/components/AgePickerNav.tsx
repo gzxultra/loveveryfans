@@ -60,7 +60,7 @@ export default function AgePickerNav({ onClose }: AgePickerNavProps) {
     : null;
 
   return (
-    <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-border shadow-xl shadow-foreground/10 overflow-hidden">
+    <div className="bg-card/95 backdrop-blur-md rounded-2xl border border-border shadow-xl shadow-foreground/10 overflow-hidden">
       {/* Header */}
       <div className="px-4 py-3 border-b border-accent flex items-center gap-2">
         <Baby className="w-4 h-4 text-primary" />

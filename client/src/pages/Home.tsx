@@ -191,7 +191,7 @@ export default function Home() {
 
                 {/* Search Results Dropdown */}
                 {searchOpen && searchQuery.trim() && (
-                  <div className="absolute top-full right-0 mt-2 w-80 bg-white rounded-xl border border-border shadow-xl shadow-foreground/10 overflow-hidden max-h-[70vh] overflow-y-auto">
+                  <div className="absolute top-full right-0 mt-2 w-80 bg-card rounded-xl border border-border shadow-xl shadow-foreground/10 overflow-hidden max-h-[70vh] overflow-y-auto">
                     {searchResults.length > 0 ? (
                       <>
                         <div className="px-4 py-2.5 border-b border-accent text-xs text-muted-foreground">
@@ -304,7 +304,7 @@ export default function Home() {
 
             {/* Mobile search results */}
             {searchQuery.trim() && (
-              <div className="mt-2 bg-white rounded-xl border border-border shadow-lg overflow-hidden max-h-[60vh] overflow-y-auto">
+              <div className="mt-2 bg-card rounded-xl border border-border shadow-lg overflow-hidden max-h-[60vh] overflow-y-auto">
                 {searchResults.length > 0 ? (
                   <>
                     <div className="px-4 py-2 border-b border-accent text-xs text-muted-foreground">
@@ -488,7 +488,7 @@ export default function Home() {
               return (
                 <Link key={product.id} href={`/product/${getProductSlug(product.id)}/`}>
                   <div
-                    className="group relative rounded-xl sm:rounded-2xl overflow-hidden bg-white border border-border hover:border-border hover:shadow-2xl hover:shadow-foreground/12 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer h-full active:scale-[0.98] card-glow"
+                    className="group relative rounded-xl sm:rounded-2xl overflow-hidden bg-card border border-border hover:border-border hover:shadow-2xl hover:shadow-foreground/12 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer h-full active:scale-[0.98] card-glow"
                     onMouseEnter={prefetchProductDetail}
                     onTouchStart={prefetchProductDetail}
                   >

@@ -105,7 +105,7 @@ export default function KitComparison() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-white border-b border-border">
+      <div className="bg-card border-b border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           <Link href="/">
             <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-4">
@@ -174,7 +174,7 @@ export default function KitComparison() {
               return (
                 <div
                   key={kit.id}
-                  className="rounded-2xl bg-white border border-border overflow-hidden shadow-sm"
+                  className="rounded-2xl bg-card border border-border overflow-hidden shadow-sm"
                 >
                   {/* Color bar */}
                   <div

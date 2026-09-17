@@ -58,7 +58,7 @@ export function TestimonialsSection() {
 
         {/* Testimonial Carousel */}
         <div className="relative">
-          <div className="bg-white rounded-2xl sm:rounded-3xl border border-border shadow-lg shadow-foreground/5 overflow-hidden ring-1 ring-black/3">
+          <div className="bg-card rounded-2xl sm:rounded-3xl border border-border shadow-lg shadow-foreground/5 overflow-hidden ring-1 ring-black/3">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}

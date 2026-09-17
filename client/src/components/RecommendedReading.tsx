@@ -117,8 +117,8 @@ function ArticleCard({
           <span
             className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-medium border ${
               article.language === "zh"
-                ? "bg-[#FEF2F2] text-destructive border-[#FECACA]"
-                : "bg-[#F0F9FF] text-[#0369A1] border-[#BAE6FD]"
+                ? "bg-[#FEF2F2] dark:bg-[#2A1E1E] text-destructive border-[#FECACA] dark:border-[#4A2E2E]"
+                : "bg-[#F0F9FF] dark:bg-[#1C2530] text-[#0369A1] dark:text-[#A8C8E8] border-[#BAE6FD] dark:border-[#3A4A5C]"
             }`}
           >
             <Globe className="w-2.5 h-2.5" />

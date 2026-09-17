@@ -71,7 +71,7 @@ export function AdjacentKitsSection({ currentKitId }: AdjacentKitsSectionProps) 
             aria-label={`${kit.name} — ${lang === "en" && kit.ageRangeEn ? kit.ageRangeEn : kit.ageRange}`}
           >
             <div
-              className="group relative p-3 sm:p-4 rounded-xl border border-border hover:border-border bg-white hover:shadow-md hover:shadow-foreground/5 transition-all duration-200 cursor-pointer h-full flex flex-col gap-2"
+              className="group relative p-3 sm:p-4 rounded-xl border border-border hover:border-border bg-card hover:shadow-md hover:shadow-foreground/5 transition-all duration-200 cursor-pointer h-full flex flex-col gap-2"
               style={{ borderLeftColor: kit.color, borderLeftWidth: 3 }}
             >
               {/* Color accent dot */}

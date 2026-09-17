@@ -271,7 +271,7 @@ export default function AboutUs() {
           <motion.div
             variants={fadeInUp}
             custom={0}
-            className="relative bg-white rounded-2xl p-6 sm:p-8 border border-border shadow-sm"
+            className="relative bg-card rounded-2xl p-6 sm:p-8 border border-border shadow-sm"
           >
             <div className="absolute -top-4 left-6 sm:left-8">
               <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary/15">
@@ -287,7 +287,7 @@ export default function AboutUs() {
           <motion.div
             variants={fadeInUp}
             custom={2}
-            className="relative bg-white rounded-2xl p-6 sm:p-8 border border-border shadow-sm"
+            className="relative bg-card rounded-2xl p-6 sm:p-8 border border-border shadow-sm"
           >
             <div className="absolute -top-4 left-6 sm:left-8">
               <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#D4B896]/20">
@@ -332,7 +332,7 @@ export default function AboutUs() {
       </section>
 
       {/* Values Section */}
-      <section className="bg-white border-y border-border">
+      <section className="bg-card border-y border-border">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
             {c.values.map((value, idx) => {

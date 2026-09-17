@@ -131,7 +131,7 @@ const ToyCard = memo(function ToyCard({
 
   return (
     <div
-      className="bg-white rounded-xl sm:rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:shadow-foreground/8 transition-all duration-300 hover:border-border hover-expand-card"
+      className="bg-card rounded-xl sm:rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:shadow-foreground/8 transition-all duration-300 hover:border-border hover-expand-card"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -140,7 +140,7 @@ const ToyCard = memo(function ToyCard({
         <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-5">
           {/* Toy Image or Number badge — matches KitDetail exactly */}
           {toyImage ? (
-            <div className="relative w-full sm:w-24 sm:h-24 rounded-lg sm:rounded-xl overflow-hidden bg-[#F9F6F2] group-hover:scale-105 transition-transform duration-500">
+            <div className="relative w-full sm:w-24 sm:h-24 rounded-lg sm:rounded-xl overflow-hidden bg-card group-hover:scale-105 transition-transform duration-500">
               <img
                 src={toyImage}
                 alt={toyName}
@@ -336,7 +336,7 @@ function ProductReferralCard({ product }: { product: ReturnType<typeof getProduc
   const purchaseUrl = getProductPurchaseUrl(product.id, product.officialUrl);
 
   return (
-    <div className="bg-white rounded-2xl sm:rounded-3xl border border-border p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
+    <div className="bg-card rounded-2xl sm:rounded-3xl border border-border p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
       <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
         <div
           className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0"
@@ -803,7 +803,7 @@ export default function ProductDetail() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.35 }}
-                    className="bg-white rounded-xl sm:rounded-2xl border border-border p-4 sm:p-5 hover:shadow-lg hover:shadow-foreground/5 hover:border-border transition-all duration-300"
+                    className="bg-card rounded-xl sm:rounded-2xl border border-border p-4 sm:p-5 hover:shadow-lg hover:shadow-foreground/5 hover:border-border transition-all duration-300"
                   >
                     <p className="text-sm sm:text-[15px] text-foreground leading-relaxed mb-3 sm:mb-4">
                       {lang === "en" ? tip.tipEn : convert(tip.tip)}
@@ -850,7 +850,7 @@ export default function ProductDetail() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {prevProduct ? (
               <Link href={`/product/${getProductSlug(prevProduct.id)}/`}>
-                <div className="group p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-border hover:border-border bg-white hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300 cursor-pointer active:scale-[0.98] min-h-[44px]">
+                <div className="group p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-border hover:border-border bg-card hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300 cursor-pointer active:scale-[0.98] min-h-[44px]">
                   <p className="text-[10px] sm:text-xs text-muted-foreground mb-1.5 sm:mb-2 flex items-center gap-1">
                     <ArrowLeft className="w-3 h-3 group-hover:-translate-x-0.5 transition-transform" />
                     {i18n.kitDetail.prevKit[lang]}
@@ -868,7 +868,7 @@ export default function ProductDetail() {
             )}
             {nextProduct ? (
               <Link href={`/product/${getProductSlug(nextProduct.id)}/`}>
-                <div className="group p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-border hover:border-border bg-white hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300 text-right cursor-pointer active:scale-[0.98] min-h-[44px]">
+                <div className="group p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-border hover:border-border bg-card hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300 text-right cursor-pointer active:scale-[0.98] min-h-[44px]">
                   <p className="text-[10px] sm:text-xs text-muted-foreground mb-1.5 sm:mb-2 flex items-center justify-end gap-1">
                     {i18n.kitDetail.nextKit[lang]}
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />

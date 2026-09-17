@@ -302,13 +302,13 @@ export default function LongPressHero() {
           }`}
         >
           <div
-            className="bg-gradient-to-br from-[#FFF9F0] via-white to-[#FFF5E8] backdrop-blur-md rounded-3xl px-10 py-8 shadow-2xl border-2 border-[#E8DFD3] max-w-md mx-4"
+            className="bg-gradient-to-br from-[#FFF9F0] via-white to-[#FFF5E8] backdrop-blur-md rounded-3xl px-10 py-8 shadow-2xl border-2 border-border max-w-md mx-4"
             style={{
               animation: "longPressMessageIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both",
             }}
           >
             <div className="text-center">
-              <p className="text-xl font-display font-bold text-[#3D3229] leading-relaxed">
+              <p className="text-xl font-display font-bold text-foreground leading-relaxed">
                 {currentMessage}
               </p>
               <p className="text-xs text-[#8B7E6F] mt-4 opacity-60">

@@ -56,11 +56,11 @@ export function AdjacentKitsSection({ currentKitId }: AdjacentKitsSectionProps) 
       <div className="mb-4 sm:mb-6">
         <h2
           id="adjacent-kits-heading"
-          className="font-display text-lg sm:text-xl text-[#3D3229] font-semibold"
+          className="font-display text-lg sm:text-xl text-foreground font-semibold"
         >
           {heading}
         </h2>
-        <p className="text-sm text-[#756A5C] mt-1">{subheading}</p>
+        <p className="text-sm text-muted-foreground mt-1">{subheading}</p>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -71,7 +71,7 @@ export function AdjacentKitsSection({ currentKitId }: AdjacentKitsSectionProps) 
             aria-label={`${kit.name} — ${lang === "en" && kit.ageRangeEn ? kit.ageRangeEn : kit.ageRange}`}
           >
             <div
-              className="group relative p-3 sm:p-4 rounded-xl border border-[#E8DFD3] hover:border-[#C8BFB3] bg-white hover:shadow-md hover:shadow-[#3D3229]/5 transition-all duration-200 cursor-pointer h-full flex flex-col gap-2"
+              className="group relative p-3 sm:p-4 rounded-xl border border-border hover:border-border bg-white hover:shadow-md hover:shadow-foreground/5 transition-all duration-200 cursor-pointer h-full flex flex-col gap-2"
               style={{ borderLeftColor: kit.color, borderLeftWidth: 3 }}
             >
               {/* Color accent dot */}
@@ -82,18 +82,18 @@ export function AdjacentKitsSection({ currentKitId }: AdjacentKitsSectionProps) 
               />
 
               {/* Kit name */}
-              <p className="font-display text-sm font-semibold text-[#3D3229] group-hover:text-[#1a1108] transition-colors line-clamp-2 leading-tight">
+              <p className="font-display text-sm font-semibold text-foreground group-hover:text-foreground transition-colors line-clamp-2 leading-tight">
                 {kit.name}
               </p>
 
               {/* Age range */}
-              <p className="text-[11px] text-[#756A5C] mt-auto">
+              <p className="text-[11px] text-muted-foreground mt-auto">
                 {lang === "en" && kit.ageRangeEn ? kit.ageRangeEn : kit.ageRange}
               </p>
 
               {/* Arrow indicator */}
               <ChevronRight
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-[#C8BFB3] group-hover:text-[#756A5C] group-hover:translate-x-0.5 transition-all"
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-border group-hover:text-muted-foreground group-hover:translate-x-0.5 transition-all"
                 aria-hidden="true"
               />
             </div>

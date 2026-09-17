@@ -52,7 +52,7 @@ export default function LikeButton({
         className={`group inline-flex items-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-sm font-medium transition-all duration-300 active:scale-[0.96] min-h-[44px] ${
           isLiked
             ? "bg-red-50 text-red-500 border-2 border-red-200 hover:bg-red-100 shadow-sm shadow-red-100"
-            : "bg-white text-[#6B5E50] border-2 border-[#E8DFD3] hover:border-red-200 hover:text-red-400 hover:bg-red-50/50"
+            : "bg-white text-muted-foreground border-2 border-border hover:border-red-200 hover:text-red-400 hover:bg-red-50/50"
         }`}
         aria-label={isLiked ? t("取消喜欢", "Unlike") : t("喜欢", "Like")}
         title={isLiked ? t("取消喜欢", "Unlike") : t("喜欢这个 Kit", "Like this Kit")}
@@ -77,7 +77,7 @@ export default function LikeButton({
       className={`group inline-flex items-center gap-1 sm:gap-1.5 px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-full text-xs transition-all duration-300 active:scale-[0.93] min-h-[32px] ${
         isLiked
           ? "bg-red-50 text-red-500 border border-red-200"
-          : "bg-white/80 text-[#756A5C] border border-[#E8DFD3] hover:border-red-200 hover:text-red-400 hover:bg-red-50/50"
+          : "bg-white/80 text-muted-foreground border border-border hover:border-red-200 hover:text-red-400 hover:bg-red-50/50"
       }`}
       aria-label={isLiked ? t("取消喜欢", "Unlike") : t("喜欢", "Like")}
     >

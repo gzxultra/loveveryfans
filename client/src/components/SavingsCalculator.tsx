@@ -148,16 +148,16 @@ export function SavingsCalculator({
   const hasSavings = savings > 0 && selectedCount > 0;
 
   return (
-    <div className="rounded-xl border border-[#D0E4D8] bg-gradient-to-br from-[#F0F9F2] to-[#F8FDF9] overflow-hidden">
+    <div className="rounded-xl border border-[#D0E4D8] bg-gradient-to-br from-background to-background overflow-hidden">
       {/* Header */}
-      <div className="px-4 py-3 bg-gradient-to-r from-[#7FB685]/15 to-[#5a9e65]/10 border-b border-[#D0E4D8]">
+      <div className="px-4 py-3 bg-gradient-to-r from-primary/15 to-primary/10 border-b border-[#D0E4D8]">
         <div className="flex items-center gap-2">
-          <TrendingDown className="w-4 h-4 text-[#5a9e65]" aria-hidden="true" />
-          <h3 className="text-sm font-semibold text-[#2D5A35]">
+          <TrendingDown className="w-4 h-4 text-primary" aria-hidden="true" />
+          <h3 className="text-sm font-semibold text-primary">
             {t("省钱计算器", "Savings Calculator")}
           </h3>
         </div>
-        <p className="text-xs text-[#4A7A52] mt-0.5">
+        <p className="text-xs text-primary mt-0.5">
           {t(
             `勾选你想买的平替，看看能省多少钱（对比 Lovevery ${kitName} $${kitPrice}）`,
             `Check the alternatives you want to buy and see how much you save vs. Lovevery ${kitName} ($${kitPrice})`
@@ -171,19 +171,19 @@ export function SavingsCalculator({
         <div className="flex items-center gap-3 mb-3">
           <button
             onClick={selectAll}
-            className="text-xs text-[#5a9e65] hover:text-[#2D5A35] font-medium transition-colors"
+            className="text-xs text-primary hover:text-primary font-medium transition-colors"
           >
             {t("全选", "Select All")}
           </button>
           <span className="text-[#D0E4D8]">|</span>
           <button
             onClick={clearAll}
-            className="text-xs text-[#756A5C] hover:text-[#3D3229] font-medium transition-colors"
+            className="text-xs text-muted-foreground hover:text-foreground font-medium transition-colors"
           >
             {t("清空", "Clear")}
           </button>
           {selectedCount > 0 && (
-            <span className="ml-auto text-xs text-[#5a9e65] font-medium">
+            <span className="ml-auto text-xs text-primary font-medium">
               {t(`已选 ${selectedCount} 件`, `${selectedCount} selected`)}
             </span>
           )}
@@ -198,14 +198,14 @@ export function SavingsCalculator({
               key={alt.asin}
               className={`flex items-center gap-3 p-2.5 rounded-lg cursor-pointer transition-all duration-150 ${
                 isChecked
-                  ? "bg-[#E8F5EC] border border-[#A8D5B0]"
-                  : "bg-white border border-[#E8DFD3] hover:border-[#A8D5B0]"
+                  ? "bg-secondary border border-[#A8D5B0]"
+                  : "bg-white border border-border hover:border-[#A8D5B0]"
               }`}
             >
               {/* Checkbox */}
               <div
                 className={`w-5 h-5 rounded flex items-center justify-center shrink-0 transition-colors ${
-                  isChecked ? "bg-[#5a9e65]" : "bg-white border-2 border-[#C8BFB3]"
+                  isChecked ? "bg-primary" : "bg-white border-2 border-border"
                 }`}
                 aria-hidden="true"
               >
@@ -220,14 +220,14 @@ export function SavingsCalculator({
               />
 
               {/* Product name */}
-              <span className="flex-1 text-xs text-[#3D3229] line-clamp-2 leading-snug">
+              <span className="flex-1 text-xs text-foreground line-clamp-2 leading-snug">
                 {alt.name}
               </span>
 
               {/* Price */}
               <span
                 className={`text-sm font-bold whitespace-nowrap ${
-                  isChecked ? "text-[#5a9e65]" : "text-[#D4A574]"
+                  isChecked ? "text-primary" : "text-[#D4A574]"
                 }`}
               >
                 ${price?.toFixed(2)}
@@ -242,12 +242,12 @@ export function SavingsCalculator({
         <div className="px-4 py-3 bg-white border-t border-[#D0E4D8]">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-1.5">
-              <DollarSign className="w-4 h-4 text-[#756A5C]" aria-hidden="true" />
-              <span className="text-xs text-[#756A5C]">
+              <DollarSign className="w-4 h-4 text-muted-foreground" aria-hidden="true" />
+              <span className="text-xs text-muted-foreground">
                 {t("平替总价", "Alternatives Total")}
               </span>
             </div>
-            <span className="text-base font-bold text-[#3D3229]">
+            <span className="text-base font-bold text-foreground">
               ${totalSelected.toFixed(2)}
             </span>
           </div>
@@ -255,16 +255,16 @@ export function SavingsCalculator({
           {hasSavings && (
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-1.5">
-                <TrendingDown className="w-4 h-4 text-[#5a9e65]" aria-hidden="true" />
-                <span className="text-xs text-[#5a9e65] font-medium">
+                <TrendingDown className="w-4 h-4 text-primary" aria-hidden="true" />
+                <span className="text-xs text-primary font-medium">
                   {t("预计节省", "You Save")}
                 </span>
               </div>
               <div className="text-right">
-                <span className="text-base font-bold text-[#5a9e65]">
+                <span className="text-base font-bold text-primary">
                   ${savings.toFixed(2)}
                 </span>
-                <span className="text-xs text-[#5a9e65] ml-1">
+                <span className="text-xs text-primary ml-1">
                   ({savingsPct}%)
                 </span>
               </div>
@@ -273,7 +273,7 @@ export function SavingsCalculator({
 
           {/* Per-item Amazon buy buttons */}
           <div className="space-y-2">
-            <p className="text-xs text-[#756A5C] font-medium mb-1.5">
+            <p className="text-xs text-muted-foreground font-medium mb-1.5">
               {t("在 Amazon 购买选中商品：", "Buy selected items on Amazon:")}
             </p>
             {selectedItems.map((item) => (

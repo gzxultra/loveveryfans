@@ -60,11 +60,11 @@ export default function AgePickerNav({ onClose }: AgePickerNavProps) {
     : null;
 
   return (
-    <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-[#E8DFD3] shadow-xl shadow-[#3D3229]/10 overflow-hidden">
+    <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-border shadow-xl shadow-foreground/10 overflow-hidden">
       {/* Header */}
-      <div className="px-4 py-3 border-b border-[#F0EBE3] flex items-center gap-2">
-        <Baby className="w-4 h-4 text-[#7FB685]" />
-        <span className="text-sm font-medium text-[#3D3229]">
+      <div className="px-4 py-3 border-b border-accent flex items-center gap-2">
+        <Baby className="w-4 h-4 text-primary" />
+        <span className="text-sm font-medium text-foreground">
           {t("按月龄查找 Play Kit", "Find Play Kit by Age")}
         </span>
       </div>
@@ -87,7 +87,7 @@ export default function AgePickerNav({ onClose }: AgePickerNavProps) {
                 className={`px-2 py-1.5 rounded-lg text-[10px] sm:text-xs font-medium transition-all duration-200 whitespace-nowrap ${
                   isSelected
                     ? "text-white shadow-md scale-105"
-                    : "text-[#6B5E50] hover:bg-[#F0EBE3] bg-[#FAF7F2]"
+                    : "text-muted-foreground hover:bg-accent bg-background"
                 }`}
                 style={isSelected ? { backgroundColor: color } : undefined}
               >
@@ -102,18 +102,18 @@ export default function AgePickerNav({ onClose }: AgePickerNavProps) {
       {selectedKit && selectedAge !== null && (
         <div className="px-4 pb-3 animate-[fadeIn_0.2s_ease-out]">
           <Link href={`/kit/${selectedKit.id}/`} onClick={onClose}>
-            <div className="flex items-center justify-between p-3 rounded-xl bg-[#FAF7F2] hover:bg-[#F0EBE3] transition-colors group cursor-pointer">
+            <div className="flex items-center justify-between p-3 rounded-xl bg-background hover:bg-accent transition-colors group cursor-pointer">
               <div className="min-w-0">
-                <p className="text-sm font-semibold text-[#3D3229] truncate">
+                <p className="text-sm font-semibold text-foreground truncate">
                   {selectedKit.name}
                 </p>
-                <p className="text-xs text-[#6B5E50]">
+                <p className="text-xs text-muted-foreground">
                   {lang === "cn" ? selectedKit.ageRange : (selectedKit.ageRangeEn || selectedKit.ageRange)}
                   {" · "}
                   {selectedKit.toys.filter((t) => !(t as any).discontinued).length} {t("个玩具", "toys")}
                 </p>
               </div>
-              <ChevronRight className="w-4 h-4 text-[#6B5E50] group-hover:translate-x-0.5 transition-transform shrink-0" />
+              <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:translate-x-0.5 transition-transform shrink-0" />
             </div>
           </Link>
         </div>

@@ -8,6 +8,8 @@ export interface Alternative {
   imageUrl?: string;
   reasonEn: string;
   reasonCn: string;
+  availability?: string | null;
+  lastChecked?: string | null;
 }
 
 export interface ToyAlternative {

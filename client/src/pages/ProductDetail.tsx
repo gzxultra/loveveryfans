@@ -9,7 +9,7 @@
  * - Same header, nav, footer structure
  * Supports CN/EN language toggle and Traditional Chinese auto-detection
  */
-import { getProductById, standaloneProducts, getProductSlug } from "@/data/standaloneProducts";
+import { getProductById, standaloneProducts, getProductSlug, productCategories } from "@/data/standaloneProducts";
 import { getPlayTipsByProductId } from "@/data/communityPlayTips";
 import type { Toy } from "@/data/kits";
 import { getToyAlternatives } from "@/data/alternatives";
@@ -130,7 +130,7 @@ const ToyCard = memo(function ToyCard({
 
   return (
     <div
-      className="bg-white rounded-xl sm:rounded-2xl border border-[#E8DFD3] overflow-hidden hover:shadow-xl hover:shadow-[#3D3229]/8 transition-all duration-300 hover:border-[#D0C8BC] hover-expand-card"
+      className="bg-white rounded-xl sm:rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:shadow-foreground/8 transition-all duration-300 hover:border-border hover-expand-card"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -164,11 +164,11 @@ const ToyCard = memo(function ToyCard({
 
           <div className="flex-1 min-w-0 w-full">
             <div className="flex items-center gap-2 mb-1 flex-wrap">
-              <h3 className="font-display text-base sm:text-xl text-[#3D3229] leading-snug">
+              <h3 className="font-display text-base sm:text-xl text-foreground leading-snug">
                 {toyName}
               </h3>
               {(toy as any).isNew && (
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-medium bg-[#E8F5E9] text-[#4CAF50] border border-[#C8E6C9]">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-medium bg-secondary text-[#4CAF50] border border-border">
                   <Sparkles className="w-2.5 h-2.5" />
                   {i18n.kitDetail.newOnSite[lang]}
                 </span>
@@ -187,13 +187,13 @@ const ToyCard = memo(function ToyCard({
 
       {/* How to Use — Always visible, same yellow bg as KitDetail */}
       <div className="px-4 sm:px-6 pb-3 sm:pb-4">
-        <div className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-[#FAF7F2]">
+        <div className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-background">
           <Lightbulb className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 mt-0.5 text-[#D4A574]" />
           <div>
             <p className="text-[10px] sm:text-xs font-semibold text-[#D4A574] uppercase tracking-wider mb-1 sm:mb-1.5">
               {i18n.kitDetail.howToUse[lang]}
             </p>
-            <p className="text-xs sm:text-sm text-[#4A3F35] leading-relaxed">{howToUse}</p>
+            <p className="text-xs sm:text-sm text-secondary-foreground leading-relaxed">{howToUse}</p>
           </div>
         </div>
       </div>
@@ -204,7 +204,7 @@ const ToyCard = memo(function ToyCard({
           <div className="px-4 sm:px-6 pb-2">
             <button
               onClick={handleClick}
-              className="w-full flex items-center justify-between py-3 text-xs sm:text-sm font-medium text-[#6B5E50] hover:text-[#3D3229] transition-colors border-t border-[#F0EBE3] min-h-[44px] mobile-expand-trigger"
+              className="w-full flex items-center justify-between py-3 text-xs sm:text-sm font-medium text-muted-foreground hover:text-foreground transition-colors border-t border-accent min-h-[44px] mobile-expand-trigger"
             >
               <span>{expanded ? i18n.kitDetail.collapse[lang] : i18n.kitDetail.expand[lang]}</span>
               {expanded ? (
@@ -227,13 +227,13 @@ const ToyCard = memo(function ToyCard({
                 <div className="px-4 sm:px-6 pb-4 sm:pb-6 space-y-3 sm:space-y-4">
                   {/* Development Goal */}
                   {devGoal && (
-                    <div className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-[#F0F7F1]">
-                      <Target className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 mt-0.5 text-[#7FB685]" />
+                    <div className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-background">
+                      <Target className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 mt-0.5 text-primary" />
                       <div>
-                        <p className="text-[10px] sm:text-xs font-semibold text-[#7FB685] uppercase tracking-wider mb-1 sm:mb-1.5">
+                        <p className="text-[10px] sm:text-xs font-semibold text-primary uppercase tracking-wider mb-1 sm:mb-1.5">
                           {i18n.kitDetail.devGoal[lang]}
                         </p>
-                        <p className="text-xs sm:text-sm text-[#4A3F35] leading-relaxed">
+                        <p className="text-xs sm:text-sm text-secondary-foreground leading-relaxed">
                           {devGoal}
                         </p>
                       </div>
@@ -243,14 +243,14 @@ const ToyCard = memo(function ToyCard({
                   {/* Parent Review — styled as Pros & Cons — matches KitDetail exactly */}
                   {review ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-                      <div className="bg-[#F0F7F1] rounded-lg sm:rounded-xl p-3 sm:p-4 border border-[#E1EDE2]">
+                      <div className="bg-background rounded-lg sm:rounded-xl p-3 sm:p-4 border border-[#E1EDE2]">
                         <div className="flex items-center gap-2 mb-2">
-                          <ThumbsUp className="w-4 h-4 text-[#7FB685]" />
+                          <ThumbsUp className="w-4 h-4 text-primary" />
                           <h4 className="font-bold text-[#4A6B4E] text-[10px] sm:text-xs uppercase tracking-wider">
                             {lang === "cn" ? "优点" : "Pros"}
                           </h4>
                         </div>
-                        <p className="text-xs sm:text-sm text-[#4A3F35] leading-relaxed">
+                        <p className="text-xs sm:text-sm text-secondary-foreground leading-relaxed">
                           {lang === "en" && review.prosEn ? review.prosEn : convert(review.pros)}
                         </p>
                       </div>
@@ -261,29 +261,29 @@ const ToyCard = memo(function ToyCard({
                             {lang === "cn" ? "缺点" : "Cons"}
                           </h4>
                         </div>
-                        <p className="text-xs sm:text-sm text-[#4A3F35] leading-relaxed">
+                        <p className="text-xs sm:text-sm text-secondary-foreground leading-relaxed">
                           {lang === "en" && review.consEn ? review.consEn : convert(review.cons)}
                         </p>
                       </div>
                     </div>
                   ) : parentRev ? (
-                    <div className="rounded-lg sm:rounded-xl border border-[#E8DFD3] overflow-hidden">
-                      <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-[#FAF7F2] to-[#F5F0EB] border-b border-[#E8DFD3]">
-                        <p className="text-[10px] sm:text-xs font-semibold text-[#6B5E50] uppercase tracking-wider flex items-center gap-1.5">
+                    <div className="rounded-lg sm:rounded-xl border border-border overflow-hidden">
+                      <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-background to-secondary border-b border-border">
+                        <p className="text-[10px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
                           <Star className="w-3.5 h-3.5 text-[#D4A574]" />
                           {i18n.kitDetail.parentReview ? i18n.kitDetail.parentReview[lang] : t("家长评价", "Parent Review")}
                         </p>
                       </div>
-                      <div className="p-3 sm:p-4 bg-[#FFFBF5]">
+                      <div className="p-3 sm:p-4 bg-background">
                         <div className="flex items-center gap-2 mb-2 sm:mb-2.5">
-                          <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#FFF3E0] flex items-center justify-center">
+                          <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-background flex items-center justify-center">
                             <MessageSquare className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#D4A574]" />
                           </div>
-                          <span className="text-xs sm:text-sm font-semibold text-[#6B5E50]">
+                          <span className="text-xs sm:text-sm font-semibold text-muted-foreground">
                             {t("家长真实反馈", "Real Parent Feedback")}
                           </span>
                         </div>
-                        <p className="text-xs sm:text-sm text-[#4A3F35] leading-relaxed pl-8 sm:pl-9">
+                        <p className="text-xs sm:text-sm text-secondary-foreground leading-relaxed pl-8 sm:pl-9">
                           {parentRev}
                         </p>
                       </div>
@@ -331,7 +331,7 @@ function ProductReferralCard({ product }: { product: ReturnType<typeof getProduc
   const purchaseUrl = getProductPurchaseUrl(product.id, product.officialUrl);
 
   return (
-    <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD3] p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
+    <div className="bg-white rounded-2xl sm:rounded-3xl border border-border p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
       <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
         <div
           className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0"
@@ -341,10 +341,10 @@ function ProductReferralCard({ product }: { product: ReturnType<typeof getProduc
         </div>
 
         <div className="flex-1">
-          <h3 className="font-display text-xl sm:text-2xl text-[#3D3229] mb-3">
+          <h3 className="font-display text-xl sm:text-2xl text-foreground mb-3">
             {i18n.referral.title[lang]}
           </h3>
-          <p className="text-sm sm:text-base text-[#6B5E50] leading-relaxed mb-6">
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6">
             {i18n.referral.desc[lang]}
           </p>
 
@@ -353,7 +353,7 @@ function ProductReferralCard({ product }: { product: ReturnType<typeof getProduc
               href={purchaseUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#3D3229] text-white rounded-full text-sm font-medium hover:bg-[#2A231C] hover:shadow-lg hover:shadow-[#3D3229]/20 transition-all duration-300 active:scale-[0.98] min-h-[48px]"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-foreground text-white rounded-full text-sm font-medium hover:bg-foreground hover:shadow-lg hover:shadow-foreground/20 transition-all duration-300 active:scale-[0.98] min-h-[48px]"
               onClick={() => {
                 trackEvent("lovevery_referral_click", {
                   kit_name: product.id,
@@ -398,9 +398,10 @@ export default function ProductDetail() {
 
     trackEvent("product_view", { product_id: product.id, product_name: product.name });
 
-    const categoryLabel = lang === "cn"
-      ? convert(product.category === "music" ? "音乐玩具" : product.category === "bath" ? "洗澡玩具" : product.category === "blockSet" ? "积木套装" : "游戏垫")
-      : product.category === "music" ? "Music Toy" : product.category === "bath" ? "Bath Toy" : product.category === "blockSet" ? "Block Set" : "Play Gym";
+    // categoryLabel is only used in the CN title — look it up from productCategories
+    // so all 9 categories (not just music/bath/blockSet) get the correct label.
+    const categoryInfo = productCategories.find((c) => c.id === product.category);
+    const categoryLabel = convert(categoryInfo?.label ?? "");
 
     const title = lang === "cn"
       ? `${product.name} ${categoryLabel}平替推荐 | Lovevery Fans`
@@ -504,13 +505,13 @@ export default function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-[#FAF7F2] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <div className="text-center">
-          <h1 className="font-['Manrope'] text-2xl sm:text-3xl text-[#3D3229] mb-4">
+          <h1 className="font-display text-2xl sm:text-3xl text-foreground mb-4">
             {t("未找到该产品", "Product Not Found")}
           </h1>
           <Link href="/">
-            <span className="text-[#7FB685] hover:underline">{i18n.kitDetail.backHome[lang]}</span>
+            <span className="text-primary hover:underline">{i18n.kitDetail.backHome[lang]}</span>
           </Link>
         </div>
       </div>
@@ -533,16 +534,16 @@ export default function ProductDetail() {
 
   return (
     <>
-    <div className="min-h-screen bg-[#FAF7F2]">
+    <div className="min-h-screen bg-background">
       {/* Reading Progress Bar */}
       <ReadingProgress color={product.color} />
 
       {/* Navigation — identical to KitDetail */}
-      <nav className="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-lg border-b border-[#E8DFD3]/70 shadow-sm shadow-[#3D3229]/3">
+      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border/70 shadow-sm shadow-foreground/3">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14 sm:h-16">
             <Link href="/">
-              <span className="group flex items-center gap-1.5 sm:gap-2 text-[#6B5E50] hover:text-[#3D3229] transition-colors min-h-[44px] items-center">
+              <span className="group flex items-center gap-1.5 sm:gap-2 text-muted-foreground hover:text-foreground transition-colors min-h-[44px] items-center">
                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
                 <span className="text-xs sm:text-sm font-medium">{i18n.kitDetail.backToAll[lang]}</span>
               </span>
@@ -550,7 +551,7 @@ export default function ProductDetail() {
             <div className="flex items-center gap-3">
               <LanguageToggle />
               <Link href="/">
-                <span data-logo-target className="font-['Manrope'] text-base sm:text-lg text-[#3D3229] select-none hover:opacity-80 transition-opacity">
+                <span data-logo-target className="font-['Manrope'] text-base sm:text-lg text-foreground select-none hover:opacity-80 transition-opacity">
                   Lovevery
                 </span>
               </Link>
@@ -585,7 +586,7 @@ export default function ProductDetail() {
           {/* Mobile hero image */}
           {product.imageUrl && (
             <div className="md:hidden mb-6 flex justify-center">
-              <div className="w-48 sm:w-56 aspect-square rounded-2xl overflow-hidden bg-[#FAF7F2] border border-[#E8DFD3] shadow-lg shadow-[#3D3229]/5 p-3">
+              <div className="w-48 sm:w-56 aspect-square rounded-2xl overflow-hidden bg-background border border-border shadow-lg shadow-foreground/5 p-3">
                 <img
                   src={product.imageUrl}
                   alt={`${product.name} - Lovevery ${productAgeRange}`}
@@ -610,11 +611,11 @@ export default function ProductDetail() {
                 {productAgeRange}
               </div>
 
-              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#1a1108] tracking-tight leading-[1.1] mb-6 sm:mb-8">
+              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground tracking-tight leading-[1.1] mb-6 sm:mb-8">
                 {product.name}
               </h1>
 
-              <p className="text-base sm:text-lg md:text-xl text-[#3D3229] leading-relaxed max-w-3xl">
+              <p className="text-base sm:text-lg md:text-xl text-foreground leading-relaxed max-w-3xl">
                 {productDescription}
               </p>
 
@@ -650,7 +651,7 @@ export default function ProductDetail() {
                   <ExternalLink className="w-4 h-4" />
                   {i18n.kitDetail.viewOnLovevery[lang]}
                 </a>
-                <p className="mt-2 flex items-center justify-start gap-1.5 text-[10px] sm:text-xs text-[#756A5C]/60 opacity-70">
+                <p className="mt-2 flex items-center justify-start gap-1.5 text-[10px] sm:text-xs text-muted-foreground/60 opacity-70">
                   <Heart className="w-3 h-3 text-[#D4A574]/50" />
                   <span>
                     {t("通过此链接购买可享折扣，同时支持本站运营", "Using this link supports our site & gives you a discount")}
@@ -659,7 +660,7 @@ export default function ProductDetail() {
               </div>
 
               {/* Stats row — same as KitDetail */}
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-10 mt-6 sm:mt-10 pt-6 sm:pt-8 border-t border-[#E8DFD3]/80">
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-10 mt-6 sm:mt-10 pt-6 sm:pt-8 border-t border-border/80">
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center"
@@ -668,13 +669,13 @@ export default function ProductDetail() {
                     <Puzzle className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: product.color }} />
                   </div>
                   <div>
-                    <p className="text-xl sm:text-2xl font-['Manrope'] text-[#3D3229]">
+                    <p className="text-xl sm:text-2xl font-['Manrope'] text-foreground">
                       {product.toys.length}
                     </p>
-                    <p className="text-[10px] sm:text-xs text-[#756A5C]">{i18n.kitDetail.toyCount[lang]}</p>
+                    <p className="text-[10px] sm:text-xs text-muted-foreground">{i18n.kitDetail.toyCount[lang]}</p>
                   </div>
                 </div>
-                <div className="w-px h-8 sm:h-10 bg-[#E8DFD3] hidden sm:block" />
+                <div className="w-px h-8 sm:h-10 bg-border hidden sm:block" />
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center"
@@ -683,13 +684,13 @@ export default function ProductDetail() {
                     <Star className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: product.color }} />
                   </div>
                   <div>
-                    <p className="text-xl sm:text-2xl font-['Manrope'] text-[#3D3229]">
+                    <p className="text-xl sm:text-2xl font-['Manrope'] text-foreground">
                       {productAgeRange}
                     </p>
-                    <p className="text-[10px] sm:text-xs text-[#756A5C]">{i18n.kitDetail.ageLabel[lang]}</p>
+                    <p className="text-[10px] sm:text-xs text-muted-foreground">{i18n.kitDetail.ageLabel[lang]}</p>
                   </div>
                 </div>
-                <div className="w-px h-8 sm:h-10 bg-[#E8DFD3] hidden sm:block" />
+                <div className="w-px h-8 sm:h-10 bg-border hidden sm:block" />
                 <div className="w-full sm:w-auto mt-2 sm:mt-0">
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {categories.map((cat) => (
@@ -702,7 +703,7 @@ export default function ProductDetail() {
                       </span>
                     ))}
                   </div>
-                  <p className="text-[10px] sm:text-xs text-[#756A5C] mt-1.5 sm:mt-2">{i18n.kitDetail.devAreas[lang]}</p>
+                  <p className="text-[10px] sm:text-xs text-muted-foreground mt-1.5 sm:mt-2">{i18n.kitDetail.devAreas[lang]}</p>
                 </div>
               </div>
 
@@ -713,7 +714,7 @@ export default function ProductDetail() {
             {/* Desktop hero image */}
             {product.imageUrl && (
               <div className="hidden md:block w-56 lg:w-72 shrink-0">
-                <div className="aspect-square rounded-2xl overflow-hidden bg-[#FAF7F2] border border-[#E8DFD3] shadow-xl shadow-[#3D3229]/8 ring-1 ring-black/5 p-4 hover:shadow-2xl transition-shadow duration-500">
+                <div className="aspect-square rounded-2xl overflow-hidden bg-background border border-border shadow-xl shadow-foreground/8 ring-1 ring-black/5 p-4 hover:shadow-2xl transition-shadow duration-500">
                   <img
                     src={product.imageUrl}
                     alt={`${product.name} - Lovevery ${productAgeRange}`}
@@ -741,11 +742,11 @@ export default function ProductDetail() {
               >
                 <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4" style={{ color: product.color }} />
               </div>
-              <h2 className="font-['Manrope'] text-xl sm:text-2xl md:text-3xl text-[#3D3229]">
+              <h2 className="font-['Manrope'] text-xl sm:text-2xl md:text-3xl text-foreground">
                 {i18n.kitDetail.toyList[lang]}
               </h2>
             </div>
-            <p className="text-xs sm:text-sm text-[#756A5C] ml-9 sm:ml-11">
+            <p className="text-xs sm:text-sm text-muted-foreground ml-9 sm:ml-11">
               {i18n.kitDetail.toyListDesc[lang]}
             </p>
           </div>
@@ -780,11 +781,11 @@ export default function ProductDetail() {
                   >
                     <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" style={{ color: product.color }} />
                   </div>
-                  <h2 className="font-['Manrope'] text-xl sm:text-2xl md:text-3xl text-[#3D3229]">
+                  <h2 className="font-['Manrope'] text-xl sm:text-2xl md:text-3xl text-foreground">
                     {i18n.communityTips.title[lang]}
                   </h2>
                 </div>
-                <p className="text-xs sm:text-sm text-[#756A5C] ml-9 sm:ml-11">
+                <p className="text-xs sm:text-sm text-muted-foreground ml-9 sm:ml-11">
                   {i18n.communityTips.subtitle[lang]}
                 </p>
               </div>
@@ -797,9 +798,9 @@ export default function ProductDetail() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.35 }}
-                    className="bg-white rounded-xl sm:rounded-2xl border border-[#E8DFD3] p-4 sm:p-5 hover:shadow-lg hover:shadow-[#3D3229]/5 hover:border-[#D0C8BC] transition-all duration-300"
+                    className="bg-white rounded-xl sm:rounded-2xl border border-border p-4 sm:p-5 hover:shadow-lg hover:shadow-foreground/5 hover:border-border transition-all duration-300"
                   >
-                    <p className="text-sm sm:text-[15px] text-[#3D3229] leading-relaxed mb-3 sm:mb-4">
+                    <p className="text-sm sm:text-[15px] text-foreground leading-relaxed mb-3 sm:mb-4">
                       {lang === "en" ? tip.tipEn : convert(tip.tip)}
                     </p>
                     <div className="flex items-center gap-2 flex-wrap">
@@ -811,7 +812,7 @@ export default function ProductDetail() {
                         {tip.source}
                       </span>
                       {(lang === "en" ? tip.ageRangeEn : tip.ageRange) && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium bg-[#F0F7F1] text-[#5A8F63]">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium bg-secondary text-[#4CAF50] border border-border">
                           <BookOpen className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                           {lang === "en" ? tip.ageRangeEn : convert(tip.ageRange || "")}
                         </span>
@@ -836,23 +837,23 @@ export default function ProductDetail() {
       </section>
 
       {/* Navigation between products — same as KitDetail kit navigation */}
-      <section className="border-t border-[#E8DFD3] bg-gradient-to-b from-white to-[#FAF7F2]">
+      <section className="border-t border-border bg-gradient-to-b from-white to-background">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          <p className="text-center text-xs sm:text-sm text-[#756A5C] mb-4 sm:mb-6 font-medium">
+          <p className="text-center text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6 font-medium">
             {t("探索更多 Lovevery 产品", "Explore More Lovevery Products")}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {prevProduct ? (
               <Link href={`/product/${getProductSlug(prevProduct.id)}/`}>
-                <div className="group p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-[#E8DFD3] hover:border-[#C8BFB3] bg-white hover:shadow-lg hover:shadow-[#3D3229]/5 transition-all duration-300 cursor-pointer active:scale-[0.98] min-h-[44px]">
-                  <p className="text-[10px] sm:text-xs text-[#756A5C] mb-1.5 sm:mb-2 flex items-center gap-1">
+                <div className="group p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-border hover:border-border bg-white hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300 cursor-pointer active:scale-[0.98] min-h-[44px]">
+                  <p className="text-[10px] sm:text-xs text-muted-foreground mb-1.5 sm:mb-2 flex items-center gap-1">
                     <ArrowLeft className="w-3 h-3 group-hover:-translate-x-0.5 transition-transform" />
                     {i18n.kitDetail.prevKit[lang]}
                   </p>
-                  <p className="font-display text-base sm:text-lg text-[#3D3229] group-hover:text-[#1a1108] transition-colors">
+                  <p className="font-display text-base sm:text-lg text-foreground group-hover:text-foreground transition-colors">
                     {prevProduct.name}
                   </p>
-                  <p className="text-xs sm:text-sm text-[#756A5C] mt-0.5 sm:mt-1">
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">
                     {lang === "en" && prevProduct.ageRangeEn ? prevProduct.ageRangeEn : prevProduct.ageRange}
                   </p>
                 </div>
@@ -862,15 +863,15 @@ export default function ProductDetail() {
             )}
             {nextProduct ? (
               <Link href={`/product/${getProductSlug(nextProduct.id)}/`}>
-                <div className="group p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-[#E8DFD3] hover:border-[#C8BFB3] bg-white hover:shadow-lg hover:shadow-[#3D3229]/5 transition-all duration-300 text-right cursor-pointer active:scale-[0.98] min-h-[44px]">
-                  <p className="text-[10px] sm:text-xs text-[#756A5C] mb-1.5 sm:mb-2 flex items-center justify-end gap-1">
+                <div className="group p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-border hover:border-border bg-white hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300 text-right cursor-pointer active:scale-[0.98] min-h-[44px]">
+                  <p className="text-[10px] sm:text-xs text-muted-foreground mb-1.5 sm:mb-2 flex items-center justify-end gap-1">
                     {i18n.kitDetail.nextKit[lang]}
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                   </p>
-                  <p className="font-display text-base sm:text-lg text-[#3D3229] group-hover:text-[#1a1108] transition-colors">
+                  <p className="font-display text-base sm:text-lg text-foreground group-hover:text-foreground transition-colors">
                     {nextProduct.name}
                   </p>
-                  <p className="text-xs sm:text-sm text-[#756A5C] mt-0.5 sm:mt-1">
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">
                     {lang === "en" && nextProduct.ageRangeEn ? nextProduct.ageRangeEn : nextProduct.ageRange}
                   </p>
                 </div>
@@ -884,7 +885,7 @@ export default function ProductDetail() {
 
       {/* Share — elegant, subtle */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="border-t border-[#E8DFD3]/60">
+        <div className="border-t border-border/60">
           <ShareSection />
         </div>
       </div>
@@ -893,8 +894,8 @@ export default function ProductDetail() {
       <BackToTop />
 
       {/* Footer — same as KitDetail */}
-      <footer className="relative bg-[#3D3229] text-white py-8 sm:py-12">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#7FB685]/40 to-transparent" />
+      <footer className="relative bg-foreground text-white py-8 sm:py-12">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 data-logo-target className="font-display text-lg sm:text-xl mb-2 sm:mb-3 select-none">Lovevery</h3>
           <p className="text-xs sm:text-sm text-[#9A8E82]">

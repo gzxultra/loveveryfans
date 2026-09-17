@@ -42,7 +42,7 @@ export default function ValueProposition() {
   const { lang } = useLanguage();
 
   return (
-    <section className="py-8 sm:py-12 bg-[#FAF7F2]">
+    <section className="py-8 sm:py-12 bg-background">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
           {features.map((f, i) => {
@@ -50,7 +50,7 @@ export default function ValueProposition() {
             return (
               <div
                 key={i}
-                className="group relative rounded-xl sm:rounded-2xl bg-white border border-[#E8DFD3] p-5 sm:p-6 hover:border-[#C8BFB3] hover:shadow-lg hover:shadow-[#3D3229]/5 transition-all duration-300"
+                className="group relative rounded-xl sm:rounded-2xl bg-white border border-border p-5 sm:p-6 hover:border-border hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300"
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
@@ -58,10 +58,10 @@ export default function ValueProposition() {
                 >
                   <Icon className="w-5 h-5" style={{ color: f.color }} />
                 </div>
-                <h3 className="font-display text-base sm:text-lg text-[#1a1108] mb-1.5">
+                <h3 className="font-display text-base sm:text-lg text-foreground mb-1.5">
                   {f.title[lang]}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#6B5E50] leading-relaxed">
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                   {f.desc[lang]}
                 </p>
               </div>

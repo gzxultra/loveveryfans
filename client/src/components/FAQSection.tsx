@@ -74,18 +74,18 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="py-10 sm:py-14 bg-[#FAF7F2]">
+    <section className="py-10 sm:py-14 bg-background">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/70 backdrop-blur-sm border border-[#E8DFD3]/60 text-[#6B5E50] text-xs font-medium mb-3 shadow-sm">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/70 backdrop-blur-sm border border-border/60 text-muted-foreground text-xs font-medium mb-3 shadow-sm">
             <HelpCircle className="w-3 h-3" />
             {t("常见问题", "FAQ")}
           </div>
-          <h2 className="font-display text-xl sm:text-2xl md:text-3xl text-[#1a1108] mb-2">
+          <h2 className="font-display text-xl sm:text-2xl md:text-3xl text-foreground mb-2">
             {t("常见问题解答", "Frequently Asked Questions")}
           </h2>
-          <p className="text-xs sm:text-sm text-[#6B5E50]">
+          <p className="text-xs sm:text-sm text-muted-foreground">
             {t(
               "关于 Lovevery Play Kit 的常见问题，帮你快速了解",
               "Common questions about Lovevery Play Kits answered"
@@ -103,18 +103,18 @@ export default function FAQSection() {
             return (
               <div
                 key={idx}
-                className="bg-white rounded-xl border border-[#E8DFD3] overflow-hidden transition-shadow hover:shadow-sm"
+                className="bg-white rounded-xl border border-border overflow-hidden transition-shadow hover:shadow-sm"
               >
                 <button
                   onClick={() => toggle(idx)}
                   className="w-full flex items-center justify-between px-4 sm:px-5 py-3.5 sm:py-4 text-left gap-3 min-h-[48px]"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-sm sm:text-base font-medium text-[#3D3229] leading-snug">
+                  <span className="text-sm sm:text-base font-medium text-foreground leading-snug">
                     {question}
                   </span>
                   <ChevronDown
-                    className={`w-4 h-4 shrink-0 text-[#6B5E50] transition-transform duration-300 ${
+                    className={`w-4 h-4 shrink-0 text-muted-foreground transition-transform duration-300 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   />
@@ -124,7 +124,7 @@ export default function FAQSection() {
                     isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <div className="px-4 sm:px-5 pb-4 sm:pb-5 text-sm text-[#6B5E50] leading-relaxed border-t border-[#F0EBE3] pt-3">
+                  <div className="px-4 sm:px-5 pb-4 sm:pb-5 text-sm text-muted-foreground leading-relaxed border-t border-accent pt-3">
                     {answer}
                   </div>
                 </div>

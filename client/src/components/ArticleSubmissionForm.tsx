@@ -38,6 +38,7 @@ const i18n = {
   urlRequired: { cn: "请输入文章链接", en: "Please enter the article URL" },
   urlInvalid: { cn: "请输入有效的网址", en: "Please enter a valid URL" },
   errorGeneric: { cn: "提交失败，请稍后重试", en: "Submission failed. Please try again later." },
+  close: { cn: "关闭", en: "Close" },
 } as const;
 
 interface Props {
@@ -182,7 +183,7 @@ export function ArticleSubmissionForm({ kitId, kitColor }: Props) {
             transition={{ duration: 0.35, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="rounded-2xl border border-[#E8DFD3] bg-white shadow-sm overflow-hidden">
+            <div className="rounded-2xl border border-border bg-white shadow-sm overflow-hidden">
               {/* Header */}
               <div
                 className="px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between"
@@ -201,8 +202,8 @@ export function ArticleSubmissionForm({ kitId, kitColor }: Props) {
                 </div>
                 <button
                   onClick={handleClose}
-                  className="p-1.5 rounded-lg hover:bg-[#F5F0E8] transition-colors"
-                  aria-label="Close"
+                  className="p-1.5 rounded-lg hover:bg-secondary transition-colors"
+                  aria-label={t("close")}
                 >
                   <X className="w-4.5 h-4.5 text-[#9B8E7E]" />
                 </button>
@@ -229,10 +230,10 @@ export function ArticleSubmissionForm({ kitId, kitColor }: Props) {
                         style={{ color: kitColor }}
                       />
                     </motion.div>
-                    <h4 className="text-lg sm:text-xl font-semibold text-[#3D3229] mb-2">
+                    <h4 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
                       {t("successTitle")}
                     </h4>
-                    <p className="text-sm text-[#6B5E50] mb-6 max-w-sm mx-auto">
+                    <p className="text-sm text-muted-foreground mb-6 max-w-sm mx-auto">
                       {t("successMsg")}
                     </p>
                     <button
@@ -255,7 +256,7 @@ export function ArticleSubmissionForm({ kitId, kitColor }: Props) {
                   >
                     {/* URL field (required) */}
                     <div>
-                      <label className="flex items-center gap-1.5 text-sm font-medium text-[#3D3229] mb-1.5">
+                      <label className="flex items-center gap-1.5 text-sm font-medium text-foreground mb-1.5">
                         <Link2 className="w-3.5 h-3.5" style={{ color: kitColor }} />
                         {t("urlLabel")} <span className="text-red-400">*</span>
                       </label>
@@ -264,7 +265,7 @@ export function ArticleSubmissionForm({ kitId, kitColor }: Props) {
                         value={url}
                         onChange={(e) => setUrl(e.target.value)}
                         placeholder={t("urlPlaceholder")}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DFD3] bg-[#FAF7F2] text-sm text-[#3D3229] placeholder:text-[#C8BFB3] focus:outline-none focus:ring-2 focus:border-transparent transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background text-sm text-foreground placeholder:text-border focus:outline-none focus:ring-2 focus:border-transparent transition-all"
                         style={{ "--tw-ring-color": kitColor + "40" } as React.CSSProperties}
                         required
                       />
@@ -272,7 +273,7 @@ export function ArticleSubmissionForm({ kitId, kitColor }: Props) {
 
                     {/* Title field (optional) */}
                     <div>
-                      <label className="flex items-center gap-1.5 text-sm font-medium text-[#3D3229] mb-1.5">
+                      <label className="flex items-center gap-1.5 text-sm font-medium text-foreground mb-1.5">
                         <FileText className="w-3.5 h-3.5" style={{ color: kitColor }} />
                         {t("titleLabel")}
                       </label>
@@ -281,14 +282,14 @@ export function ArticleSubmissionForm({ kitId, kitColor }: Props) {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder={t("titlePlaceholder")}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DFD3] bg-[#FAF7F2] text-sm text-[#3D3229] placeholder:text-[#C8BFB3] focus:outline-none focus:ring-2 focus:border-transparent transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background text-sm text-foreground placeholder:text-border focus:outline-none focus:ring-2 focus:border-transparent transition-all"
                         style={{ "--tw-ring-color": kitColor + "40" } as React.CSSProperties}
                       />
                     </div>
 
                     {/* Description field (optional) */}
                     <div>
-                      <label className="flex items-center gap-1.5 text-sm font-medium text-[#3D3229] mb-1.5">
+                      <label className="flex items-center gap-1.5 text-sm font-medium text-foreground mb-1.5">
                         <MessageSquare className="w-3.5 h-3.5" style={{ color: kitColor }} />
                         {t("descLabel")}
                       </label>
@@ -297,14 +298,14 @@ export function ArticleSubmissionForm({ kitId, kitColor }: Props) {
                         onChange={(e) => setDescription(e.target.value)}
                         placeholder={t("descPlaceholder")}
                         rows={2}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DFD3] bg-[#FAF7F2] text-sm text-[#3D3229] placeholder:text-[#C8BFB3] focus:outline-none focus:ring-2 focus:border-transparent transition-all resize-none"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background text-sm text-foreground placeholder:text-border focus:outline-none focus:ring-2 focus:border-transparent transition-all resize-none"
                         style={{ "--tw-ring-color": kitColor + "40" } as React.CSSProperties}
                       />
                     </div>
 
                     {/* Author name field (optional) */}
                     <div>
-                      <label className="flex items-center gap-1.5 text-sm font-medium text-[#3D3229] mb-1.5">
+                      <label className="flex items-center gap-1.5 text-sm font-medium text-foreground mb-1.5">
                         <User className="w-3.5 h-3.5" style={{ color: kitColor }} />
                         {t("authorLabel")}
                       </label>
@@ -313,7 +314,7 @@ export function ArticleSubmissionForm({ kitId, kitColor }: Props) {
                         value={authorName}
                         onChange={(e) => setAuthorName(e.target.value)}
                         placeholder={t("authorPlaceholder")}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DFD3] bg-[#FAF7F2] text-sm text-[#3D3229] placeholder:text-[#C8BFB3] focus:outline-none focus:ring-2 focus:border-transparent transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-background text-sm text-foreground placeholder:text-border focus:outline-none focus:ring-2 focus:border-transparent transition-all"
                         style={{ "--tw-ring-color": kitColor + "40" } as React.CSSProperties}
                       />
                     </div>
@@ -359,7 +360,7 @@ export function ArticleSubmissionForm({ kitId, kitColor }: Props) {
                       <button
                         type="button"
                         onClick={handleClose}
-                        className="px-4 py-2.5 sm:py-3 rounded-xl text-sm font-medium text-[#6B5E50] bg-[#F5F0E8] hover:bg-[#EDE7DB] transition-all active:scale-[0.97] min-h-[44px]"
+                        className="px-4 py-2.5 sm:py-3 rounded-xl text-sm font-medium text-muted-foreground bg-secondary hover:bg-accent transition-all active:scale-[0.97] min-h-[44px]"
                       >
                         {t("cancel")}
                       </button>

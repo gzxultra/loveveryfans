@@ -140,13 +140,13 @@ export default function AboutUs() {
   } : rawC;
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2]">
+    <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-lg border-b border-[#E8DFD3]/70 shadow-sm shadow-[#3D3229]/3">
+      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border/70 shadow-sm shadow-foreground/3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14 sm:h-16">
             <Link href="/">
-              <span data-logo-target className="font-display text-xl sm:text-2xl text-[#3D3229] tracking-tight font-bold select-none hover:opacity-80 transition-opacity">
+              <span data-logo-target className="font-display text-xl sm:text-2xl text-foreground tracking-tight font-bold select-none hover:opacity-80 transition-opacity">
                 Lovevery
               </span>
             </Link>
@@ -154,17 +154,17 @@ export default function AboutUs() {
             <div className="hidden md:flex items-center gap-4 lg:gap-6">
               {stages.map((s) => (
                 <Link key={s.id} href={`/#stage-${s.id}`}>
-                  <span className="relative text-sm font-medium text-[#6B5E50] hover:text-[#3D3229] transition-colors after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-[#7FB685] after:rounded-full after:transition-all hover:after:w-full">
+                  <span className="relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:rounded-full after:transition-all hover:after:w-full">
                     {stageLabel(s.id)}
                   </span>
                 </Link>
               ))}
               <Link href="/#standalone-products">
-                <span className="relative text-sm font-medium text-[#6B5E50] hover:text-[#3D3229] transition-colors after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-[#7FB685] after:rounded-full after:transition-all hover:after:w-full">
+                <span className="relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:rounded-full after:transition-all hover:after:w-full">
                   {i18n.nav.products[lang]}
                 </span>
               </Link>
-              <span className="text-sm font-medium text-[#3D3229] border-b-2 border-[#7FB685] pb-0.5">
+              <span className="text-sm font-medium text-foreground border-b-2 border-primary pb-0.5">
                 {i18n.nav.aboutUs[lang]}
               </span>
               <LanguageToggle />
@@ -173,7 +173,7 @@ export default function AboutUs() {
             <div className="flex md:hidden items-center gap-1">
               <LanguageToggle />
               <button
-                className="p-2 text-[#6B5E50] hover:text-[#3D3229] min-w-[48px] min-h-[48px] flex items-center justify-center"
+                className="p-2 text-muted-foreground hover:text-foreground min-w-[48px] min-h-[48px] flex items-center justify-center"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
               >
@@ -184,29 +184,29 @@ export default function AboutUs() {
         </div>
         {/* Mobile menu dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-[#FAF7F2] border-t border-[#E8DFD3] shadow-lg">
+          <div className="md:hidden bg-background border-t border-border shadow-lg">
             <div className="px-4 py-3 space-y-1">
               {stages.map((s) => (
                 <Link key={s.id} href={`/#stage-${s.id}`}>
                   <span
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block w-full text-left px-3 py-3 rounded-xl text-sm font-medium text-[#6B5E50] hover:text-[#3D3229] hover:bg-[#E8DFD3]/40 transition-colors min-h-[48px] flex items-center justify-between"
+                    className="block w-full text-left px-3 py-3 rounded-xl text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-border/40 transition-colors min-h-[48px] flex items-center justify-between"
                   >
                     {stageLabel(s.id)}
-                    <span className="text-xs text-[#756A5C]">{stageRange(s.id)}</span>
+                    <span className="text-xs text-muted-foreground">{stageRange(s.id)}</span>
                   </span>
                 </Link>
               ))}
               <Link href="/#standalone-products">
                 <span
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block w-full text-left px-3 py-3 rounded-xl text-sm font-medium text-[#6B5E50] hover:text-[#3D3229] hover:bg-[#E8DFD3]/40 transition-colors min-h-[48px] flex items-center justify-between"
+                  className="block w-full text-left px-3 py-3 rounded-xl text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-border/40 transition-colors min-h-[48px] flex items-center justify-between"
                 >
                   {i18n.nav.products[lang]}
-                  <span className="text-xs text-[#756A5C]">{t(`${standaloneProducts.length} 款产品`, `${standaloneProducts.length} Products`)}</span>
+                  <span className="text-xs text-muted-foreground">{t(`${standaloneProducts.length} 款产品`, `${standaloneProducts.length} Products`)}</span>
                 </span>
               </Link>
-              <span className="block px-3 py-3 rounded-xl text-sm font-medium text-[#3D3229] bg-[#E8DFD3]/40 min-h-[48px] flex items-center">
+              <span className="block px-3 py-3 rounded-xl text-sm font-medium text-foreground bg-border/40 min-h-[48px] flex items-center">
                 {i18n.nav.aboutUs[lang]}
               </span>
             </div>
@@ -217,9 +217,9 @@ export default function AboutUs() {
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         {/* Warm gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FFF8F0] via-[#FAF7F2] to-[#F0EBE3]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-accent" />
         {/* Decorative circles */}
-        <div className="absolute top-10 right-10 w-64 h-64 bg-[#7FB685]/10 rounded-full blur-3xl" />
+        <div className="absolute top-10 right-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
         <div className="absolute bottom-10 left-10 w-48 h-48 bg-[#E8A87C]/10 rounded-full blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#D4B896]/5 rounded-full blur-3xl" />
 
@@ -230,7 +230,7 @@ export default function AboutUs() {
             variants={fadeInUp}
             custom={0}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#7FB685]/15 text-[#5a9e65] text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/15 text-primary text-sm font-medium mb-6">
               <Heart className="w-4 h-4" />
               {t("关于我们", "About Us")}
             </div>
@@ -241,7 +241,7 @@ export default function AboutUs() {
             animate="visible"
             variants={fadeInUp}
             custom={1}
-            className="font-display text-3xl sm:text-4xl md:text-5xl text-[#1a1108] leading-tight mb-6"
+            className="font-display text-3xl sm:text-4xl md:text-5xl text-foreground leading-tight mb-6"
           >
             {c.pageTitle}
           </motion.h1>
@@ -251,7 +251,7 @@ export default function AboutUs() {
             animate="visible"
             variants={fadeInUp}
             custom={2}
-            className="text-lg sm:text-xl text-[#6B5E50] font-medium"
+            className="text-lg sm:text-xl text-muted-foreground font-medium"
           >
             {c.greeting}
           </motion.p>
@@ -270,14 +270,14 @@ export default function AboutUs() {
           <motion.div
             variants={fadeInUp}
             custom={0}
-            className="relative bg-white rounded-2xl p-6 sm:p-8 border border-[#E8DFD3] shadow-sm"
+            className="relative bg-white rounded-2xl p-6 sm:p-8 border border-border shadow-sm"
           >
             <div className="absolute -top-4 left-6 sm:left-8">
-              <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#7FB685]/15">
-                <Code className="w-4 h-4 text-[#5a9e65]" />
+              <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary/15">
+                <Code className="w-4 h-4 text-primary" />
               </div>
             </div>
-            <p className="text-[#4A3F35] leading-relaxed text-base sm:text-lg pt-2">
+            <p className="text-secondary-foreground leading-relaxed text-base sm:text-lg pt-2">
               {c.para1}
             </p>
           </motion.div>
@@ -286,14 +286,14 @@ export default function AboutUs() {
           <motion.div
             variants={fadeInUp}
             custom={2}
-            className="relative bg-white rounded-2xl p-6 sm:p-8 border border-[#E8DFD3] shadow-sm"
+            className="relative bg-white rounded-2xl p-6 sm:p-8 border border-border shadow-sm"
           >
             <div className="absolute -top-4 left-6 sm:left-8">
               <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#D4B896]/20">
                 <Star className="w-4 h-4 text-[#D4B896]" />
               </div>
             </div>
-            <p className="text-[#4A3F35] leading-relaxed text-base sm:text-lg pt-2">
+            <p className="text-secondary-foreground leading-relaxed text-base sm:text-lg pt-2">
               {c.para3}
             </p>
           </motion.div>
@@ -302,17 +302,17 @@ export default function AboutUs() {
           <motion.div
             variants={fadeInUp}
             custom={3}
-            className="relative bg-gradient-to-br from-[#F0EBE3] to-[#E8DFD3]/50 rounded-2xl p-6 sm:p-8 border border-[#E8DFD3]"
+            className="relative bg-gradient-to-br from-accent to-border/50 rounded-2xl p-6 sm:p-8 border border-border"
           >
             <div className="flex items-center gap-3 mb-4">
-              <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#3D3229]/10">
-                <Globe className="w-4 h-4 text-[#3D3229]" />
+              <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-foreground/10">
+                <Globe className="w-4 h-4 text-foreground" />
               </div>
-              <h2 className="font-display text-lg sm:text-xl font-bold text-[#3D3229]">
+              <h2 className="font-display text-lg sm:text-xl font-bold text-foreground">
                 {c.siteTitle}
               </h2>
             </div>
-            <p className="text-[#4A3F35] leading-relaxed text-base sm:text-lg">
+            <p className="text-secondary-foreground leading-relaxed text-base sm:text-lg">
               {c.siteDesc}
             </p>
           </motion.div>
@@ -323,7 +323,7 @@ export default function AboutUs() {
             custom={4}
             className="text-center py-6 sm:py-8"
           >
-            <p className="text-lg sm:text-xl text-[#4A3F35] leading-relaxed font-medium">
+            <p className="text-lg sm:text-xl text-secondary-foreground leading-relaxed font-medium">
               {c.closing}
             </p>
           </motion.div>
@@ -331,7 +331,7 @@ export default function AboutUs() {
       </section>
 
       {/* Values Section */}
-      <section className="bg-white border-y border-[#E8DFD3]">
+      <section className="bg-white border-y border-border">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
             {c.values.map((value, idx) => {
@@ -346,13 +346,13 @@ export default function AboutUs() {
                   custom={idx}
                   className="text-center p-6"
                 >
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#7FB685]/10 mb-4">
-                    <Icon className="w-6 h-6 text-[#5a9e65]" />
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10 mb-4">
+                    <Icon className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="font-display text-lg font-bold text-[#3D3229] mb-2">
+                  <h3 className="font-display text-lg font-bold text-foreground mb-2">
                     {value.title}
                   </h3>
-                  <p className="text-sm text-[#6B5E50] leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {value.desc}
                   </p>
                 </motion.div>
@@ -372,7 +372,7 @@ export default function AboutUs() {
           custom={0}
         >
           <Link href="/">
-            <span className="inline-flex items-center gap-2 px-6 py-3 bg-[#3D3229] text-white rounded-full text-base font-medium hover:bg-[#2A231C] transition-colors active:scale-95">
+            <span className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-white rounded-full text-base font-medium hover:bg-foreground transition-colors active:scale-95">
               {t("开始探索 Play Kit", "Explore Play Kits")}
               <Sparkles className="w-4 h-4" />
             </span>
@@ -384,8 +384,8 @@ export default function AboutUs() {
       <BackToTop />
 
       {/* Footer */}
-      <footer className="relative bg-[#3D3229] text-white py-8 sm:py-12">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#7FB685]/40 to-transparent" />
+      <footer className="relative bg-foreground text-white py-8 sm:py-12">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 data-logo-target className="font-display text-lg sm:text-xl mb-2 sm:mb-3 select-none">Lovevery</h3>
           <p className="text-xs sm:text-sm text-[#9A8E82] mb-2">

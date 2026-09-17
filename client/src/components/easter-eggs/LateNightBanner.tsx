@@ -184,7 +184,7 @@ export default function LateNightBanner() {
                   <Sparkles className="w-4 h-4 text-yellow-500" />
                   {lang === "cn" ? "1. 保持低感官刺激" : "1. Keep it Low Sensory"}
                 </h4>
-                <p className="text-sm text-[#4A3F35] leading-relaxed">
+                <p className="text-sm text-secondary-foreground leading-relaxed">
                   {lang === "cn" 
                     ? "尽量只开微弱的小夜灯，保持声音轻柔，这能帮助宝宝（和你）在结束后更容易回到睡眠状态。" 
                     : "Use minimal lighting and keep voices low. This helps both you and baby drift back to sleep more easily."}
@@ -192,10 +192,10 @@ export default function LateNightBanner() {
               </section>
               <section className="space-y-2">
                 <h4 className="font-bold text-[#1a1a4e] flex items-center gap-2">
-                  <Coffee className="w-4 h-4 text-brown-500" />
+                  <Coffee className="w-4 h-4 text-[#8D6E63]" />
                   {lang === "cn" ? "2. 照顾好你自己" : "2. Take Care of Yourself"}
                 </h4>
-                <p className="text-sm text-[#4A3F35] leading-relaxed">
+                <p className="text-sm text-secondary-foreground leading-relaxed">
                   {lang === "cn" 
                     ? "准备一大瓶水和一点健康的零食。如果你感到焦虑，试试深呼吸，提醒自己这只是一个阶段。" 
                     : "Have a large bottle of water and a healthy snack ready. If you feel anxious, try deep breathing and remind yourself it's just a phase."}
@@ -206,7 +206,7 @@ export default function LateNightBanner() {
                   <Heart className="w-4 h-4 text-pink-500" />
                   {lang === "cn" ? "3. 建立一个小仪式" : "3. Create a Small Ritual"}
                 </h4>
-                <p className="text-sm text-[#4A3F35] leading-relaxed">
+                <p className="text-sm text-secondary-foreground leading-relaxed">
                   {lang === "cn" 
                     ? "在心里对自己说一句鼓励的话。你正在为宝宝建立安全感，这是非常伟大的工作。" 
                     : "Say something encouraging to yourself. You are building security for your baby, and that is incredible work."}

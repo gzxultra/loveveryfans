@@ -69,7 +69,7 @@ export function ShareSection() {
       <div className="flex items-center gap-2">
         <button
           onClick={handleWeChatShare}
-          className="group w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#F5F0EB] hover:bg-[#E8DFD3] flex items-center justify-center transition-all duration-300 hover:scale-105"
+          className="group w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-secondary hover:bg-border flex items-center justify-center transition-all duration-300 hover:scale-105"
           title={t("分享到微信", "Share to WeChat")}
           aria-label={t("分享到微信", "Share to WeChat")}
         >
@@ -77,14 +77,14 @@ export function ShareSection() {
         </button>
         <button
           onClick={handleCopyLink}
-          className="group w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#F5F0EB] hover:bg-[#E8DFD3] flex items-center justify-center transition-all duration-300 hover:scale-105"
+          className="group w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-secondary hover:bg-border flex items-center justify-center transition-all duration-300 hover:scale-105"
           title={copied ? t("已复制", "Copied!") : t("复制链接", "Copy link")}
           aria-label={t("复制链接", "Copy link")}
         >
           {copied ? (
-            <CheckIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#7FB685] transition-colors duration-300" />
+            <CheckIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary transition-colors duration-300" />
           ) : (
-            <LinkIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#9A8E82] group-hover:text-[#6B5E50] transition-colors duration-300" />
+            <LinkIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#9A8E82] group-hover:text-muted-foreground transition-colors duration-300" />
           )}
         </button>
       </div>
@@ -128,11 +128,11 @@ export function FooterShareMessage() {
       <div className="flex items-center gap-2">
         <button
           onClick={handleCopyLink}
-          className="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#4D4439]/60 hover:bg-[#4D4439] text-[#B8AFA3] hover:text-white text-xs transition-all duration-300"
+          className="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary-foreground/60 hover:bg-secondary-foreground text-[#B8AFA3] hover:text-white text-xs transition-all duration-300"
         >
           {copied ? (
             <>
-              <CheckIcon className="w-3 h-3 text-[#7FB685]" />
+              <CheckIcon className="w-3 h-3 text-primary" />
               {t("已复制链接", "Link copied!")}
             </>
           ) : (

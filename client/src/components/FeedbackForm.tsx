@@ -65,16 +65,16 @@ export default function FeedbackForm() {
               border: "1.5px solid #C8E6C9",
             }}
           >
-            <div className="w-16 h-16 rounded-full bg-[#7FB685]/15 flex items-center justify-center mx-auto mb-4">
-              <CheckCircle className="w-8 h-8 text-[#7FB685]" />
+            <div className="w-16 h-16 rounded-full bg-primary/15 flex items-center justify-center mx-auto mb-4">
+              <CheckCircle className="w-8 h-8 text-primary" />
             </div>
-            <h3 className="font-display text-2xl text-[#1a1108] mb-2">
+            <h3 className="font-display text-2xl text-foreground mb-2">
               {i18n.feedback.successTitle[lang]}
             </h3>
-            <p className="text-[#6B5E50] mb-6">{i18n.feedback.successDesc[lang]}</p>
+            <p className="text-muted-foreground mb-6">{i18n.feedback.successDesc[lang]}</p>
             <button
               onClick={resetForm}
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-[#7FB685] rounded-full hover:bg-[#6aa872] transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-primary rounded-full hover:bg-[#6aa872] transition-colors"
             >
               {i18n.feedback.sendAnother[lang]}
             </button>
@@ -99,13 +99,13 @@ export default function FeedbackForm() {
             <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
               <AlertCircle className="w-8 h-8 text-red-500" />
             </div>
-            <h3 className="font-display text-2xl text-[#1a1108] mb-2">
+            <h3 className="font-display text-2xl text-foreground mb-2">
               {i18n.feedback.errorTitle[lang]}
             </h3>
-            <p className="text-[#6B5E50] mb-6">{i18n.feedback.errorDesc[lang]}</p>
+            <p className="text-muted-foreground mb-6">{i18n.feedback.errorDesc[lang]}</p>
             <button
               onClick={resetForm}
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-[#3D3229] rounded-full hover:bg-[#2A231C] transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-foreground rounded-full hover:bg-foreground transition-colors"
             >
               {i18n.feedback.retry[lang]}
             </button>
@@ -149,12 +149,12 @@ export default function FeedbackForm() {
                   <MessageCircle className="w-6 h-6 text-[#5B9BD5]" />
                 </div>
               </div>
-              <h2 className="font-display text-2xl sm:text-3xl text-[#1a1108] mb-2">
+              <h2 className="font-display text-2xl sm:text-3xl text-foreground mb-2">
                 {lang === "cn"
                   ? "和我们分享你的故事 💬"
                   : "Share Your Story With Us 💬"}
               </h2>
-              <p className="text-sm sm:text-base text-[#6B5E50] max-w-lg mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
                 {lang === "cn"
                   ? "你的经历和建议，能帮助更多父母做出更好的选择。每一条留言我们都会认真阅读。"
                   : "Your experience and suggestions help other parents make better choices. We read every message carefully."}
@@ -168,7 +168,7 @@ export default function FeedbackForm() {
                 <div>
                   <label
                     htmlFor="feedback-name"
-                    className="block text-sm font-medium text-[#3D3229] mb-1.5"
+                    className="block text-sm font-medium text-foreground mb-1.5"
                   >
                     {i18n.feedback.nameLabel[lang]}
                     <span className="text-[#E8A87C] ml-0.5">*</span>
@@ -180,13 +180,13 @@ export default function FeedbackForm() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder={i18n.feedback.namePlaceholder[lang]}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#E8DFD3] bg-white/80 text-sm text-[#3D3229] placeholder-[#B0A89E] outline-none focus:ring-2 focus:ring-[#7FB685]/30 focus:border-[#7FB685]/50 transition-all"
+                    className="w-full px-4 py-2.5 rounded-xl border border-border bg-white/80 text-sm text-foreground placeholder-[#B0A89E] outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="feedback-email"
-                    className="block text-sm font-medium text-[#3D3229] mb-1.5"
+                    className="block text-sm font-medium text-foreground mb-1.5"
                   >
                     {i18n.feedback.emailLabel[lang]}
                   </label>
@@ -196,7 +196,7 @@ export default function FeedbackForm() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder={i18n.feedback.emailPlaceholder[lang]}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#E8DFD3] bg-white/80 text-sm text-[#3D3229] placeholder-[#B0A89E] outline-none focus:ring-2 focus:ring-[#7FB685]/30 focus:border-[#7FB685]/50 transition-all"
+                    className="w-full px-4 py-2.5 rounded-xl border border-border bg-white/80 text-sm text-foreground placeholder-[#B0A89E] outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
                   />
                 </div>
               </div>
@@ -205,7 +205,7 @@ export default function FeedbackForm() {
               <div>
                 <label
                   htmlFor="feedback-message"
-                  className="block text-sm font-medium text-[#3D3229] mb-1.5"
+                  className="block text-sm font-medium text-foreground mb-1.5"
                 >
                   {i18n.feedback.messageLabel[lang]}
                   <span className="text-[#E8A87C] ml-0.5">*</span>
@@ -221,7 +221,7 @@ export default function FeedbackForm() {
                       ? "比如：我们用了哪个 Kit，宝宝最喜欢哪个玩具，有什么建议……"
                       : "e.g. Which kit we used, which toy our baby loved most, any suggestions..."
                   }
-                  className="w-full px-4 py-3 rounded-xl border border-[#E8DFD3] bg-white/80 text-sm text-[#3D3229] placeholder-[#B0A89E] outline-none focus:ring-2 focus:ring-[#7FB685]/30 focus:border-[#7FB685]/50 transition-all resize-none"
+                  className="w-full px-4 py-3 rounded-xl border border-border bg-white/80 text-sm text-foreground placeholder-[#B0A89E] outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all resize-none"
                 />
               </div>
 
@@ -233,8 +233,8 @@ export default function FeedbackForm() {
                 <button
                   type="submit"
                   disabled={status === "sending" || !name.trim() || !message.trim()}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#3D3229] text-white rounded-full text-sm font-medium
-                    hover:bg-[#2A231C] hover:shadow-lg hover:shadow-[#3D3229]/20 hover:scale-[1.02]
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-foreground text-white rounded-full text-sm font-medium
+                    hover:bg-foreground hover:shadow-lg hover:shadow-foreground/20 hover:scale-[1.02]
                     transition-all duration-300 active:scale-[0.98]
                     disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
                     min-h-[48px]"

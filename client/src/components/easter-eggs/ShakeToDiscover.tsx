@@ -114,7 +114,7 @@ export default function ShakeToDiscover() {
         
         <div className="p-8">
           <div className="flex justify-center mb-6">
-            <div className="px-4 py-1.5 rounded-full bg-[#FAF7F2] border border-[#F0EBE3] flex items-center gap-2">
+            <div className="px-4 py-1.5 rounded-full bg-background border border-accent flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-[#D4A574]" />
               <span className="text-[10px] font-bold uppercase tracking-widest text-[#D4A574]">
                 {lang === "cn" ? "今日玩具推荐" : "Today's Pick"}
@@ -123,25 +123,25 @@ export default function ShakeToDiscover() {
           </div>
 
           {randomToy.imageUrl && (
-            <div className="aspect-square w-48 mx-auto mb-6 rounded-3xl overflow-hidden bg-[#FAF7F2] border border-[#F0EBE3] p-4 shadow-inner">
+            <div className="aspect-square w-48 mx-auto mb-6 rounded-3xl overflow-hidden bg-background border border-accent p-4 shadow-inner">
               <img src={randomToy.imageUrl} alt={randomToy.name} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
             </div>
           )}
 
           <div className="text-center mb-6">
-            <h3 className="text-2xl font-bold text-[#3D3229] mb-1 font-['Manrope']">{randomToy.name}</h3>
-            <p className="text-sm text-[#756A5C] font-medium">{randomToy.englishName}</p>
+            <h3 className="text-2xl font-bold text-foreground mb-1 font-['Manrope']">{randomToy.name}</h3>
+            <p className="text-sm text-muted-foreground font-medium">{randomToy.englishName}</p>
             <div className="mt-2 inline-block px-3 py-1 rounded-lg text-[10px] font-bold" style={{ backgroundColor: randomToy.kitColor + "20", color: randomToy.kitColor }}>
               {randomToy.kitName}
             </div>
           </div>
 
-          <div className="bg-[#FAF7F2] p-5 rounded-2xl border border-[#F0EBE3] mb-8">
+          <div className="bg-background p-5 rounded-2xl border border-accent mb-8">
             <div className="flex items-center gap-2 mb-2 text-[#D4A574]">
               <Lightbulb className="w-4 h-4" />
               <span className="text-[10px] font-bold uppercase tracking-wider">{lang === "cn" ? "推荐玩法" : "How to Play"}</span>
             </div>
-            <p className="text-xs text-[#4A3F35] leading-relaxed">{randomToy.howToUse}</p>
+            <p className="text-xs text-secondary-foreground leading-relaxed">{randomToy.howToUse}</p>
           </div>
 
           <div className="flex gap-3">
@@ -153,21 +153,21 @@ export default function ShakeToDiscover() {
                   setFlipping(false);
                 }, 300);
               }}
-              className="flex-1 py-4 rounded-2xl border-2 border-[#F0EBE3] text-[#6B5E50] font-bold flex items-center justify-center gap-2 active:scale-95 transition-all"
+              className="flex-1 py-4 rounded-2xl border-2 border-accent text-muted-foreground font-bold flex items-center justify-center gap-2 active:scale-95 transition-all"
             >
               <RefreshCw className="w-4 h-4" />
               {lang === "cn" ? "再换一个" : "Another"}
             </button>
             <button 
               onClick={() => setTriggered(false)}
-              className="flex-1 py-4 rounded-2xl bg-[#3D3229] text-white font-bold active:scale-95 transition-all shadow-lg"
+              className="flex-1 py-4 rounded-2xl bg-foreground text-white font-bold active:scale-95 transition-all shadow-lg"
             >
               {lang === "cn" ? "太棒了" : "Awesome"}
             </button>
           </div>
         </div>
 
-        <button onClick={() => setTriggered(false)} className="absolute top-6 right-6 p-2 text-[#B0A89E] hover:text-[#3D3229]">
+        <button onClick={() => setTriggered(false)} className="absolute top-6 right-6 p-2 text-[#B0A89E] hover:text-foreground">
           <X className="w-6 h-6" />
         </button>
       </div>

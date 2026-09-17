@@ -1,7 +1,7 @@
 import { ShoppingCart, Star, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import type { Alternative } from "@/data/alternatives";
-import { useState, useEffect, useId } from "react";
+import { useState, useEffect, useId, useMemo } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { injectProductSchemas, removeProductSchemas } from "@/lib/productSchema";
 
@@ -83,6 +83,19 @@ export function AlternativesSection({
   const [imageErrors, setImageErrors] = useState<Set<number>>(new Set());
   // Unique ID for this section instance (used to scope Product Schema injection)
   const schemaContainerId = useId();
+
+  // P2-17: 数据时效 — 取本组平替的核验时间，超 14 天或从未核验则警告
+  const freshness = useMemo(() => {
+    const times = alternatives
+      .map((a) => (a.lastChecked ? new Date(a.lastChecked).getTime() : NaN))
+      .filter((t) => !Number.isNaN(t));
+    if (times.length === 0) return null;
+    const oldest = Math.min(...times);
+    const latest = Math.max(...times);
+    const stale =
+      (Date.now() - oldest) / 86400000 > 14 || times.length < alternatives.length;
+    return { latestDate: new Date(latest).toISOString().slice(0, 10), stale };
+  }, [alternatives]);
 
   // Inject Product Schema structured data for SEO
   useEffect(() => {
@@ -242,11 +255,25 @@ export function AlternativesSection({
       </div>
 
       {/* Price Disclaimer */}
-      <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-[#F8FAFB] border-t border-[#E8F0F4]">
+      <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-[#F8FAFB] border-t border-[#E8F0F4] space-y-1">
         <p className="text-[10px] sm:text-xs text-[#756A5C] flex items-center gap-1.5">
           <span aria-hidden="true">💡</span>
           {t("价格仅供参考，以 Amazon 实际价格为准", "Prices are approximate. Check Amazon for current pricing.")}
         </p>
+        {freshness && (
+          <p className="text-[10px] sm:text-xs text-[#756A5C] flex items-center gap-1.5">
+            <span aria-hidden="true">{freshness.stale ? "⚠️" : "🕒"}</span>
+            {freshness.stale
+              ? t(
+                  `平替数据更新于 ${freshness.latestDate}，部分价格超过 14 天未更新，仅供参考`,
+                  `Alternative data updated ${freshness.latestDate}; some prices are over 14 days old`
+                )
+              : t(
+                  `平替数据更新于 ${freshness.latestDate}`,
+                  `Alternative data updated ${freshness.latestDate}`
+                )}
+          </p>
+        )}
       </div>
     </div>
   );

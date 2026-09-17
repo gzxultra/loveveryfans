@@ -19,7 +19,7 @@ export default function HighlightedText({ text, query, className }: HighlightedT
         seg.highlighted ? (
           <mark
             key={i}
-            className="bg-[#7FB685]/20 text-inherit rounded-sm px-0.5"
+            className="bg-primary/20 text-inherit rounded-sm px-0.5"
           >
             {seg.text}
           </mark>

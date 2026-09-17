@@ -49,7 +49,7 @@ export default function StatisticsEasterEgg() {
       {createPortal(
         <button
           onClick={() => setEnabled(true)}
-          className="w-6 h-6 rounded-full transition-all duration-300 hover:scale-125 opacity-40 hover:opacity-100 flex items-center justify-center bg-[#7FB685] text-white"
+          className="w-6 h-6 rounded-full transition-all duration-300 hover:scale-125 opacity-40 hover:opacity-100 flex items-center justify-center bg-primary text-white"
           title={t("查看网站统计", "View Site Statistics")}
         >
           <BarChart3 className="w-3.5 h-3.5" />
@@ -58,19 +58,19 @@ export default function StatisticsEasterEgg() {
       )}
 
       {enabled && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-[#3D3229]/40 backdrop-blur-sm animate-in fade-in duration-300">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-foreground/40 backdrop-blur-sm animate-in fade-in duration-300">
           <div 
-            className="bg-white rounded-3xl shadow-2xl border border-[#E8DFD3] w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-300"
+            className="bg-white rounded-3xl shadow-2xl border border-border w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="px-6 py-5 border-b border-[#F5F0E8] flex items-center justify-between bg-[#FAF7F2]">
+            <div className="px-6 py-5 border-b border-secondary flex items-center justify-between bg-background">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#7FB685]/10 flex items-center justify-center">
-                  <BarChart3 className="w-5 h-5 text-[#7FB685]" />
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <BarChart3 className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-display text-lg sm:text-xl text-[#3D3229]">
+                  <h3 className="font-display text-lg sm:text-xl text-foreground">
                     {t("网站数据统计", "Site Statistics")}
                   </h3>
                   <p className="text-[10px] sm:text-xs text-[#B0A89E] font-medium uppercase tracking-wider">
@@ -80,7 +80,7 @@ export default function StatisticsEasterEgg() {
               </div>
               <button 
                 onClick={() => setEnabled(false)}
-                className="p-2 hover:bg-[#E8DFD3]/40 rounded-full transition-colors text-[#B0A89E] hover:text-[#3D3229]"
+                className="p-2 hover:bg-border/40 rounded-full transition-colors text-[#B0A89E] hover:text-foreground"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -127,8 +127,8 @@ export default function StatisticsEasterEgg() {
             </div>
 
             {/* Footer */}
-            <div className="px-8 py-5 bg-[#FAF7F2] border-t border-[#F5F0E8] text-center">
-              <p className="text-xs text-[#6B5E50] leading-relaxed">
+            <div className="px-8 py-5 bg-background border-t border-secondary text-center">
+              <p className="text-xs text-muted-foreground leading-relaxed">
                 {t("感谢你对 Lovevery Fans 的支持！我们致力为家长提供最全面、最客观的玩具指南。", "Thank you for supporting Lovevery Fans! We are dedicated to providing the most comprehensive and objective toy guides for parents.")}
               </p>
             </div>
@@ -141,17 +141,17 @@ export default function StatisticsEasterEgg() {
 
 function StatCard({ icon, label, value, color }: { icon: React.ReactNode; label: string; value: string | number; color: string }) {
   return (
-    <div className="bg-[#FAF7F2]/50 rounded-2xl p-4 border border-[#F5F0E8] hover:border-[#E8DFD3] transition-all group">
+    <div className="bg-background/50 rounded-2xl p-4 border border-secondary hover:border-border transition-all group">
       <div 
         className="w-10 h-10 rounded-lg flex items-center justify-center mb-3 transition-transform group-hover:scale-110"
         style={{ backgroundColor: `${color}15`, color: color }}
       >
         {icon}
       </div>
-      <div className="text-2xl sm:text-3xl font-display font-bold text-[#3D3229] mb-1">
+      <div className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-1">
         {value}
       </div>
-      <div className="text-xs font-medium text-[#6B5E50] opacity-80">
+      <div className="text-xs font-medium text-muted-foreground opacity-80">
         {label}
       </div>
     </div>

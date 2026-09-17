@@ -296,32 +296,32 @@ export default function KonamiCode() {
             </div>
 
             <div className="p-6 space-y-6">
-              <div className="bg-[#FAF7F2] p-4 rounded-2xl border border-[#F0EBE3]">
+              <div className="bg-background p-4 rounded-2xl border border-accent">
                 <div className="flex items-center gap-2 mb-2 text-[#D4A574]">
                   <Lightbulb className="w-4 h-4" />
                   <span className="text-xs font-bold uppercase tracking-wider">
                     {lang === "cn" ? "育儿小贴士" : "Parenting Tip"}
                   </span>
                 </div>
-                <p className="text-[#4A3F35] text-sm leading-relaxed italic">
+                <p className="text-secondary-foreground text-sm leading-relaxed italic">
                   "{randomTip}"
                 </p>
               </div>
 
               <div className="space-y-3">
-                <div className="flex items-center gap-2 text-[#6B5E50]">
+                <div className="flex items-center gap-2 text-muted-foreground">
                   <Gift className="w-4 h-4" />
                   <span className="text-xs font-bold uppercase tracking-wider">
                     {lang === "cn" ? "隐藏优惠码" : "Secret Discount Code"}
                   </span>
                 </div>
                 <div className="flex gap-2">
-                  <div className="flex-1 bg-[#F0F7F1] border-2 border-dashed border-[#7FB685] rounded-xl flex items-center justify-center p-3 font-mono font-bold text-xl text-[#2E7D32] tracking-widest">
+                  <div className="flex-1 bg-background border-2 border-dashed border-primary rounded-xl flex items-center justify-center p-3 font-mono font-bold text-xl text-primary tracking-widest">
                     {DISCOUNT_CODE}
                   </div>
                   <button
                     onClick={copyToClipboard}
-                    className="px-4 rounded-xl bg-[#3D3229] text-white hover:bg-[#524539] transition-all flex items-center justify-center"
+                    className="px-4 rounded-xl bg-foreground text-white hover:bg-[#524539] transition-all flex items-center justify-center"
                   >
                     {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
                   </button>

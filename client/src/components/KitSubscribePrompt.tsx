@@ -88,7 +88,7 @@ export default function KitSubscribePrompt({ kitId, kitColor }: KitSubscribeProm
   return (
     <div
       data-testid="kit-subscribe-prompt"
-      className="mt-4 sm:mt-5 rounded-xl border border-[#E8DFD3] bg-gradient-to-r from-[#F8FBF8] to-[#FAF7F2] overflow-hidden transition-all duration-300"
+      className="mt-4 sm:mt-5 rounded-xl border border-border bg-gradient-to-r from-background to-background overflow-hidden transition-all duration-300"
     >
       <AnimatePresence mode="wait">
         {subscribeState === "success" ? (
@@ -98,8 +98,8 @@ export default function KitSubscribePrompt({ kitId, kitColor }: KitSubscribeProm
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-2 px-4 py-3"
           >
-            <CheckCircle className="w-4 h-4 text-[#5a9e65] shrink-0" />
-            <p className="text-sm text-[#2D5A35] font-medium">
+            <CheckCircle className="w-4 h-4 text-primary shrink-0" />
+            <p className="text-sm text-primary font-medium">
               {i18n.kitSubscribePrompt.success[lang]}
             </p>
           </motion.div>
@@ -112,7 +112,7 @@ export default function KitSubscribePrompt({ kitId, kitColor }: KitSubscribeProm
           >
             <div className="flex items-center gap-2 mb-2.5">
               <Bell className="w-3.5 h-3.5" style={{ color: kitColor }} />
-              <p className="text-sm text-[#3D3229] font-medium">
+              <p className="text-sm text-foreground font-medium">
                 {i18n.kitSubscribePrompt.hint[lang]}
               </p>
             </div>
@@ -127,10 +127,10 @@ export default function KitSubscribePrompt({ kitId, kitColor }: KitSubscribeProm
                     if (subscribeState === "error") setSubscribeState("idle");
                   }}
                   placeholder={i18n.kitSubscribePrompt.placeholder[lang]}
-                  className={`w-full pl-8 pr-3 py-2 rounded-lg border text-sm text-[#3D3229] placeholder-[#9B8E7E] bg-white outline-none transition-all focus:ring-2 focus:ring-[#7FB685]/40 ${
+                  className={`w-full pl-8 pr-3 py-2 rounded-lg border text-sm text-foreground placeholder-[#9B8E7E] bg-white outline-none transition-all focus:ring-2 focus:ring-primary/40 ${
                     subscribeState === "error"
                       ? "border-red-300"
-                      : "border-[#E8DFD3] focus:border-[#7FB685]"
+                      : "border-border focus:border-primary"
                   }`}
                   disabled={subscribeState === "loading"}
                   autoFocus
@@ -169,11 +169,11 @@ export default function KitSubscribePrompt({ kitId, kitColor }: KitSubscribeProm
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onClick={handleExpand}
-            className="w-full flex items-center justify-between px-4 py-3 group hover:bg-[#F0F9F2]/50 transition-colors"
+            className="w-full flex items-center justify-between px-4 py-3 group hover:bg-background/50 transition-colors"
           >
             <div className="flex items-center gap-2">
               <Bell className="w-3.5 h-3.5" style={{ color: kitColor }} />
-              <span className="text-sm text-[#6B5E50] group-hover:text-[#3D3229] transition-colors">
+              <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
                 {i18n.kitSubscribePrompt.hint[lang]}
               </span>
             </div>

@@ -34,37 +34,37 @@ export default function KitComparisonBanner({ currentKitId }: KitComparisonBanne
     ).size;
 
   return (
-    <div className="bg-gradient-to-r from-[#FAF7F2] via-white to-[#FAF7F2] rounded-xl border border-[#E8DFD3] overflow-hidden">
-      <div className="px-4 py-3 border-b border-[#F0EBE3]">
-        <h3 className="text-xs font-semibold text-[#6B5E50] uppercase tracking-wider flex items-center gap-1.5">
+    <div className="bg-gradient-to-r from-background via-white to-background rounded-xl border border-border overflow-hidden">
+      <div className="px-4 py-3 border-b border-accent">
+        <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
           <BookOpen className="w-3.5 h-3.5" />
           {t("Kit 对比", "Kit Comparison")}
         </h3>
       </div>
-      <div className="grid grid-cols-3 divide-x divide-[#F0EBE3]">
+      <div className="grid grid-cols-3 divide-x divide-accent">
         {/* Previous Kit */}
         <div className="p-3 sm:p-4">
           {prevKit ? (
             <Link href={`/kit/${prevKit.id}/`}>
               <div className="group cursor-pointer">
                 <p className="text-[10px] text-[#B0A89E] mb-1">{t("上一个", "Previous")}</p>
-                <p className="text-xs sm:text-sm font-medium text-[#3D3229] group-hover:text-[#1a1108] transition-colors truncate">
+                <p className="text-xs sm:text-sm font-medium text-foreground group-hover:text-foreground transition-colors truncate">
                   {prevKit.name}
                 </p>
-                <p className="text-[10px] text-[#756A5C] mt-1">
+                <p className="text-[10px] text-muted-foreground mt-1">
                   {getActiveToyCount(prevKit)} {t("个玩具", "toys")}
                 </p>
               </div>
             </Link>
           ) : (
-            <div className="text-[10px] text-[#C8BFB3] italic">
+            <div className="text-[10px] text-border italic">
               {t("这是第一个 Kit", "First Kit")}
             </div>
           )}
         </div>
 
         {/* Current Kit */}
-        <div className="p-3 sm:p-4 bg-[#FAF7F2]/50">
+        <div className="p-3 sm:p-4 bg-background/50">
           <p className="text-[10px] text-[#B0A89E] mb-1">{t("当前", "Current")}</p>
           <p
             className="text-xs sm:text-sm font-bold truncate"
@@ -72,7 +72,7 @@ export default function KitComparisonBanner({ currentKitId }: KitComparisonBanne
           >
             {currentKit.name}
           </p>
-          <p className="text-[10px] text-[#756A5C] mt-1">
+          <p className="text-[10px] text-muted-foreground mt-1">
             {getActiveToyCount(currentKit)} {t("个玩具", "toys")} · {getCategoryCount(currentKit)} {t("个类别", "categories")}
           </p>
         </div>
@@ -83,16 +83,16 @@ export default function KitComparisonBanner({ currentKitId }: KitComparisonBanne
             <Link href={`/kit/${nextKit.id}/`}>
               <div className="group cursor-pointer text-right">
                 <p className="text-[10px] text-[#B0A89E] mb-1">{t("下一个", "Next")}</p>
-                <p className="text-xs sm:text-sm font-medium text-[#3D3229] group-hover:text-[#1a1108] transition-colors truncate">
+                <p className="text-xs sm:text-sm font-medium text-foreground group-hover:text-foreground transition-colors truncate">
                   {nextKit.name}
                 </p>
-                <p className="text-[10px] text-[#756A5C] mt-1">
+                <p className="text-[10px] text-muted-foreground mt-1">
                   {getActiveToyCount(nextKit)} {t("个玩具", "toys")}
                 </p>
               </div>
             </Link>
           ) : (
-            <div className="text-[10px] text-[#C8BFB3] italic text-right">
+            <div className="text-[10px] text-border italic text-right">
               {t("这是最后一个 Kit", "Last Kit")}
             </div>
           )}

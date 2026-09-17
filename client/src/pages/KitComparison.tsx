@@ -102,23 +102,23 @@ export default function KitComparison() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2]">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-white border-b border-[#E8DFD3]">
+      <div className="bg-white border-b border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           <Link href="/">
-            <span className="inline-flex items-center gap-1.5 text-sm text-[#6B5E50] hover:text-[#3D3229] transition-colors mb-4">
+            <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-4">
               <ArrowLeft className="w-4 h-4" />
               {txt.back[lang]}
             </span>
           </Link>
           <div className="flex items-center gap-3 mb-2">
-            <Scale className="w-6 h-6 text-[#7FB685]" />
-            <h1 className="font-display text-2xl sm:text-3xl text-[#1a1108]">
+            <Scale className="w-6 h-6 text-primary" />
+            <h1 className="font-display text-2xl sm:text-3xl text-foreground">
               {txt.pageTitle[lang]}
             </h1>
           </div>
-          <p className="text-sm text-[#6B5E50]">{txt.pageSubtitle[lang]}</p>
+          <p className="text-sm text-muted-foreground">{txt.pageSubtitle[lang]}</p>
         </div>
       </div>
 
@@ -135,7 +135,7 @@ export default function KitComparison() {
                   }
                 }}
                 defaultValue=""
-                className="rounded-xl border border-[#E8DFD3] bg-white px-4 py-2.5 text-sm text-[#3D3229] focus:outline-none focus:ring-2 focus:ring-[#7FB685]/40 min-h-[44px]"
+                className="rounded-xl border border-border bg-white px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 min-h-[44px]"
               >
                 <option value="" disabled>
                   {txt.selectKit[lang]}
@@ -173,7 +173,7 @@ export default function KitComparison() {
               return (
                 <div
                   key={kit.id}
-                  className="rounded-2xl bg-white border border-[#E8DFD3] overflow-hidden shadow-sm"
+                  className="rounded-2xl bg-white border border-border overflow-hidden shadow-sm"
                 >
                   {/* Color bar */}
                   <div
@@ -187,13 +187,13 @@ export default function KitComparison() {
                     {/* Title + remove */}
                     <div className="flex items-start justify-between mb-4">
                       <div className="min-w-0">
-                        <h3 className="font-display text-lg text-[#1a1108] truncate">
+                        <h3 className="font-display text-lg text-foreground truncate">
                           {kit.name}
                         </h3>
                       </div>
                       <button
                         onClick={() => removeKit(kit.id)}
-                        className="text-[#9B8E7E] hover:text-[#3D3229] transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center"
+                        className="text-[#9B8E7E] hover:text-foreground transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center"
                         aria-label="Remove"
                       >
                         <X className="w-4 h-4" />
@@ -208,7 +208,7 @@ export default function KitComparison() {
                           <Baby className="w-3.5 h-3.5" />
                           {txt.ageRange[lang]}
                         </div>
-                        <p className="font-medium text-[#3D3229]">
+                        <p className="font-medium text-foreground">
                           {lang === "cn"
                             ? t(kit.ageRange, kit.ageRangeEn || kit.ageRange)
                             : (kit.ageRangeEn || kit.ageRange)}
@@ -243,7 +243,7 @@ export default function KitComparison() {
                           <Puzzle className="w-3.5 h-3.5" />
                           {txt.toyCount[lang]}
                         </div>
-                        <p className="font-medium text-[#3D3229]">
+                        <p className="font-medium text-foreground">
                           {activeToys.length} {txt.toys[lang]}
                         </p>
                       </div>
@@ -258,7 +258,7 @@ export default function KitComparison() {
                           {areas.map((a) => (
                             <span
                               key={a}
-                              className="px-2 py-0.5 rounded-full bg-[#F0EBE3] text-[10px] text-[#6B5E50]"
+                              className="px-2 py-0.5 rounded-full bg-accent text-[10px] text-muted-foreground"
                             >
                               {a}
                             </span>

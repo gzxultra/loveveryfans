@@ -94,23 +94,23 @@ export default function LogoClickCombo() {
 
   return (
     <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-300">
-      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-300 border border-[#E8DFD3]">
-        <div className="bg-[#F0F7F1] p-6 text-[#2E7D32] relative border-b border-[#E8DFD3]">
+      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-300 border border-border">
+        <div className="bg-background p-6 text-primary relative border-b border-border">
           <button 
             onClick={() => setShowTrivia(false)}
-            className="absolute top-4 right-4 p-1 hover:bg-black/5 rounded-full transition-colors text-[#6B5E50]"
+            className="absolute top-4 right-4 p-1 hover:bg-black/5 rounded-full transition-colors text-muted-foreground"
           >
             <X className="w-5 h-5" />
           </button>
           <div className="flex items-center gap-3 mb-1">
             <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm">
-              <Sparkles className="w-6 h-6 text-[#7FB685]" />
+              <Sparkles className="w-6 h-6 text-primary" />
             </div>
             <div>
               <h3 className="text-lg font-bold font-['Manrope']">
                 {lang === "cn" ? "Lovevery 冷知识" : "Lovevery Trivia"}
               </h3>
-              <p className="text-[#7FB685] text-[10px] font-bold uppercase tracking-widest">
+              <p className="text-primary text-[10px] font-bold uppercase tracking-widest">
                 {lang === "cn" ? "你知道吗？" : "Did you know?"}
               </p>
             </div>
@@ -119,8 +119,8 @@ export default function LogoClickCombo() {
 
         <div className="p-8">
           <div className="relative">
-            <Info className="absolute -left-2 -top-2 w-12 h-12 text-[#F0F7F1] -z-10" />
-            <p className="text-[#4A3F35] text-base leading-relaxed font-medium">
+            <Info className="absolute -left-2 -top-2 w-12 h-12 text-background -z-10" />
+            <p className="text-secondary-foreground text-base leading-relaxed font-medium">
               {currentTrivia}
             </p>
           </div>
@@ -128,14 +128,14 @@ export default function LogoClickCombo() {
           <div className="mt-8 flex gap-3">
             <button
               onClick={refreshTrivia}
-              className="flex-1 py-3 rounded-xl border border-[#E8DFD3] text-[#6B5E50] font-bold hover:bg-[#FAF7F2] transition-all flex items-center justify-center gap-2"
+              className="flex-1 py-3 rounded-xl border border-border text-muted-foreground font-bold hover:bg-background transition-all flex items-center justify-center gap-2"
             >
               <RefreshCw className="w-4 h-4" />
               {lang === "cn" ? "换一个" : "Next One"}
             </button>
             <button
               onClick={() => setShowTrivia(false)}
-              className="flex-1 py-3 rounded-xl bg-[#7FB685] text-white font-bold hover:opacity-90 transition-all shadow-lg shadow-[#7FB685]/20"
+              className="flex-1 py-3 rounded-xl bg-primary text-white font-bold hover:opacity-90 transition-all shadow-lg shadow-primary/20"
             >
               {lang === "cn" ? "记住了" : "Got it"}
             </button>

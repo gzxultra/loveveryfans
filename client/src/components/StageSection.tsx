@@ -49,11 +49,11 @@ export default function StageSection({ stage, onPrefetchKitDetail }: StageSectio
                 <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: stage.color }} />
                 {stageRange}
               </div>
-              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-[#1a1108] tracking-tight">
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-foreground tracking-tight">
                 {stageLabel}
               </h2>
             </div>
-            <div className="hidden sm:block flex-1 h-px bg-gradient-to-r from-[#E8DFD3] via-[#E8DFD3]/50 to-transparent" />
+            <div className="hidden sm:block flex-1 h-px bg-gradient-to-r from-border via-border/50 to-transparent" />
           </div>
         </div>
 

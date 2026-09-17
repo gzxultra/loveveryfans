@@ -305,6 +305,8 @@ export const kitToyImages: Record<string, Record<string, string>> = {
     "Hand-to-Hand Discs": "https://images.ctfassets.net/0sea1vycfyqy/6tyn0sOb5wEcwCDzN3ZoLw/5054cb8ca1174d3958d8489664ebfb84/2022_11_22_ISO_S_3850_BH_V1_web.png",
     "'Is My Baby Feeling Sleepy?' Board Book": "https://images.ctfassets.net/0sea1vycfyqy/2H0CfTkhd1i7VJNXXd5wqB/0ce9d0f79341ff6086e566031471a257/output-onlinepngtools__1_.png",
     "Framed Mirror": "https://images.ctfassets.net/0sea1vycfyqy/1fUr5n3hgpDcYCm03q9d3s/fb1e6554e93783fb319346fd5aa960b4/SubscriptionBox2_Animation_14494_large_mirror_VS_R2_PU_R1_transWHITE_BH_V4.webp",
+    "Wearable Rattles": "https://images.ctfassets.net/0sea1vycfyqy/1Oy8pa7M2lfkx64BxXMVHk/4c91b91b514eeb96e054590d090512b8/Lovevery_Playkit_The_Charmer_Wrap_Rattles_0098_v3.png",
+    "First Colors Cards": "https://images.ctfassets.net/0sea1vycfyqy/3suK9EQcNucqJofDPjPwZW/2159630545c9ef45fd280208e5db30a1/Lovevery_The_Charmer_ISO_Black_And_White_Cards_Overhead_0779_v2__1_.png",
   },
   "senser": {
     "Spinning Rainbow": "https://images.ctfassets.net/0sea1vycfyqy/4aZhB4bZ78jdfPCunmI6fv/03428d490498932e6f07965aecb6650a/SubscriptionBox3_LoveveryProduct4_25344_SideView_R1_CL.png",
@@ -398,8 +400,8 @@ export const kitToyImages: Record<string, Record<string, string>> = {
     "Sort & Stack Peg Puzzle": "https://images.ctfassets.net/0sea1vycfyqy/7pQYLVYOVRX1KesredJDPk/03c7c0264f9aed3dada1c2ab2726bd2f/Year_2_Playkit_10746_VS_R1_CL_v2.png",
     "Emotion Match Mirror & Card Set": "https://images.ctfassets.net/0sea1vycfyqy/3J1rcTMywufAhdzKNqcZbB/d331c684731b28660972a38a75626da8/2022_08_12_SEL-Emotions_ISO_0147_v3-EN_2e939bf7-2331-4e1e-8222-b67402866a93.webp",
     "Every Which Weigh Scale & Pails": "https://images.ctfassets.net/0sea1vycfyqy/5Zcgy8LaiNTfKroYEBDkZj/c58f1532bf1b03d54fc24f7337419204/k12-1-scale.png",
-    "Pinkies Up Picnic Set": "https://images.ctfassets.net/0sea1vycfyqy/3Q2iNNJoXcoCKkaGXLzYOh/b526051ee057af540155e73b48cb9dd5/Year_2_Playkit_11042_VS_R2_CL_Muffins-_2_.png",
-    "Squeaky Clean Squeegee Set": "https://images.ctfassets.net/0sea1vycfyqy/3CPZ9DoI1ty9l4n1RYtuo6/b7cd72751ff82141d413e504c24ac406/Year_2_Playkit_10842_VS_R2_CL.png",
+    "Pinkies Up Picnic Set": "https://images.ctfassets.net/0sea1vycfyqy/2Iok91KB5xBE6To9Y9PXZ3/20b119be2e72634ce964c9e1694d3fc5/2022_09_09_ISOs_S_0293_v6__1_.png",
+    "Squeaky Clean Squeegee Set": "https://images.ctfassets.net/0sea1vycfyqy/6NNnY5zCghZSMm8rTplvad/510ee2850ff5fc89bf362e7dd5c1d78c/Year_2_Playkit_10989_VS_R2_CL_web__1__copy.png",
       "'My Favorite Nature Buddy' Board Book": "https://images.ctfassets.net/0sea1vycfyqy/WSM9bM0CIabsI9uqMclyB/d00a60ba283b998656026952780daf6a/Year_2_Playkit_11042_VS_R2_CL_NatureBuddy-_1_.png",
   },
   "researcher": {
@@ -419,7 +421,6 @@ export const kitToyImages: Record<string, Record<string, string>> = {
     "Solid Wood Stacking Boulders": "https://images.ctfassets.net/0sea1vycfyqy/2UHTN4gZjayhOUy1EXLWqu/4f820651d3eaeb41d6e3e53392e300f5/Year_2_Playkit_10705_VS_R1_CL.png",
     "Reach For The Stars Matching Cards": "https://images.ctfassets.net/0sea1vycfyqy/yCv6ObczmHwaMC4olHSlB/9b30144488bf70ac3fed6673e4b5a15e/Products_Overhead_0362_MirrorReflection2_VS_R1b_PU_R1_CL.png",
       "'Now That I'm Three' Board Book": "https://images.ctfassets.net/0sea1vycfyqy/7D4BkKre37S5EjHZh2uVS7/404863289ce059083c0578e8a4385f63/Year_2_Playkit_11042_VS_R2_CL_Im3-_1_.png",
-      "'Out the Door' Book": "https://images.ctfassets.net/0sea1vycfyqy/4VLyjhxEHnOwNKDicCsAtN/4eec32ad6b056b58a0033b036f0b9076/Out-the-Door-Book-ISO.20250131155744519.png",
   },
   "storyteller": {
       "Easy Connect Fort Set": "https://images.ctfassets.net/0sea1vycfyqy/59rhBrrV7NRryNmmaEsus6/d5ca7a46e736bb6e9903fe016faf75a4/Lovevery-VisionkitStudio-ISOs-FortFrameDowels-058-Oct2020.20240229155320659.png",
@@ -427,7 +428,8 @@ export const kitToyImages: Record<string, Record<string, string>> = {
       "Storytelling Puppet Set With Changing Emotion Eyes": "https://images.ctfassets.net/0sea1vycfyqy/PKkIr6ci5KVI7hW7vbJ2Z/0f9e35635812299162de2fe12b1ad95d/Lovevery-VisionkitStudio-ISOs-Puppets-NoArms-158-Oct2020-1.20230607202349727.png",
       "Squeeze & Spray Mop": "https://images.ctfassets.net/0sea1vycfyqy/443O8EpR0nbhQZT7nHeidn/45fcf5c1bf9b78ca7208af0c6e58d549/Lovevery-Visionkit-ISOs-SprayMop-087-Oct2020-1.20230607221225201.png",
       "Letter Sounds Animal Puzzle": "https://images.ctfassets.net/0sea1vycfyqy/5tcqqgXk3qjkHTDzdfHehO/4f023b2b54eccff9cc41d847cbd455fc/2022_05_25_Studio_ECO_5019.png",
-      "‘Out the Door’ Book": "https://images.ctfassets.net/0sea1vycfyqy/4VLyjhxEHnOwNKDicCsAtN/4eec32ad6b056b58a0033b036f0b9076/Out-the-Door-Book-ISO.20250131155744519.png",
+      "'Adela Comes Home'": "https://images.ctfassets.net/0sea1vycfyqy/4VLyjhxEHnOwNKDicCsAtN/4eec32ad6b056b58a0033b036f0b9076/Out-the-Door-Book-ISO.20250131155744519.png",
+      "Get Started Guide": "https://images.ctfassets.net/0sea1vycfyqy/2ZgvWsLcZVatY72ZmXi0ms/81ccadceb849f73eb8bc9160ca93381b/Kit16_GettingStarted-ISO.png",
   },
   "problemSolver": {
       "Turtle Hatch Game": "https://images.ctfassets.net/0sea1vycfyqy/4ULTslsidQhOs1sNv4ck4Q/413607fdfcff7fceb2f1b28e49e96902/Kit17_TurtleHatchGame-ISO.20230607212857908.png",
@@ -437,6 +439,7 @@ export const kitToyImages: Record<string, Record<string, string>> = {
       "Wooden Wobble Puzzle": "https://images.ctfassets.net/0sea1vycfyqy/7gtVS7XabvopDoww8HUMSR/104f40e645daec5444c5dad0eeccd5dd/Kit17_WoodenWobblePuzzle-ISO.20230607174417097.png",
       "Liquid Color Lab": "https://images.ctfassets.net/0sea1vycfyqy/295F4w3MYib5jPrPZdHO1W/343733315d1eaf1eb29743a866a82782/Kit17_LiquidColorLab-ISO.20230607205618698.png",
       "‘Uncle Rob's Pizza Party’ Book": "https://images.ctfassets.net/0sea1vycfyqy/5dgO6QKs8b8CARWEJKwOGj/98cf14a72840c4662040c9f8c656a6e8/Kit17_UncleRob-sPizzaParty-ISO.png",
+      "Get Started Guide": "https://images.ctfassets.net/0sea1vycfyqy/4JZuLCmPMUqNhay8yiJSaX/99de6d60a7ca1f9d230cc92cff12d83d/LOVEVERY-VKS-3YOGettingStarted-ISO-NumberTilesAndCounters-2021.20230612175140403.png",
   },
   "analyst": {
       "Montessori Sensory Box": "https://images.ctfassets.net/0sea1vycfyqy/1ocW2mY5qyhsxFwg49IFvE/277ff1a9ae598aab170e77208f57d220/Kit18_MontessoriSensoryBox-ISO.20230612173818392.png",
@@ -446,6 +449,7 @@ export const kitToyImages: Record<string, Record<string, string>> = {
       "Color Theory Puzzle": "https://images.ctfassets.net/0sea1vycfyqy/ytNB14ritsdLyRb5zhkVB/afa2a3d11e9ef42ef7c3cb4d1b0e3214/Kit18_ColorTheoryPuzzle-ISO.20230607202934284.png",
       "First Sewing Kit": "https://images.ctfassets.net/0sea1vycfyqy/5qIDJWfwDCe97SBijcyCbS/1a418140efece1ca2bd7fc49a80f4b51/Kit18_FirstSewingKit-ISO.20230607175218190.png",
       "‘Quarter, Half, and Whole’ Book": "https://images.ctfassets.net/0sea1vycfyqy/5k9KqrRlEoXIuYdQjLsrl1/00f9bff3452d78873e71c9fbf09a9f61/Kit18_QuarterHalf_WholeBook-ISO.20240510164141833.png",
+      "Get Started Guide": "https://images.ctfassets.net/0sea1vycfyqy/2BsF6xBwNPsd1mFiTvIGoN/cf4a62afaec5888bee49036d4a298630/LOVEVERY-VKS-3YOGettingStarted-ISO-FirstSewingKit-2021.20230612175410178.png",
   },
   "musicSet": {
       "Pentatonic Pat Bells": "https://images.ctfassets.net/0sea1vycfyqy/poAi3rV1c92tWY2ZUOM0F/754fd189eca6e8ef19b31bc59e0017df/2022_02_01_Pat-Bells_Studio_ISO_0008_BH_EDIT_CG_v1.20230731205134024.png",
@@ -499,6 +503,7 @@ export const kitToyImages: Record<string, Record<string, string>> = {
     "Left & Right Shoe Stickers": "https://images.ctfassets.net/0sea1vycfyqy/3neFn0b4xGr2tO5QUBi3GU/03378a662dc18a9d470d3bf520c973f0/Kit15_LeftandRightShoeStickers-ISOLovevery-Visionkit-ISOs-LeftRightSticker-009-Oct2020-1.png",
     "Wooden Emotion Dolls": "https://images.ctfassets.net/0sea1vycfyqy/1KbaHzamxyoOSNDz3tTlKG/b9d1e189405af1d1d572ce5447d4a1b0/2022_03_21_Emotion-Dolls_Studio_1834_BH_EDIT.png",
     "Emotion Book Set": "https://images.ctfassets.net/0sea1vycfyqy/2LniBRlM009SHLB1BSQNQJ/ddfce92fff95c64af9d755adc0b6faeb/Kit15_Bookx3-ISO.20240509201738777.png",
+    "Get Started Guide": "https://images.ctfassets.net/0sea1vycfyqy/4YYnIkEqHgyzx1FZ0hWRFM/b6c9e5ed2ca75483a3b68f90c9aa67f0/LOVEVERY-VKS-3YOGettingStarted-ISO-ModularPlayHouse-2021_EU.png",
   },
   "connector": {
     "Discover & Inspect Microscope": "https://images.ctfassets.net/0sea1vycfyqy/1Ej4WVnHxlR6STvER6qXx9/7f75b0202c52752a94ac10a48230afe1/2023_04_13_4YO_Group_ISO_11338_v3.webp",
@@ -507,7 +512,7 @@ export const kitToyImages: Record<string, Record<string, string>> = {
     "Friends & Swing Set": "https://images.ctfassets.net/0sea1vycfyqy/7FgCeBKtKTOZ6nNu9Ruk3P/b2ac9d7386857b418651ad4c57192e29/2023_04_13_4YO_Group_ISO_11294_v2.png",
     "Inventor Adventure Pack": "https://images.ctfassets.net/0sea1vycfyqy/3FovbFnxRTrNRRo7upvAkl/b23ea95df1d7517394c6f396ff466be3/2022_10_01_ISOs_S_0225_v4_a87014a4-8da0-4cb3-beb7-0eff16d4eb4f.webp",
     "Daily Helper Board": "https://images.ctfassets.net/0sea1vycfyqy/1RxNFWzTDJqJ6UfuF9GayD/d043d3f8c95605f101e591298b6ce8ec/2022_08_15_Subatizing-Box_14-yr-old_ISO_S_0220_v2.webp",
-    "Indie Swims Book": "https://images.ctfassets.net/0sea1vycfyqy/5oX5hw4t47dZXGz8E3ypmt/b9d74c700b0c3044c51692249fc2d8cc/Indie_Swims_Front_ISO__1_.png",
+    "'Indie Swims' Book": "https://images.ctfassets.net/0sea1vycfyqy/5oX5hw4t47dZXGz8E3ypmt/b9d74c700b0c3044c51692249fc2d8cc/Indie_Swims_Front_ISO__1_.png",
   },
   "examiner": {
     "Plan Ahead Week Board": "https://images.ctfassets.net/0sea1vycfyqy/4Z7sKwhcIN7OmiirrMab4p/ae9ef2687faf8fac712dbd7b9e6a6214/2023_04_13_4YO_Group_ISO_11286_v1.png",
@@ -548,21 +553,21 @@ export const kitToyImages: Record<string, Record<string, string>> = {
     "Supported Walking Practice": "https://images.ctfassets.net/0sea1vycfyqy/7b2SWVfWYdzYYjbAvsXfTl/aa401db8fca1a39d3f34d21430ce8914/2023_03_07_APP_1158_CG_v2_web.jpg",
     "Caregiver Pretend Play": "https://images.ctfassets.net/0sea1vycfyqy/BsimFg9NrIXIee87mOXSn/c9e99f22a6dc3868f29d36d893d25466/2023_03_07_APP_1958_v3_web_1.jpg",
     "Obstacle Course Challenge": "https://images.ctfassets.net/0sea1vycfyqy/3c1BWNE98VFUVnlansh2wp/3d7b64f33d0e6a110c1c420b6e22c01e/2023_03_07_APP_1941-1_1_v2_web_1.jpg",
-    "Loading & Delivery Play": "https://images.ctfassets.net/0sea1vycfyqy/beYFxjo8P75OVmDynMNPG/2d29d49869db63d92b4a05161592ce22/Stroller_0239_VS_R2.png",
+    "Loading & Delivery Play": "https://cdn.shopify.com/s/files/1/2386/2119/products/slideshow-stroller_1d2f0e3a-3471-4b40-97fa-3f906b538ffd.png",
     "The Buddy Stroller": "https://images.ctfassets.net/0sea1vycfyqy/beYFxjo8P75OVmDynMNPG/2d29d49869db63d92b4a05161592ce22/Stroller_0239_VS_R2.png",
   },
   "pullPup": {
     "Pull-Along Walking Exploration": "https://images.ctfassets.net/0sea1vycfyqy/oABgH7zvKA3iqzzCrBAHR/5bc0ade74c4eed8dcea73733d4b27cbb/pup-slideshow_0011_standalone-3_6e6223da-157d-4d3e-b60a-622dd836ca7f.jpg",
     "Ears & Tail Flip-Up Play": "https://images.ctfassets.net/0sea1vycfyqy/7kOFLTGHOo3Gx1ub8Imexj/dd6ab59c2f2fe01365767ef60c7b67d5/EU-PullPup-1080x1080-ezgif.com-video-to-gif-converter.gif",
     "Dog Walking Route Challenge": "https://images.ctfassets.net/0sea1vycfyqy/7b2LMJwNVnuDqVW8a14Wli/b4850e752cf2250e4a330b8aae83907b/2021_09_30_LOOKBOOK0338_BH_Edit_WEB.jpg",
-    "Outdoor Nature Adventure": "https://images.ctfassets.net/0sea1vycfyqy/4btRN1KhEvPDYNVqp79pfL/09b03bb8f54e94638eb1b475fbcfb42c/slideshow-pup_0011_pup-product_ef90cb07-8a03-4879-b398-997078a0ab63.png",
+    "Outdoor Nature Adventure": "https://i0.wp.com/blog.lovevery.com/wp-content/uploads/2020/06/standalone-dog_x800-x.25.jpg",
     "The Pull Pup": "https://images.ctfassets.net/0sea1vycfyqy/4btRN1KhEvPDYNVqp79pfL/09b03bb8f54e94638eb1b475fbcfb42c/slideshow-pup_0011_pup-product_ef90cb07-8a03-4879-b398-997078a0ab63.png",
   },
   "playTunnel": {
     "Crawl-Through Training": "https://images.ctfassets.net/0sea1vycfyqy/4WifU9xi0B82Gzjst5yR9m/702c661f019d4117bd476eb79bb13fd6/slideshow-tunnel_0013_standalone_a75bb9b4-2c9e-4410-b012-0835ea762606.jpg",
     "Puzzle Piece Relay": "https://images.ctfassets.net/0sea1vycfyqy/DsdqSkrqAGy65BvFsVA7Z/9218b0ca1d5b649983574daebb53840e/slideshow-tunnel_0014_standalone-4_eda45b4b-9ea4-47c2-9ac9-df55300f4bd8.jpg",
-    "Secret Reading Cave": "https://images.ctfassets.net/0sea1vycfyqy/2i2Hogc2WBHbbLdSn2iD6z/f93760731694466b9e3a1df75c9ce915/output-onlinepngtools-3.png",
-    "Outdoor Water Tunnel": "https://images.ctfassets.net/0sea1vycfyqy/DsdqSkrqAGy65BvFsVA7Z/9218b0ca1d5b649983574daebb53840e/slideshow-tunnel_0014_standalone-4_eda45b4b-9ea4-47c2-9ac9-df55300f4bd8.jpg",
+    "Secret Reading Cave": "https://i0.wp.com/blog.lovevery.com/wp-content/uploads/2020/06/Tunnel_0246_VS_R1-x.25-compressor.jpg",
+    "Outdoor Water Tunnel": "https://cdn.shopify.com/s/files/1/2386/2119/products/slideshow-tunnel_403698fe-a082-4d37-abc5-988d492c9005.png?v=1744316878",
     "The Play Tunnel": "https://images.ctfassets.net/0sea1vycfyqy/2i2Hogc2WBHbbLdSn2iD6z/f93760731694466b9e3a1df75c9ce915/output-onlinepngtools-3.png",
   },
   "sensoryStrands": {

@@ -85,7 +85,7 @@ function ArticleCard({
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
-      className="group block rounded-xl border border-[#E8DFD3] bg-white hover:border-[#C8BFB3] hover:shadow-md hover:shadow-[#3D3229]/5 transition-all duration-300 overflow-hidden"
+      className="group block rounded-xl border border-border bg-white hover:border-border hover:shadow-md hover:shadow-foreground/5 transition-all duration-300 overflow-hidden"
     >
       {/* Editor pick ribbon */}
       {isEditorPick && (
@@ -117,7 +117,7 @@ function ArticleCard({
           <span
             className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-medium border ${
               article.language === "zh"
-                ? "bg-[#FEF2F2] text-[#DC2626] border-[#FECACA]"
+                ? "bg-[#FEF2F2] text-destructive border-[#FECACA]"
                 : "bg-[#F0F9FF] text-[#0369A1] border-[#BAE6FD]"
             }`}
           >
@@ -132,13 +132,13 @@ function ArticleCard({
         </div>
 
         {/* Title */}
-        <h4 className="font-display text-sm sm:text-base font-semibold text-[#3D3229] leading-snug mb-1.5 sm:mb-2 group-hover:text-[#6B5E50] transition-colors line-clamp-2">
+        <h4 className="font-display text-sm sm:text-base font-semibold text-foreground leading-snug mb-1.5 sm:mb-2 group-hover:text-muted-foreground transition-colors line-clamp-2">
           {article.title}
         </h4>
 
         {/* Description */}
         {article.description && (
-          <p className="text-xs sm:text-sm text-[#6B5E50] leading-relaxed line-clamp-2 mb-2.5 sm:mb-3">
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-2 mb-2.5 sm:mb-3">
             {article.description}
           </p>
         )}
@@ -206,7 +206,7 @@ export function RecommendedReading({
                 style={{ color: kitColor }}
               />
             </div>
-            <h2 className="font-display text-xl sm:text-2xl md:text-3xl text-[#3D3229]">
+            <h2 className="font-display text-xl sm:text-2xl md:text-3xl text-foreground">
               {lang === "cn" ? convert(i18nStrings.sectionTitle.cn) : i18nStrings.sectionTitle.en}
             </h2>
           </div>
@@ -233,7 +233,7 @@ export function RecommendedReading({
             <div className="mt-4 sm:mt-5">
               <button
                 onClick={() => setExpanded((v) => !v)}
-                className="w-full flex items-center justify-center gap-2 py-3 sm:py-3.5 rounded-xl border border-dashed border-[#D8D0C4] hover:border-[#C8BFB3] bg-[#FAF7F2] hover:bg-[#F5F0E8] text-sm font-medium text-[#6B5E50] hover:text-[#3D3229] transition-all active:scale-[0.99] min-h-[44px]"
+                className="w-full flex items-center justify-center gap-2 py-3 sm:py-3.5 rounded-xl border border-dashed border-border hover:border-border bg-background hover:bg-secondary text-sm font-medium text-muted-foreground hover:text-foreground transition-all active:scale-[0.99] min-h-[44px]"
               >
                 {expanded ? (
                   <>
@@ -244,7 +244,7 @@ export function RecommendedReading({
                   <>
                     <ChevronDown className="w-4 h-4" />
                     {lang === "cn" ? convert(i18nStrings.viewMore.cn) : i18nStrings.viewMore.en}
-                    <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#E8DFD3] text-[#6B5E50]">
+                    <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-border text-muted-foreground">
                       {remaining.length} {lang === "cn" ? convert(i18nStrings.moreCount.cn) : i18nStrings.moreCount.en}
                     </span>
                   </>
@@ -278,7 +278,7 @@ export function RecommendedReading({
                             className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap min-h-[36px] ${
                               langFilter === key
                                 ? "text-white shadow-sm"
-                                : "bg-[#F5F0E8] text-[#6B5E50] hover:bg-[#EDE7DB]"
+                                : "bg-secondary text-muted-foreground hover:bg-accent"
                             }`}
                             style={
                               langFilter === key

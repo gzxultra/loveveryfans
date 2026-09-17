@@ -3,12 +3,14 @@
  * showing how far the user has scrolled through the content.
  */
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ReadingProgressProps {
   color?: string;
 }
 
 export default function ReadingProgress({ color = "#7FB685" }: ReadingProgressProps) {
+  const { t } = useLanguage();
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -35,7 +37,7 @@ export default function ReadingProgress({ color = "#7FB685" }: ReadingProgressPr
       aria-valuenow={Math.round(progress)}
       aria-valuemin={0}
       aria-valuemax={100}
-      aria-label="Reading progress"
+      aria-label={t("阅读进度", "Reading progress")}
     >
       <div
         className="h-full transition-[width] duration-150 ease-out"

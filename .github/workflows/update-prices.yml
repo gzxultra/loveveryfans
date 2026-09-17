@@ -87,6 +87,6 @@ jobs:
             echo "No data changes detected — skipping commit."
           else
             TIMESTAMP=$(date -u +"%Y-%m-%d")
-            git commit -m "chore: auto-update prices and availability [$TIMESTAMP] [skip ci]"
+            git commit -m "chore: auto-update prices and availability [$TIMESTAMP]"
             git push
           fi

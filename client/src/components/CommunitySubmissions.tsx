@@ -85,7 +85,7 @@ export function CommunitySubmissions({ kitId, kitColor }: Props) {
           {[1, 2].map((i) => (
             <div
               key={i}
-              className="h-20 rounded-xl bg-[#E8DFD3]/40"
+              className="h-20 rounded-xl bg-border/40"
             />
           ))}
         </div>
@@ -105,10 +105,10 @@ export function CommunitySubmissions({ kitId, kitColor }: Props) {
         >
           <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" style={{ color: kitColor }} />
         </div>
-        <h3 className="text-sm sm:text-base font-semibold text-[#3D3229]">
+        <h3 className="text-sm sm:text-base font-semibold text-foreground">
           {t("sectionTitle")}
         </h3>
-        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#E8DFD3] text-[#6B5E50]">
+        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-border text-muted-foreground">
           {submissions.length}
         </span>
       </div>
@@ -131,7 +131,7 @@ export function CommunitySubmissions({ kitId, kitColor }: Props) {
                   kit_id: kitId,
                 })
               }
-              className="group block rounded-xl border border-[#E8DFD3] bg-white hover:border-[#C8BFB3] hover:shadow-md hover:shadow-[#3D3229]/5 transition-all duration-300 overflow-hidden"
+              className="group block rounded-xl border border-border bg-white hover:border-border hover:shadow-md hover:shadow-foreground/5 transition-all duration-300 overflow-hidden"
             >
               {/* Community Pick badge */}
               <div
@@ -145,15 +145,15 @@ export function CommunitySubmissions({ kitId, kitColor }: Props) {
               <div className="p-3.5 sm:p-4">
                 {/* Title */}
                 <div className="flex items-start justify-between gap-2">
-                  <h4 className="text-sm sm:text-base font-medium text-[#3D3229] group-hover:text-[#1a1510] transition-colors line-clamp-2 flex-1">
+                  <h4 className="text-sm sm:text-base font-medium text-foreground group-hover:text-foreground transition-colors line-clamp-2 flex-1">
                     {submission.title || submission.url}
                   </h4>
-                  <ExternalLink className="w-3.5 h-3.5 text-[#C8BFB3] group-hover:text-[#9B8E7E] shrink-0 mt-0.5 transition-colors" />
+                  <ExternalLink className="w-3.5 h-3.5 text-border group-hover:text-[#9B8E7E] shrink-0 mt-0.5 transition-colors" />
                 </div>
 
                 {/* Description */}
                 {submission.description && (
-                  <p className="mt-1.5 text-xs sm:text-sm text-[#6B5E50] line-clamp-2">
+                  <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground line-clamp-2">
                     {submission.description}
                   </p>
                 )}

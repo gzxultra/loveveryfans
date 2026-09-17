@@ -1,6 +1,7 @@
 import { useEffect, useCallback, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { getLightboxImageUrl } from "@/lib/imageUtils";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface LightboxProps {
   images: string[];
@@ -17,6 +18,7 @@ export default function Lightbox({
   onPrev,
   onNext,
 }: LightboxProps) {
+  const { t } = useLanguage();
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
 
@@ -54,7 +56,7 @@ export default function Lightbox({
       <button
         onClick={onClose}
         className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 p-3 sm:p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all hover:scale-105 min-w-[48px] min-h-[48px] flex items-center justify-center backdrop-blur-sm"
-        aria-label="Close"
+        aria-label={t("关闭", "Close")}
       >
         <X className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
@@ -72,7 +74,7 @@ export default function Lightbox({
             onPrev();
           }}
           className="absolute left-2 sm:left-4 z-10 p-3 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all hover:scale-105 min-w-[48px] min-h-[48px] flex items-center justify-center backdrop-blur-sm"
-          aria-label="Previous image"
+          aria-label={t("上一张图片", "Previous image")}
         >
           <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
@@ -86,7 +88,7 @@ export default function Lightbox({
             onNext();
           }}
           className="absolute right-2 sm:right-4 z-10 p-3 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all hover:scale-105 min-w-[48px] min-h-[48px] flex items-center justify-center backdrop-blur-sm"
-          aria-label="Next image"
+          aria-label={t("下一张图片", "Next image")}
         >
           <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>

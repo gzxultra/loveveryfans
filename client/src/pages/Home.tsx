@@ -10,8 +10,8 @@ import { getAccessibleTextColor } from "@/lib/imageUtils";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useI18n } from "@/hooks/useI18n";
 import LanguageToggle from "@/components/LanguageToggle";
+import Footer from "@/components/Footer";
 import { ArrowRight, BookOpen, Baby, Sparkles, Menu, X, Search, Music, Droplets, Box, Star, Scale } from "lucide-react";
-import { FooterShareMessage } from "@/components/ShareSection";
 import { useState, useRef, useEffect, lazy, Suspense } from "react";
 import { useFuzzySearch } from "@/hooks/useFuzzySearch";
 import HighlightedText from "@/components/HighlightedText";
@@ -120,13 +120,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2]">
+    <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-lg border-b border-[#E8DFD3]/70 shadow-sm shadow-[#3D3229]/3">
+      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border/70 shadow-sm shadow-foreground/3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14 sm:h-16">
             <Link href="/">
-              <span data-logo-target className="font-display text-xl sm:text-2xl text-[#3D3229] tracking-tight font-bold select-none hover:opacity-80 transition-opacity">
+              <span data-logo-target className="font-display text-xl sm:text-2xl text-foreground tracking-tight font-bold select-none hover:opacity-80 transition-opacity">
                 Lovevery
               </span>
             </Link>
@@ -136,7 +136,7 @@ export default function Home() {
                 <button
                   key={s.id}
                   onClick={() => scrollToStage(s.id)}
-                  className="relative text-sm font-medium text-[#6B5E50] hover:text-[#3D3229] transition-colors after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-[#7FB685] after:rounded-full after:transition-all hover:after:w-full"
+                  className="relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:rounded-full after:transition-all hover:after:w-full"
                 >
                   {stageLabel(s.id)}
                 </button>
@@ -144,17 +144,17 @@ export default function Home() {
 
               <button
                 onClick={scrollToProducts}
-                className="relative text-sm font-medium text-[#6B5E50] hover:text-[#3D3229] transition-colors after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-[#7FB685] after:rounded-full after:transition-all hover:after:w-full"
+                className="relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:rounded-full after:transition-all hover:after:w-full"
               >
                 {i18n.nav.products[lang]}
               </button>
               <Link href="/about/">
-                <span className="text-sm font-medium text-[#6B5E50] hover:text-[#3D3229] transition-colors">
+                <span className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                   {i18n.nav.aboutUs[lang]}
                 </span>
               </Link>
               <Link href="/compare/">
-                <span className="text-sm font-medium text-[#6B5E50] hover:text-[#3D3229] transition-colors flex items-center gap-1">
+                <span className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
                   <Scale className="w-3.5 h-3.5" />
                   {t("对比", "Compare")}
                 </span>
@@ -162,8 +162,8 @@ export default function Home() {
 
               {/* Search bar - Desktop */}
               <div ref={searchContainerRef} className="relative">
-                <div className="flex items-center bg-[#F0EBE3] rounded-full px-3 py-1.5 gap-2 focus-within:ring-2 focus-within:ring-[#7FB685]/40 transition-all">
-                  <Search className="w-4 h-4 text-[#756A5C] shrink-0" />
+                <div className="flex items-center bg-accent rounded-full px-3 py-1.5 gap-2 focus-within:ring-2 focus-within:ring-primary/40 transition-all">
+                  <Search className="w-4 h-4 text-muted-foreground shrink-0" />
                   <input
                     ref={searchInputRef}
                     type="text"
@@ -174,7 +174,7 @@ export default function Home() {
                     }}
                     onFocus={() => setSearchOpen(true)}
                     placeholder={i18n.search.placeholder[lang]}
-                    className="bg-transparent text-sm text-[#3D3229] placeholder-[#9B8E7E] outline-none w-40 lg:w-52"
+                    className="bg-transparent text-sm text-foreground placeholder-[#9B8E7E] outline-none w-40 lg:w-52"
                   />
                   {searchQuery && (
                     <button
@@ -182,7 +182,7 @@ export default function Home() {
                         setSearchQuery("");
                         setSearchOpen(false);
                       }}
-                      className="text-[#756A5C] hover:text-[#3D3229] min-w-[44px] min-h-[44px] flex items-center justify-center"
+                      className="text-muted-foreground hover:text-foreground min-w-[44px] min-h-[44px] flex items-center justify-center"
                     >
                       <X className="w-3.5 h-3.5" />
                     </button>
@@ -191,10 +191,10 @@ export default function Home() {
 
                 {/* Search Results Dropdown */}
                 {searchOpen && searchQuery.trim() && (
-                  <div className="absolute top-full right-0 mt-2 w-80 bg-white rounded-xl border border-[#E8DFD3] shadow-xl shadow-[#3D3229]/10 overflow-hidden max-h-[70vh] overflow-y-auto">
+                  <div className="absolute top-full right-0 mt-2 w-80 bg-white rounded-xl border border-border shadow-xl shadow-foreground/10 overflow-hidden max-h-[70vh] overflow-y-auto">
                     {searchResults.length > 0 ? (
                       <>
-                        <div className="px-4 py-2.5 border-b border-[#F0EBE3] text-xs text-[#756A5C]">
+                        <div className="px-4 py-2.5 border-b border-accent text-xs text-muted-foreground">
                           {searchResults.length} {i18n.search.resultCount[lang]}
                         </div>
                         {searchResults.map((result, idx) => (
@@ -205,7 +205,7 @@ export default function Home() {
                               setSearchQuery("");
                               setSearchOpen(false);
                             }}
-                            className="w-full text-left px-4 py-3 hover:bg-[#FAF7F2] transition-colors border-b border-[#F0EBE3] last:border-b-0 min-h-[48px]"
+                            className="w-full text-left px-4 py-3 hover:bg-background transition-colors border-b border-accent last:border-b-0 min-h-[48px]"
                           >
                             {result.matchType === "kit" ? (
                               <div className="flex items-center gap-3">
@@ -216,8 +216,8 @@ export default function Home() {
                                   <BookOpen className="w-4 h-4" style={{ color: result.kitColor }} />
                                 </div>
                                 <div>
-                                  <p className="text-sm font-medium text-[#3D3229]"><HighlightedText text={result.kitName} query={searchQuery} /></p>
-                                  <p className="text-xs text-[#756A5C]">Play Kit</p>
+                                  <p className="text-sm font-medium text-foreground"><HighlightedText text={result.kitName} query={searchQuery} /></p>
+                                  <p className="text-xs text-muted-foreground">Play Kit</p>
                                 </div>
                               </div>
                             ) : (
@@ -229,10 +229,10 @@ export default function Home() {
                                   <Sparkles className="w-4 h-4" style={{ color: result.kitColor }} />
                                 </div>
                                 <div className="min-w-0">
-                                  <p className="text-sm font-medium text-[#3D3229] truncate">
+                                  <p className="text-sm font-medium text-foreground truncate">
                                     <HighlightedText text={lang === "cn" ? t(result.toyName!, result.toyEnglishName!) : (result.toyEnglishName || "")} query={searchQuery} />
                                   </p>
-                                  <p className="text-xs text-[#756A5C] truncate">
+                                  <p className="text-xs text-muted-foreground truncate">
                                     {lang === "cn" ? result.toyEnglishName : t(result.toyName!, result.toyEnglishName!)} · {result.kitName}
                                   </p>
                                 </div>
@@ -242,7 +242,7 @@ export default function Home() {
                         ))}
                       </>
                     ) : (
-                      <div className="px-4 py-8 text-center text-sm text-[#756A5C]">
+                      <div className="px-4 py-8 text-center text-sm text-muted-foreground">
                         {i18n.search.noResults[lang]}
                       </div>
                     )}
@@ -255,7 +255,7 @@ export default function Home() {
             {/* Mobile: search + language toggle + hamburger */}
             <div className="flex md:hidden items-center gap-1">
               <button
-                className="p-2 text-[#6B5E50] hover:text-[#3D3229] min-w-[48px] min-h-[48px] flex items-center justify-center"
+                className="p-2 text-muted-foreground hover:text-foreground min-w-[48px] min-h-[48px] flex items-center justify-center"
                 onClick={() => {
                   setSearchOpen(!searchOpen);
                   setMobileMenuOpen(false);
@@ -266,7 +266,7 @@ export default function Home() {
               </button>
               <LanguageToggle />
               <button
-                className="p-2 text-[#6B5E50] hover:text-[#3D3229] min-w-[48px] min-h-[48px] flex items-center justify-center"
+                className="p-2 text-muted-foreground hover:text-foreground min-w-[48px] min-h-[48px] flex items-center justify-center"
                 onClick={() => {
                   setMobileMenuOpen(!mobileMenuOpen);
                   setSearchOpen(false);
@@ -281,21 +281,21 @@ export default function Home() {
 
         {/* Mobile search bar */}
         {searchOpen && (
-          <div className="md:hidden bg-[#FAF7F2] border-t border-[#E8DFD3] px-4 py-3">
-            <div className="flex items-center bg-[#F0EBE3] rounded-full px-3 py-2 gap-2 focus-within:ring-2 focus-within:ring-[#7FB685]/40">
-              <Search className="w-4 h-4 text-[#756A5C] shrink-0" />
+          <div className="md:hidden bg-background border-t border-border px-4 py-3">
+            <div className="flex items-center bg-accent rounded-full px-3 py-2 gap-2 focus-within:ring-2 focus-within:ring-primary/40">
+              <Search className="w-4 h-4 text-muted-foreground shrink-0" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={i18n.search.placeholder[lang]}
-                className="bg-transparent text-sm text-[#3D3229] placeholder-[#9B8E7E] outline-none flex-1"
+                className="bg-transparent text-sm text-foreground placeholder-[#9B8E7E] outline-none flex-1"
                 autoFocus
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="text-[#756A5C] hover:text-[#3D3229] min-w-[44px] min-h-[44px] flex items-center justify-center"
+                  className="text-muted-foreground hover:text-foreground min-w-[44px] min-h-[44px] flex items-center justify-center"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -304,10 +304,10 @@ export default function Home() {
 
             {/* Mobile search results */}
             {searchQuery.trim() && (
-              <div className="mt-2 bg-white rounded-xl border border-[#E8DFD3] shadow-lg overflow-hidden max-h-[60vh] overflow-y-auto">
+              <div className="mt-2 bg-white rounded-xl border border-border shadow-lg overflow-hidden max-h-[60vh] overflow-y-auto">
                 {searchResults.length > 0 ? (
                   <>
-                    <div className="px-4 py-2 border-b border-[#F0EBE3] text-xs text-[#756A5C]">
+                    <div className="px-4 py-2 border-b border-accent text-xs text-muted-foreground">
                       {searchResults.length} {i18n.search.resultCount[lang]}
                     </div>
                     {searchResults.map((result, idx) => (
@@ -318,7 +318,7 @@ export default function Home() {
                           setSearchQuery("");
                           setSearchOpen(false);
                         }}
-                        className="w-full text-left px-4 py-3 hover:bg-[#FAF7F2] transition-colors border-b border-[#F0EBE3] last:border-b-0 min-h-[48px]"
+                        className="w-full text-left px-4 py-3 hover:bg-background transition-colors border-b border-accent last:border-b-0 min-h-[48px]"
                       >
                         {result.matchType === "kit" ? (
                           <div className="flex items-center gap-3">
@@ -329,8 +329,8 @@ export default function Home() {
                               <BookOpen className="w-4 h-4" style={{ color: result.kitColor }} />
                             </div>
                             <div>
-                              <p className="text-sm font-medium text-[#3D3229]"><HighlightedText text={result.kitName} query={searchQuery} /></p>
-                              <p className="text-xs text-[#756A5C]">Play Kit</p>
+                              <p className="text-sm font-medium text-foreground"><HighlightedText text={result.kitName} query={searchQuery} /></p>
+                              <p className="text-xs text-muted-foreground">Play Kit</p>
                             </div>
                           </div>
                         ) : (
@@ -342,10 +342,10 @@ export default function Home() {
                               <Sparkles className="w-4 h-4" style={{ color: result.kitColor }} />
                             </div>
                             <div className="min-w-0">
-                              <p className="text-sm font-medium text-[#3D3229] truncate">
+                              <p className="text-sm font-medium text-foreground truncate">
                                 {lang === "cn" ? t(result.toyName!, result.toyEnglishName!) : result.toyEnglishName}
                               </p>
-                              <p className="text-xs text-[#756A5C] truncate">
+                              <p className="text-xs text-muted-foreground truncate">
                                 {lang === "cn" ? result.toyEnglishName : t(result.toyName!, result.toyEnglishName!)} · {result.kitName}
                               </p>
                             </div>
@@ -355,7 +355,7 @@ export default function Home() {
                     ))}
                   </>
                 ) : (
-                  <div className="px-4 py-6 text-center text-sm text-[#756A5C]">
+                  <div className="px-4 py-6 text-center text-sm text-muted-foreground">
                     {i18n.search.noResults[lang]}
                   </div>
                 )}
@@ -366,7 +366,7 @@ export default function Home() {
 
         {/* Mobile menu dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-[#FAF7F2] border-t border-[#E8DFD3] shadow-lg">
+          <div className="md:hidden bg-background border-t border-border shadow-lg">
             <div className="px-4 py-3 space-y-1">
               {stages.map((s) => (
                 <button
@@ -375,11 +375,11 @@ export default function Home() {
                     scrollToStage(s.id);
                     setMobileMenuOpen(false);
                   }}
-                  className="block w-full text-left px-3 py-3 rounded-xl text-sm font-medium text-[#6B5E50] hover:text-[#3D3229] hover:bg-[#E8DFD3]/40 transition-colors min-h-[48px]"
+                  className="block w-full text-left px-3 py-3 rounded-xl text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-border/40 transition-colors min-h-[48px]"
                 >
                   <span className="flex items-center justify-between">
                     {stageLabel(s.id)}
-                    <span className="text-xs text-[#756A5C]">{stageRange(s.id)}</span>
+                    <span className="text-xs text-muted-foreground">{stageRange(s.id)}</span>
                   </span>
                 </button>
               ))}
@@ -388,17 +388,17 @@ export default function Home() {
                   scrollToProducts();
                   setMobileMenuOpen(false);
                 }}
-                className="block w-full text-left px-3 py-3 rounded-xl text-sm font-medium text-[#6B5E50] hover:text-[#3D3229] hover:bg-[#E8DFD3]/40 transition-colors min-h-[48px]"
+                className="block w-full text-left px-3 py-3 rounded-xl text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-border/40 transition-colors min-h-[48px]"
               >
                 <span className="flex items-center justify-between">
                   {i18n.nav.products[lang]}
-                  <span className="text-xs text-[#756A5C]">{t(`${standaloneProducts.length} 款产品`, `${standaloneProducts.length} Products`)}</span>
+                  <span className="text-xs text-muted-foreground">{t(`${standaloneProducts.length} 款产品`, `${standaloneProducts.length} Products`)}</span>
                 </span>
               </button>
               <Link href="/about/">
                 <span
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block w-full text-left px-3 py-3 rounded-xl text-sm font-medium text-[#6B5E50] hover:text-[#3D3229] hover:bg-[#E8DFD3]/40 transition-colors min-h-[48px] flex items-center"
+                  className="block w-full text-left px-3 py-3 rounded-xl text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-border/40 transition-colors min-h-[48px] flex items-center"
                 >
                   {i18n.nav.aboutUs[lang]}
                 </span>
@@ -406,7 +406,7 @@ export default function Home() {
               <Link href="/compare/">
                 <span
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block w-full text-left px-3 py-3 rounded-xl text-sm font-medium text-[#6B5E50] hover:text-[#3D3229] hover:bg-[#E8DFD3]/40 transition-colors min-h-[48px] flex items-center gap-2"
+                  className="block w-full text-left px-3 py-3 rounded-xl text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-border/40 transition-colors min-h-[48px] flex items-center gap-2"
                 >
                   <Scale className="w-4 h-4" />
                   {t("Kit 对比", "Compare Kits")}
@@ -431,7 +431,7 @@ export default function Home() {
       </Suspense>
 
       {/* Stats Counter Section */}
-      <section className="py-8 sm:py-12 bg-[#FAF7F2]">
+      <section className="py-8 sm:py-12 bg-background">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Suspense fallback={<div className="h-32" />}>
             <StatsCounter />
@@ -440,7 +440,7 @@ export default function Home() {
       </section>
 
       {/* Age Picker Navigation */}
-      <section className="py-6 sm:py-8 bg-[#FAF7F2]">
+      <section className="py-6 sm:py-8 bg-background">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <Suspense fallback={<div className="h-24" />}>
             <AgePickerNav />
@@ -449,7 +449,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section - lazy loaded */}
-      <Suspense fallback={<div className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#F5F0EB] via-[#FAF7F2] to-[#F8F3ED]" />}>
+      <Suspense fallback={<div className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-secondary via-background to-secondary" />}>
         <TestimonialsSection />
       </Suspense>
 
@@ -459,24 +459,24 @@ export default function Home() {
       ))}
 
       {/* Standalone Products Section */}
-      <section id="standalone-products" className="py-10 sm:py-16 md:py-24 scroll-mt-16 sm:scroll-mt-20 bg-gradient-to-br from-[#F8F3ED] via-[#FAF7F2] to-[#F5F0EB]">
+      <section id="standalone-products" className="py-10 sm:py-16 md:py-24 scroll-mt-16 sm:scroll-mt-20 bg-gradient-to-br from-secondary via-background to-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="mb-8 sm:mb-12">
             <div className="flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-8">
               <div className="shrink-0">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4 border bg-[#7FB685]/10 text-[#4a8a54] border-[#7FB685]/25">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4 border bg-primary/10 text-primary border-primary/25">
                   <Sparkles className="w-3.5 h-3.5" />
                   {t(`${standaloneProducts.length} 款独立产品`, `${standaloneProducts.length} Standalone Products`)}
                 </div>
-                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-[#1a1108] tracking-tight">
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-foreground tracking-tight">
                   {i18n.products.sectionTitle[lang]}
                 </h2>
-                <p className="text-sm text-[#6B5E50] mt-2">
+                <p className="text-sm text-muted-foreground mt-2">
                   {i18n.products.sectionSubtitle[lang]}
                 </p>
               </div>
-              <div className="hidden sm:block flex-1 h-px bg-gradient-to-r from-[#E8DFD3] via-[#E8DFD3]/50 to-transparent" />
+              <div className="hidden sm:block flex-1 h-px bg-gradient-to-r from-border via-border/50 to-transparent" />
             </div>
           </div>
 
@@ -488,7 +488,7 @@ export default function Home() {
               return (
                 <Link key={product.id} href={`/product/${getProductSlug(product.id)}/`}>
                   <div
-                    className="group relative rounded-xl sm:rounded-2xl overflow-hidden bg-white border border-[#E8DFD3] hover:border-[#C8BFB3] hover:shadow-2xl hover:shadow-[#3D3229]/12 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer h-full active:scale-[0.98] card-glow"
+                    className="group relative rounded-xl sm:rounded-2xl overflow-hidden bg-white border border-border hover:border-border hover:shadow-2xl hover:shadow-foreground/12 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer h-full active:scale-[0.98] card-glow"
                     onMouseEnter={prefetchProductDetail}
                     onTouchStart={prefetchProductDetail}
                   >
@@ -500,10 +500,10 @@ export default function Home() {
                     <div className="p-4 sm:p-6">
                       <div className="flex items-start justify-between gap-3 mb-3 sm:mb-4">
                         <div className="min-w-0 flex-1">
-                          <h3 className="font-display text-lg sm:text-xl text-[#1a1108] mb-1 truncate group-hover:text-[#3D3229] transition-colors">
+                          <h3 className="font-display text-lg sm:text-xl text-foreground mb-1 truncate group-hover:text-foreground transition-colors">
                             {product.name}
                           </h3>
-                          <p className="text-xs sm:text-sm text-[#5A4E42]">
+                          <p className="text-xs sm:text-sm text-muted-foreground">
                             {lang === "cn" ? t(product.ageRange, product.ageRangeEn || product.ageRange) : (product.ageRangeEn || product.ageRange)}
                           </p>
                         </div>
@@ -515,11 +515,11 @@ export default function Home() {
                         </div>
                       </div>
 
-                      <p className="text-xs sm:text-sm text-[#5A4E42] leading-relaxed line-clamp-2 sm:line-clamp-3 mb-3 sm:mb-4">
+                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-2 sm:line-clamp-3 mb-3 sm:mb-4">
                         {lang === "cn" ? t(product.description, product.descriptionEn || product.description) : (product.descriptionEn || product.description)}
                       </p>
 
-                      <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-[#F0EBE3] group-hover:border-[#E8DFD3] transition-colors">
+                      <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-accent group-hover:border-border transition-colors">
                         <div className="flex items-center gap-2">
                           <span className="flex items-center gap-0.5 text-xs text-amber-600">
                             <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
@@ -564,73 +564,7 @@ export default function Home() {
       </Suspense>
 
       {/* Footer */}
-      <footer className="relative bg-[#3D3229] text-white py-10 sm:py-16">
-        {/* Gradient top border */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#7FB685]/40 to-transparent" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
-            <div>
-              <h3 data-logo-target className="font-display text-xl sm:text-2xl mb-3 sm:mb-4 select-none">Lovevery</h3>
-              <p className="text-[#B8AFA3] text-sm leading-relaxed">
-                {i18n.footer.brandDesc[lang]}
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-3 sm:mb-4 text-[#E8DFD3]">{i18n.footer.devStages[lang]}</h4>
-              <ul className="space-y-1">
-                {stages.map((s) => (
-                  <li key={s.id}>
-                    <button
-                      onClick={() => scrollToStage(s.id)}
-                      className="text-sm text-[#B8AFA3] hover:text-white hover:translate-x-1 transition-all duration-200 min-h-[44px] flex items-center gap-2"
-                    >
-                      <span className="w-1 h-1 rounded-full bg-[#6B5E50] group-hover:bg-[#7FB685] transition-colors" />
-                      {stageLabel(s.id)} ({stageRange(s.id)})
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-3 sm:mb-4 text-[#E8DFD3]">{i18n.nav.products[lang]}</h4>
-              <ul className="space-y-1">
-                {standaloneProducts.map((p) => (
-                  <li key={p.id}>
-                    <Link href={`/product/${getProductSlug(p.id)}/`}>
-                      <span className="text-sm text-[#B8AFA3] hover:text-white hover:translate-x-1 transition-all duration-200 min-h-[44px] flex items-center gap-2">
-                        <span className="w-1 h-1 rounded-full bg-[#6B5E50]" />
-                        {p.name}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="sm:col-span-2 md:col-span-1">
-              <h4 className="font-semibold mb-3 sm:mb-4 text-[#E8DFD3]">{i18n.footer.aboutGuide[lang]}</h4>
-              <p className="text-sm text-[#B8AFA3] leading-relaxed mb-4">
-                {i18n.footer.aboutDesc[lang]}
-              </p>
-              <Link href="/about/">
-                <span className="inline-flex items-center gap-1.5 text-sm text-[#B8AFA3] hover:text-white transition-colors group">
-                  {i18n.nav.aboutUs[lang]}
-                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-                </span>
-              </Link>
-            </div>
-          </div>
-          <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#4D4439]/80 text-center">
-            <p className="text-xs sm:text-sm text-[#9A8E82] mb-2">
-              {i18n.footer.tagline[lang]}
-            </p>
-            <p className="text-xs sm:text-sm text-[#9A8E82] leading-relaxed max-w-4xl mx-auto">
-              {i18n.footer.disclaimer[lang]}
-            </p>
-            <FooterShareMessage />
-            <div data-rainbow-portal className="mt-3 flex justify-center" />
-          </div>
-        </div>
-      </footer>
+      <Footer onStageClick={scrollToStage} />
     </div>
   );
 }

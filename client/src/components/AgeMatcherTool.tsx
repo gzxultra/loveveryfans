@@ -138,16 +138,16 @@ export default function AgeMatcherTool() {
   }, []);
 
   return (
-    <section className="py-8 sm:py-12 bg-gradient-to-br from-[#F8F3ED] via-[#FAF7F2] to-[#FFF8F0]">
+    <section className="py-8 sm:py-12 bg-gradient-to-br from-secondary via-background to-background">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD3] shadow-lg shadow-[#3D3229]/5 overflow-hidden">
+        <div className="bg-white rounded-2xl sm:rounded-3xl border border-border shadow-lg shadow-foreground/5 overflow-hidden">
           {/* Header */}
           <div className="px-5 pt-6 pb-4 sm:px-8 sm:pt-8 sm:pb-5 text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#7FB685]/10 text-[#4a8a54] text-xs sm:text-sm font-medium mb-3 border border-[#7FB685]/20">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-3 border border-primary/20">
               <Baby className="w-3.5 h-3.5" />
               {txt.title[lang]}
             </div>
-            <p className="text-sm text-[#6B5E50] max-w-md mx-auto">
+            <p className="text-sm text-muted-foreground max-w-md mx-auto">
               {txt.subtitle[lang]}
             </p>
           </div>
@@ -158,7 +158,7 @@ export default function AgeMatcherTool() {
             <div className="space-y-1.5">
               <label
                 htmlFor="birth-date"
-                className="block text-xs font-medium text-[#6B5E50] pl-1"
+                className="block text-xs font-medium text-muted-foreground pl-1"
               >
                 <Calendar className="w-3.5 h-3.5 inline-block mr-1 -mt-0.5" />
                 {txt.birthLabel[lang]}
@@ -169,29 +169,29 @@ export default function AgeMatcherTool() {
                 value={birthDate}
                 onChange={handleDateChange}
                 max={today.toISOString().split("T")[0]}
-                className="w-full rounded-xl border border-[#E8DFD3] bg-[#FAF7F2] px-4 py-3 text-sm text-[#3D3229] focus:outline-none focus:ring-2 focus:ring-[#7FB685]/40 focus:border-[#7FB685]/60 transition-all"
+                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/60 transition-all"
               />
             </div>
 
             {/* Divider */}
             <div className="flex items-center gap-3">
-              <div className="flex-1 h-px bg-[#E8DFD3]" />
+              <div className="flex-1 h-px bg-border" />
               <span className="text-xs text-[#9B8E7E] font-medium">
                 {txt.orLabel[lang]}
               </span>
-              <div className="flex-1 h-px bg-[#E8DFD3]" />
+              <div className="flex-1 h-px bg-border" />
             </div>
 
             {/* Month slider */}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-medium text-[#6B5E50]">
+                <span className="text-xs font-medium text-muted-foreground">
                   0 {t("个月", "mo")}
                 </span>
-                <span className="text-sm font-semibold text-[#3D3229] tabular-nums">
+                <span className="text-sm font-semibold text-foreground tabular-nums">
                   {sliderMonths} {txt.monthsLabel[lang]}
                 </span>
-                <span className="text-xs font-medium text-[#6B5E50]">
+                <span className="text-xs font-medium text-muted-foreground">
                   60 {t("个月", "mo")}
                 </span>
               </div>
@@ -202,8 +202,8 @@ export default function AgeMatcherTool() {
                 value={sliderMonths}
                 onChange={handleSliderChange}
                 className="w-full h-2 rounded-full appearance-none cursor-pointer
-                  [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#7FB685] [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer
-                  [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-[#7FB685] [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:shadow-md [&::-moz-range-thumb]:cursor-pointer"
+                  [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer
+                  [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-primary [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:shadow-md [&::-moz-range-thumb]:cursor-pointer"
                 style={{
                   background: `linear-gradient(to right, #7FB685 ${(sliderMonths / 60) * 100}%, #E8DFD3 ${(sliderMonths / 60) * 100}%)`,
                 }}
@@ -227,7 +227,7 @@ export default function AgeMatcherTool() {
                   borderColor: matchedKit.color + "25",
                 }}
               >
-                <div className="flex items-center gap-1.5 text-xs text-[#6B5E50] mb-2">
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-2">
                   <Sparkles className="w-3.5 h-3.5 text-[#D4A574]" />
                   {txt.resultTitle[lang]}
                 </div>
@@ -243,10 +243,10 @@ export default function AgeMatcherTool() {
 
                 <div className="flex items-center justify-between gap-4">
                   <div className="min-w-0">
-                    <h3 className="font-display text-lg sm:text-xl text-[#1a1108] truncate">
+                    <h3 className="font-display text-lg sm:text-xl text-foreground truncate">
                       {matchedKit.name}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#5A4E42] mt-0.5">
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
                       {lang === "cn"
                         ? t(
                             matchedKit.ageRange,

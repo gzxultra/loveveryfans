@@ -146,7 +146,7 @@ export default function PinchToReveal() {
         {/* Main badge */}
         <div
           className="relative bg-gradient-to-br from-white to-[#F5F5F0] rounded-full w-48 h-48 
-                     shadow-2xl border-4 border-[#7FB685] flex flex-col items-center justify-center
+                     shadow-2xl border-4 border-primary flex flex-col items-center justify-center
                      overflow-hidden"
         >
           {/* Shine effect */}
@@ -162,13 +162,13 @@ export default function PinchToReveal() {
           {/* Content */}
           <div className="relative z-10 text-center px-6">
             <div className="text-5xl mb-2 animate-bounce-slow">🏆</div>
-            <p className="text-lg font-bold text-[#3D3229] mb-1 font-['Manrope']">
+            <p className="text-lg font-bold text-foreground mb-1 font-['Manrope']">
               Achievement
             </p>
-            <p className="text-sm text-[#7FB685] font-semibold mb-1">
+            <p className="text-sm text-primary font-semibold mb-1">
               Pinch Master
             </p>
-            <p className="text-xs text-[#6B5E50]">
+            <p className="text-xs text-muted-foreground">
               You discovered the pinch secret!
             </p>
           </div>

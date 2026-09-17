@@ -160,7 +160,7 @@ export default function ParentPraise() {
         <button
           onClick={dismiss}
           className="absolute top-3 right-3 w-7 h-7 flex items-center justify-center rounded-full
-            text-[#9B8E7E] hover:text-[#3D3229] hover:bg-black/5 transition-colors z-10"
+            text-[#9B8E7E] hover:text-foreground hover:bg-black/5 transition-colors z-10"
           aria-label="Close"
         >
           <X className="w-3.5 h-3.5" />
@@ -187,7 +187,7 @@ export default function ParentPraise() {
           {/* Emoji + message */}
           <div className="flex items-start gap-2.5">
             <span className="text-2xl leading-none mt-0.5 shrink-0">{message.emoji}</span>
-            <p className="text-sm font-medium text-[#3D3229] leading-relaxed">
+            <p className="text-sm font-medium text-foreground leading-relaxed">
               {lang === "cn" ? message.cn : message.en}
             </p>
           </div>

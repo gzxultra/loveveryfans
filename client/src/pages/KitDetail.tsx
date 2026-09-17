@@ -15,6 +15,7 @@ import { applyKitPageSeo, cleanupKitPageSeo } from "@/lib/seoHelpers";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useI18n } from "@/hooks/useI18n";
 import LanguageToggle from "@/components/LanguageToggle";
+import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
@@ -146,8 +147,8 @@ const ToyCard = memo(function ToyCard({
 
   return (
     <div
-      className={`bg-white rounded-xl sm:rounded-2xl border overflow-hidden hover:shadow-xl hover:shadow-[#3D3229]/8 transition-all duration-300 ${
-        isDiscontinued ? "border-[#E8DFD3] opacity-70" : "border-[#E8DFD3] hover:border-[#D0C8BC]"
+      className={`bg-white rounded-xl sm:rounded-2xl border overflow-hidden hover:shadow-xl hover:shadow-foreground/8 transition-all duration-300 ${
+        isDiscontinued ? "border-border opacity-70" : "border-border hover:border-border"
       } hover-expand-card`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -158,7 +159,7 @@ const ToyCard = memo(function ToyCard({
           {/* Toy Image */}
           {toyImage ? (
             <div
-              className="w-full sm:w-24 md:w-28 aspect-square sm:aspect-square rounded-lg sm:rounded-xl overflow-hidden shrink-0 bg-[#FAF7F2] border border-[#F0EBE3] flex items-center justify-center p-3 sm:p-2 max-w-[200px] mx-auto sm:mx-0 sm:max-w-none cursor-zoom-in hover:border-[#C8BFB3] hover:shadow-md transition-all"
+              className="w-full sm:w-24 md:w-28 aspect-square sm:aspect-square rounded-lg sm:rounded-xl overflow-hidden shrink-0 bg-background border border-accent flex items-center justify-center p-3 sm:p-2 max-w-[200px] mx-auto sm:mx-0 sm:max-w-none cursor-zoom-in hover:border-border hover:shadow-md transition-all"
               onClick={() => onImageClick?.(index)}
             >
               <img
@@ -187,17 +188,17 @@ const ToyCard = memo(function ToyCard({
               >
                 {index + 1}
               </span>
-              <h3 className="font-display text-base sm:text-xl text-[#3D3229] leading-snug">
+              <h3 className="font-display text-base sm:text-xl text-foreground leading-snug">
                 {toyName}
               </h3>
               {isDiscontinued && (
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-medium bg-[#F5E6D8] text-[#A0845C] border border-[#E8D5BF]">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-medium bg-accent text-[#A0845C] border border-[#E8D5BF]">
                   <AlertCircle className="w-2.5 h-2.5" />
                   {i18n.kitDetail.discontinued[lang]}
                 </span>
               )}
               {isNew && (
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-medium bg-[#E8F5E9] text-[#4CAF50] border border-[#C8E6C9]">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-medium bg-secondary text-[#4CAF50] border border-border">
                   <Sparkles className="w-2.5 h-2.5" />
                   {i18n.kitDetail.newOnSite[lang]}
                 </span>
@@ -216,13 +217,13 @@ const ToyCard = memo(function ToyCard({
 
       {/* How to Use - Always visible */}
       <div className="px-4 sm:px-6 pb-3 sm:pb-4">
-        <div className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-[#FAF7F2]">
+        <div className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-background">
           <Lightbulb className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 mt-0.5 text-[#D4A574]" />
           <div>
             <p className="text-[10px] sm:text-xs font-semibold text-[#D4A574] uppercase tracking-wider mb-1 sm:mb-1.5">
               {i18n.kitDetail.howToUse[lang]}
             </p>
-            <p className="text-xs sm:text-sm text-[#4A3F35] leading-relaxed">{howToUse}</p>
+            <p className="text-xs sm:text-sm text-secondary-foreground leading-relaxed">{howToUse}</p>
           </div>
         </div>
       </div>
@@ -233,7 +234,7 @@ const ToyCard = memo(function ToyCard({
           <div className="px-4 sm:px-6 pb-2">
             <button
               onClick={handleClick}
-              className="w-full flex items-center justify-between py-3 text-xs sm:text-sm font-medium text-[#6B5E50] hover:text-[#3D3229] transition-colors border-t border-[#F0EBE3] min-h-[44px] mobile-expand-trigger"
+              className="w-full flex items-center justify-between py-3 text-xs sm:text-sm font-medium text-muted-foreground hover:text-foreground transition-colors border-t border-accent min-h-[44px] mobile-expand-trigger"
             >
               <span>{expanded ? i18n.kitDetail.collapse[lang] : i18n.kitDetail.expand[lang]}</span>
               {expanded ? (
@@ -256,13 +257,13 @@ const ToyCard = memo(function ToyCard({
                 <div className="px-4 sm:px-6 pb-4 sm:pb-6 space-y-3 sm:space-y-4">
                   {/* Development Goal */}
                   {devGoal && (
-                    <div className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-[#F0F7F1]">
-                      <Target className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 mt-0.5 text-[#7FB685]" />
+                    <div className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-background">
+                      <Target className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 mt-0.5 text-primary" />
                       <div>
-                        <p className="text-[10px] sm:text-xs font-semibold text-[#7FB685] uppercase tracking-wider mb-1 sm:mb-1.5">
+                        <p className="text-[10px] sm:text-xs font-semibold text-primary uppercase tracking-wider mb-1 sm:mb-1.5">
                           {i18n.kitDetail.devGoal[lang]}
                         </p>
-                        <p className="text-xs sm:text-sm text-[#4A3F35] leading-relaxed">
+                        <p className="text-xs sm:text-sm text-secondary-foreground leading-relaxed">
                           {devGoal}
                         </p>
                       </div>
@@ -271,41 +272,41 @@ const ToyCard = memo(function ToyCard({
 
                   {/* Pros & Cons Review */}
                   {toyReview && (
-                    <div className="rounded-lg sm:rounded-xl border border-[#E8DFD3] overflow-hidden">
+                    <div className="rounded-lg sm:rounded-xl border border-border overflow-hidden">
                       {/* Section Header */}
-                      <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-[#FAF7F2] to-[#F5F0EB] border-b border-[#E8DFD3]">
-                        <p className="text-[10px] sm:text-xs font-semibold text-[#6B5E50] uppercase tracking-wider flex items-center gap-1.5">
+                      <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-background to-secondary border-b border-border">
+                        <p className="text-[10px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
                           <Star className="w-3.5 h-3.5 text-[#D4A574]" />
                           {i18n.kitDetail.prosConsTitle[lang]}
                         </p>
                       </div>
                       {/* Pros & Cons Grid */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-[#E8DFD3]">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border">
                         {/* Pros */}
                         <div className="p-3 sm:p-4 bg-[#F6FBF6]">
                           <div className="flex items-center gap-2 mb-2 sm:mb-2.5">
-                            <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#E8F5E9] flex items-center justify-center">
+                            <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-secondary flex items-center justify-center">
                               <ThumbsUp className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#4CAF50]" />
                             </div>
-                            <span className="text-xs sm:text-sm font-semibold text-[#2E7D32]">
+                            <span className="text-xs sm:text-sm font-semibold text-primary">
                               {i18n.kitDetail.prosTitle[lang]}
                             </span>
                           </div>
-                          <p className="text-xs sm:text-sm text-[#4A3F35] leading-relaxed pl-8 sm:pl-9">
+                          <p className="text-xs sm:text-sm text-secondary-foreground leading-relaxed pl-8 sm:pl-9">
                             {lang === "en" && toyReview.prosEn ? toyReview.prosEn : convert(toyReview.pros)}
                           </p>
                         </div>
                         {/* Cons */}
-                        <div className="p-3 sm:p-4 bg-[#FFFBF5]">
+                        <div className="p-3 sm:p-4 bg-background">
                           <div className="flex items-center gap-2 mb-2 sm:mb-2.5">
-                            <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#FFF3E0] flex items-center justify-center">
+                            <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-background flex items-center justify-center">
                               <ThumbsDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#F57C00]" />
                             </div>
                             <span className="text-xs sm:text-sm font-semibold text-[#E65100]">
                               {i18n.kitDetail.consTitle[lang]}
                             </span>
                           </div>
-                          <p className="text-xs sm:text-sm text-[#4A3F35] leading-relaxed pl-8 sm:pl-9">
+                          <p className="text-xs sm:text-sm text-secondary-foreground leading-relaxed pl-8 sm:pl-9">
                             {lang === "en" && toyReview.consEn ? toyReview.consEn : convert(toyReview.cons)}
                           </p>
                         </div>
@@ -336,7 +337,7 @@ const ToyCard = memo(function ToyCard({
                             {lang === "cn" ? convert(cleaningInfo.materialCn) : cleaningInfo.materialEn}
                           </span>
                         </div>
-                        <p className="text-xs sm:text-sm text-[#4A3F35] leading-relaxed">
+                        <p className="text-xs sm:text-sm text-secondary-foreground leading-relaxed">
                           {lang === "cn" ? convert(cleaningInfo.cleaningCn) : cleaningInfo.cleaningEn}
                         </p>
                       </div>
@@ -360,7 +361,7 @@ function ReferralCard({ kitId, kitColor }: { kitId: string; kitColor: string }) 
   const referralUrl = getReferralProgramUrl();
 
   return (
-    <div className="bg-white rounded-2xl sm:rounded-3xl border border-[#E8DFD3] p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
+    <div className="bg-white rounded-2xl sm:rounded-3xl border border-border p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
       <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
         <div
           className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0"
@@ -370,10 +371,10 @@ function ReferralCard({ kitId, kitColor }: { kitId: string; kitColor: string }) 
         </div>
 
         <div className="flex-1">
-          <h3 className="font-display text-xl sm:text-2xl text-[#3D3229] mb-3">
+          <h3 className="font-display text-xl sm:text-2xl text-foreground mb-3">
             {i18n.referral.title[lang]}
           </h3>
-          <p className="text-sm sm:text-base text-[#6B5E50] leading-relaxed mb-6">
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6">
             {i18n.referral.desc[lang]}
           </p>
 
@@ -382,7 +383,7 @@ function ReferralCard({ kitId, kitColor }: { kitId: string; kitColor: string }) 
               href={purchaseUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#3D3229] text-white rounded-full text-sm font-medium hover:bg-[#2A231C] hover:shadow-lg hover:shadow-[#3D3229]/20 transition-all duration-300 active:scale-[0.98] min-h-[48px]"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-foreground text-white rounded-full text-sm font-medium hover:bg-foreground hover:shadow-lg hover:shadow-foreground/20 transition-all duration-300 active:scale-[0.98] min-h-[48px]"
               onClick={() => {
                 trackEvent("lovevery_referral_click", {
                   kit_name: kitId,
@@ -400,7 +401,7 @@ function ReferralCard({ kitId, kitColor }: { kitId: string; kitColor: string }) 
               href={referralUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-[#3D3229] rounded-full text-sm font-medium border border-[#E8DFD3] hover:bg-[#F5F0E8] transition-all duration-300 active:scale-[0.98] min-h-[48px]"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-foreground rounded-full text-sm font-medium border border-border hover:bg-secondary transition-all duration-300 active:scale-[0.98] min-h-[48px]"
               onClick={() => {
                 trackEvent("lovevery_referral_click", {
                   kit_name: kitId,
@@ -500,13 +501,13 @@ export default function KitDetail() {
 
   if (!kit) {
     return (
-      <div className="min-h-screen bg-[#FAF7F2] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <div className="text-center">
-          <h1 className="font-['Manrope'] text-2xl sm:text-3xl text-[#3D3229] mb-4">
+          <h1 className="font-display text-2xl sm:text-3xl text-foreground mb-4">
             {i18n.kitDetail.notFound[lang]}
           </h1>
           <Link href="/">
-            <span className="text-[#7FB685] hover:underline">{i18n.kitDetail.backHome[lang]}</span>
+            <span className="text-primary hover:underline">{i18n.kitDetail.backHome[lang]}</span>
           </Link>
         </div>
       </div>
@@ -563,7 +564,7 @@ export default function KitDetail() {
   return (
     <>
     <div
-      className="min-h-screen bg-[#FAF7F2]"
+      className="min-h-screen bg-background"
       ref={swipeRef as React.RefObject<HTMLDivElement>}
       aria-label={`${kit.name} Play Kit detail. Swipe left or right to navigate between kits.`}
     >
@@ -571,11 +572,11 @@ export default function KitDetail() {
       <ReadingProgress color={kit.color} />
 
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-lg border-b border-[#E8DFD3]/70 shadow-sm shadow-[#3D3229]/3">
+      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border/70 shadow-sm shadow-foreground/3">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14 sm:h-16">
             <Link href="/">
-              <span className="group flex items-center gap-1.5 sm:gap-2 text-[#6B5E50] hover:text-[#3D3229] transition-colors min-h-[44px] items-center">
+              <span className="group flex items-center gap-1.5 sm:gap-2 text-muted-foreground hover:text-foreground transition-colors min-h-[44px] items-center">
                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
                 <span className="text-xs sm:text-sm font-medium">{i18n.kitDetail.backToAll[lang]}</span>
               </span>
@@ -583,7 +584,7 @@ export default function KitDetail() {
             <div className="flex items-center gap-3">
               <LanguageToggle />
               <Link href="/">
-                <span data-logo-target className="font-['Manrope'] text-base sm:text-lg text-[#3D3229] select-none hover:opacity-80 transition-opacity">
+                <span data-logo-target className="font-['Manrope'] text-base sm:text-lg text-foreground select-none hover:opacity-80 transition-opacity">
                   Lovevery
                 </span>
               </Link>
@@ -617,7 +618,7 @@ export default function KitDetail() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 relative z-10">
           {heroImage && (
             <div className="md:hidden mb-6 flex justify-center">
-              <div className="w-48 sm:w-56 aspect-square rounded-2xl overflow-hidden bg-[#FAF7F2] border border-[#E8DFD3] shadow-lg shadow-[#3D3229]/5 p-3">
+              <div className="w-48 sm:w-56 aspect-square rounded-2xl overflow-hidden bg-background border border-border shadow-lg shadow-foreground/5 p-3">
                 <img
                   src={getKitHeroOptimizedUrl(heroImage)}
                   alt={`${kit.name} Play Kit - Lovevery alternatives and affordable dupes for ${kit.ageRangeEn || kit.ageRange}`}
@@ -642,7 +643,7 @@ export default function KitDetail() {
               </div>
 
               <div className="flex items-start gap-3 sm:gap-4 mb-6 sm:mb-8">
-                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#1a1108] tracking-tight leading-[1.1]">
+                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground tracking-tight leading-[1.1]">
                   {kit.name}
                 </h1>
                 <div className="shrink-0 mt-2 sm:mt-3">
@@ -657,13 +658,13 @@ export default function KitDetail() {
                 </div>
               </div>
 
-              <p className="text-base sm:text-lg md:text-xl text-[#3D3229] leading-relaxed max-w-3xl">
+              <p className="text-base sm:text-lg md:text-xl text-foreground leading-relaxed max-w-3xl">
                 {kitDescription}
               </p>
 
               {/* SEO Description - Natural language text for search engines */}
               {seoData && (
-                <p className="text-sm sm:text-base text-[#6B5E50] leading-relaxed max-w-3xl mt-3 sm:mt-4 opacity-90">
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-3xl mt-3 sm:mt-4 opacity-90">
                   {lang === "cn" ? convert(seoData.seoDescriptionCn) : seoData.seoDescriptionEn}
                 </p>
               )}
@@ -705,7 +706,7 @@ export default function KitDetail() {
                     {i18n.kitDetail.viewOnLovevery[lang]}
                   </a>
                   {/* Subtle referral hint */}
-                  <p className="mt-2 flex items-center justify-start gap-1.5 text-[10px] sm:text-xs text-[#756A5C]/60 opacity-70">
+                  <p className="mt-2 flex items-center justify-start gap-1.5 text-[10px] sm:text-xs text-muted-foreground/60 opacity-70">
                     <Heart className="w-3 h-3 text-[#D4A574]/50" />
                     <span>
                       {t("通过此链接购买可享折扣，同时支持本站运营", "Using this link supports our site & gives you a discount")}
@@ -714,7 +715,7 @@ export default function KitDetail() {
                 </div>
               )}
 
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-10 mt-6 sm:mt-10 pt-6 sm:pt-8 border-t border-[#E8DFD3]/80">
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-10 mt-6 sm:mt-10 pt-6 sm:pt-8 border-t border-border/80">
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center"
@@ -723,13 +724,13 @@ export default function KitDetail() {
                     <Puzzle className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: kit.color }} />
                   </div>
                   <div>
-                    <p className="text-xl sm:text-2xl font-['Manrope'] text-[#3D3229]">
+                    <p className="text-xl sm:text-2xl font-['Manrope'] text-foreground">
                       {activeToys.length}
                     </p>
-                    <p className="text-[10px] sm:text-xs text-[#756A5C]">{i18n.kitDetail.toyCount[lang]}</p>
+                    <p className="text-[10px] sm:text-xs text-muted-foreground">{i18n.kitDetail.toyCount[lang]}</p>
                   </div>
                 </div>
-                <div className="w-px h-8 sm:h-10 bg-[#E8DFD3] hidden sm:block" />
+                <div className="w-px h-8 sm:h-10 bg-border hidden sm:block" />
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center"
@@ -738,13 +739,13 @@ export default function KitDetail() {
                     <Star className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: kit.color }} />
                   </div>
                   <div>
-                    <p className="text-xl sm:text-2xl font-['Manrope'] text-[#3D3229]">
+                    <p className="text-xl sm:text-2xl font-['Manrope'] text-foreground">
                       {kitAgeRange}
                     </p>
-                    <p className="text-[10px] sm:text-xs text-[#756A5C]">{i18n.kitDetail.ageLabel[lang]}</p>
+                    <p className="text-[10px] sm:text-xs text-muted-foreground">{i18n.kitDetail.ageLabel[lang]}</p>
                   </div>
                 </div>
-                <div className="w-px h-8 sm:h-10 bg-[#E8DFD3] hidden sm:block" />
+                <div className="w-px h-8 sm:h-10 bg-border hidden sm:block" />
                 <div className="w-full sm:w-auto mt-2 sm:mt-0">
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {categories.map((cat) => (
@@ -757,7 +758,7 @@ export default function KitDetail() {
                       </span>
                     ))}
                   </div>
-                  <p className="text-[10px] sm:text-xs text-[#756A5C] mt-1.5 sm:mt-2">{i18n.kitDetail.devAreas[lang]}</p>
+                  <p className="text-[10px] sm:text-xs text-muted-foreground mt-1.5 sm:mt-2">{i18n.kitDetail.devAreas[lang]}</p>
                 </div>
               </div>
 
@@ -767,7 +768,7 @@ export default function KitDetail() {
 
             {heroImage && (
               <div className="hidden md:block w-56 lg:w-72 shrink-0">
-                <div className="aspect-square rounded-2xl overflow-hidden bg-[#FAF7F2] border border-[#E8DFD3] shadow-xl shadow-[#3D3229]/8 ring-1 ring-black/5 p-4 hover:shadow-2xl transition-shadow duration-500">
+                <div className="aspect-square rounded-2xl overflow-hidden bg-background border border-border shadow-xl shadow-foreground/8 ring-1 ring-black/5 p-4 hover:shadow-2xl transition-shadow duration-500">
                   <img
                     src={getKitHeroOptimizedUrl(heroImage)}
                     alt={`${kit.name} Play Kit overview - toys and Amazon alternatives for ${kit.ageRangeEn || kit.ageRange}`}
@@ -795,11 +796,11 @@ export default function KitDetail() {
               >
                 <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4" style={{ color: kit.color }} />
               </div>
-              <h2 className="font-['Manrope'] text-xl sm:text-2xl md:text-3xl text-[#3D3229]">
+              <h2 className="font-['Manrope'] text-xl sm:text-2xl md:text-3xl text-foreground">
                 {i18n.kitDetail.toyList[lang]}
               </h2>
             </div>
-            <p className="text-xs sm:text-sm text-[#756A5C] ml-9 sm:ml-11">
+            <p className="text-xs sm:text-sm text-muted-foreground ml-9 sm:ml-11">
               {i18n.kitDetail.toyListDesc[lang]}
             </p>
           </div>
@@ -826,11 +827,11 @@ export default function KitDetail() {
           {discontinuedToys.length > 0 && (
             <div className="mt-8 sm:mt-12">
               <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center bg-[#F5E6D8]">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center bg-accent">
                   <AlertCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#A0845C]" />
                 </div>
                 <div>
-                  <h3 className="font-display text-base sm:text-lg text-[#6B5E50]">
+                  <h3 className="font-display text-base sm:text-lg text-muted-foreground">
                     {i18n.kitDetail.oldToys[lang]}
                   </h3>
                   <p className="text-[10px] sm:text-xs text-[#B0A89E]">
@@ -872,6 +873,7 @@ export default function KitDetail() {
                 alternatives={allKitAlts}
                 kitName={kit.name}
                 kitId={kit.id}
+                kitPrice={kit.price ?? 80}
               />
             </div>
           </section>
@@ -885,21 +887,21 @@ export default function KitDetail() {
       </section>
 
       {/* Navigation between kits */}
-      <section className="border-t border-[#E8DFD3] bg-gradient-to-b from-white to-[#FAF7F2]">
+      <section className="border-t border-border bg-gradient-to-b from-white to-background">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          <p className="text-center text-xs sm:text-sm text-[#756A5C] mb-4 sm:mb-6 font-medium">{i18n.kitDetail.exploreMore[lang]}</p>
+          <p className="text-center text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6 font-medium">{i18n.kitDetail.exploreMore[lang]}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {prevKit ? (
               <Link href={`/kit/${prevKit.id}/`}>
-                <div className="group p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-[#E8DFD3] hover:border-[#C8BFB3] bg-white hover:shadow-lg hover:shadow-[#3D3229]/5 transition-all duration-300 cursor-pointer active:scale-[0.98] min-h-[44px]">
-                  <p className="text-[10px] sm:text-xs text-[#756A5C] mb-1.5 sm:mb-2 flex items-center gap-1">
+                <div className="group p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-border hover:border-border bg-white hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300 cursor-pointer active:scale-[0.98] min-h-[44px]">
+                  <p className="text-[10px] sm:text-xs text-muted-foreground mb-1.5 sm:mb-2 flex items-center gap-1">
                     <ArrowLeft className="w-3 h-3 group-hover:-translate-x-0.5 transition-transform" />
                     {i18n.kitDetail.prevKit[lang]}
                   </p>
-                  <p className="font-display text-base sm:text-lg text-[#3D3229] group-hover:text-[#1a1108] transition-colors">
+                  <p className="font-display text-base sm:text-lg text-foreground group-hover:text-foreground transition-colors">
                     {prevKit.name}
                   </p>
-                  <p className="text-xs sm:text-sm text-[#756A5C] mt-0.5 sm:mt-1">
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">
                     {lang === "en" && prevKit.ageRangeEn ? prevKit.ageRangeEn : prevKit.ageRange}
                   </p>
                 </div>
@@ -909,15 +911,15 @@ export default function KitDetail() {
             )}
             {nextKit ? (
               <Link href={`/kit/${nextKit.id}/`}>
-                <div className="group p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-[#E8DFD3] hover:border-[#C8BFB3] bg-white hover:shadow-lg hover:shadow-[#3D3229]/5 transition-all duration-300 text-right cursor-pointer active:scale-[0.98] min-h-[44px]">
-                  <p className="text-[10px] sm:text-xs text-[#756A5C] mb-1.5 sm:mb-2 flex items-center justify-end gap-1">
+                <div className="group p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-border hover:border-border bg-white hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300 text-right cursor-pointer active:scale-[0.98] min-h-[44px]">
+                  <p className="text-[10px] sm:text-xs text-muted-foreground mb-1.5 sm:mb-2 flex items-center justify-end gap-1">
                     {i18n.kitDetail.nextKit[lang]}
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                   </p>
-                  <p className="font-display text-base sm:text-lg text-[#3D3229] group-hover:text-[#1a1108] transition-colors">
+                  <p className="font-display text-base sm:text-lg text-foreground group-hover:text-foreground transition-colors">
                     {nextKit.name}
                   </p>
-                  <p className="text-xs sm:text-sm text-[#756A5C] mt-0.5 sm:mt-1">
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">
                     {lang === "en" && nextKit.ageRangeEn ? nextKit.ageRangeEn : nextKit.ageRange}
                   </p>
                 </div>
@@ -930,7 +932,7 @@ export default function KitDetail() {
       </section>
 
       {/* Adjacent Age Groups — Internal Linking Network */}
-      <section className="border-t border-[#E8DFD3]/60 bg-[#FAF7F2]">
+      <section className="border-t border-border/60 bg-background">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AdjacentKitsSection currentKitId={kit.id} />
         </div>
@@ -945,7 +947,7 @@ export default function KitDetail() {
 
       {/* Share — elegant, subtle */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="border-t border-[#E8DFD3]/60">
+        <div className="border-t border-border/60">
           <ShareSection />
         </div>
       </div>
@@ -954,16 +956,7 @@ export default function KitDetail() {
       <BackToTop />
 
       {/* Footer */}
-      <footer className="relative bg-[#3D3229] text-white py-8 sm:py-12">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#7FB685]/40 to-transparent" />
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h3 data-logo-target className="font-display text-lg sm:text-xl mb-2 sm:mb-3 select-none">Lovevery</h3>
-          <p className="text-xs sm:text-sm text-[#9A8E82]">
-            {i18n.footer.tagline[lang]}
-          </p>
-          <div data-rainbow-portal className="mt-3 flex justify-center" />
-        </div>
-      </footer>
+      <Footer />
     </div>
     {lightboxOpen && allToyImages.length > 0 && (
       <Lightbox

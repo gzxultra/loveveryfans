@@ -130,24 +130,24 @@ export default function FloatingSubscribeBar() {
       className="fixed bottom-0 left-0 right-0 z-[60] animate-in slide-in-from-bottom duration-500"
     >
       {/* Subtle top shadow */}
-      <div className="h-px bg-gradient-to-r from-transparent via-[#7FB685]/30 to-transparent" />
-      <div className="bg-white/95 backdrop-blur-lg border-t border-[#E8DFD3]/80 shadow-[0_-4px_24px_rgba(61,50,41,0.08)]">
+      <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      <div className="bg-white/95 backdrop-blur-lg border-t border-border/80 shadow-[0_-4px_24px_rgba(61,50,41,0.08)]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 sm:py-3.5">
           <div className="flex items-center gap-3 sm:gap-4">
             {/* Icon */}
-            <div className="hidden sm:flex items-center justify-center w-9 h-9 rounded-xl bg-[#E8F5EC] shrink-0">
-              <Bell className="w-4.5 h-4.5 text-[#5a9e65]" />
+            <div className="hidden sm:flex items-center justify-center w-9 h-9 rounded-xl bg-secondary shrink-0">
+              <Bell className="w-4.5 h-4.5 text-primary" />
             </div>
 
             {/* Text */}
-            <p className="text-sm sm:text-[15px] text-[#3D3229] font-medium flex-shrink-0">
+            <p className="text-sm sm:text-[15px] text-foreground font-medium flex-shrink-0">
               {i18n.floatingBar.text[lang]}
             </p>
 
             {/* Action area */}
             <div className="flex-1 flex items-center justify-end gap-2 sm:gap-3">
               {subscribeState === "success" ? (
-                <div className="flex items-center gap-1.5 text-sm text-[#5a9e65] font-medium">
+                <div className="flex items-center gap-1.5 text-sm text-primary font-medium">
                   <CheckCircle className="w-4 h-4" />
                   {i18n.floatingBar.success[lang]}
                 </div>
@@ -163,10 +163,10 @@ export default function FloatingSubscribeBar() {
                         if (subscribeState === "error") setSubscribeState("idle");
                       }}
                       placeholder={i18n.floatingBar.placeholder[lang]}
-                      className={`w-full pl-8 pr-3 py-2 rounded-lg border text-sm text-[#3D3229] placeholder-[#9B8E7E] bg-white outline-none transition-all focus:ring-2 focus:ring-[#7FB685]/40 ${
+                      className={`w-full pl-8 pr-3 py-2 rounded-lg border text-sm text-foreground placeholder-[#9B8E7E] bg-white outline-none transition-all focus:ring-2 focus:ring-primary/40 ${
                         subscribeState === "error"
                           ? "border-red-300"
-                          : "border-[#E8DFD3] focus:border-[#7FB685]"
+                          : "border-border focus:border-primary"
                       }`}
                       disabled={subscribeState === "loading"}
                       autoFocus
@@ -176,7 +176,7 @@ export default function FloatingSubscribeBar() {
                   <button
                     type="submit"
                     disabled={subscribeState === "loading" || !email.trim()}
-                    className="px-4 py-2 rounded-lg bg-[#5a9e65] hover:bg-[#4a8e55] disabled:bg-[#A8D5B0] text-white text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-1.5"
+                    className="px-4 py-2 rounded-lg bg-primary hover:bg-primary disabled:bg-[#A8D5B0] text-white text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-1.5"
                   >
                     {subscribeState === "loading" ? (
                       <>
@@ -194,7 +194,7 @@ export default function FloatingSubscribeBar() {
                     setShowInput(true);
                     trackEvent("floating_bar_cta_click", {});
                   }}
-                  className="px-4 py-2 rounded-lg bg-[#5a9e65] hover:bg-[#4a8e55] text-white text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-1.5 hover:shadow-md hover:shadow-[#5a9e65]/20"
+                  className="px-4 py-2 rounded-lg bg-primary hover:bg-primary text-white text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-1.5 hover:shadow-md hover:shadow-primary/20"
                 >
                   <Bell className="w-3.5 h-3.5" />
                   {i18n.floatingBar.button[lang]}
@@ -204,7 +204,7 @@ export default function FloatingSubscribeBar() {
               {/* Close button */}
               <button
                 onClick={handleDismiss}
-                className="p-1.5 rounded-lg text-[#9B8E7E] hover:text-[#3D3229] hover:bg-[#F0EBE3] transition-all shrink-0"
+                className="p-1.5 rounded-lg text-[#9B8E7E] hover:text-foreground hover:bg-accent transition-all shrink-0"
                 aria-label={i18n.floatingBar.close[lang]}
                 data-testid="floating-bar-close"
               >

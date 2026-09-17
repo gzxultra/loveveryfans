@@ -89,7 +89,7 @@ export default function EmailSubscription() {
   return (
     <section className="relative py-12 sm:py-16 overflow-hidden">
       {/* Subtle background pattern */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#F0F9F2] via-[#F5F0EB] to-[#FAF7F2]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary to-background" />
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: "radial-gradient(circle at 1px 1px, #3D3229 1px, transparent 0)",
         backgroundSize: "24px 24px",
@@ -97,23 +97,23 @@ export default function EmailSubscription() {
 
       <div className="relative max-w-2xl mx-auto px-4 sm:px-6 text-center">
         {/* Icon */}
-        <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#E8F5EC] mb-5">
-          <Bell className="w-7 h-7 text-[#5a9e65]" />
+        <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-secondary mb-5">
+          <Bell className="w-7 h-7 text-primary" />
         </div>
 
         {/* Title */}
-        <h2 className="text-xl sm:text-2xl font-bold text-[#3D3229] mb-2">
+        <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
           {i18n.subscribe.title[lang]}
         </h2>
-        <p className="text-sm sm:text-base text-[#6B5E50] mb-6 max-w-lg mx-auto leading-relaxed">
+        <p className="text-sm sm:text-base text-muted-foreground mb-6 max-w-lg mx-auto leading-relaxed">
           {i18n.subscribe.subtitle[lang]}
         </p>
 
         {/* Form or Success state */}
         {state === "success" ? (
-          <div className="flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-[#E8F5EC] border border-[#A8D5B0] animate-in fade-in zoom-in-95 duration-300">
-            <CheckCircle className="w-5 h-5 text-[#5a9e65] shrink-0" />
-            <p className="text-sm font-medium text-[#2D5A35]">
+          <div className="flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-secondary border border-[#A8D5B0] animate-in fade-in zoom-in-95 duration-300">
+            <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+            <p className="text-sm font-medium text-primary">
               {i18n.subscribe.success[lang]}
             </p>
           </div>
@@ -129,10 +129,10 @@ export default function EmailSubscription() {
                   if (state === "error") setState("idle");
                 }}
                 placeholder={i18n.subscribe.placeholder[lang]}
-                className={`w-full pl-10 pr-4 py-3 rounded-xl border text-sm text-[#3D3229] placeholder-[#9B8E7E] bg-white/80 backdrop-blur-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[#7FB685]/40 ${
+                className={`w-full pl-10 pr-4 py-3 rounded-xl border text-sm text-foreground placeholder-[#9B8E7E] bg-white/80 backdrop-blur-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-primary/40 ${
                   state === "error"
                     ? "border-red-300 focus:border-red-400"
-                    : "border-[#E8DFD3] focus:border-[#7FB685]"
+                    : "border-border focus:border-primary"
                 }`}
                 disabled={state === "loading"}
                 aria-label={i18n.subscribe.placeholder[lang]}
@@ -141,7 +141,7 @@ export default function EmailSubscription() {
             <button
               type="submit"
               disabled={state === "loading" || !email.trim()}
-              className="px-6 py-3 rounded-xl bg-[#5a9e65] hover:bg-[#4a8e55] disabled:bg-[#A8D5B0] text-white text-sm font-semibold transition-all duration-200 hover:shadow-md hover:shadow-[#5a9e65]/20 active:scale-[0.98] flex items-center justify-center gap-2 whitespace-nowrap"
+              className="px-6 py-3 rounded-xl bg-primary hover:bg-primary disabled:bg-[#A8D5B0] text-white text-sm font-semibold transition-all duration-200 hover:shadow-md hover:shadow-primary/20 active:scale-[0.98] flex items-center justify-center gap-2 whitespace-nowrap"
             >
               {state === "loading" ? (
                 <>

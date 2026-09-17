@@ -85,7 +85,7 @@ function generateKitHtml(kitId) {
     <meta property="og:url" content="${pageUrl}" />
     <meta property="og:title" content="${seo.title}" />
     <meta property="og:description" content="${seo.desc}" />
-    <meta property="og:image" content="https://files.manuscdn.com/user_upload_by_module/session_file/310519663324967219/MNPxTRzCbxWVkhFf.jpg" />
+    <meta property="og:image" content="https://loveveryfans.com/hero.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Lovevery Fans" />
@@ -93,7 +93,7 @@ function generateKitHtml(kitId) {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${seo.title}" />
     <meta name="twitter:description" content="${seo.desc}" />
-    <meta name="twitter:image" content="https://files.manuscdn.com/user_upload_by_module/session_file/310519663324967219/MNPxTRzCbxWVkhFf.jpg" />
+    <meta name="twitter:image" content="https://loveveryfans.com/hero.jpg" />
     <meta name="theme-color" content="#FAF7F2" />
     ${assetTags}
     <script type="application/ld+json">
@@ -141,7 +141,7 @@ function generateAboutHtml() {
     <meta property="og:url" content="${pageUrl}" />
     <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${desc}" />
-    <meta property="og:image" content="https://files.manuscdn.com/user_upload_by_module/session_file/310519663324967219/MNPxTRzCbxWVkhFf.jpg" />
+    <meta property="og:image" content="https://loveveryfans.com/hero.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Lovevery Fans" />
@@ -149,7 +149,7 @@ function generateAboutHtml() {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${title}" />
     <meta name="twitter:description" content="${desc}" />
-    <meta name="twitter:image" content="https://files.manuscdn.com/user_upload_by_module/session_file/310519663324967219/MNPxTRzCbxWVkhFf.jpg" />
+    <meta name="twitter:image" content="https://loveveryfans.com/hero.jpg" />
     <meta name="theme-color" content="#FAF7F2" />
     ${assetTags}
     ${scriptTagsStr}
@@ -211,7 +211,7 @@ function generateBlogIndexHtml() {
     <meta property="og:url" content="${pageUrl}" />
     <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${desc}" />
-    <meta property="og:image" content="https://files.manuscdn.com/user_upload_by_module/session_file/310519663324967219/MNPxTRzCbxWVkhFf.jpg" />
+    <meta property="og:image" content="https://loveveryfans.com/hero.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Lovevery Fans" />
@@ -219,7 +219,7 @@ function generateBlogIndexHtml() {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${title}" />
     <meta name="twitter:description" content="${desc}" />
-    <meta name="twitter:image" content="https://files.manuscdn.com/user_upload_by_module/session_file/310519663324967219/MNPxTRzCbxWVkhFf.jpg" />
+    <meta name="twitter:image" content="https://loveveryfans.com/hero.jpg" />
     <meta name="theme-color" content="#FAF7F2" />
     ${assetTags}
     ${scriptTagsStr}
@@ -258,7 +258,7 @@ function generateBlogPostHtml(slug) {
     <meta property="og:url" content="${pageUrl}" />
     <meta property="og:title" content="${seo.title}" />
     <meta property="og:description" content="${seo.desc}" />
-    <meta property="og:image" content="https://files.manuscdn.com/user_upload_by_module/session_file/310519663324967219/MNPxTRzCbxWVkhFf.jpg" />
+    <meta property="og:image" content="https://loveveryfans.com/hero.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Lovevery Fans" />
@@ -267,7 +267,7 @@ function generateBlogPostHtml(slug) {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${seo.title}" />
     <meta name="twitter:description" content="${seo.desc}" />
-    <meta name="twitter:image" content="https://files.manuscdn.com/user_upload_by_module/session_file/310519663324967219/MNPxTRzCbxWVkhFf.jpg" />
+    <meta name="twitter:image" content="https://loveveryfans.com/hero.jpg" />
     <meta name="theme-color" content="#FAF7F2" />
     ${assetTags}
     <script type="application/ld+json">
@@ -336,7 +336,7 @@ function generateProductHtml(productId) {
     <meta property="og:url" content="${pageUrl}" />
     <meta property="og:title" content="${seo.title}" />
     <meta property="og:description" content="${seo.desc}" />
-    <meta property="og:image" content="https://files.manuscdn.com/user_upload_by_module/session_file/310519663324967219/MNPxTRzCbxWVkhFf.jpg" />
+    <meta property="og:image" content="https://loveveryfans.com/hero.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Lovevery Fans" />
@@ -344,7 +344,7 @@ function generateProductHtml(productId) {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${seo.title}" />
     <meta name="twitter:description" content="${seo.desc}" />
-    <meta name="twitter:image" content="https://files.manuscdn.com/user_upload_by_module/session_file/310519663324967219/MNPxTRzCbxWVkhFf.jpg" />
+    <meta name="twitter:image" content="https://loveveryfans.com/hero.jpg" />
     <meta name="theme-color" content="#FAF7F2" />
     ${assetTags}
     <script type="application/ld+json">

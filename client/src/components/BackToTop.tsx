@@ -4,8 +4,10 @@
  */
 import { useState, useEffect, useCallback } from "react";
 import { ArrowUp } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function BackToTop() {
+  const { t } = useLanguage();
   const [visible, setVisible] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -35,9 +37,9 @@ export default function BackToTop() {
   return (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-white/90 backdrop-blur-sm border border-[#E8DFD3] shadow-lg shadow-[#3D3229]/10 flex items-center justify-center hover:bg-white hover:shadow-xl hover:border-[#C8BFB3] transition-all duration-300 active:scale-95 group"
-      aria-label="Scroll to top"
-      title="Back to top"
+      className="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-white/90 backdrop-blur-sm border border-border shadow-lg shadow-foreground/10 flex items-center justify-center hover:bg-white hover:shadow-xl hover:border-border transition-all duration-300 active:scale-95 group"
+      aria-label={t("回到顶部", "Scroll to top")}
+      title={t("回到顶部", "Back to top")}
     >
       {/* Progress ring */}
       <svg
@@ -65,7 +67,7 @@ export default function BackToTop() {
           className="transition-[stroke-dashoffset] duration-150"
         />
       </svg>
-      <ArrowUp className="w-4 h-4 text-[#6B5E50] group-hover:text-[#3D3229] transition-colors relative z-10" />
+      <ArrowUp className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors relative z-10" />
     </button>
   );
 }

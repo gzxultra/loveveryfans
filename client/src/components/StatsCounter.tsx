@@ -107,21 +107,21 @@ function StatCard({
 
   return (
     <div
-      className="text-center p-4 sm:p-5 rounded-xl bg-white/60 border border-[#E8DFD3]/50 transition-all duration-500"
+      className="text-center p-4 sm:p-5 rounded-xl bg-white/60 border border-border/50 transition-all duration-500"
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transitionDelay: `${delay}ms`,
       }}
     >
-      <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#FAF7F2] text-[#7FB685] mb-2">
+      <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-background text-primary mb-2">
         {stat.icon}
       </div>
-      <div className="text-2xl sm:text-3xl font-bold text-[#3D3229] tabular-nums">
+      <div className="text-2xl sm:text-3xl font-bold text-foreground tabular-nums">
         {count}
         {stat.suffix}
       </div>
-      <div className="text-xs text-[#6B5E50] mt-1">
+      <div className="text-xs text-muted-foreground mt-1">
         {t(stat.label.cn, stat.label.en)}
       </div>
     </div>

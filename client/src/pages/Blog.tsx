@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, Clock, Calendar, Tag } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { blogPosts } from "@/data/blogPosts";
 import LanguageToggle from "@/components/LanguageToggle";
+import Footer from "@/components/Footer";
 import { useEffect } from "react";
 
 export default function Blog() {
@@ -24,14 +25,14 @@ export default function Blog() {
   }, [lang]);
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2]">
+    <div className="min-h-screen bg-background">
       {/* Nav */}
-      <nav className="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-lg border-b border-[#E8DFD3]/70">
+      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border/70 shadow-sm shadow-foreground/3">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-4">
           <Link href="/">
-            <span className="inline-flex items-center gap-2 text-sm text-[#756A5C] hover:text-[#3D3229] transition-colors group">
+            <span className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group">
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
-              <span className="font-display text-base sm:text-lg text-[#3D3229]">Lovevery Fans</span>
+              <span className="font-display text-base sm:text-lg text-foreground">Lovevery Fans</span>
             </span>
           </Link>
           <LanguageToggle />
@@ -39,16 +40,16 @@ export default function Blog() {
       </nav>
 
       {/* Header */}
-      <header className="py-12 sm:py-16 bg-gradient-to-b from-[#F5F0EB] to-[#FAF7F2]">
+      <header className="py-12 sm:py-16 bg-gradient-to-b from-secondary to-background">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 border bg-[#7FB685]/10 text-[#4a8a54] border-[#7FB685]/25">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 border bg-primary/10 text-primary border-primary/25">
             <Tag className="w-3.5 h-3.5" />
             {t("育儿指南", "Parenting Guide")}
           </div>
-          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl text-[#1a1108] mb-4 tracking-tight">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl text-foreground mb-4 tracking-tight">
             {t("育儿博客", "Parenting Blog")}
           </h1>
-          <p className="text-base sm:text-lg text-[#5A4E42] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             {t(
               "深度评测、省钱攻略、宝宝发展里程碑——帮助你做出更明智的育儿决策",
               "In-depth reviews, money-saving tips, and baby development guides to help you make smarter parenting decisions"
@@ -62,9 +63,9 @@ export default function Blog() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {blogPosts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}/`}>
-              <article className="group bg-white rounded-2xl border border-[#E8DFD3] hover:border-[#C8BFB3] hover:shadow-xl hover:shadow-[#3D3229]/10 transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden h-full flex flex-col">
+              <article className="group bg-white rounded-2xl border border-border hover:border-border hover:shadow-xl hover:shadow-foreground/10 transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden h-full flex flex-col">
                 {/* Color accent */}
-                <div className="h-1.5 w-full bg-gradient-to-r from-[#7FB685] to-[#7FB685]/40" />
+                <div className="h-1.5 w-full bg-gradient-to-r from-primary to-primary/40" />
 
                 <div className="p-5 sm:p-6 flex flex-col flex-1">
                   {/* Meta */}
@@ -83,12 +84,12 @@ export default function Blog() {
                   </div>
 
                   {/* Title */}
-                  <h2 className="font-display text-lg sm:text-xl text-[#1a1108] mb-2 group-hover:text-[#3D3229] transition-colors leading-snug">
+                  <h2 className="font-display text-lg sm:text-xl text-foreground mb-2 group-hover:text-foreground transition-colors leading-snug">
                     {lang === "cn" ? post.title : post.titleEn}
                   </h2>
 
                   {/* Excerpt */}
-                  <p className="text-sm text-[#5A4E42] leading-relaxed line-clamp-3 flex-1 mb-4">
+                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 flex-1 mb-4">
                     {lang === "cn" ? post.excerpt : post.excerptEn}
                   </p>
 
@@ -97,7 +98,7 @@ export default function Blog() {
                     {(lang === "cn" ? post.tags : post.tagsEn).slice(0, 3).map((tag) => (
                       <span
                         key={tag}
-                        className="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-[#7FB685]/10 text-[#4a8a54] border border-[#7FB685]/20"
+                        className="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-primary/10 text-primary border border-primary/20"
                       >
                         {tag}
                       </span>
@@ -105,7 +106,7 @@ export default function Blog() {
                   </div>
 
                   {/* Read more */}
-                  <span className="inline-flex items-center gap-1 text-sm font-medium text-[#5a9e65] group-hover:gap-2 transition-all">
+                  <span className="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
                     {t("阅读全文", "Read more")}
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                   </span>
@@ -118,7 +119,7 @@ export default function Blog() {
         {/* Back to home */}
         <div className="mt-12 sm:mt-16 text-center">
           <Link href="/">
-            <span className="inline-flex items-center gap-2 px-6 py-3 bg-[#3D3229] text-white rounded-full text-sm font-medium hover:bg-[#2A231C] transition-colors">
+            <span className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-white rounded-full text-sm font-medium hover:bg-foreground transition-colors">
               <ArrowLeft className="w-4 h-4" />
               {t("返回 Kit 指南", "Back to Kit Guide")}
             </span>
@@ -127,16 +128,7 @@ export default function Blog() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#3D3229] text-white py-8 mt-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm text-[#9A8E82]">
-            {t(
-              "© 2026 Lovevery Fans · 独立粉丝网站，与 Lovevery Inc. 无关",
-              "© 2026 Lovevery Fans · Independent fan site, not affiliated with Lovevery Inc."
-            )}
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

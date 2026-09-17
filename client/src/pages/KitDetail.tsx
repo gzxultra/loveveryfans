@@ -405,7 +405,7 @@ function ReferralCard({ kitId, kitColor }: { kitId: string; kitColor: string }) 
               href={referralUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-foreground rounded-full text-sm font-medium border border-border hover:bg-secondary transition-all duration-300 active:scale-[0.98] min-h-[48px]"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-card text-card-foreground rounded-full text-sm font-medium border border-border hover:bg-secondary transition-all duration-300 active:scale-[0.98] min-h-[48px]"
               onClick={() => {
                 trackEvent("lovevery_referral_click", {
                   kit_name: kitId,

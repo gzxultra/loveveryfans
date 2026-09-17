@@ -587,19 +587,6 @@
         "toyNameCn": "宝物篮",
         "alternatives": [
           {
-            "name": "Montessori Toys for Babies 6-12 Months 6 in 1 Learning Educational Toys Set",
-            "asin": "B0D1QS7SW6",
-            "price": "$45.99",
-            "rating": 4.3,
-            "reviewCount": 29,
-            "imageUrl": "https://m.media-amazon.com/images/I/71BJAcaTYCL.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B0D1QS7SW6?tag=loveveryfans-20",
-            "reasonEn": "This 6-in-1 set provides a variety of objects and activities for sensory exploration, similar to a treasure basket. It includes an object permanence box, sensory ball, and other items that promote fine motor skills and cognitive development.",
-            "reasonCn": "这套6合1玩具套装提供了多种物品和活动，可用于感官探索，类似于宝物篮。它包括一个物体永久性盒子、一个感官球和其他可以促进精细运动技能和认知发展的物品。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          },
-          {
             "name": "Tiny Land Montessori Toy Set for Babies 7-9 Months",
             "asin": "B0BVRCJJS1",
             "price": "$45.59",
@@ -648,19 +635,6 @@
             "reasonEn": "2 sets of 6 sealed wooden cylinders that make a distinctive sound when shaken. The cylinders are graded from very soft to loud.",
             "reasonCn": "2套6个密封的木制圆筒，摇晃时会发出独特的声音。圆筒的声音从非常柔和到响亮分级。",
             "availability": "unavailable",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          },
-          {
-            "name": "Elite Montessori Sound Boxes",
-            "asin": "B00784HJRS",
-            "price": "$29.99",
-            "rating": 4.2,
-            "reviewCount": 31,
-            "imageUrl": "https://m.media-amazon.com/images/I/519bWwkQkJL.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B00784HJRS?tag=loveveryfans-20",
-            "reasonEn": "The cylinders are graded from very soft to loud and each cylinder has either a red or a blue top and is contained in a wooden box with a matching red or blue lid.",
-            "reasonCn": "圆筒的声音从非常柔和到响亮分级，每个圆筒都有一个红色或蓝色的顶部，并装在一个带有匹配的红色或蓝色盖子的木箱中。",
-            "availability": "in_stock",
             "lastChecked": "2026-09-17T04:27:56Z"
           }
         ]
@@ -830,21 +804,7 @@
       {
         "toyName": "Organic Cotton Baby Doll",
         "toyNameCn": "有机棉宝宝玩偶",
-        "alternatives": [
-          {
-            "name": "Apple Park Kids 12.5\" Soft Baby Doll | Non-Toxic, Corn-Fiber Filled, Hypoallergenic, 100% Organic Cotton",
-            "asin": "B0FPMX175Q",
-            "price": "$55.00",
-            "rating": 4.0,
-            "reviewCount": 1,
-            "imageUrl": "https://m.media-amazon.com/images/I/816qeNjs3fL.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B0FPMX175Q?tag=loveveryfans-20",
-            "reasonEn": "This is a good alternative because it is made of organic cotton, is hypoallergenic, and has a high rating.",
-            "reasonCn": "这是一个很好的替代品，因为它由有机棉制成，具有低过敏性，并且评分很高。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          }
-        ]
+        "alternatives": []
       },
       {
         "toyName": "Wooden Peg Drop",
@@ -946,21 +906,7 @@
       {
         "toyName": "Bunnies in a Felt Burrow",
         "toyNameCn": "毛毡洞穴里的小兔子",
-        "alternatives": [
-          {
-            "name": "Adena Montessori Coin Box,Object Permanence Box Toys",
-            "asin": "B08RZ26NCR",
-            "price": "$16.92",
-            "rating": 4.7,
-            "reviewCount": 623,
-            "imageUrl": "https://m.media-amazon.com/images/I/61zymp0iI2L.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B08RZ26NCR?tag=loveveryfans-20",
-            "reasonEn": "This is a good alternative because it also features a house with multiple animals that can be taken in and out, promoting similar skills.",
-            "reasonCn": "这是一个很好的替代品，因为它也有一个可以把动物放进去拿出来的房子，可以锻炼类似的技能。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          }
-        ]
+        "alternatives": []
       },
       {
         "toyName": "Wooden Stack & Slot",
@@ -1003,39 +949,12 @@
       {
         "toyName": "Wooden Coin Bank Set",
         "toyNameCn": "木质投币盒套装",
-        "alternatives": [
-          {
-            "name": "Panda Brothers Montessori Screwdriver Board Set",
-            "asin": "B08HPPBNTC",
-            "price": "$17.95",
-            "rating": 4.7,
-            "reviewCount": 1929,
-            "imageUrl": "https://m.media-amazon.com/images/I/81u+9lUQ5cL.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B08HPPBNTC?tag=loveveryfans-20",
-            "reasonEn": "This is a great alternative as it includes a coin box, carrot harvesting, and a matchstick drop game, covering all the play patterns of the Lovevery toy.",
-            "reasonCn": "这是一个很棒的替代品，因为它包括一个投币盒、胡萝卜收获和火柴棒掉落游戏，涵盖了Lovevery玩具的所有玩法。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          }
-        ]
+        "alternatives": []
       },
       {
         "toyName": "Coin Lid & Coins",
         "toyNameCn": "硬币盖和硬币",
         "alternatives": [
-          {
-            "name": "TOOKYLAND Peg Board Toddler Toys, Counting Wooden Manipulatives Montessori Kindergarten Activities",
-            "asin": "B0BWH2WM54",
-            "price": "$23.99",
-            "rating": 4.4,
-            "reviewCount": 202,
-            "imageUrl": "https://m.media-amazon.com/images/I/71hl8tBJ1zL.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B0BWH2WM54?tag=loveveryfans-20",
-            "reasonEn": "This is a classic Montessori toy that directly replaces the Lovevery Coin Lid & Coins. It helps develop hand-eye coordination and object permanence.",
-            "reasonCn": "这是一款经典的蒙特梭利玩具，可直接替代Lovevery硬币盖和硬币。它有助于发展手眼协调能力和物体永久性。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          },
           {
             "name": "5-in-1 Wooden Play Kit Montessori Toy",
             "asin": "B0DHGC3313",
@@ -1059,21 +978,7 @@
       {
         "toyName": "Posting Lid & Trees",
         "toyNameCn": "插入盖和小树",
-        "alternatives": [
-          {
-            "name": "Panda Brothers Montessori Screwdriver Board Set",
-            "asin": "B08HPPBNTC",
-            "price": "$17.95",
-            "rating": 4.7,
-            "reviewCount": 1929,
-            "imageUrl": "https://m.media-amazon.com/images/I/81u+9lUQ5cL.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B08HPPBNTC?tag=loveveryfans-20",
-            "reasonEn": "A 3-in-1 Montessori play kit that includes posting activities with different shaped lids. Widely recommended as a Lovevery Babbler Kit alternative by parenting blogs.",
-            "reasonCn": "3合1蒙氏玩具套装，包含不同形状盖子的投放活动。被育儿博客广泛推荐为Lovevery Babbler Kit的平替。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          }
-        ]
+        "alternatives": []
       },
       {
         "toyName": "'Bedtime for Zoe' Board Book",
@@ -1563,47 +1468,7 @@
       {
         "toyName": "Felt Flowers in a Row",
         "toyNameCn": "毛毡排排花",
-        "alternatives": [
-          {
-            "name": "Melissa & Doug Deluxe Wooden Stamp Set: Animals - 30 Stamps, 6 Markers, 2 Stamp Pads",
-            "asin": "B0040B1JYQ",
-            "price": "$21.99",
-            "rating": 4.8,
-            "reviewCount": 5952,
-            "imageUrl": "https://m.media-amazon.com/images/I/81SGIpdzOlL.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B0040B1JYQ?tag=loveveryfans-20",
-            "reasonEn": "This flower garden building toy, while not a threading toy, also exercises a baby's fine motor skills and hand-eye coordination. It is brightly colored and has a cute shape, which can stimulate a baby's creativity and imagination.",
-            "reasonCn": "这款花朵花园拼搭玩具虽然不是穿线玩具，但同样可以锻炼宝宝的精细动作和手眼协调能力。它色彩鲜艳，造型可爱，可以激发宝宝的创造力和想象力。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          },
-          {
-            "name": "Fisher-Price Wood Montessori Toy Rockin' Balance Board",
-            "asin": "B0DLH9923F",
-            "price": "$64.99",
-            "rating": 4.7,
-            "reviewCount": 242,
-            "imageUrl": "https://m.media-amazon.com/images/I/81qGZnOYEnL.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B0DLH9923F?tag=loveveryfans-20",
-            "reasonEn": "This non-woven flower lacing toy is very suitable for babies around 2 years old. It can help babies practice threading movements and exercise hand-eye coordination and concentration. At the same time, the shape of the flower can also attract the baby's interest.",
-            "reasonCn": "这款无纺布花朵穿线玩具非常适合2岁左右的宝宝。它可以帮助宝宝练习穿线动作，锻炼手眼协调能力和专注力。同时，花朵的造型也能吸引宝宝的兴趣。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          },
-          {
-            "name": "Mentari Toys - Garden Threading Beads",
-            "asin": "B0D13XY996",
-            "price": "$16.99",
-            "rating": 4.0,
-            "reviewCount": 1,
-            "imageUrl": "https://m.media-amazon.com/images/I/61qQSU-IfaL.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B0D13XY996?tag=loveveryfans-20",
-            "reasonEn": "This wooden garden threading bead toy contains various shapes such as flowers, leaves, and animals, which can attract a baby's attention. It can help babies learn shapes and colors while exercising fine motor skills and hand-eye coordination.",
-            "reasonCn": "这款木制花园穿线珠子玩具包含花朵、叶子和动物等多种形状，可以吸引宝宝的注意力。它可以帮助宝宝学习形状和颜色，同时锻炼精细动作和手眼协调能力。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          }
-        ]
+        "alternatives": []
       },
       {
         "toyName": "Double-Sided Sunny Day Puzzle",
@@ -1658,21 +1523,7 @@
       {
         "toyName": "Every Which Weigh Scale & Pails",
         "toyNameCn": "万向称重天平和小桶",
-        "alternatives": [
-          {
-            "name": "ibasenice Wooden Balance Scale Toy Set for Kids - Educational Math Balance Beam with Pan Scale - Stem Learning Toy for Preschoolers and Toddlers",
-            "asin": "B0BLLKRQ6L",
-            "price": "$28.19",
-            "rating": 4.1,
-            "reviewCount": 15,
-            "imageUrl": "https://m.media-amazon.com/images/I/71uPmmLL1HL.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B0BLLKRQ6L?tag=loveveryfans-20",
-            "reasonEn": "This wooden balance scale is a great educational toy for teaching concepts of weight and balance. It's a good alternative to the plastic Lovevery scale, offering a more natural material.",
-            "reasonCn": "这款木制天平是一款很棒的教育玩具，用于教授重量和平衡的概念。它是塑料Lovevery天平的一个很好的替代品，提供了更天然的材料。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          }
-        ]
+        "alternatives": []
       },
       {
         "toyName": "Pinkies Up Picnic Set",
@@ -1807,21 +1658,7 @@
       {
         "toyName": "Jump-In Hoops & Bean Bags",
         "toyNameCn": "跳圈圈和沙包",
-        "alternatives": [
-          {
-            "name": "2-In-1 Hopscotch & Bean Bag Toss",
-            "asin": "B0G4QWKBG4",
-            "price": "$16.19",
-            "rating": 3.1,
-            "reviewCount": 3,
-            "imageUrl": "https://m.media-amazon.com/images/I/61llD+AH67L.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B0G4QWKBG4?tag=loveveryfans-20",
-            "reasonEn": "This versatile game combines hopscotch and bean bag toss, offering multiple ways to play and promoting active, gross motor skills. It's a great alternative for indoor or outdoor fun.",
-            "reasonCn": "这款多功能游戏结合了跳房子和扔沙包，提供多种玩法，促进活跃的大肌肉运动技能。这是室内或室外娱乐的绝佳选择。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          }
-        ]
+        "alternatives": []
       },
       {
         "toyName": "'The Play Date' Board Book",
@@ -2515,21 +2352,7 @@
       {
         "toyName": "Montessori Language Objects",
         "toyNameCn": "蒙氏语言教具",
-        "alternatives": [
-          {
-            "name": "Montessori Language Materials Objects with Similar Cards",
-            "asin": "B0C9Y311W8",
-            "price": "$25.99",
-            "rating": 4.1,
-            "reviewCount": 10,
-            "imageUrl": "https://m.media-amazon.com/images/I/71HZU4KkZ7L.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B0C9Y311W8?tag=loveveryfans-20",
-            "reasonEn": "A set of miniature objects and matching cards to build vocabulary and language skills.",
-            "reasonCn": "一套微型物体和匹配卡片，用于建立词汇和语言技能。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          }
-        ]
+        "alternatives": []
       },
       {
         "toyName": "Path Builder Marble Maze",
@@ -3055,22 +2878,7 @@
       {
         "toyName": "Storage Box with Ramp",
         "toyNameCn": "收纳盒带斜坡",
-        "alternatives": [
-          {
-            "name": "Melissa & Doug Deluxe Wooden Multi-Activity Play Table for Playroom",
-            "asin": "B000IMQ40U",
-            "price": "$149.79",
-            "rating": 4.2,
-            "reviewCount": 2274,
-            "reasonEn": "This multi-activity table doubles as storage, similar to how the Lovevery storage box serves as both organizer and play ramp. Great for block play organization.",
-            "reasonCn": "这款多功能活动桌兼具收纳功能，类似于Lovevery收纳箱既是整理工具又是游戏斜坡的设计。非常适合积木游戏的整理。",
-            "amazonUrl": "https://www.amazon.com/dp/B000IMQ40U?tag=loveveryfans-20",
-            "imageUrl": null,
-            "description": "Versatile wooden play table with removable top, storage compartments, and ramp features. Perfect for organizing blocks and creating multi-level building play.",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          }
-        ]
+        "alternatives": []
       }
     ]
   },

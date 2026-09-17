@@ -1334,19 +1334,6 @@
             "reasonCn": "一个很好的工具，用于发展钳形抓握和精细运动技能，这是原来Lovevery玩具的一个关键组成部分。",
             "availability": "in_stock",
             "lastChecked": "2026-09-17T04:27:56Z"
-          },
-          {
-            "name": "Glaciart One Rainbow Felted Stars",
-            "asin": "B0CYK34ZTF",
-            "price": "$13.73",
-            "rating": 4.7,
-            "reviewCount": 36,
-            "imageUrl": "https://m.media-amazon.com/images/I/712QXzuF7EL.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B0CYK34ZTF?tag=loveveryfans-20",
-            "reasonEn": "A set of colorful felt stars, similar to the ones in the Lovevery kit, perfect for sorting and other activities.",
-            "reasonCn": "一套彩色毛毡星星，类似于Lovevery套件中的星星，非常适合分类和其他活动。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
           }
         ]
       },
@@ -2032,21 +2019,7 @@
       {
         "toyName": "Size It Up Measuring Tape",
         "toyNameCn": "我会量尺寸卷尺",
-        "alternatives": [
-          {
-            "name": "Learning Resources Simple Tape Measure",
-            "asin": "B00004WK2A",
-            "price": "$15.44",
-            "rating": 5.0,
-            "reviewCount": 1,
-            "imageUrl": "https://m.media-amazon.com/images/I/01RmK+J4pJL.gif",
-            "amazonUrl": "https://www.amazon.com/dp/B00004WK2A?tag=loveveryfans-20",
-            "reasonEn": "A simple and durable measuring tape designed for kids, perfect for little hands.",
-            "reasonCn": "一款专为儿童设计的简单耐用的卷尺，非常适合小手使用。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          }
-        ]
+        "alternatives": []
       },
       {
         "toyName": "Wooden Wobble Puzzle",
@@ -2460,21 +2433,7 @@
       {
         "toyName": "Calming Circle",
         "toyNameCn": "平静小圈",
-        "alternatives": [
-          {
-            "name": "Lenwen 10 Piece Mat Discs Stepping Circles Pads Textured Tactile Toys Stimulation for Calming Play and Early Learning Kids Matching Game, Candy Color",
-            "asin": "B0C3B34QPL",
-            "price": "$31.99",
-            "rating": 4.7,
-            "reviewCount": 56,
-            "imageUrl": "https://m.media-amazon.com/images/I/71q8RgHjTdL.jpg",
-            "amazonUrl": "https://www.amazon.com/dp/B0C3B34QPL?tag=loveveryfans-20",
-            "reasonEn": "A set of textured sensory discs that can be used for calming activities.",
-            "reasonCn": "一套有纹理的感官盘，可用于镇静活动。",
-            "availability": "in_stock",
-            "lastChecked": "2026-09-17T04:27:56Z"
-          }
-        ]
+        "alternatives": []
       },
       {
         "toyName": "Breathing Activities Guide",

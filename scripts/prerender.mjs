@@ -390,6 +390,23 @@ fs.writeFileSync(path.join(aboutDir, 'index.html'), generateAboutHtml());
 count++;
 console.log(`  ✓ /about/index.html`);
 
+// Generate compare page (client route /compare linked from Home)
+function generateCompareHtml() {
+  const pageUrl = `${SITE_URL}/compare/`;
+  const title = "Compare Lovevery Play Kits | Lovevery Fans";
+  const desc = "Side-by-side comparison of Lovevery Play Kits by age, price, and toys — find the right kit for your baby's stage.";
+  return generateAboutHtml()
+    .split(`${SITE_URL}/about/`).join(pageUrl)
+    .split("About Us | Lovevery Fans").join(title)
+    .split("About Lovevery Fans").join("Compare Lovevery Play Kits")
+    .split("Learn about the story behind Lovevery Fans — an independent, ad-free community guide built by parents for parents. Not affiliated with Lovevery Inc.").join(desc);
+}
+const compareDir = path.join(DIST_DIR, 'compare');
+fs.mkdirSync(compareDir, { recursive: true });
+fs.writeFileSync(path.join(compareDir, 'index.html'), generateCompareHtml());
+count++;
+console.log(`  ✓ /compare/index.html`);
+
 // Generate standalone product pages
 for (const productId of PRODUCT_IDS) {
   const dir = path.join(DIST_DIR, 'product', productId);

@@ -13,12 +13,14 @@ import type { Alternative } from "@/data/alternatives";
 export type AvailabilityStatus =
   | "in_stock"
   | "out_of_stock"
+  | "unavailable"
   | "discontinued"
   | "unknown";
 
 const AVAILABILITY_MAP: Record<AvailabilityStatus, string> = {
   in_stock: "https://schema.org/InStock",
   out_of_stock: "https://schema.org/OutOfStock",
+  unavailable: "https://schema.org/OutOfStock",
   discontinued: "https://schema.org/Discontinued",
   unknown: "https://schema.org/PreOrder",
 };
@@ -127,7 +129,14 @@ export function injectProductSchemas(
   for (const alt of alternatives) {
     if (!alt.price && !alt.rating) continue; // Skip if no useful data
 
-    const schema = buildProductSchema(alt, toyName);
+    const normalizedAvailability: AvailabilityStatus =
+      alt.availability === "in_stock" ||
+      alt.availability === "out_of_stock" ||
+      alt.availability === "unavailable" ||
+      alt.availability === "discontinued"
+        ? alt.availability
+        : "unknown";
+    const schema = buildProductSchema(alt, toyName, normalizedAvailability);
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.setAttribute("data-product-schema", containerId);

@@ -228,26 +228,40 @@ export function AlternativesSection({
                 </p>
 
                 {/* Buy Button */}
-                <a
-                  href={ensureAffiliateTag(alt.amazonUrl)}
-                  target="_blank"
-                  rel="noopener noreferrer sponsored"
-                  aria-label={`Buy ${alt.name} on Amazon${alt.price ? ` for ${formatPrice(alt.price, "en", (s) => s)}` : ""}`}
-                  onClick={() => {
-                    trackEvent("click_amazon_link", {
-                      product_name: alt.name,
-                      asin: alt.asin,
-                      price: alt.price || "N/A",
-                      kit_name: kitName || "Unknown",
-                      toy_name: toyName,
-                      page_url: typeof window !== "undefined" ? window.location.href : "",
-                    });
-                  }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg bg-[#FF9900] hover:bg-[#E88B00] text-white text-[11px] sm:text-xs font-medium transition-all duration-200 hover:shadow-md hover:shadow-[#FF9900]/20 active:scale-[0.98] min-h-[36px]"
-                >
-                  {t("去 Amazon 购买", "Buy on Amazon")}
-                  <ExternalLink className="w-3 h-3 opacity-80" aria-hidden="true" />
-                </a>
+                {/* Buy Button / Unavailable badge */}
+                {alt.availability === "unavailable" ||
+                alt.availability === "out_of_stock" ? (
+                  <span
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg bg-[#F0EBE3] text-[#8A7B6C] text-[11px] sm:text-xs font-medium min-h-[36px]"
+                    aria-label={t(
+                      "该商品暂时无货",
+                      "This item is currently unavailable"
+                    )}
+                  >
+                    {t("暂时无货", "Currently unavailable")}
+                  </span>
+                ) : (
+                  <a
+                    href={ensureAffiliateTag(alt.amazonUrl)}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                    aria-label={`Buy ${alt.name} on Amazon${alt.price ? ` for ${formatPrice(alt.price, "en", (s) => s)}` : ""}`}
+                    onClick={() => {
+                      trackEvent("click_amazon_link", {
+                        product_name: alt.name,
+                        asin: alt.asin,
+                        price: alt.price || "N/A",
+                        kit_name: kitName || "Unknown",
+                        toy_name: toyName,
+                        page_url: typeof window !== "undefined" ? window.location.href : "",
+                      });
+                    }}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg bg-[#FF9900] hover:bg-[#E88B00] text-white text-[11px] sm:text-xs font-medium transition-all duration-200 hover:shadow-md hover:shadow-[#FF9900]/20 active:scale-[0.98] min-h-[36px]"
+                  >
+                    {t("去 Amazon 购买", "Buy on Amazon")}
+                    <ExternalLink className="w-3 h-3 opacity-80" aria-hidden="true" />
+                  </a>
+                )}
               </div>
             </div>
           </div>

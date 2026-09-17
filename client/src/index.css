@@ -79,6 +79,18 @@
   --chart-3: oklch(0.6 0.15 260);
   --chart-4: oklch(0.7 0.15 30);
   --chart-5: oklch(0.65 0.12 330);
+  /* FeedbackForm cards: soft pastel gradients (light) / deep warm tones (dark) */
+  --feedback-success-bg: linear-gradient(135deg, #F0FFF4 0%, #E8F5E9 100%);
+  --feedback-success-border: #C8E6C9;
+  --feedback-error-bg: linear-gradient(135deg, #FFF5F5 0%, #FEE2E2 100%);
+  --feedback-error-border: #FECACA;
+  --feedback-form-bg: linear-gradient(135deg, #FFF8F2 0%, #FFF3F8 50%, #F5F8FF 100%);
+  --feedback-form-border: #EDE5DC;
+  /* AgeMatcher slider track/fill */
+  --slider-fill: #7FB685;
+  --slider-track: #E8DFD3;
+  /* Decorative dot pattern */
+  --dot-color: #3D3229;
   color-scheme: light;
 }
 
@@ -117,6 +129,18 @@
   --chart-3: oklch(0.65 0.14 260);
   --chart-4: oklch(0.72 0.14 30);
   --chart-5: oklch(0.68 0.12 330);
+  /* FeedbackForm cards: soft pastel gradients (light) / deep warm tones (dark) */
+  --feedback-success-bg: linear-gradient(135deg, #1F3126 0%, #1A2A21 100%);
+  --feedback-success-border: #33523D;
+  --feedback-error-bg: linear-gradient(135deg, #322323 0%, #2A1F1F 100%);
+  --feedback-error-border: #5C3B3B;
+  --feedback-form-bg: linear-gradient(135deg, #2A2420 0%, #272123 50%, #22252A 100%);
+  --feedback-form-border: #3E3830;
+  /* AgeMatcher slider track/fill */
+  --slider-fill: #8CC79A;
+  --slider-track: #3A352C;
+  /* Decorative dot pattern */
+  --dot-color: #E8DFD3;
   color-scheme: dark;
 }
 

@@ -1,61 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
-  <title>Page Not Found | Lovevery Fans</title>
+  <title>404 · 页面未找到 | Lovevery Fans</title>
   <meta name="robots" content="noindex, nofollow" />
-  <meta name="theme-color" content="#FAF7F2" />
+  <meta name="theme-color" content="#FAF8F3" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#38302A" media="(prefers-color-scheme: dark)" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      color-scheme: light dark;
+      --bg: #FAF8F3;
+      --fg: #3D3229;
+      --muted: #8A7D6E;
+      --accent: #5F9E6E;
+      --accent-hover: #527F5D;
+      --card: #FFFFFF;
+      --ring: rgba(95, 158, 110, 0.18);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #242019;
+        --fg: #EDE6DA;
+        --muted: #A79A88;
+        --accent: #7FB98A;
+        --accent-hover: #93C79E;
+        --card: #2E2820;
+        --ring: rgba(127, 185, 138, 0.22);
+      }
+    }
     body {
-      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
-      background-color: #FAF7F2;
-      color: #5C4B3A;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--fg);
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 24px 16px;
     }
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 40px 20px;
+    .card {
+      max-width: 480px;
+      width: 100%;
+      background: var(--card);
+      border-radius: 20px;
+      padding: 48px 36px;
       text-align: center;
+      box-shadow: 0 8px 32px var(--ring), 0 2px 8px rgba(61, 50, 41, 0.04);
+    }
+    .code {
+      font-family: 'Manrope', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+      font-size: 4.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 12px;
     }
     h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      color: #3D2E1F;
+      font-family: 'Manrope', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .en {
+      font-size: 0.95rem;
+      color: var(--muted);
       margin-bottom: 16px;
     }
     p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 24px;
-      color: #7A6B5A;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 28px;
     }
     a {
       display: inline-block;
       padding: 12px 32px;
-      background-color: #7FB685;
-      color: white;
+      background-color: var(--accent);
+      color: #fff;
       text-decoration: none;
-      border-radius: 8px;
-      font-weight: 500;
-      transition: background-color 0.2s;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background-color 0.2s, transform 0.15s;
     }
-    a:hover { background-color: #6BA073; }
+    a:hover { background-color: var(--accent-hover); }
+    a:active { transform: scale(0.97); }
+    .brand {
+      margin-top: 24px;
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="container">
-    <h1>Page Not Found</h1>
-    <p>Sorry, the page you are looking for does not exist or may have been moved. Explore our complete guide to all 22 Lovevery Play Kits on the homepage.</p>
-    <a href="/">← Back to Homepage</a>
-  </div>
+  <main class="card">
+    <div class="code">404</div>
+    <h1>页面未找到</h1>
+    <div class="en">Page Not Found</div>
+    <p>抱歉，您访问的页面不存在或已被移动。<br />Sorry, the page you are looking for doesn't exist or has been moved.</p>
+    <a href="/">← 返回首页 · Back to Home</a>
+    <div class="brand">Lovevery Fans</div>
+  </main>
 </body>
 </html>

@@ -51,8 +51,8 @@ export default function BackToTop() {
           cy="22"
           r="18"
           fill="none"
-          stroke="#E8DFD3"
           strokeWidth="2"
+          className="stroke-[#E8DFD3] dark:stroke-[#3A352C]"
         />
         <circle
           cx="22"

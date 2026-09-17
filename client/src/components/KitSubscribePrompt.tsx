@@ -118,7 +118,7 @@ export default function KitSubscribePrompt({ kitId, kitColor }: KitSubscribeProm
             </div>
             <form onSubmit={handleSubmit} className="flex items-center gap-2">
               <div className="relative flex-1">
-                <Mail className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#9B8E7E] pointer-events-none" />
+                <Mail className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#9B8E7E] dark:text-muted-foreground pointer-events-none" />
                 <input
                   type="email"
                   value={email}
@@ -127,9 +127,9 @@ export default function KitSubscribePrompt({ kitId, kitColor }: KitSubscribeProm
                     if (subscribeState === "error") setSubscribeState("idle");
                   }}
                   placeholder={i18n.kitSubscribePrompt.placeholder[lang]}
-                  className={`w-full pl-8 pr-3 py-2 rounded-lg border text-sm text-foreground placeholder-[#9B8E7E] bg-white outline-none transition-all focus:ring-2 focus:ring-primary/40 ${
+                  className={`w-full pl-8 pr-3 py-2 rounded-lg border text-sm text-foreground placeholder-[#9B8E7E] dark:placeholder:text-muted-foreground bg-white dark:bg-white/10 outline-none transition-all focus:ring-2 focus:ring-primary/40 ${
                     subscribeState === "error"
-                      ? "border-red-300"
+                      ? "border-red-300 dark:border-red-500/60"
                       : "border-border focus:border-primary"
                   }`}
                   disabled={subscribeState === "loading"}

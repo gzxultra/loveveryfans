@@ -4,8 +4,10 @@
  */
 import { useState, useEffect, useCallback } from "react";
 import { ArrowUp } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function ScrollToTop() {
+  const { t } = useLanguage();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -26,8 +28,8 @@ export default function ScrollToTop() {
     <button
       onClick={scrollToTop}
       className="fixed bottom-6 right-6 z-40 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-foreground text-white shadow-lg shadow-foreground/20 flex items-center justify-center hover:bg-foreground hover:shadow-xl transition-all duration-300 active:scale-90 opacity-90 hover:opacity-100"
-      aria-label="Scroll to top"
-      title="Back to top"
+      aria-label={t("滚动到顶部", "Scroll to top")}
+      title={t("回到顶部", "Back to top")}
     >
       <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5" />
     </button>

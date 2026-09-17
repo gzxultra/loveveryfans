@@ -198,14 +198,14 @@ export function SavingsCalculator({
               key={alt.asin}
               className={`flex items-center gap-3 p-2.5 rounded-lg cursor-pointer transition-all duration-150 ${
                 isChecked
-                  ? "bg-secondary border border-[#A8D5B0]"
-                  : "bg-white border border-border hover:border-[#A8D5B0]"
+                  ? "bg-secondary border border-[#A8D5B0] dark:border-[#5E8A68]"
+                  : "bg-white dark:bg-card border border-border hover:border-[#A8D5B0] dark:hover:border-[#5E8A68]"
               }`}
             >
               {/* Checkbox */}
               <div
                 className={`w-5 h-5 rounded flex items-center justify-center shrink-0 transition-colors ${
-                  isChecked ? "bg-primary" : "bg-white border-2 border-border"
+                  isChecked ? "bg-primary" : "bg-white dark:bg-card border-2 border-border"
                 }`}
                 aria-hidden="true"
               >
@@ -227,7 +227,7 @@ export function SavingsCalculator({
               {/* Price */}
               <span
                 className={`text-sm font-bold whitespace-nowrap ${
-                  isChecked ? "text-primary" : "text-[#D4A574]"
+                  isChecked ? "text-primary" : "text-[#D4A574] dark:text-[#DFAF72]"
                 }`}
               >
                 ${price?.toFixed(2)}
@@ -239,7 +239,7 @@ export function SavingsCalculator({
 
       {/* Summary */}
       {selectedCount > 0 && (
-        <div className="px-4 py-3 bg-white border-t border-[#D0E4D8]">
+        <div className="px-4 py-3 bg-white dark:bg-card border-t border-[#D0E4D8] dark:border-[#3A4A3E]">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-1.5">
               <DollarSign className="w-4 h-4 text-muted-foreground" aria-hidden="true" />

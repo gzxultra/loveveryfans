@@ -13,6 +13,16 @@
         } catch (e) {}
       })();
     </script>
+    <script>
+      // Pre-paint dark-mode class to avoid light flash on reload (mirrors ThemeContext).
+      (function() {
+        try {
+          if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
 
     <!-- Primary SEO Meta Tags -->
     <title>Lovevery Fans — Complete Play Kit Guide & Affordable Alternatives</title>

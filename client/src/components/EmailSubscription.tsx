@@ -90,8 +90,8 @@ export default function EmailSubscription() {
     <section className="relative py-12 sm:py-16 overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary to-background" />
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: "radial-gradient(circle at 1px 1px, #3D3229 1px, transparent 0)",
+      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.06]" style={{
+        backgroundImage: "radial-gradient(circle at 1px 1px, var(--dot-color) 1px, transparent 0)",
         backgroundSize: "24px 24px",
       }} />
 
@@ -120,7 +120,7 @@ export default function EmailSubscription() {
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <div className="relative flex-1">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9B8E7E] pointer-events-none" />
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9B8E7E] dark:text-muted-foreground pointer-events-none" />
               <input
                 type="email"
                 value={email}
@@ -129,9 +129,9 @@ export default function EmailSubscription() {
                   if (state === "error") setState("idle");
                 }}
                 placeholder={i18n.subscribe.placeholder[lang]}
-                className={`w-full pl-10 pr-4 py-3 rounded-xl border text-sm text-foreground placeholder-[#9B8E7E] bg-white/80 backdrop-blur-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-primary/40 ${
+                className={`w-full pl-10 pr-4 py-3 rounded-xl border text-sm text-foreground placeholder-[#9B8E7E] dark:placeholder:text-muted-foreground bg-white/80 dark:bg-white/10 backdrop-blur-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-primary/40 ${
                   state === "error"
-                    ? "border-red-300 focus:border-red-400"
+                    ? "border-red-300 dark:border-red-500/60 focus:border-red-400"
                     : "border-border focus:border-primary"
                 }`}
                 disabled={state === "loading"}
@@ -141,7 +141,7 @@ export default function EmailSubscription() {
             <button
               type="submit"
               disabled={state === "loading" || !email.trim()}
-              className="px-6 py-3 rounded-xl bg-primary hover:bg-primary disabled:bg-[#A8D5B0] text-white text-sm font-semibold transition-all duration-200 hover:shadow-md hover:shadow-primary/20 active:scale-[0.98] flex items-center justify-center gap-2 whitespace-nowrap"
+              className="px-6 py-3 rounded-xl bg-primary hover:bg-primary disabled:bg-[#A8D5B0] dark:disabled:bg-[#3F5B47] text-white text-sm font-semibold transition-all duration-200 hover:shadow-md hover:shadow-primary/20 active:scale-[0.98] flex items-center justify-center gap-2 whitespace-nowrap"
             >
               {state === "loading" ? (
                 <>

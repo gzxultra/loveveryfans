@@ -315,13 +315,17 @@ const ToyCard = memo(function ToyCard({
                   )}
 
                   {/* Amazon Alternatives */}
-                  {toyAlternatives && toyAlternatives.length > 0 && (
+                  {toyAlternatives && toyAlternatives.length > 0 ? (
                     <AlternativesSection
                       alternatives={toyAlternatives}
                       toyName={toy.englishName}
                       toyNameCn={toy.name}
                       kitName={kitName}
                     />
+                  ) : (
+                    <p className="text-xs text-muted-foreground/70 text-center py-2">
+                      {t("暂无平替推荐", "No alternatives yet")}
+                    </p>
                   )}
 
                   {/* Cleaning Guide */}

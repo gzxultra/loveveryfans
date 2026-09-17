@@ -205,7 +205,7 @@ export default function AgeMatcherTool() {
                   [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer
                   [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-primary [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:shadow-md [&::-moz-range-thumb]:cursor-pointer"
                 style={{
-                  background: `linear-gradient(to right, #7FB685 ${(sliderMonths / 60) * 100}%, #E8DFD3 ${(sliderMonths / 60) * 100}%)`,
+                  background: `linear-gradient(to right, var(--slider-fill) ${(sliderMonths / 60) * 100}%, var(--slider-track) ${(sliderMonths / 60) * 100}%)`,
                 }}
               />
             </div>
@@ -213,7 +213,7 @@ export default function AgeMatcherTool() {
 
           {/* Result */}
           {statusMessage && (
-            <div className="mx-5 mb-5 sm:mx-8 sm:mb-6 p-4 rounded-xl bg-[#FFF5EE] border border-[#E8A87C]/20 text-sm text-[#8B6914]">
+            <div className="mx-5 mb-5 sm:mx-8 sm:mb-6 p-4 rounded-xl bg-[#FFF5EE] dark:bg-[#2C2318] border border-[#E8A87C]/20 dark:border-[#E8A87C]/30 text-sm text-[#8B6914] dark:text-[#E5C07E]">
               {statusMessage}
             </div>
           )}

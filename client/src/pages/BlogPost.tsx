@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar, Tag, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getBlogPost, blogPosts } from "@/data/blogPosts";
 import LanguageToggle from "@/components/LanguageToggle";
+import Footer from "@/components/Footer";
 import { useEffect } from "react";
 import NotFound from "./NotFound";
 
@@ -178,17 +179,8 @@ export default function BlogPost() {
         </div>
       </article>
 
-      {/* Footer */}
-      <footer className="bg-foreground text-white py-8 mt-8">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm text-[#9A8E82]">
-            {t(
-              "© 2026 Lovevery Fans · 独立粉丝网站，与 Lovevery Inc. 无关",
-              "© 2026 Lovevery Fans · Independent fan site, not affiliated with Lovevery Inc."
-            )}
-          </p>
-        </div>
-      </footer>
+      {/* Footer — shared site footer */}
+      <Footer />
     </div>
   );
 }

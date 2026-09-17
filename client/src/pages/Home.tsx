@@ -260,7 +260,7 @@ export default function Home() {
                   setSearchOpen(!searchOpen);
                   setMobileMenuOpen(false);
                 }}
-                aria-label="Search"
+                aria-label={t("搜索", "Search")}
               >
                 <Search className="w-5 h-5" />
               </button>
@@ -271,7 +271,7 @@ export default function Home() {
                   setMobileMenuOpen(!mobileMenuOpen);
                   setSearchOpen(false);
                 }}
-                aria-label="Toggle menu"
+                aria-label={t("切换菜单", "Toggle menu")}
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>

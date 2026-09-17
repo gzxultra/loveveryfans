@@ -84,7 +84,7 @@ const PRAISE_MESSAGES: Array<{ en: string; cn: string; emoji: string }> = [
 ];
 
 export default function ParentPraise() {
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [isLeaving, setIsLeaving] = useState(false);
   const [message, setMessage] = useState(PRAISE_MESSAGES[0]);
@@ -161,7 +161,7 @@ export default function ParentPraise() {
           onClick={dismiss}
           className="absolute top-3 right-3 w-7 h-7 flex items-center justify-center rounded-full
             text-[#9B8E7E] hover:text-foreground hover:bg-black/5 transition-colors z-10"
-          aria-label="Close"
+          aria-label={t("关闭", "Close")}
         >
           <X className="w-3.5 h-3.5" />
         </button>

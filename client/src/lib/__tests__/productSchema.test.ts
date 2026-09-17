@@ -97,6 +97,24 @@ describe("buildProductSchema", () => {
     expect(schema.offers!.availability).toBe("https://schema.org/Discontinued");
   });
 
+  it("sets availability to OutOfStock for unavailable status", () => {
+    const schema = buildProductSchema(mockAlt, "High Contrast Cards", "unavailable");
+    expect(schema.offers!.availability).toBe("https://schema.org/OutOfStock");
+  });
+
+  it("omits availability when status is unknown (default)", () => {
+    const schema = buildProductSchema(mockAlt, "High Contrast Cards");
+    expect(schema.offers).toBeDefined();
+    expect("availability" in schema.offers!).toBe(false);
+    expect(schema.offers!.availability).toBeUndefined();
+  });
+
+  it("omits availability when status is explicitly unknown", () => {
+    const schema = buildProductSchema(mockAlt, "High Contrast Cards", "unknown");
+    expect(schema.offers).toBeDefined();
+    expect("availability" in schema.offers!).toBe(false);
+  });
+
   it("includes aggregateRating when rating is provided", () => {
     const schema = buildProductSchema(mockAlt, "High Contrast Cards");
     expect(schema.aggregateRating).toBeDefined();
@@ -192,6 +210,15 @@ describe("injectProductSchemas", () => {
       `script[data-product-schema="${containerId}"]`
     );
     expect(scripts.length).toBe(2);
+  });
+
+  it("omits availability in injected schema when alt.availability is not set", () => {
+    injectProductSchemas([mockAlt], "High Contrast Cards", containerId);
+    const script = document.querySelector(
+      `script[data-product-schema="${containerId}"]`
+    );
+    const json = JSON.parse(script!.textContent!);
+    expect("availability" in json.offers).toBe(false);
   });
 });
 

@@ -17,12 +17,15 @@ export type AvailabilityStatus =
   | "discontinued"
   | "unknown";
 
-const AVAILABILITY_MAP: Record<AvailabilityStatus, string> = {
+// Maps known availability states to schema.org URLs.
+// "unknown" is intentionally NOT mapped: buildProductSchema omits the
+// availability property entirely when the state is unknown or unmapped,
+// instead of fabricating a value (e.g. PreOrder) that we cannot verify.
+const AVAILABILITY_MAP: Record<Exclude<AvailabilityStatus, "unknown">, string> = {
   in_stock: "https://schema.org/InStock",
   out_of_stock: "https://schema.org/OutOfStock",
   unavailable: "https://schema.org/OutOfStock",
   discontinued: "https://schema.org/Discontinued",
-  unknown: "https://schema.org/PreOrder",
 };
 
 export interface ProductSchemaData {
@@ -36,7 +39,7 @@ export interface ProductSchemaData {
     "@type": string;
     price: string;
     priceCurrency: string;
-    availability: string;
+    availability?: string;
     url: string;
     seller: {
       "@type": string;
@@ -76,17 +79,25 @@ export function buildProductSchema(
     const priceStr = String(alt.price).replace(/[^0-9.]/g, "");
     const priceNum = parseFloat(priceStr);
     if (!isNaN(priceNum) && priceNum > 0) {
+      // Omit availability when the status is unknown or unmapped —
+      // never fabricate a schema.org value we cannot verify.
+      const availabilityUrl =
+        availability === "unknown"
+          ? undefined
+          : AVAILABILITY_MAP[availability as Exclude<AvailabilityStatus, "unknown">];
       schema.offers = {
         "@type": "Offer",
         price: priceNum.toFixed(2),
         priceCurrency: "USD",
-        availability: AVAILABILITY_MAP[availability] || AVAILABILITY_MAP.unknown,
         url: alt.amazonUrl,
         seller: {
           "@type": "Organization",
           name: "Amazon",
         },
       };
+      if (availabilityUrl) {
+        schema.offers.availability = availabilityUrl;
+      }
     }
   }
 

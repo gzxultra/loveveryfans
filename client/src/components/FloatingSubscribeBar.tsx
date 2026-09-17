@@ -131,7 +131,7 @@ export default function FloatingSubscribeBar() {
     >
       {/* Subtle top shadow */}
       <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-      <div className="bg-white/95 backdrop-blur-lg border-t border-border/80 shadow-[0_-4px_24px_rgba(61,50,41,0.08)]">
+      <div className="bg-white/95 dark:bg-card/95 backdrop-blur-lg border-t border-border/80 shadow-[0_-4px_24px_rgba(61,50,41,0.08)]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 sm:py-3.5">
           <div className="flex items-center gap-3 sm:gap-4">
             {/* Icon */}
@@ -154,7 +154,7 @@ export default function FloatingSubscribeBar() {
               ) : showInput ? (
                 <form onSubmit={handleSubmit} className="flex items-center gap-2 flex-1 max-w-sm">
                   <div className="relative flex-1">
-                    <Mail className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#9B8E7E] pointer-events-none" />
+                    <Mail className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#9B8E7E] dark:text-muted-foreground pointer-events-none" />
                     <input
                       type="email"
                       value={email}
@@ -163,9 +163,9 @@ export default function FloatingSubscribeBar() {
                         if (subscribeState === "error") setSubscribeState("idle");
                       }}
                       placeholder={i18n.floatingBar.placeholder[lang]}
-                      className={`w-full pl-8 pr-3 py-2 rounded-lg border text-sm text-foreground placeholder-[#9B8E7E] bg-white outline-none transition-all focus:ring-2 focus:ring-primary/40 ${
+                      className={`w-full pl-8 pr-3 py-2 rounded-lg border text-sm text-foreground placeholder-[#9B8E7E] dark:placeholder:text-muted-foreground bg-white dark:bg-white/10 outline-none transition-all focus:ring-2 focus:ring-primary/40 ${
                         subscribeState === "error"
-                          ? "border-red-300"
+                          ? "border-red-300 dark:border-red-500/60"
                           : "border-border focus:border-primary"
                       }`}
                       disabled={subscribeState === "loading"}
@@ -176,7 +176,7 @@ export default function FloatingSubscribeBar() {
                   <button
                     type="submit"
                     disabled={subscribeState === "loading" || !email.trim()}
-                    className="px-4 py-2 rounded-lg bg-primary hover:bg-primary disabled:bg-[#A8D5B0] text-white text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-1.5"
+                    className="px-4 py-2 rounded-lg bg-primary hover:bg-primary disabled:bg-[#A8D5B0] dark:disabled:bg-[#3F5B47] text-white text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-1.5"
                   >
                     {subscribeState === "loading" ? (
                       <>

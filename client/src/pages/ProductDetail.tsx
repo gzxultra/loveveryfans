@@ -25,6 +25,7 @@ import { trackEvent } from "@/lib/analytics";
 import ReadingProgress from "@/components/ReadingProgress";
 import Breadcrumb from "@/components/Breadcrumb";
 import BackToTop from "@/components/BackToTop";
+import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
@@ -291,13 +292,17 @@ const ToyCard = memo(function ToyCard({
                   ) : null}
 
                   {/* Amazon Alternatives — same as KitDetail */}
-                  {toyAlternatives && toyAlternatives.length > 0 && (
+                  {toyAlternatives && toyAlternatives.length > 0 ? (
                     <AlternativesSection
                       alternatives={toyAlternatives}
                       toyName={toy.englishName}
                       toyNameCn={toy.name}
                       kitName={productName}
                     />
+                  ) : (
+                    <p className="text-xs text-muted-foreground/70 text-center py-2">
+                      {t("暂无平替推荐", "No alternatives yet")}
+                    </p>
                   )}
                 </div>
               </motion.div>
@@ -404,8 +409,8 @@ export default function ProductDetail() {
     const categoryLabel = convert(categoryInfo?.label ?? "");
 
     const title = lang === "cn"
-      ? `${product.name} ${categoryLabel}平替推荐 | Lovevery Fans`
-      : `${product.name} (${product.ageRangeEn || product.ageRange}) | Lovevery Alternatives | Lovevery Fans`;
+      ? `${product.name}${categoryLabel}介绍 | Lovevery Fans`
+      : `${product.name} (${product.ageRangeEn || product.ageRange}) | Lovevery Product Guide | Lovevery Fans`;
 
     document.title = title;
 
@@ -893,17 +898,8 @@ export default function ProductDetail() {
       {/* Back to Top */}
       <BackToTop />
 
-      {/* Footer — same as KitDetail */}
-      <footer className="relative bg-foreground text-white py-8 sm:py-12">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h3 data-logo-target className="font-display text-lg sm:text-xl mb-2 sm:mb-3 select-none">Lovevery</h3>
-          <p className="text-xs sm:text-sm text-[#9A8E82]">
-            {i18n.footer.tagline[lang]}
-          </p>
-          <div data-rainbow-portal className="mt-3 flex justify-center" />
-        </div>
-      </footer>
+      {/* Footer — shared site footer */}
+      <Footer />
     </div>
     </>
   );

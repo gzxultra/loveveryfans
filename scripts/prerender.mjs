@@ -315,7 +315,7 @@ const productSeoData = {
   'play-tunnel': { title: 'The Play Tunnel | Crawl & Explore | Lovevery Fans', desc: 'Discover the Lovevery Play Tunnel — an indoor/outdoor crawl tunnel for active toddlers. Community play tips, creative games, and honest parent reviews.', subtitle: 'Play Tunnel' },
   'sensory-strands': { title: 'Sensory Strands | Baby Teething & Exploration | Lovevery Fans', desc: 'Explore Lovevery Sensory Strands — a multi-textured teething and grasping toy for babies. Community tips, sensory play ideas, and honest parent reviews.', subtitle: 'Sensory Strands' },
   'newborn-gift-set': { title: 'The Newborn Gift Set | Play Gym + Looker Kit Bundle | Lovevery Fans', desc: 'Discover the Lovevery Newborn Gift Set — bundling the Play Gym, Looker Kit, and Sensory Strands. Community tips, development activities, and parent reviews.', subtitle: 'Newborn Gift Set' },
-  'montessori-placemat': { title: 'Montessori Placemat & Utensils | Mealtime Independence | Lovevery Fans', desc: 'Explore the Lovevery Montessori Placemat & Utensils — helping toddlers learn independent table setting. Community tips, mealtime ideas, and parent reviews.', subtitle: 'Montessori Placemat & Utensils' },
+  'montessori-placemat': { title: 'Kid\'s Montessori Placemat & Utensils | Mealtime Independence | Lovevery Fans', desc: 'Explore the Lovevery Montessori Placemat & Utensils — helping toddlers learn independent table setting. Community tips, mealtime ideas, and parent reviews.', subtitle: 'Montessori Placemat & Utensils' },
 };
 
 function generateProductHtml(productId) {

@@ -3,22 +3,23 @@ import { useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageToggle from "@/components/LanguageToggle";
+import Footer from "@/components/Footer";
 
 export default function NotFound() {
   const [, setLocation] = useLocation();
-  const { lang, t } = useLanguage();
+  const { t } = useLanguage();
 
   useEffect(() => {
-    document.title = "404 - Page Not Found | Lovevery Fans";
+    document.title = t("404 - 页面未找到 | Lovevery Fans", "404 - Page Not Found | Lovevery Fans");
     return () => {
       document.title = "Lovevery Fans";
     };
-  }, []);
+  }, [t]);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border/70 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14 sm:h-16">
             <Link href="/">
@@ -63,7 +64,7 @@ export default function NotFound() {
             </Link>
             <button
               onClick={() => window.history.back()}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-foreground rounded-full text-sm font-medium border border-border hover:bg-secondary transition-colors active:scale-95"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-card dark:bg-white/10 text-foreground rounded-full text-sm font-medium border border-border hover:bg-secondary transition-colors active:scale-95"
             >
               <ArrowLeft className="w-4 h-4" />
               {t("返回上一页", "Go Back")}
@@ -72,15 +73,8 @@ export default function NotFound() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-foreground text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h3 className="font-display text-lg font-bold mb-2">Lovevery</h3>
-          <p className="text-xs text-muted-foreground">
-            Stage-based play essentials, designed by child development experts.
-          </p>
-        </div>
-      </footer>
+      {/* Footer — shared site footer */}
+      <Footer />
     </div>
   );
 }

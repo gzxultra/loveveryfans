@@ -61,8 +61,8 @@ export default function FeedbackForm() {
           <div
             className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-8 sm:p-12 text-center"
             style={{
-              background: "linear-gradient(135deg, #F0FFF4 0%, #E8F5E9 100%)",
-              border: "1.5px solid #C8E6C9",
+              background: "var(--feedback-success-bg)",
+              border: "1.5px solid var(--feedback-success-border)",
             }}
           >
             <div className="w-16 h-16 rounded-full bg-primary/15 flex items-center justify-center mx-auto mb-4">
@@ -74,7 +74,7 @@ export default function FeedbackForm() {
             <p className="text-muted-foreground mb-6">{i18n.feedback.successDesc[lang]}</p>
             <button
               onClick={resetForm}
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-primary rounded-full hover:bg-[#6aa872] transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-primary rounded-full hover:bg-[#6aa872] dark:hover:bg-[#78b184] transition-colors"
             >
               {i18n.feedback.sendAnother[lang]}
             </button>
@@ -92,11 +92,11 @@ export default function FeedbackForm() {
           <div
             className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-8 sm:p-12 text-center"
             style={{
-              background: "linear-gradient(135deg, #FFF5F5 0%, #FEE2E2 100%)",
-              border: "1.5px solid #FECACA",
+              background: "var(--feedback-error-bg)",
+              border: "1.5px solid var(--feedback-error-border)",
             }}
           >
-            <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 rounded-full bg-red-100 dark:bg-red-950 flex items-center justify-center mx-auto mb-4">
               <AlertCircle className="w-8 h-8 text-red-500" />
             </div>
             <h3 className="font-display text-2xl text-foreground mb-2">
@@ -123,18 +123,18 @@ export default function FeedbackForm() {
         <div
           className="relative overflow-hidden rounded-2xl sm:rounded-3xl"
           style={{
-            background: "linear-gradient(135deg, #FFF8F2 0%, #FFF3F8 50%, #F5F8FF 100%)",
-            border: "1.5px solid #EDE5DC",
+            background: "var(--feedback-form-bg)",
+            border: "1.5px solid var(--feedback-form-border)",
             boxShadow: "0 8px 32px rgba(61,50,41,0.08), 0 2px 8px rgba(61,50,41,0.04)",
           }}
         >
           {/* Decorative blobs */}
           <div
-            className="absolute -top-10 -right-10 w-40 h-40 rounded-full opacity-25 pointer-events-none"
+            className="absolute -top-10 -right-10 w-40 h-40 rounded-full opacity-25 dark:opacity-10 pointer-events-none"
             style={{ background: "radial-gradient(circle, #FFB5C8 0%, transparent 70%)" }}
           />
           <div
-            className="absolute -bottom-10 -left-10 w-36 h-36 rounded-full opacity-20 pointer-events-none"
+            className="absolute -bottom-10 -left-10 w-36 h-36 rounded-full opacity-20 dark:opacity-10 pointer-events-none"
             style={{ background: "radial-gradient(circle, #B5D5FF 0%, transparent 70%)" }}
           />
 
@@ -180,7 +180,7 @@ export default function FeedbackForm() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder={i18n.feedback.namePlaceholder[lang]}
-                    className="w-full px-4 py-2.5 rounded-xl border border-border bg-white/80 text-sm text-foreground placeholder-[#B0A89E] outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
+                    className="w-full px-4 py-2.5 rounded-xl border border-border bg-white/80 dark:bg-white/10 text-sm text-foreground placeholder-[#B0A89E] dark:placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
                   />
                 </div>
                 <div>
@@ -196,7 +196,7 @@ export default function FeedbackForm() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder={i18n.feedback.emailPlaceholder[lang]}
-                    className="w-full px-4 py-2.5 rounded-xl border border-border bg-white/80 text-sm text-foreground placeholder-[#B0A89E] outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
+                    className="w-full px-4 py-2.5 rounded-xl border border-border bg-white/80 dark:bg-white/10 text-sm text-foreground placeholder-[#B0A89E] dark:placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
                   />
                 </div>
               </div>
@@ -221,7 +221,7 @@ export default function FeedbackForm() {
                       ? "比如：我们用了哪个 Kit，宝宝最喜欢哪个玩具，有什么建议……"
                       : "e.g. Which kit we used, which toy our baby loved most, any suggestions..."
                   }
-                  className="w-full px-4 py-3 rounded-xl border border-border bg-white/80 text-sm text-foreground placeholder-[#B0A89E] outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all resize-none"
+                  className="w-full px-4 py-3 rounded-xl border border-border bg-white/80 dark:bg-white/10 text-sm text-foreground placeholder-[#B0A89E] dark:placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all resize-none"
                 />
               </div>
 

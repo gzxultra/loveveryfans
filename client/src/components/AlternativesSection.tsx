@@ -41,7 +41,7 @@ function renderStars(rating: number | null) {
     } else if (i === fullStars && hasHalf) {
       stars.push(
         <div key={i} className="relative w-3 h-3 sm:w-3.5 sm:h-3.5" aria-hidden="true">
-          <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#E8DFD3]" />
+          <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-border" />
           <div className="absolute inset-0 overflow-hidden w-1/2">
             <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#FFB81C] text-[#FFB81C]" />
           </div>
@@ -49,7 +49,7 @@ function renderStars(rating: number | null) {
       );
     } else {
       stars.push(
-        <Star key={i} className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#E8DFD3]" aria-hidden="true" />
+        <Star key={i} className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-border" aria-hidden="true" />
       );
     }
   }
@@ -66,7 +66,18 @@ function formatPrice(price: string | null | number, lang: string, convert: (s: s
  * Build a descriptive, SEO-friendly alt text for a product image.
  * Format: "{productName} — affordable alternative to Lovevery {toyName} for {kitName}"
  */
-function buildImageAlt(altProduct: Alternative, toyName: string, kitName?: string): string {
+function buildImageAlt(
+  altProduct: Alternative,
+  toyName: string,
+  kitName?: string,
+  lang: string = "en"
+): string {
+  if (lang === "cn") {
+    const parts = [altProduct.name];
+    if (toyName) parts.push(`Lovevery ${toyName} 的高性价比平替`);
+    if (kitName) parts.push(`适用于${kitName}`);
+    return parts.join("，");
+  }
   const parts = [altProduct.name];
   if (toyName) parts.push(`affordable alternative to Lovevery ${toyName}`);
   if (kitName) parts.push(`for ${kitName}`);
@@ -115,31 +126,31 @@ export function AlternativesSection({
   };
 
   return (
-    <div className="rounded-xl sm:rounded-2xl border border-[#D0E4F0] overflow-hidden">
+    <div className="rounded-xl sm:rounded-2xl border border-border overflow-hidden bg-card">
       {/* Section Header */}
-      <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-gradient-to-r from-[#E8F4F8] to-[#F0E8F8] border-b border-[#D0E4F0]">
-        <p className="text-[10px] sm:text-xs font-semibold text-[#5B7B99] uppercase tracking-wider flex items-center gap-1.5">
-          <ShoppingCart className="w-3.5 h-3.5 text-[#5B7B99]" aria-hidden="true" />
+      <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-muted border-b border-border">
+        <p className="text-[10px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
+          <ShoppingCart className="w-3.5 h-3.5 text-muted-foreground" aria-hidden="true" />
           {t(`💡 Amazon 高性价比平替 (${alternatives.length})`, `💡 Affordable Alternatives (${alternatives.length})`)}
         </p>
       </div>
 
       {/* Alternative Cards */}
-      <div className="divide-y divide-[#E8F0F4]">
+      <div className="divide-y divide-border">
         {alternatives.map((alt, idx) => (
           <div
             key={alt.asin || idx}
-            className="p-3 sm:p-4 bg-gradient-to-br from-[#FAFCFD] to-[#F8F5FC] hover:from-[#F0F6FA] hover:to-[#F0EBFA] transition-colors"
+            className="p-3 sm:p-4 bg-card hover:bg-muted/50 transition-colors"
             itemScope
             itemType="https://schema.org/Product"
           >
             <div className="flex gap-3 sm:gap-4">
               {/* Product Image */}
               {alt.imageUrl && !imageErrors.has(idx) ? (
-                <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-lg overflow-hidden bg-white border border-[#E8DFD3] flex items-center justify-center p-1.5">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-lg overflow-hidden bg-card border border-border flex items-center justify-center p-1.5">
                   <img
                     src={alt.imageUrl}
-                    alt={buildImageAlt(alt, toyName, kitName)}
+                    alt={buildImageAlt(alt, toyName, kitName, lang)}
                     className="w-full h-full object-contain"
                     loading="lazy"
                     width={80}
@@ -151,11 +162,14 @@ export function AlternativesSection({
                 </div>
               ) : (
                 <div
-                  className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-lg bg-gradient-to-br from-[#FAF7F2] to-[#F0EBE3] border border-[#E8DFD3] flex items-center justify-center"
+                  className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-lg bg-muted border border-border flex items-center justify-center"
                   role="img"
-                  aria-label={`${alt.name} product image placeholder`}
+                  aria-label={t(
+                    `${alt.name} 产品图片占位`,
+                    `${alt.name} product image placeholder`
+                  )}
                 >
-                  <ShoppingCart className="w-6 h-6 sm:w-8 sm:h-8 text-[#C8BFB3]" aria-hidden="true" />
+                  <ShoppingCart className="w-6 h-6 sm:w-8 sm:h-8 text-muted-foreground/60" aria-hidden="true" />
                 </div>
               )}
 
@@ -164,13 +178,13 @@ export function AlternativesSection({
                 {/* Top row: Name + Price */}
                 <div className="flex items-start justify-between gap-2 mb-1.5 sm:mb-2">
                   <h4
-                    className="font-display text-xs sm:text-sm font-semibold text-[#3D3229] line-clamp-2 flex-1"
+                    className="font-display text-xs sm:text-sm font-semibold text-foreground line-clamp-2 flex-1"
                     itemProp="name"
                   >
                     {alt.name}
                   </h4>
                   <span
-                    className="text-sm sm:text-base font-bold text-[#D4A574] whitespace-nowrap"
+                    className="text-sm sm:text-base font-bold text-[#D4A574] dark:text-[#E3B87F] whitespace-nowrap"
                     itemProp="offers"
                     itemScope
                     itemType="https://schema.org/Offer"
@@ -202,16 +216,19 @@ export function AlternativesSection({
                     <div className="flex items-center gap-1">
                       <div
                         className="flex gap-0.5"
-                        aria-label={`Rating: ${alt.rating.toFixed(1)} out of 5 stars`}
+                        aria-label={t(
+                          `评分：${alt.rating.toFixed(1)} / 5 星`,
+                          `Rating: ${alt.rating.toFixed(1)} out of 5 stars`
+                        )}
                       >
                         {renderStars(alt.rating)}
                       </div>
-                      <span className="text-[11px] sm:text-xs font-medium text-[#3D3229]">
+                      <span className="text-[11px] sm:text-xs font-medium text-foreground">
                         {alt.rating.toFixed(1)}
                       </span>
                     </div>
                     {alt.reviewCount != null && alt.reviewCount > 0 && (
-                      <span className="text-[10px] sm:text-xs text-[#756A5C]">
+                      <span className="text-[10px] sm:text-xs text-muted-foreground">
                         ({alt.reviewCount.toLocaleString()}{" "}
                         {t("条评价", "reviews")})
                       </span>
@@ -221,18 +238,18 @@ export function AlternativesSection({
 
                 {/* Reason */}
                 <p
-                  className="text-[11px] sm:text-xs text-[#6B5E50] leading-relaxed mb-2.5"
+                  className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed mb-2.5"
                   itemProp="description"
                 >
                   {lang === "cn" ? convert(alt.reasonCn) : alt.reasonEn}
                 </p>
 
-                {/* Buy Button */}
                 {/* Buy Button / Unavailable badge */}
                 {alt.availability === "unavailable" ||
-                alt.availability === "out_of_stock" ? (
+                alt.availability === "out_of_stock" ||
+                alt.availability === "discontinued" ? (
                   <span
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg bg-[#F0EBE3] text-[#8A7B6C] text-[11px] sm:text-xs font-medium min-h-[36px]"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg bg-muted text-muted-foreground text-[11px] sm:text-xs font-medium min-h-[36px]"
                     aria-label={t(
                       "该商品暂时无货",
                       "This item is currently unavailable"
@@ -245,7 +262,10 @@ export function AlternativesSection({
                     href={ensureAffiliateTag(alt.amazonUrl)}
                     target="_blank"
                     rel="noopener noreferrer sponsored"
-                    aria-label={`Buy ${alt.name} on Amazon${alt.price ? ` for ${formatPrice(alt.price, "en", (s) => s)}` : ""}`}
+                    aria-label={t(
+                      `在 Amazon 上购买 ${alt.name}${alt.price ? `，价格 ${formatPrice(alt.price, "cn", convert)}` : ""}`,
+                      `Buy ${alt.name} on Amazon${alt.price ? ` for ${formatPrice(alt.price, "en", (s) => s)}` : ""}`
+                    )}
                     onClick={() => {
                       trackEvent("click_amazon_link", {
                         product_name: alt.name,
@@ -269,13 +289,13 @@ export function AlternativesSection({
       </div>
 
       {/* Price Disclaimer */}
-      <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-[#F8FAFB] border-t border-[#E8F0F4] space-y-1">
-        <p className="text-[10px] sm:text-xs text-[#756A5C] flex items-center gap-1.5">
+      <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-muted/50 border-t border-border space-y-1">
+        <p className="text-[10px] sm:text-xs text-muted-foreground flex items-center gap-1.5">
           <span aria-hidden="true">💡</span>
           {t("价格仅供参考，以 Amazon 实际价格为准", "Prices are approximate. Check Amazon for current pricing.")}
         </p>
         {freshness && (
-          <p className="text-[10px] sm:text-xs text-[#756A5C] flex items-center gap-1.5">
+          <p className="text-[10px] sm:text-xs text-muted-foreground flex items-center gap-1.5">
             <span aria-hidden="true">{freshness.stale ? "⚠️" : "🕒"}</span>
             {freshness.stale
               ? t(

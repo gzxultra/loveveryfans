@@ -118,8 +118,8 @@ export function TestimonialsSection() {
               onClick={goToPrevious}
               onMouseEnter={() => setAutoplay(false)}
               onMouseLeave={() => setAutoplay(true)}
-              className="p-2 rounded-full bg-white border border-border hover:border-[#D4A574] hover:shadow-md transition-all text-muted-foreground hover:text-foreground active:scale-95 min-h-[36px] min-w-[36px] flex items-center justify-center"
-              aria-label="Previous testimonial"
+              className="p-2 rounded-full bg-white dark:bg-card border border-border hover:border-[#D4A574] hover:shadow-md transition-all text-muted-foreground hover:text-foreground active:scale-95 min-h-[36px] min-w-[36px] flex items-center justify-center"
+              aria-label={t("上一个评价", "Previous testimonial")}
             >
               <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
@@ -135,7 +135,7 @@ export function TestimonialsSection() {
                       ? "bg-[#D4A574] w-6 sm:w-8"
                       : "bg-border w-2 sm:w-2.5 hover:bg-[#D4A574]"
                   }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
+                  aria-label={t(`前往第 ${index + 1} 条评价`, `Go to testimonial ${index + 1}`)}
                 />
               ))}
             </div>
@@ -144,8 +144,8 @@ export function TestimonialsSection() {
               onClick={goToNext}
               onMouseEnter={() => setAutoplay(false)}
               onMouseLeave={() => setAutoplay(true)}
-              className="p-2 rounded-full bg-white border border-border hover:border-[#D4A574] hover:shadow-md transition-all text-muted-foreground hover:text-foreground active:scale-95 min-h-[36px] min-w-[36px] flex items-center justify-center"
-              aria-label="Next testimonial"
+              className="p-2 rounded-full bg-white dark:bg-card border border-border hover:border-[#D4A574] hover:shadow-md transition-all text-muted-foreground hover:text-foreground active:scale-95 min-h-[36px] min-w-[36px] flex items-center justify-center"
+              aria-label={t("下一个评价", "Next testimonial")}
             >
               <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>

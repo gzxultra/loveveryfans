@@ -43,7 +43,7 @@ export default function Footer({ onStageClick }: FooterProps) {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
           <div>
             <h3 data-logo-target className="font-display text-xl sm:text-2xl mb-3 sm:mb-4 select-none">Lovevery</h3>
-            <p className="text-[#B8AFA3] text-sm leading-relaxed">
+            <p className="text-white/70 text-sm leading-relaxed">
               {i18n.footer.brandDesc[lang]}
             </p>
           </div>
@@ -55,14 +55,14 @@ export default function Footer({ onStageClick }: FooterProps) {
                   {onStageClick ? (
                     <button
                       onClick={() => onStageClick(s.id)}
-                      className="text-sm text-[#B8AFA3] hover:text-white hover:translate-x-1 transition-all duration-200 min-h-[44px] flex items-center gap-2"
+                      className="text-sm text-white/70 hover:text-white hover:translate-x-1 transition-all duration-200 min-h-[44px] flex items-center gap-2"
                     >
                       <span className="w-1 h-1 rounded-full bg-muted-foreground group-hover:bg-primary transition-colors" />
                       {stageLabel(s.id)} ({stageRange(s.id)})
                     </button>
                   ) : (
                     <Link href="/">
-                      <span className="text-sm text-[#B8AFA3] hover:text-white hover:translate-x-1 transition-all duration-200 min-h-[44px] flex items-center gap-2">
+                      <span className="text-sm text-white/70 hover:text-white hover:translate-x-1 transition-all duration-200 min-h-[44px] flex items-center gap-2">
                         <span className="w-1 h-1 rounded-full bg-muted-foreground group-hover:bg-primary transition-colors" />
                         {stageLabel(s.id)} ({stageRange(s.id)})
                       </span>
@@ -78,7 +78,7 @@ export default function Footer({ onStageClick }: FooterProps) {
               {standaloneProducts.map((p) => (
                 <li key={p.id}>
                   <Link href={`/product/${getProductSlug(p.id)}/`}>
-                    <span className="text-sm text-[#B8AFA3] hover:text-white hover:translate-x-1 transition-all duration-200 min-h-[44px] flex items-center gap-2">
+                    <span className="text-sm text-white/70 hover:text-white hover:translate-x-1 transition-all duration-200 min-h-[44px] flex items-center gap-2">
                       <span className="w-1 h-1 rounded-full bg-muted-foreground" />
                       {p.name}
                     </span>
@@ -89,11 +89,11 @@ export default function Footer({ onStageClick }: FooterProps) {
           </div>
           <div className="sm:col-span-2 md:col-span-1">
             <h4 className="font-semibold mb-3 sm:mb-4 text-border">{i18n.footer.aboutGuide[lang]}</h4>
-            <p className="text-sm text-[#B8AFA3] leading-relaxed mb-4">
+            <p className="text-sm text-white/70 leading-relaxed mb-4">
               {i18n.footer.aboutDesc[lang]}
             </p>
             <Link href="/about/">
-              <span className="inline-flex items-center gap-1.5 text-sm text-[#B8AFA3] hover:text-white transition-colors group">
+              <span className="inline-flex items-center gap-1.5 text-sm text-white/70 hover:text-white transition-colors group">
                 {i18n.nav.aboutUs[lang]}
                 <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
               </span>
@@ -101,10 +101,10 @@ export default function Footer({ onStageClick }: FooterProps) {
           </div>
         </div>
         <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-secondary-foreground/80 text-center">
-          <p className="text-xs sm:text-sm text-[#9A8E82] mb-2">
+          <p className="text-xs sm:text-sm text-white/60 mb-2">
             {i18n.footer.tagline[lang]}
           </p>
-          <p className="text-xs sm:text-sm text-[#9A8E82] leading-relaxed max-w-4xl mx-auto">
+          <p className="text-xs sm:text-sm text-white/60 leading-relaxed max-w-4xl mx-auto">
             {i18n.footer.disclaimer[lang]}
           </p>
           <FooterShareMessage />

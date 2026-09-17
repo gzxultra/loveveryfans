@@ -10,6 +10,7 @@ import { useState, useMemo } from "react";
 import { kits, type Kit } from "@/data/kits";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "wouter";
+import Footer from "@/components/Footer";
 import {
   ArrowLeft,
   Plus,
@@ -194,7 +195,7 @@ export default function KitComparison() {
                       <button
                         onClick={() => removeKit(kit.id)}
                         className="text-[#9B8E7E] hover:text-foreground transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center"
-                        aria-label="Remove"
+                        aria-label={t("移除", "Remove")}
                       >
                         <X className="w-4 h-4" />
                       </button>
@@ -284,6 +285,9 @@ export default function KitComparison() {
           </div>
         )}
       </div>
+
+      {/* Footer — shared site footer */}
+      <Footer />
     </div>
   );
 }

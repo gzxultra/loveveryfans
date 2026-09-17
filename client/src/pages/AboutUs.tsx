@@ -8,6 +8,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useI18n } from "@/hooks/useI18n";
 import { standaloneProducts } from "@/data/standaloneProducts";
 import LanguageToggle from "@/components/LanguageToggle";
+import Footer from "@/components/Footer";
 import { Link } from "wouter";
 import { motion, type Easing } from "framer-motion";
 import {
@@ -175,7 +176,7 @@ export default function AboutUs() {
               <button
                 className="p-2 text-muted-foreground hover:text-foreground min-w-[48px] min-h-[48px] flex items-center justify-center"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                aria-label="Toggle menu"
+                aria-label={t("切换菜单", "Toggle menu")}
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -383,20 +384,8 @@ export default function AboutUs() {
       {/* Back to Top */}
       <BackToTop />
 
-      {/* Footer */}
-      <footer className="relative bg-foreground text-white py-8 sm:py-12">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h3 data-logo-target className="font-display text-lg sm:text-xl mb-2 sm:mb-3 select-none">Lovevery</h3>
-          <p className="text-xs sm:text-sm text-[#9A8E82] mb-2">
-            {i18n.footer.tagline[lang]}
-          </p>
-          <p className="text-xs sm:text-sm text-[#9A8E82] leading-relaxed max-w-4xl mx-auto">
-            {i18n.footer.disclaimer[lang]}
-          </p>
-          <div data-rainbow-portal className="mt-3 flex justify-center" />
-        </div>
-      </footer>
+      {/* Footer — shared site footer */}
+      <Footer />
     </div>
   );
 }

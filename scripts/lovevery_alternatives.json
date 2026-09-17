@@ -1492,7 +1492,21 @@
       {
         "toyName": "Anywhere Art Kit With Tempera Paintsticks",
         "toyNameCn": "随心艺术套装（含蛋彩画棒）",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "The Pencil Grip Kwik Stix Solid Tempera Paint Sticks, 24 Colors",
+            "asin": "B01GNAVT0U",
+            "price": "$19.99",
+            "rating": null,
+            "reviewCount": null,
+            "imageUrl": null,
+            "amazonUrl": "https://www.amazon.com/dp/B01GNAVT0U?tag=loveveryfans-20",
+            "reasonEn": "Parent-recommended solid tempera paint sticks — no water or brushes needed, dry in 90 seconds. A mess-free stand-in for the Lovevery tempera paint sticks.",
+            "reasonCn": "真人家长反复推荐的固体水彩棒，无需水和画笔，90秒速干，是 Lovevery 蛋彩画棒的干净省心平替。",
+            "availability": "in_stock",
+            "lastChecked": "2026-09-17T04:33:39Z"
+          }
+        ]
       },
       {
         "toyName": "Let's Map It Out Routine Cards",
@@ -1743,12 +1757,40 @@
       {
         "toyName": "Plan Ahead Weather Board",
         "toyNameCn": "未来天气规划板",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Tender Leaf Toys Weather Watch Board (TL8421)",
+            "asin": "B0887JYXVG",
+            "price": "$68.99",
+            "rating": null,
+            "reviewCount": null,
+            "imageUrl": null,
+            "amazonUrl": "https://www.amazon.com/dp/B0887JYXVG?tag=loveveryfans-20",
+            "reasonEn": "Real-parent tested wooden weather board for learning days, seasons and weather — a close match for the Lovevery weather board.",
+            "reasonCn": "真人家长实测推荐的木质天气认知板，学日期、季节、天气，和 Lovevery 天气板玩法接近。",
+            "availability": "in_stock",
+            "lastChecked": "2026-09-17T04:33:39Z"
+          }
+        ]
       },
       {
         "toyName": "Modular Playhouse",
         "toyNameCn": "模块化游戏屋",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Melissa & Doug Fold & Go Wooden Dollhouse (3701)",
+            "asin": "B001P9OGRS",
+            "price": "$53.99",
+            "rating": null,
+            "reviewCount": null,
+            "imageUrl": null,
+            "amazonUrl": "https://www.amazon.com/dp/B001P9OGRS?tag=loveveryfans-20",
+            "reasonEn": "Parent-tested fold-and-go wooden dollhouse with 2 figures and 11 pieces of furniture — the go-to budget pick for the Lovevery playhouse.",
+            "reasonCn": "家长实测推荐的可折叠木质娃娃屋，含2个人偶和11件家具，是 Lovevery 游戏屋的热门平替。",
+            "availability": "in_stock",
+            "lastChecked": "2026-09-17T04:33:39Z"
+          }
+        ]
       },
       {
         "toyName": "Wooden Accessories",
@@ -1758,7 +1800,21 @@
       {
         "toyName": "Two-Seater Speedster",
         "toyNameCn": "双座小跑车",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Hape Wooden Family Car (E3475)",
+            "asin": "B0071BFM36",
+            "price": "$22.62",
+            "rating": null,
+            "reviewCount": null,
+            "imageUrl": null,
+            "amazonUrl": "https://www.amazon.com/dp/B0071BFM36?tag=loveveryfans-20",
+            "reasonEn": "Hape's wooden family car, recommended by real parents as a sturdy stand-in for the Lovevery two-seater speedster.",
+            "reasonCn": "Hape 木质家庭小汽车，真人家长推荐，结实耐玩，平替 Lovevery 双座小跑车。",
+            "availability": "in_stock",
+            "lastChecked": "2026-09-17T04:33:39Z"
+          }
+        ]
       },
       {
         "toyName": "Left & Right Shoe Stickers",
@@ -1768,12 +1824,40 @@
       {
         "toyName": "Wooden Emotion Dolls",
         "toyNameCn": "木制情绪娃娃",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Hape Eggspressions Wooden Emotion Eggs (E0424)",
+            "asin": "B006WZKDT0",
+            "price": null,
+            "rating": null,
+            "reviewCount": null,
+            "imageUrl": null,
+            "amazonUrl": "https://www.amazon.com/dp/B006WZKDT0?tag=loveveryfans-20",
+            "reasonEn": "Hape's wooden emotion eggs with 6 emotions plus a picture book — parent-recommended for the Lovevery emotion dolls' feelings play.",
+            "reasonCn": "Hape 情绪蛋，6种情绪木蛋加绘本，家长推荐，平替 Lovevery 情绪娃娃的情绪认知玩法。",
+            "availability": "in_stock",
+            "lastChecked": "2026-09-17T04:33:39Z"
+          }
+        ]
       },
       {
         "toyName": "Emotion Book Set",
         "toyNameCn": "情绪主题绘本",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "The Color Monster by Anna Llenas",
+            "asin": "0316450014",
+            "price": "$8.99",
+            "rating": null,
+            "reviewCount": null,
+            "imageUrl": null,
+            "amazonUrl": "https://www.amazon.com/dp/0316450014?tag=loveveryfans-20",
+            "reasonEn": "The beloved feelings book series (1.5M+ copies) — parent-recommended for the Lovevery emotion book set.",
+            "reasonCn": "情绪认知经典绘本，全球销量150万册+，家长推荐，平替 Lovevery 情绪绘本套装。",
+            "availability": "in_stock",
+            "lastChecked": "2026-09-17T04:33:39Z"
+          }
+        ]
       },
       {
         "toyName": "Get Started Guide",
@@ -2307,7 +2391,21 @@
       {
         "toyName": "Unit Block Builders & Activity Cards",
         "toyNameCn": "单元积木和活动卡片",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "Learning Resources MathLink Cubes Early Math Activity Set (115 pieces, LER4286)",
+            "asin": "B07MJCW4H4",
+            "price": "$21.99",
+            "rating": null,
+            "reviewCount": null,
+            "imageUrl": null,
+            "amazonUrl": "https://www.amazon.com/dp/B07MJCW4H4?tag=loveveryfans-20",
+            "reasonEn": "Parent-recommended linking cubes set that builds the same early math skills as the Lovevery unit block builders.",
+            "reasonCn": "家长推荐的链接积木套装，锻炼和 Lovevery 单元积木相同的早期数学能力。",
+            "availability": "in_stock",
+            "lastChecked": "2026-09-17T04:33:39Z"
+          }
+        ]
       },
       {
         "toyName": "Show, Tell & Think Empathy Game",
@@ -2336,7 +2434,21 @@
       {
         "toyName": "'The Appropriate Game' Book",
         "toyNameCn": "《得体的游戏》",
-        "alternatives": []
+        "alternatives": [
+          {
+            "name": "What Should Danny Do? by Adir Levy",
+            "asin": "069284838X",
+            "price": "$12.52",
+            "rating": null,
+            "reviewCount": null,
+            "imageUrl": null,
+            "amazonUrl": "https://www.amazon.com/dp/069284838X?tag=loveveryfans-20",
+            "reasonEn": "A 4.8-star, 25,000+ review interactive book about choices and consequences — real parents' pick for the Lovevery behavior book.",
+            "reasonCn": "4.8星、2.5万+评价的互动选择类绘本，真人家长推荐，平替 Lovevery 行为习惯绘本。",
+            "availability": "in_stock",
+            "lastChecked": "2026-09-17T04:33:39Z"
+          }
+        ]
       }
     ]
   },

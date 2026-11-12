@@ -3,7 +3,9 @@ export const kitImages: Record<string, { heroImage: string; toyImages: string[] 
     heroImage: "https://images.ctfassets.net/0sea1vycfyqy/2Eqfc2kd6LH83SQiitGn2p/6e597b994ec9bf15103ca166db3b228a/Looker_Image_1_Neutral_BG.png",
     toyImages: [
       "https://images.ctfassets.net/0sea1vycfyqy/2k0qvgTwFz9Fgmrv2qzJYo/55781216ecfef55f1fb3fc86f1bfb9c6/Lovevery_Play_Kit_The_Looker_Eye_Tracking_Ramp_Three_Quarter_0061_v1.png",
+      "https://images.ctfassets.net/0sea1vycfyqy/1PsS75pd6HuHyBjkbK1onQ/188c922caa937478fe9879bafebbede4/The_Looker_Standing_Card_Holder_ISO.png",
       "https://images.ctfassets.net/0sea1vycfyqy/5XbH0CxXu560qHdwH75qWd/0fa7e77c21dfd19f723981df5ef76e2b/SubscriptionBox1_Products_Overhead_23385_Hero_VS_R1_CL_v3.png",
+      "https://images.ctfassets.net/0sea1vycfyqy/3DGLKbFKtZ4S1CjyOhIYDr/e55299f5aec509efa7c95c3041bb6f95/Mini_Kit_Changing_Table_ISO_Overhead_0531_v1__1_.png",
       "https://images.ctfassets.net/0sea1vycfyqy/5O7INa0JlqbbRbof4pX6Df/251b7bda8a174bb73b0c8da1b3b9ec3c/Lovevery-VKS-Studio-StrollerToy-364-Sep2020_WEB_616e4d0b-1dbd-445d-895a-a1b0cc13e2e6.png",
       "https://images.ctfassets.net/0sea1vycfyqy/5q5OUzlztmBjjmBOiyjqsK/0d057fdf3872b66bd2478f0a057fee21/K1.Simple.BW.Card.Set.png",
       "https://images.ctfassets.net/0sea1vycfyqy/31Ucd4iWHQYxGCQLMd7rHg/f86ded3f089521cde7c10cff12b4f96e/SubscriptionBox1_Animation_14411_folded_towel_VS_R1_CLIENTWHITE.png",
@@ -38,6 +40,7 @@ export const kitImages: Record<string, { heroImage: string; toyImages: string[] 
       "https://images.ctfassets.net/0sea1vycfyqy/4aZhB4bZ78jdfPCunmI6fv/03428d490498932e6f07965aecb6650a/SubscriptionBox3_LoveveryProduct4_25344_SideView_R1_CL.png",
       "https://images.ctfassets.net/0sea1vycfyqy/2hgxiFEQrszDrEFCFeiWa9/fd5f48a18a6dbe2f7aa0989436a4c3f5/K3.Magic.Tissue.Box.png",
       "https://images.ctfassets.net/0sea1vycfyqy/6WNnLdFniWTJV4DwXAh5oR/146dfa5290b193231cb8b00ccc01af9e/K3.Magic.Tissues.png",
+      "https://images.ctfassets.net/0sea1vycfyqy/Cw7TJ8BA9X4OYZrhuKvTz/3acb65108d3585a02b3e6f3acef13a1e/ShakeNRollWobbler_WalmartPackaging_4308_v2__1_.png",
       "https://images.ctfassets.net/0sea1vycfyqy/5VCXHJeJco13hznAqw2iLh/8779bae43ce9a8a369fe2b89fd104d7e/Products_Overhead_0316_2_VS_R2_CL_Rainbow-Ball.png",
       "https://images.ctfassets.net/0sea1vycfyqy/5y0Pz7bNPXXa0jS0ocMauq/47194d50994094e5b73b8ffc40e7d6cc/Parts-of-Me_Three-Quarter_v2__1_.png",
       "https://images.ctfassets.net/0sea1vycfyqy/2qDPxsRKpPmcHLTOwFSLu7/8fc1e585b14b577764594bffc6141aea/SubscriptionBox3_Products_Overhead_23354_PlaySocks_VS_R2_CL_BH_EDIT-_1_.png",
@@ -61,6 +64,7 @@ export const kitImages: Record<string, { heroImage: string; toyImages: string[] 
   "explorer": {
     heroImage: "https://images.ctfassets.net/0sea1vycfyqy/3pDFzaM3o6VRIrRRCOHBrK/5dce916ca8f205ac02f57b6b59e067af/Lovevery-VKS-Playkit-TheExplorer-ISO-238_v9_web.20250715151900241.png",
     toyImages: [
+      "https://images.ctfassets.net/0sea1vycfyqy/3bvS4JrqT8Sy8k1GC4D9Is/95e3d4540edc37dfbb8b221bcb853afc/Mod_Pods_Overhead_9851_web__1_.png",
       "https://images.ctfassets.net/0sea1vycfyqy/3RLZA2z1U3itvtcGMNt0rf/22454c7fd81f005252795827c2284f5e/image.png",
       "https://images.ctfassets.net/0sea1vycfyqy/1XQuYfRPgobSwL8lZrNsOA/5654b445fdb53c2da05ac2e573a46d91/2023_06_08_ISO_S_4151_BH_V1_web.png",
       "https://images.ctfassets.net/0sea1vycfyqy/5ICnQyXUIbf0ID7uOFi5z7/e6043a95be610f47734231e4dc31d07a/SubscriptionBox5_Lovevery-MontessoriEggCup-016-Feb2020.png",
@@ -281,7 +285,9 @@ export const kitImages: Record<string, { heroImage: string; toyImages: string[] 
 export const kitToyImages: Record<string, Record<string, string>> = {
   "looker": {
     "Look at Me Ladybug": "https://images.ctfassets.net/0sea1vycfyqy/2k0qvgTwFz9Fgmrv2qzJYo/55781216ecfef55f1fb3fc86f1bfb9c6/Lovevery_Play_Kit_The_Looker_Eye_Tracking_Ramp_Three_Quarter_0061_v1.png",
+    "Car to Floor Explore Board": "https://images.ctfassets.net/0sea1vycfyqy/1PsS75pd6HuHyBjkbK1onQ/188c922caa937478fe9879bafebbede4/The_Looker_Standing_Card_Holder_ISO.png",
     "The Mobile": "https://images.ctfassets.net/0sea1vycfyqy/5XbH0CxXu560qHdwH75qWd/0fa7e77c21dfd19f723981df5ef76e2b/SubscriptionBox1_Products_Overhead_23385_Hero_VS_R1_CL_v3.png",
+    "Easy Hang Wooden Mobile Arm": "https://images.ctfassets.net/0sea1vycfyqy/3DGLKbFKtZ4S1CjyOhIYDr/e55299f5aec509efa7c95c3041bb6f95/Mini_Kit_Changing_Table_ISO_Overhead_0531_v1__1_.png",
     "Sensory Links": "https://images.ctfassets.net/0sea1vycfyqy/5O7INa0JlqbbRbof4pX6Df/251b7bda8a174bb73b0c8da1b3b9ec3c/Lovevery-VKS-Studio-StrollerToy-364-Sep2020_WEB_616e4d0b-1dbd-445d-895a-a1b0cc13e2e6.png",
     "Simple Black & White Card Set": "https://images.ctfassets.net/0sea1vycfyqy/5q5OUzlztmBjjmBOiyjqsK/0d057fdf3872b66bd2478f0a057fee21/K1.Simple.BW.Card.Set.png",
     "Standing Card Holder": "https://images.ctfassets.net/0sea1vycfyqy/31Ucd4iWHQYxGCQLMd7rHg/f86ded3f089521cde7c10cff12b4f96e/SubscriptionBox1_Animation_14411_folded_towel_VS_R1_CLIENTWHITE.png",
@@ -312,6 +318,7 @@ export const kitToyImages: Record<string, Record<string, string>> = {
     "Spinning Rainbow": "https://images.ctfassets.net/0sea1vycfyqy/4aZhB4bZ78jdfPCunmI6fv/03428d490498932e6f07965aecb6650a/SubscriptionBox3_LoveveryProduct4_25344_SideView_R1_CL.png",
     "Magic Tissue Box": "https://images.ctfassets.net/0sea1vycfyqy/2hgxiFEQrszDrEFCFeiWa9/fd5f48a18a6dbe2f7aa0989436a4c3f5/K3.Magic.Tissue.Box.png",
     "Magic Tissues": "https://images.ctfassets.net/0sea1vycfyqy/6WNnLdFniWTJV4DwXAh5oR/146dfa5290b193231cb8b00ccc01af9e/K3.Magic.Tissues.png",
+    "Shake & Roll Wobbler": "https://images.ctfassets.net/0sea1vycfyqy/Cw7TJ8BA9X4OYZrhuKvTz/3acb65108d3585a02b3e6f3acef13a1e/ShakeNRollWobbler_WalmartPackaging_4308_v2__1_.png",
     "Soft Cotton Rainbow Ball": "https://images.ctfassets.net/0sea1vycfyqy/5VCXHJeJco13hznAqw2iLh/8779bae43ce9a8a369fe2b89fd104d7e/Products_Overhead_0316_2_VS_R2_CL_Rainbow-Ball.png",
     "'Parts of Me' Book": "https://images.ctfassets.net/0sea1vycfyqy/5y0Pz7bNPXXa0jS0ocMauq/47194d50994094e5b73b8ffc40e7d6cc/Parts-of-Me_Three-Quarter_v2__1_.png",
     "Play Socks": "https://images.ctfassets.net/0sea1vycfyqy/2qDPxsRKpPmcHLTOwFSLu7/8fc1e585b14b577764594bffc6141aea/SubscriptionBox3_Products_Overhead_23354_PlaySocks_VS_R2_CL_BH_EDIT-_1_.png",
@@ -329,6 +336,7 @@ export const kitToyImages: Record<string, Record<string, string>> = {
     "Wooden Sound Cylinders": "https://images.ctfassets.net/0sea1vycfyqy/4NnURvFwiH9Jt3GPuOuVJb/466644445e9185d1ed8847fa2638ec8c/2023_05_01_ISO_2084.png",
   },
   "explorer": {
+    "Mod Pods": "https://images.ctfassets.net/0sea1vycfyqy/3bvS4JrqT8Sy8k1GC4D9Is/95e3d4540edc37dfbb8b221bcb853afc/Mod_Pods_Overhead_9851_web__1_.png",
     "Stainless Steel Tip & Turn": "https://images.ctfassets.net/0sea1vycfyqy/3RLZA2z1U3itvtcGMNt0rf/22454c7fd81f005252795827c2284f5e/image.png",
     "Transparent Tube Tower": "https://images.ctfassets.net/0sea1vycfyqy/1XQuYfRPgobSwL8lZrNsOA/5654b445fdb53c2da05ac2e573a46d91/2023_06_08_ISO_S_4151_BH_V1_web.png",
     "Montessori Egg Cup": "https://images.ctfassets.net/0sea1vycfyqy/5ICnQyXUIbf0ID7uOFi5z7/e6043a95be610f47734231e4dc31d07a/SubscriptionBox5_Lovevery-MontessoriEggCup-016-Feb2020.png",
@@ -390,7 +398,7 @@ export const kitToyImages: Record<string, Record<string, string>> = {
   },
   "helper": {
     "Super Sustainable Sink With Cups & Plates": "https://images.ctfassets.net/0sea1vycfyqy/1djkg0ageftK9tb6nCrsMB/96e06ed35cad1fd30ef785bb5d0d32ec/Year_2_Playkit_10542_VS_R3_CL.png",
-    "Drop & Match Dot Catcher": "https://images.ctfassets.net/0sea1vycfyqy/5wSYuHwtrFP1CUgeEpjJYe/8f1d00cba00ec0e670e7e5d7280db1a8/k11-2-dot-catcher.png",
+    "Drop & Match Tile Catcher": "https://images.ctfassets.net/0sea1vycfyqy/5wSYuHwtrFP1CUgeEpjJYe/8f1d00cba00ec0e670e7e5d7280db1a8/k11-2-dot-catcher.png",
     "Felt Flowers in a Row": "https://images.ctfassets.net/0sea1vycfyqy/5dvijPmMcgCFbvNgl17X1K/03f62e47da15efcbe7c5ca6d87d3a3bf/k11-3-felt-flowers.png",
     "Double-Sided Sunny Day Puzzle": "https://images.ctfassets.net/0sea1vycfyqy/3M7wpevITzoVJtwRPNsfsD/6cb0d92984fc854a72bef721a3bfe8fe/Year_2_Playkit_10766_VS_R1_CL.png",
     "Anywhere Art Kit With Tempera Paintsticks": "https://images.ctfassets.net/0sea1vycfyqy/3CPZ9DoI1ty9l4n1RYtuo6/b7cd72751ff82141d413e504c24ac406/Year_2_Playkit_10842_VS_R2_CL.png",

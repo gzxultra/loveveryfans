@@ -29,8 +29,8 @@ const FAQ_DATA: FAQItem[] = [
       en: "Are Lovevery Play Kits worth it? Are there cheaper alternatives?",
     },
     answer: {
-      cn: "Lovevery Play Kit 的品质确实很好，但价格较高（每个 Kit 约 $80-120）。好消息是，很多 Amazon 上的玩具可以实现类似的发展目标，价格只有 Lovevery 的一半甚至更低。我们在每个 Kit 页面都精选了高评分、材质安全的 Amazon 平替推荐，帮你用更少的预算给宝宝提供同样优质的玩具体验。",
-      en: "Lovevery Play Kits are high quality but expensive ($80-120 per kit). The good news is that many Amazon toys can achieve similar developmental goals at half the price or less. On each kit page, we've curated highly-rated, safe Amazon alternatives so you can provide the same quality play experience for your baby on a smaller budget.",
+      cn: "Lovevery Play Kit 的品质确实很好，但价格较高（每个 Kit 约 $88-156）。好消息是，很多 Amazon 上的玩具可以实现类似的发展目标，价格只有 Lovevery 的一半甚至更低。我们在每个 Kit 页面都精选了高评分、材质安全的 Amazon 平替推荐，帮你用更少的预算给宝宝提供同样优质的玩具体验。",
+      en: "Lovevery Play Kits are high quality but expensive ($88-156 per kit). The good news is that many Amazon toys can achieve similar developmental goals at half the price or less. On each kit page, we've curated highly-rated, safe Amazon alternatives so you can provide the same quality play experience for your baby on a smaller budget.",
     },
   },
   {
